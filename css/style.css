@@ -267,7 +267,7 @@ img.logomain {
     color: #FFFFFF;
     -webkit-box-shadow: 6px 6px #000000;
     box-shadow: 6px 6px #000000;
-    background: radial-gradient(circle, rgba(170,222,255,1) 0%, rgba(170,206,255,1) 50%, rgba(0,142,255,1) 100%);
+    background: radial-gradient(circle, rgba(66,87,116,0.8127626050420168) 0%, rgba(116,117,117,1) 0%, rgba(0,142,255,1) 100%);
     color: white;
 }
 
