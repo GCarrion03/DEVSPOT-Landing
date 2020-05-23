@@ -1,49 +1,42 @@
-body
-{
-    font: normal 14px/1.7 "Open Sans", "Open Sans Light";
+body {
+    font-family: 'Roboto', sans-serif;
     word-spacing: 1.5px;
     position: relative;
 }
-#carousel1
-{
+
+#carousel1 {
     margin-bottom: 30px;
 }
-#portfolio #portfolio-cats li
-{
+
+#portfolio #portfolio-cats li {
     font-size: 1.2em;
     border-bottom: 1px solid #3333ff;
     padding: 6px;
 }
-#portfolio #portfolio-cats li:hover
-{
+
+#portfolio #portfolio-cats li:hover {
     border: 1px solid #3333ff;
 }
 
-#portfolio #portfolio-cats li.active
-{
+#portfolio #portfolio-cats li.active {
     border: 1px solid #3333ff;
 }
 
 
-
-#blog
-{
+#blog {
 }
 
-#features
-{
+#features {
 }
 
-#portfolio
-{
+#portfolio {
 }
 
-#portfolio-cats
-{
+#portfolio-cats {
     margin-bottom: 30px;
 }
-.portfolio-item
-{
+
+.portfolio-item {
     position: relative;
     overflow: hidden;
     -webkit-transition: all 500ms linear 0s;
@@ -52,13 +45,11 @@ body
 }
 
 
-#portfolio .col-md-4
-{
+#portfolio .col-md-4 {
     margin-bottom: 30px;
 }
 
-.portfolio-item .portfolio-item-link
-{
+.portfolio-item .portfolio-item-link {
     /*display:block;*/
     position: absolute;
     background-color: #000000;
@@ -69,8 +60,8 @@ body
     top: 300px;
     opacity: 0.65;
 }
-.portfolio-item .portfolio-item-link a
-{
+
+.portfolio-item .portfolio-item-link a {
     top: 50%;
     position: absolute;
     border-top: 1px solid #3333ff;
@@ -79,8 +70,7 @@ body
     color: #FFFFFF;
 }
 
-.portfolio-item img
-{
+.portfolio-item img {
     z-index: 7;
     max-width: 100%;
     display: block;
@@ -88,39 +78,34 @@ body
 }
 
 
-
-#testimonials
-{
+#testimonials {
 }
-#testimonials h4
-{
+
+#testimonials h4 {
     font-weight: bold;
     font-size: 1em;
     padding-left: 100px;
 }
-#testimonials h4 span
-{
+
+#testimonials h4 span {
     font-weight: lighter;
     font-size: 0.8em;
 }
 
-#testimonials p
-{
+#testimonials p {
     font-size: 0.9em;
     padding-left: 100px;
 }
 
 
-
-#about
-{
+#about {
 }
-#about  p
-{
+
+#about p {
     padding-left: 190px;
 }
-#about .outer
-{
+
+#about .outer {
     background-color: #DFDBDB;
     margin-bottom: 10px;
     border: 1px solid #B8B8B8;
@@ -128,49 +113,34 @@ body
     text-transform: uppercase;
     font-size: 0.8em;
 }
-#about .outer .inner
-{
+
+#about .outer .inner {
     background-color: #3333ff;
     padding: 10px;
 }
 
-
-
-
-.outer
-{
-}
-
-.inner
-{
-}
-
-#contact
-{
-}
-#contact label
-{
+#contact label {
     display: block;
     margin-top: 25px;
     color: #7F7F7F;
     text-transform: uppercase;
     font-size: 0.9em;
 }
+
 #contact input,
-#contact textarea
-{
+#contact textarea {
     width: 100%;
 }
-#contact input
-{
+
+#contact input {
     height: 40px;
 }
-#contact textarea
-{
+
+#contact textarea {
     height: 80px;
 }
-#contact form input[type="submit"]
-{
+
+#contact form input[type="submit"] {
     border-left: 0px;
     border-right: 0px;
     border-bottom: 1px solid #3333ff;
@@ -179,49 +149,43 @@ body
     background-color: transparent;
     margin-top: 20px;
 }
-#contact .contact-info h3
-{
+
+#contact .contact-info h3 {
     font-size: 1.4em;
     font-weight: bold;
     margin-top: 0px;
     margin-bottom: 30px;
 }
-#contact .contact-info p strong
-{
+
+#contact .contact-info p strong {
     display: block;
 }
-#contact .contact-info p
-{
+
+#contact .contact-info p {
     font-size: 0.9em;
     margin-bottom: 15px;
 }
 
-
-
-
-
-
-
-
-
-.backlink
-{
+img.cert-cred {
+    max-width: 115px;
 }
-.nav.navbar-nav a 
- 
-{
+
+img.logomain {
+    max-width: 150px;
+    padding-top: 12px;
+}
+
+.nav.navbar-nav a {
     color: #FFFFFF;
     font-size: 1.1em;
 }
-.nav.navbar-nav li.active 
- 
- 
-{
+
+.nav.navbar-nav li.active {
     border-bottom: 1px solid #3333ff;
 
 }
-.carousel-caption
-{
+
+.carousel-caption {
     text-transform: uppercase;
     left: 0%;
     right: 0%;
@@ -231,8 +195,8 @@ body
     top: 50%;
     transform: translateY(-50%);
 }
-.carousel-caption i.fa
-{
+
+.carousel-caption i.fa {
     border: 1px solid #3333ff;
     border-radius: 50%;
     display: inline-block;
@@ -241,18 +205,17 @@ body
     padding-top: 5px;
     padding-right: 2px;
 }
-.carousel-caption a
-{
+
+.carousel-caption a {
     color: #FFFFFF;
 
 }
 
-.carousel-caption p
-{
+.carousel-caption p {
     margin-top: 70px;
 }
-.carousel-caption p span
-{
+
+.carousel-caption p span {
     border-bottom: 1px solid #3333ff;
     border-top: 1px solid #3333ff;
     padding-top: 25px;
@@ -260,17 +223,16 @@ body
     font-size: 1.5em;
     font-weight: lighter;
 }
-.left.carousel-control
-{
+
+.left.carousel-control {
     left: -35px;
 }
-.right.carousel-control
-{
+
+.right.carousel-control {
     right: -35px;
 }
-.navbar-header .navbar-brand 
-, footer.footer .logo span
-{
+
+.navbar-header .navbar-brand, footer.footer .logo span {
     color: #FFFFFF;
     border-bottom: 2px solid #3333ff;
     font-size: 30px;
@@ -280,60 +242,56 @@ body
 
 }
 
-.navbar.navbar-fixed-top
-{
+.navbar.navbar-fixed-top {
     padding-top: 24px;
     border: none;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.66);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.66);
 }
-.nav.navbar-nav li a:hover
-{
-    background-color: transparent;
-    border-bottom: 1px solid #3333ff;
-}
-.nav.navbar-nav li.active a
-{
+
+.nav.navbar-nav li a:hover {
     background-color: transparent;
     border-bottom: 1px solid #3333ff;
 }
 
-.section-title
-{
+.nav.navbar-nav li.active a {
+    background-color: transparent;
+    border-bottom: 1px solid #3333ff;
+}
+
+.section-title {
     display: table;
     margin: 0 auto 70px;
     padding: 15px 30px;
     font-weight: bold;
     font-size: 2em;
-    background-color: #3333ff;
     color: #FFFFFF;
     -webkit-box-shadow: 6px 6px #000000;
     box-shadow: 6px 6px #000000;
+    background: radial-gradient(circle, rgba(170,222,255,1) 0%, rgba(170,206,255,1) 50%, rgba(0,142,255,1) 100%);
+    color: white;
 }
 
-.section
-{
+.section {
     padding-top: 40px;
     padding-bottom: 40px;
     border-bottom: 1px solid #F1F1F1;
 }
 
-.carousel-caption h3
-{
+.carousel-caption h3 {
     font-size: 3.5em;
     font-weight: bold;
     margin-top: 0px;
     padding-top: 0px;
 }
 
-#features h3
-{
+#features h3 {
     font-weight: bold;
     font-size: 1.3em;
     margin-top: 0px;
     margin-bottom: 19px;
 }
-#features h3:after
-{
+
+#features h3:after {
     display: block;
     height: 2px;
     width: 70px;
@@ -343,15 +301,13 @@ body
 }
 
 
-#features .col-md-4
-{
+#features .col-md-4 {
     padding-left: 75px;
     position: relative;
     margin-bottom: 40px;
 }
 
-#features .col-md-4 .fa
-{
+#features .col-md-4 .fa {
     position: absolute;
     top: 0px;
     left: 0px;
@@ -364,16 +320,15 @@ body
     padding-top: 15px;
     text-align: center;
 }
-#blog .caption h3
-{
+
+#blog .caption h3 {
     font-size: 1.6em;
     margin-bottom: 19px;
     font-weight: lighter;
     margin-top: 30px;
 }
 
-#blog .caption h3:after
-{
+#blog .caption h3:after {
     display: block;
     height: 2px;
     width: 70px;
@@ -382,13 +337,11 @@ body
     margin-top: 20px;
 }
 
-#blog .caption p
-{
+#blog .caption p {
     text-decoration: underline;
 }
 
-#blog .caption .metadata
-{
+#blog .caption .metadata {
     text-decoration: none;
     border-bottom: 1px solid #3333ff;
     font-size: 0.8em;
@@ -398,14 +351,12 @@ body
     margin-top: 12px;
 }
 
-#blog .caption .metadata a
-{
+#blog .caption .metadata a {
     color: #000000;
     font-weight: bold;
 }
-#blog .caption a.read-more
- 
-{
+
+#blog .caption a.read-more {
     background-color: #3333ff;
     color: #FFFFFF;
     /* [disabled]display: inline-block; */
@@ -413,8 +364,7 @@ body
     margin-left: 15px;
 }
 
-footer.footer
-{
+footer.footer {
     background-color: #353535;
     color: #FFFFFF;
     margin-top: 15px;
@@ -423,14 +373,12 @@ footer.footer
     font-size: 0.8em;
 }
 
-footer.footer > *
-{
+footer.footer > * {
     margin-bottom: 25px;
     text-transform: uppercase;
 }
 
-footer.footer .socials .fa
-{
+footer.footer .socials .fa {
     padding: 10px;
     border-radius: 50%;
     border: 1px solid #3333ff;
@@ -440,100 +388,91 @@ footer.footer .socials .fa
     font-size: 1.4em;
 }
 
-footer.footer a
-{
+footer.footer a {
     color: #FFFFFF;
     font-weight: bold;
 }
-.navbar.navbar-fixed-top.inbody
-{
+
+.navbar.navbar-fixed-top.inbody {
     background-color: #FFFFFF;
     color: #000000;
     padding-top: 14px;
     border-bottom: 1px solid #F1F1F1;
 }
 
-.inbody a
-{
+.inbody a {
     color: #000000 !important;
     text-shadow: 0px 0px;
 }
 
-.portfolio-item:hover>.portfolio-item-link
-{
+.portfolio-item:hover > .portfolio-item-link {
     -webkit-transition: all 500ms ease-in;
     -o-transition: all 500ms ease-in;
     transition: all 500ms ease-in;
 }
-.portfolio-item:hover>.portfolio-item-link
-{
+
+.portfolio-item:hover > .portfolio-item-link {
     top: 0px;
 }
-button.navbar-toggle span
-{
-    background-color: rgba(255,255,255,0.60);
-}
-button.navbar-toggle
-{
-    border-radius: 0;
-    border: 1px solid rgba(255,255,255,0.37);
+
+button.navbar-toggle span {
+    background-color: rgba(255, 255, 255, 0.60);
 }
 
-#portfolio .mix{
-	display: none;
+button.navbar-toggle {
+    border-radius: 0;
+    border: 1px solid rgba(255, 255, 255, 0.37);
 }
-#testimonials .col-md-6
-{
+
+#portfolio .mix {
+    display: none;
+}
+
+#testimonials .col-md-6 {
     margin-bottom: 30px;
 }
 
 
-
-@media (min-width: 650px) and (max-width: 919px){
-.nav.navbar-nav.navbar-right.text-uppercase li a
-{
-    font-size: 0.8em;
-    padding-right: 8px;
-    padding-left: 8px;
-}
+@media (min-width: 650px) and (max-width: 919px) {
+    .nav.navbar-nav.navbar-right.text-uppercase li a {
+        font-size: 0.8em;
+        padding-right: 8px;
+        padding-left: 8px;
+    }
 
 
 }
 
-@media (max-width: 919px){
-.carousel-caption h3
+@media (max-width: 919px) {
+    .carousel-caption h3 {
+        font-size: 1.5em;
+    }
 
-{
-    font-size: 1.5em;
-}
-.carousel-caption p
-{
-    font-size: 1em;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    margin-top: 25px;
-}
-.carousel-caption
-{
-    transform: none;
-    position: absolute;
-    left: 15%;
-    right: 15%;
-    bottom: 20px;
-    top:auto;
-    z-index: 10;
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
+    .carousel-caption p {
+        font-size: 1em;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        margin-top: 25px;
+    }
 
+    .carousel-caption {
+        transform: none;
+        position: absolute;
+        left: 15%;
+        right: 15%;
+        bottom: 20px;
+        top: auto;
+        z-index: 10;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
 
 
 }
 
-@media (max-width: 649px){
-nav.navbar ul
-{
-    background-color: rgba(0,0,0,0.80);
-}
+@media (max-width: 649px) {
+    nav.navbar ul {
+        background-color: rgba(0, 0, 0, 0.80);
+    }
 
 }
