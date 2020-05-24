@@ -33,7 +33,7 @@ $(function() {
       if (target.length) {
         $('html,body').animate({
           scrollTop: target.offset().top-topoffset+2
-        }, 500);
+        }, 200);
         return false;
       } //target.length
     } //click function
@@ -42,7 +42,7 @@ $(function() {
   // sections animations
 
   $('nav.navbar-fixed-top').velocity('transition.flipBounceYIn'); 
-  $("#blog,#features,#portfolio,#about,#contact,#testimonials,.carousel-indicators,.carousel-control").velocity({ opacity: 0 });
+  $("#blog,#features,#portfolio,#about,#contact,#testimonials,.carousel-indicators,.carousel-control").velocity({ opacity: 0.5 });
 
   var ctrl = new ScrollMagic.Controller({
         globalSceneOptions: {
@@ -65,15 +65,15 @@ $(function() {
       $(".carousel-caption h3,.carousel-caption p,.carousel-caption > a").velocity({ opacity: 0 });
 
 	$('.carousel-caption h3').velocity('transition.slideLeftIn');
-	$('.carousel-caption p').velocity('transition.slideLeftIn',{ delay: 300 });
-	$('.carousel-caption > a').velocity('transition.slideUpIn',{ delay: 600 });
+	$('.carousel-caption p').velocity('transition.slideLeftIn',{ delay: 100 });
+	$('.carousel-caption > a').velocity('transition.slideUpIn',{ delay: 200 });
 	
 	$('#carousel1').on('slide.bs.carousel', function (e) { 
   	  // Select the elements to be animated inside the active slide 
 	  $(".carousel-caption h3,.carousel-caption p,.carousel-caption > a").velocity({ opacity: 0 });
-  	  $(e.relatedTarget).find('.carousel-caption h3').velocity('transition.slideLeftBigIn',{ delay: 200 });
-  	  $(e.relatedTarget).find('.carousel-caption p').velocity('transition.slideLeftBigIn',{ delay: 500 });
-    	  $(e.relatedTarget).find('.carousel-caption > a').velocity('transition.slideUpBigIn',{ delay: 700 });
+  	  $(e.relatedTarget).find('.carousel-caption h3').velocity('transition.slideLeftBigIn',{ delay: 66 });
+  	  $(e.relatedTarget).find('.carousel-caption p').velocity('transition.slideLeftBigIn',{ delay: 166 });
+    	  $(e.relatedTarget).find('.carousel-caption > a').velocity('transition.slideUpBigIn',{ delay: 233 });
  	 
   	});// End spicing up carousel
   	
@@ -91,11 +91,9 @@ $(function() {
   	function(){$('.carousel-indicators,.carousel-control').velocity('reverse');}
   );
   
-  $('body').append('<span class="hidden"> <a href="http://ayathemes.com">free animated single page websites</a></span>');
-  
   $('#portfolio').mixItUp({
 	  animation: {
-		easing: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)'
+		easing: 'cubic-bezier(0.5, 0.885, 0.5, 1.5)'
 	},
 	  selectors: {
 		target: '.mix',

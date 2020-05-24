@@ -39,9 +39,9 @@ body {
 .portfolio-item {
     position: relative;
     overflow: hidden;
-    -webkit-transition: all 500ms linear 0s;
-    -o-transition: all 500ms linear 0s;
-    transition: all 500ms linear 0s;
+    -webkit-transition: all 100ms linear 0s;
+    -o-transition: all 100ms linear 0s;
+    transition: all 100ms linear 0s;
 }
 
 
@@ -115,7 +115,7 @@ body {
 }
 
 #about .outer .inner {
-    background-color: #3333ff;
+    background: linear-gradient(90deg, rgba(66,87,116,0.8127626050420168) 0%, rgba(0,0,0,1) 0%, rgba(0,142,255,1) 80%);;
     padding: 10px;
 }
 
@@ -260,20 +260,19 @@ img.logomain {
 
 .section-title {
     display: table;
-    margin: 0 auto 70px;
+    margin: 0 auto 30px;
     padding: 15px 30px;
     font-weight: bold;
-    font-size: 2em;
+    font-size: 1em;
     color: #FFFFFF;
-    -webkit-box-shadow: 6px 6px #000000;
-    box-shadow: 6px 6px #000000;
-    background: radial-gradient(circle, rgba(66,87,116,0.8127626050420168) 0%, rgba(116,117,117,1) 0%, rgba(0,142,255,1) 100%);
+    background: radial-gradient(circle, rgba(66,87,116,0.8127626050420168) 0%, rgba(0,0,0,1) 0%, rgba(0,142,255,1) 100%);
     color: white;
+    border-radius: 5px;
 }
 
 .section {
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 5px;
+    padding-bottom: 20px;
     border-bottom: 1px solid #F1F1F1;
 }
 
@@ -406,9 +405,9 @@ footer.footer a {
 }
 
 .portfolio-item:hover > .portfolio-item-link {
-    -webkit-transition: all 500ms ease-in;
-    -o-transition: all 500ms ease-in;
-    transition: all 500ms ease-in;
+    -webkit-transition: all 100ms ease-in;
+    -o-transition: all 100ms ease-in;
+    transition: all 100ms ease-in;
 }
 
 .portfolio-item:hover > .portfolio-item-link {

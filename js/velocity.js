@@ -570,7 +570,7 @@ return function (global, window, document, undefined) {
         Constants
     *****************/
 
-    var DURATION_DEFAULT = 400,
+    var DURATION_DEFAULT = 200,
         EASING_DEFAULT = "swing";
 
     /*************
