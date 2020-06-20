@@ -26,7 +26,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 
     <!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.-->
-    <script>var __adobewebfontsappname__ = "dreamweaver"</script>
+    <script>
+
+        const language = navigator.language || navigator.browserLanguage;
+        if (language.indexOf('en') > -1) {
+            window.location = window.location.href.substring(0,window.location.href.lastIndexOf('/')) + "/english/index.html";
+        }
+        var __adobewebfontsappname__ = "dreamweaver"</script>
 </head>
 <body>
 <nav class="navbar navbar-fixed-top">
