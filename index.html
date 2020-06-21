@@ -24,37 +24,47 @@
     <link rel="stylesheet" type="text/css" href="js/lightbox/css/lightbox.min.css">
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <script src="i18n/translate.js"></script>
 
     <!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.-->
     <script>
 
-        const language = navigator.language || navigator.browserLanguage;
-        if (language.indexOf('en') > -1) {
-            window.location = window.location.href.substring(0,window.location.href.lastIndexOf('/')) + "/english/index.html";
+        /*const language = navigator.language || navigator.browserLanguage;*/
+        /*if (language.indexOf('es') > -1) {
+            window.location = window.location.href.substring(0, window.location.href.lastIndexOf('/')) + "/spanish/index.html";
+        }*/
+        function load(){
+            const language = navigator.language || navigator.browserLanguage;
+            let currentLng = 'en';
+            if (language.indexOf('es') > -1) {
+                currentLng = 'es';
+            }
+            var translate = new Translate();
+            var attributeName = 'data-tag';
+            translate.init(attributeName, currentLng);
+            translate.process();
         }
+
         var __adobewebfontsappname__ = "dreamweaver"</script>
 </head>
-<body>
-<nav class="navbar navbar-fixed-top">
+<body onload="load()">
+<nav class="navbar navbar-fixed-top inbody">
     <div class="container">
-        <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="topFixedNavbar1">
             <div id="logo" class="fl_left">
                 <img src="images/logo/Main-logo-png200px.png" class="logomain" alt="logo" longdesc="http://index.html"/>
             </div>
             <ul class="nav navbar-nav navbar-right text-uppercase">
                 <li><a href="#carousel1">Home</a></li>
-                <li><a href="#about">Acerca de nosotros</a></li>
-                <li><a href="#features">Servicios</a></li>
-                <li><a href="#testimonials">Clientes</a></li>
-                <li><a href="#portfolio">Portafolio</a></li>
-                <li><a href="#contact">Contáctenos</a></li>
-                <li><a href="http://169.45.220.147/dashboard/">Ingresar</a></li>
+                <li><a href="#about" data-tag="nav-aboutus">Acerca de nosotros</a></li>
+                <li><a href="#features" data-tag="nav-services">Servicios</a></li>
+                <li><a href="#testimonials" data-tag="nav-testimonials">Clientes</a></li>
+                <li><a href="#portfolio" data-tag="nav-portfolio">Portafolio</a></li>
+                <li><a href="#contact" data-tag="nav-contactus">Contáctenos</a></li>
+                <li><a href="blog.html#blog">Blog</a></li>
             </ul>
         </div>
-        <!-- /.navbar-collapse -->
     </div>
-    <!-- /.container-fluid -->
 </nav>
 <div id="carousel1" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -66,7 +76,7 @@
         <div class="item active">
             <img src="images/backgrounds/cloud-feature.jpg" alt="First slide image" class="center-block">
             <div class="carousel-caption">
-                <h3>Soluciones a medida</h3>
+                <h3 data-tag="customentsol">Custom Enterprise Solutions</h3>
                 <p><span>Análisis, diseño e implementación de soluciones empresariales.</span></p>
                 <p><strong>ver características</strong></p>
                 <a href="#features"><i class="fa fa-angle-double-down"></i></a>
@@ -107,18 +117,21 @@
 
 <!--features-->
 <section class="container section" id="about">
-    <h1 class="text-center text-uppercase section-title">Acerca de nosotros</h1>
+    <h1 class="text-center text-uppercase section-title">About Us</h1>
     <div class="row">
         <div class="col-md-8">
             <img src="images/aboutus/photogcarrion.jpg" alt="" width="20%" height="30%"
                  style="width: 20% !important; height:20% !important;" class="pull-left"/>
-            <h4 class="" style="padding-left:190px;">Arquitecto de soluciones
-                <br/>Ing. Gustavo Michael Carrión López MiT
+            <h4 class="" style="padding-left:190px;" data-tag="gcfulltitle">Cloud Solutions Architect
             </h4>
-            <p>Ingeniero en sistemas en informática especializado en Australia, cuenta con amplia experiencia en
-                desarrollo e implementación de soluciones tecnológicas empresariales en plataformas de escritorio, web y
-                móviles además de un amplio conocimiento en herramientas de análisis de big data y manejo de la
-                nube.</p>
+            <h4 class="" style="padding-left:190px;" data-tag="gcfullname">
+                Gustavo Michael Carrion Lopez Msc.
+            </h4>
+            <p data-tag="gcsummary">Remote full-stack .NET, Javascript, Java Developer & AWS certified Cloud Architect with 8 years of
+                experience and a Masters(IT) degree from the University of Melbourne
+                that enjoys implementing technology services to enhance my client's processes and provide them with the
+                required tools and expertise to gain a competitive
+                edge in businesses.</p>
         </div>
         <div class="col-md-4">
             <div class="outer">
@@ -228,8 +241,8 @@
             <li><i class="fa fa-map-marker"></i>
                 <address>Av. América y Bolivia; N20-53, Quito - Ecuador, EC170118</address>
             </li>
-            <li><i class="fa fa-user"></i>   Ing. Gustavo Michael Carrion Lopez MiT.<br></li>
-            <li><i class="fa fa-phone"></i>  +593 (99) 9542 354<br></li>
+            <li><i class="fa fa-user"></i> Ing. Gustavo Michael Carrion Lopez MiT.<br></li>
+            <li><i class="fa fa-phone"></i> +593 (99) 9542 354<br></li>
             <li><i class="fa fa-fax"></i> +593 (22) 2525 721</li>
             <li><i class="fa fa-envelope-o"></i> devspotsales@outlook.com</li>
         </ul>

@@ -10,7 +10,7 @@ $(function () {
     });
 
     // Add an inbody class to nav when scrollspy event fires
-    $('.navbar-fixed-top').on('activate.bs.scrollspy', function () {
+    /*$('.navbar-fixed-top').on('activate.bs.scrollspy', function () {
         var hash = $(this).find('li.active a').attr('href');
         if (hash !== '#carousel1') {
             if (!$('nav.navbar').hasClass('inbody')) {
@@ -21,7 +21,7 @@ $(function () {
             $('nav.navbar').removeClass('inbody');
             $('nav.navbar').velocity('transition.slideUpIn');
         }
-    });
+    });*/
 
 //Use smooth scrolling when clicking on navigation
     $('.navbar a[href*=#]:not([href=#]),.carousel-caption a[href*=#features],.totop').click(function () {
