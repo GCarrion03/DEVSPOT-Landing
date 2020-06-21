@@ -1574,7 +1574,14 @@ pre code {
   margin-right: auto;
   margin-left: auto;
 }
-@media (min-width: 350px) {
+#features .col-md-4 .fa.fa-trophy,
+#features .col-md-4 .fa.fa-bolt,
+#features .col-md-4 .fa.fa-desktop,
+#features .col-md-4 .fa.fa-fighter-jet{
+  border: none;
+}
+
+@media (min-width: 550px) {
   .container {
     width: 632px;
   }
