@@ -432,7 +432,7 @@ button.navbar-toggle {
 }
 
 
-@media (min-width: 500px) and (max-width: 919px) {
+@media (min-width: 350px) and (max-width: 919px) {
     .nav.navbar-nav.navbar-right.text-uppercase li a {
         font-size: 0.8em;
         padding-right: 4px;

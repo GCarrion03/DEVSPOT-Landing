@@ -4377,7 +4377,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     background-image: none;
   }
 }
-@media (min-width: 350px) {
   .navbar-nav {
     float: left;
     margin: 0;
@@ -4389,7 +4388,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     padding-top: 15px;
     padding-bottom: 15px;
   }
-}
 .navbar-form {
   margin-left: -15px;
   margin-right: -15px;
