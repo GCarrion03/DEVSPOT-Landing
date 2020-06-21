@@ -345,7 +345,7 @@ table a, #comments a{background-color:inherit;}
 }
 
 
-@media screen and (max-width:750px){
+@media screen and (max-width:699px){
 	.imgl, .imgr{display:inline-block; float:none; margin:0 0 10px 0;}
 	.fl_left, .fl_right{display:block; float:none;}
 	.one_half, .one_third, .two_third, .one_quarter, .two_quarter, .three_quarter{display:block; float:none; width:auto; margin:0 0 30px 0; padding:0;}
@@ -358,8 +358,6 @@ table a, #comments a{background-color:inherit;}
 
 	.split{background-color:rgba(46,53,65,.5);/* #2E3541 */}
 	.split .box{float:none; width:100%; padding:10%;}
-
-	.container, #footer{padding-bottom:50px;}/* not neccessary but looks better */
 }
 
 @media screen and (max-width:450px){}
