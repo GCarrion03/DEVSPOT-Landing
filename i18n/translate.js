@@ -35,3 +35,15 @@ function Translate() {
         xrhFile.send();
     }
 }
+
+function loadi18n(){
+    const language = navigator.language || navigator.browserLanguage;
+    let currentLng = 'en';
+    if (language.indexOf('es') > -1) {
+        currentLng = 'es';
+    }
+    var translate = new Translate();
+    var attributeName = 'data-tag';
+    translate.init(attributeName, currentLng);
+    translate.process();
+}

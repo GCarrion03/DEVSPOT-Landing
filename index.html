@@ -20,22 +20,9 @@
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <script src="i18n/translate.js"></script>
-
-    <script>
-        function load(){
-            const language = navigator.language || navigator.browserLanguage;
-            let currentLng = 'en';
-            if (language.indexOf('es') > -1) {
-                currentLng = 'es';
-            }
-            var translate = new Translate();
-            var attributeName = 'data-tag';
-            translate.init(attributeName, currentLng);
-            translate.process();
-        }
-    </script>
+    <script src="components/copyrightFooter/copyrightFooter.js"></script>
 </head>
-<body onload="load()">
+<body onload="loadi18n()">
 <nav class="navbar navbar-fixed-top inbody">
     <div class="container">
         <div class="collapse navbar-collapse" id="topFixedNavbar1">
@@ -67,9 +54,7 @@
                 <p><strong>ver características</strong></p>
                 <a href="#features"><i class="fa fa-angle-double-down"></i></a>
             </div>
-            <!-- / carousel-caption -->
         </div>
-        <!--/ item-->
         <div class="item">
             <img src="images/backgrounds/app-development.jpg" alt="Second slide image" class="center-block">
             <div class="carousel-caption">
@@ -78,9 +63,7 @@
                 <p><strong>ver características</strong></p>
                 <a href="#features"><i class="fa fa-angle-double-down"></i></a>
             </div>
-            <!-- / carousel-caption -->
         </div>
-        <!--/ item-->
         <div class="item">
             <img src="images/backgrounds/big-data-analytics.jpg" alt="Third slide image" class="center-block">
             <div class="carousel-caption">
@@ -90,23 +73,18 @@
                 <p><strong>ver características</strong></p>
                 <a href="#features"><i class="fa fa-angle-double-down"></i></a>
             </div>
-            <!-- / carousel-caption -->
         </div>
-        <!--/ item-->
     </div>
-    <!-- / carousel-inne-->
     <a class="left carousel-control" href="#carousel1" role="button" data-slide="prev"><span
             class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><span class="sr-only">Previous</span></a>
     <a class="right carousel-control" href="#carousel1" role="button" data-slide="next"><span
             class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span><span class="sr-only">Next</span></a>
 </div>
-
-<!--features-->
 <section class="container section" id="about">
     <h1 class="text-center text-uppercase section-title">About Us</h1>
     <div class="row">
         <div class="col-md-8">
-            <img src="images/aboutus/photogcarrion.jpg" alt="" width="20%" height="30%"
+            <img src="images/aboutus/photogcarrion.jpg" alt="gusmcarrion" width="20%" height="30%"
                  style="width: 20% !important; height:20% !important;" class="pull-left"/>
             <h4 class="" style="padding-left:190px;" data-tag="gcfulltitle">Cloud Solutions Architect
             </h4>
@@ -146,7 +124,6 @@
 <section class="container section" id="features">
     <h1 class="text-uppercase section-title text-center">Características</h1>
     <div class="row">
-
         <div class="col-md-4">
             <h3 class="text-uppercase">Análisis</h3>
             <p>Analizamos sus competencias de negocio para elegir la herramienta que se adapte a sus necesidades.</p>
@@ -178,7 +155,6 @@
             <i class="fa fa-fighter-jet"></i>
         </div>
     </div>
-    <!-- / row -->
 </section>
 <section class="container section" id="testimonials">
     <h1 class="text-center text-uppercase section-title">Casos de éxito</h1>
@@ -216,7 +192,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </section>
 <section class="container section" id="contact">
@@ -234,7 +209,6 @@
         </ul>
     </div>
 </section>
-<script src="components/copyrightFooter/copyrightFooter.js"></script>
 <footer-copyright></footer-copyright>
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/bootstrap.js"></script>

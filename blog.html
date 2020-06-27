@@ -5,7 +5,7 @@
     <link rel="icon" type="image/png" href="devspoticon.ico">
     <meta charset="utf-8">
     <meta name="description"
-          content="Devspot - Brinda soluciones informáticas multiplataforma para mejorar la competitividad de sus clientes."/>
+          content="Devspot - IT solutions AWS blog"/>
     <meta name="robots" content="index,follow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
@@ -25,29 +25,10 @@
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <script src="i18n/translate.js"></script>
-
-    <!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.-->
-    <script>
-
-        /*const language = navigator.language || navigator.browserLanguage;*/
-        /*if (language.indexOf('es') > -1) {
-            window.location = window.location.href.substring(0, window.location.href.lastIndexOf('/')) + "/spanish/index.html";
-        }*/
-        function load(){
-            const language = navigator.language || navigator.browserLanguage;
-            let currentLng = 'en';
-            if (language.indexOf('es') > -1) {
-                currentLng = 'es';
-            }
-            var translate = new Translate();
-            var attributeName = 'data-tag';
-            translate.init(attributeName, currentLng);
-            translate.process();
-        }
-
-        var __adobewebfontsappname__ = "dreamweaver"</script>
+    <script src="components/copyrightFooter/copyrightFooter.js"></script>
+    <script src="components/blog/popularPostsSidebar/postsSidebar.js"></script>
 </head>
-<body onload="load()">
+<body onload="loadi18n()">
 <nav class="navbar navbar-fixed-top inbody">
     <div class="container">
         <div class="collapse navbar-collapse" id="topFixedNavbar1">
@@ -56,21 +37,21 @@
             </div>
             <ul class="nav navbar-nav navbar-right text-uppercase">
                 <li><a href="index.html#carousel1">Home</a></li>
-                <li><a href="#blog">Blog</a></li>
+                <li><a href="blog.html#blog">Blog</a></li>
             </ul>
         </div>
     </div>
 </nav>
-<div class="container" style="padding-top: 3%;">
+<section class="container section" id="posts" style="padding-top: 5%;">
     <div class="row">
         <div class="col-lg-9">
             <div class="section-title">
                 <span class="caption d-block small">Categories</span>
-                <h2>Tech Training</h2>
+                <h3>Tech Training</h3>
             </div>
             <div class="row">
                 <div class="col-lg-9">
-                    <h2><a href="blog-01.html">My journey to become an AWS Certified Solutions Architect Associate</a></h2>
+                    <h3><a href="blog-01.html">My journey to become an AWS Certified Solutions Architect Associate</a></h3>
                     <p class="mb-3">Passed the AWS Certified Solutions Architect Associate (SAA-C01 926/1000) On a budget - Spent only 1 month and $20 on acloud.guru AWSCSAA + AWSCDA bundle + $150 on exam</p>
                     <div class="post-meta">
                         <span class="d-block"><a href="#">Gustavo Carrion</a></span>
@@ -83,7 +64,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-9">
-                    <h2><a href="blog-02.html">My thoughts on the AWS Certified Developer Associate exam</a></h2>
+                    <h3><a href="blog-02.html">My thoughts on the AWS Certified Developer Associate exam</a></h3>
                     <p class="mb-3">Passed the aws certified developer Associate exam DVA-C01 (862/1000)</p>
                     <div class="post-meta">
                         <span class="d-block"><a href="#">Gustavo Carrion</a></span>
@@ -96,48 +77,11 @@
             </div>
         </div>
         <div class="col-lg-3">
-            <div class="section-title">
-                <h2>Popular Posts</h2>
-            </div>
-
-            <div class="trend-entry d-flex">
-                <div class="number align-self-start">01</div>
-                <div class="trend-contents">
-                    <h2><a href="blog-01.html">My journey to become an AWS Certified Solutions Architect Associate</a></h2>
-                    <div class="post-meta">
-                        <span class="d-block"><a href="#">Gustavo Carrion</a></span>
-                        <span class="date-read">Jun 14 <span class="mx-1">•</span> 3 min read <span class="icon-star2"></span></span>
-                    </div>
-                </div>
-            </div>
-            <div class="trend-entry d-flex">
-                <div class="number align-self-start">01</div>
-                <div class="trend-contents">
-                    <h2><a href="blog-02.html">My thoughts on the AWS Certified Developer Associate exam</a></h2>
-                    <div class="post-meta">
-                        <span class="d-block"><a href="#">Gustavo Carrion</a></span>
-                        <span class="date-read">Jun 14 <span class="mx-1">•</span> 3 min read <span class="icon-star2"></span></span>
-                    </div>
-                </div>
-            </div>
-            <p>
-                <a href="#" class="more">See All Popular <span class="icon-keyboard_arrow_right"></span></a>
-            </p>
+            <sidebar-posts></sidebar-posts>
         </div>
     </div>
-
-    <!--<div class="row">
-        <div class="col-lg-6">
-            <ul class="custom-pagination list-unstyled">
-                <li><a href="#">1</a></li>
-                <li class="active">2</li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-            </ul>
-        </div>
-    </div>-->
 </div>
-<script src="components/copyrightFooter/copyrightFooter.js"></script>
+</section>
 <footer-copyright></footer-copyright>
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/bootstrap.js"></script>

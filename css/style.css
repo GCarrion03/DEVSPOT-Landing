@@ -264,10 +264,12 @@ img.logomain {
     padding: 15px 30px;
     font-weight: bold;
     font-size: 1em;
-    color: #FFFFFF;
     background: radial-gradient(circle, rgba(66,87,116,0.8127626050420168) 0%, rgba(0,0,0,1) 0%, rgba(0,142,255,1) 100%);
-    color: white;
+    color: black;
     border-radius: 5px;
+    background-position: 0 3.03em;
+    background-repeat: repeat-x;
+    background-size: 2px 6px;
 }
 
 .section {
@@ -367,7 +369,7 @@ img.logomain {
 footer.footer {
     background-color: #353535;
     color: #FFFFFF;
-    margin-top: 15px;
+    margin-top: 45px;
     padding-top: 20px;
     font-size: 0.8em;
 }

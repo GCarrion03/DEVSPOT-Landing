@@ -12,7 +12,7 @@ class copyrightFooter extends HTMLElement {
                 <link rel="stylesheet" type="text/css" href="js/lightbox/css/lightbox.min.css">
                 <link href="css/style.css" rel="stylesheet" type="text/css">
                 <footer class="footer container-fluid text-center">
-                    <div class="logo"><span>DEVSPOT - Ecuador</span></div>
+                    <div class="logo"><span>DEVSPOT</span></div>
                     <div class="socials">
                         <a href="http://twitter.com/gusmcarrion"><span class="fa fa-twitter"></span></a>
                         <a href="https://www.linkedin.com/in/gusmcarrion"><span class="fa fa-linkedin"></span></a>
