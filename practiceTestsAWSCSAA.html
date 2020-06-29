@@ -32,6 +32,7 @@
     <script src="i18n/translate.js"></script>
     <script src="components/copyrightFooter/copyrightFooter.js"></script>
     <script src="components/blog/popularPostsSidebar/postsSidebar.js"></script>
+    <script src="components/practiceTest/practiceTest.js"></script>
 </head>
 <body onload="loadi18n()">
 <nav class="navbar navbar-fixed-top inbody">
@@ -41,7 +42,7 @@
                 <img src="images/logo/Main-logo-png200px.png" class="logomain" alt="logo" longdesc="http://index.html"/>
             </div>
             <ul class="nav navbar-nav navbar-right text-uppercase">
-                <li><a href="index.html#carousel1">Home</a></li>
+                <li><a href="pages/index.html#carousel1">Home</a></li>
                 <li><a href="blog.html#blog">Blog</a></li>
                 <li><a href="practiceTestsAWSCSAA.html#blog">Practice Tests</a></li>
             </ul>
@@ -53,34 +54,9 @@
         <div class="col-lg-9">
             <div class="section-title">
                 <span class="caption d-block small">Categories</span>
-                <h3>Tech Training</h3>
+                <h3>AWS-CSAA</h3>
             </div>
-            <div class="row">
-                <div class="col-lg-9">
-                    <h3><a href="blog-01.html">My journey to become an AWS Certified Solutions Architect Associate</a></h3>
-                    <p class="mb-3">Passed the AWS Certified Solutions Architect Associate (SAA-C01 926/1000) On a budget - Spent only 1 month and $20 on acloud.guru AWSCSAA + AWSCDA bundle + $150 on exam</p>
-                    <div class="post-meta">
-                        <span class="d-block"><a href="#">Gustavo Carrion</a></span>
-                        <span class="date-read">Jun 14 <span class="mx-1">•</span> 3 min read <span class="icon-star2"></span></span>
-                    </div>
-                </div>
-                <div class="col-lg-3 text-center">
-                    <img src="images/logo/avail/AWS-CSAA-badge.png" class="cert-cred">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-9">
-                    <h3><a href="blog-02.html">My thoughts on the AWS Certified Developer Associate exam</a></h3>
-                    <p class="mb-3">Passed the aws certified developer Associate exam DVA-C01 (862/1000)</p>
-                    <div class="post-meta">
-                        <span class="d-block"><a href="#">Gustavo Carrion</a></span>
-                        <span class="date-read">Jun 14 <span class="mx-1">•</span> 3 min read <span class="icon-star2"></span></span>
-                    </div>
-                </div>
-                <div class="col-lg-3 text-center">
-                    <img src="images/logo/avail/AWS-CDA-badge.png" class="cert-cred">
-                </div>
-            </div>
+            <practice-test></practice-test>
         </div>
         <div class="col-lg-3">
             <sidebar-posts></sidebar-posts>

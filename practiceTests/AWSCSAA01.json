@@ -1,0 +1,232 @@
+[
+  {
+    "questionId": "1",
+    "questionText": "A Solutions Architect is designing an application that will encrypt all data in an Amazon Redshift cluster.<br>Which action will encrypt the data at rest?",
+    "questionOptions": [
+      {
+        "questionId": "A",
+        "optionText": "Place the Redshift cluster in a private subnet."
+      },
+      {
+        "questionId": "B",
+        "optionText": "Use the AWS KMS Default Customer master key."
+      },
+      {
+        "questionId": "C",
+        "optionText": "Encrypt the Amazon EBS volumes."
+      },
+      {
+        "questionId": "D",
+        "optionText": "Encrypt the data using SSL/TLS."
+      }
+    ],
+    "questionAnswer": "B"
+  },
+  {
+    "questionId": "2",
+    "questionText": "A website experiences unpredictable traffic. During peak traffic times, the database is unable to keep up with the write request.<br>Which AWS service will help decouple the web application from the database?",
+    "questionOptions": [
+      {
+        "questionId": "A",
+        "optionText": "Amazon SQS"
+      },
+      {
+        "questionId": "B",
+        "optionText": "Amazon EFS"
+      },
+      {
+        "questionId": "C",
+        "optionText": "Amazon S3"
+      },
+      {
+        "questionId": "D",
+        "optionText": "AWS Lambda"
+      }
+    ],
+    "questionAnswer": "A"
+  },
+  {
+    "questionId": "3",
+    "questionText": "A legacy application needs to interact with local storage using iSCSI. A team needs to design a reliable storage solution to provision all new storage on AWS.<br>Which storage solution meets the legacy application requirements?",
+    "questionOptions": [
+      {
+        "questionId": "A",
+        "optionText": "AWS Snowball storage for the legacy application until the application can be re-architected."
+      },
+      {
+        "questionId": "B",
+        "optionText": "AWS Storage Gateway in cached mode for the legacy application storage to write data to Amazon S3."
+      },
+      {
+        "questionId": "C",
+        "optionText": "AWS Storage Gateway in stored mode for the legacy application storage to write data to Amazon S3."
+      },
+      {
+        "questionId": "D",
+        "optionText": "An Amazon S3 volume mounted on the legacy application server locally using the File Gateway service."
+      }
+    ],
+    "questionAnswer": "C"
+  },
+  {
+    "questionId": "4",
+    "questionText": "A Solutions Architect is designing an architecture for a mobile gaming application. The application is expected to be very popular. The Architect needs to prevent the Amazon RDS MySQL database from becoming a bottleneck due to frequently accessed queries.<br>Which service or feature should the Architect add to prevent a bottleneck?",
+    "questionOptions": [
+      {
+        "questionId": "A",
+        "optionText": "Multi-AZ feature on the RDS MySQL Database"
+      },
+      {
+        "questionId": "B",
+        "optionText": "ELB Classic Load Balancer in front of the web application tier"
+      },
+      {
+        "questionId": "C",
+        "optionText": "Amazon SQS in front of RDS MySQL Database"
+      },
+      {
+        "questionId": "D",
+        "optionText": "Amazon ElastiCache in front of the RDS MySQL Database"
+      }
+    ],
+    "questionAnswer": "D"
+  },
+  {
+    "questionId": "5",
+    "questionText": "A company is launching an application that it expects to be very popular. The company needs a database that can scale with the rest of the application. The schema will change frequently. The application cannot afford any downtime for database changes.<br>Which AWS service allows the company to achieve these objectives?",
+    "questionOptions": [
+      {
+        "questionId": "A",
+        "optionText": "Amazon Redshift"
+      },
+      {
+        "questionId": "B",
+        "optionText": "Amazon DynamoDB"
+      },
+      {
+        "questionId": "C",
+        "optionText": "Amazon RDS MySQL"
+      },
+      {
+        "questionId": "D",
+        "optionText": "Amazon Aurora"
+      }
+    ],
+    "questionAnswer": "D"
+  },
+  {
+    "questionId": "6",
+    "questionText": "A Solution Architect is designing a disaster recovery solution for a 5 TB Amazon Redshift cluster. The recovery site must be at least 500 miles (805 kilometers) from the live site.<br>How should the Architect meet these requirements?",
+    "questionOptions": [
+      {
+        "questionId": "A",
+        "optionText": "Use AWS CloudFormation to deploy the cluster in a second region."
+      },
+      {
+        "questionId": "B",
+        "optionText": "Take a snapshot of the cluster and copy it to another Availability Zone."
+      },
+      {
+        "questionId": "C",
+        "optionText": "Modify the Redshift cluster to span two regions."
+      },
+      {
+        "questionId": "D",
+        "optionText": "Enable cross-region snapshots to a different region."
+      }
+    ],
+    "questionAnswer": "D"
+  },
+  {
+    "questionId": "7",
+    "questionText": "A customer has written an application that uses Amazon S3 exclusively as a data store. The application works well until the customer increases the rate at which the application is updating information. The customer now reports that outdated data occasionally appears when the application accesses objects in Amazon S3.<br>What could be the problem, given that the application logic is otherwise",
+    "questionOptions": [
+      {
+        "questionId": "A",
+        "optionText": "The application is reading parts of objects from Amazon S3 using a range header."
+      },
+      {
+        "questionId": "B",
+        "optionText": "The application is reading objects from Amazon S3 using parallel object requests."
+      },
+      {
+        "questionId": "C",
+        "optionText": "The application is updating records by writing new objects with unique keys."
+      },
+      {
+        "questionId": "D",
+        "optionText": "The application is updating records by overwriting existing objects with the same keys."
+      }
+    ],
+    "questionAnswer": "D"
+  },
+  {
+    "questionId": "8",
+    "questionText": "A Solutions Architect is designing a new social media application. The application must provide a secure method for uploading profile photos. Each user should be able to upload a profile photo into a shared storage location for one week after their profile is created.<br>Which approach will meet all of these requirements?",
+    "questionOptions": [
+      {
+        "questionId": "A",
+        "optionText": "Use Amazon Kinesis with AWS CloudTrail for auditing the specific times when profile photos are uploaded."
+      },
+      {
+        "questionId": "B",
+        "optionText": "Use Amazon EBS volumes with IAM policies restricting user access to specific time periods."
+      },
+      {
+        "questionId": "C",
+        "optionText": "Use Amazon S3 with the default private access policy and generate pre-signed URLs each time a new site profile is created."
+      },
+      {
+        "questionId": "D",
+        "optionText": "Use Amazon CloudFront with AWS CloudTrail for auditing the specific times when profile photos are uploaded."
+      }
+    ],
+    "questionAnswer": "C"
+  },
+  {
+    "questionId": "9",
+    "questionText": "An application requires block storage for file updates. The data is 500 GB and must continuously sustain 100 MiB/s of aggregate read/write operations.<br>Which storage option is appropriate for this application?",
+    "questionOptions": [
+      {
+        "questionId": "A",
+        "optionText": "Amazon S3"
+      },
+      {
+        "questionId": "B",
+        "optionText": "Amazon EFS"
+      },
+      {
+        "questionId": "C",
+        "optionText": "Amazon EBS"
+      },
+      {
+        "questionId": "D",
+        "optionText": "Amazon Glacier"
+      }
+    ],
+    "questionAnswer": "C"
+  },
+  {
+    "questionId": "10",
+    "questionText": "A mobile application serves scientific articles from individual files in an Amazon S3 bucket. Articles older than 30 days are rarely read. Articles older than 60 days no longer need to be available through the application, but the application owner would like to keep them for historical purposes.<br>Which cost-effective solution BEST meets these requirements?",
+    "questionOptions": [
+      {
+        "questionId": "A",
+        "optionText": "Create a Lambda function to move files older than 30 days to Amazon EBS and move files older than 60 days to Amazon Glacier."
+      },
+      {
+        "questionId": "B",
+        "optionText": "Create a Lambda function to move files older than 30 days to Amazon Glacier and move files older than 60 days to Amazon EBS."
+      },
+      {
+        "questionId": "C",
+        "optionText": "Create lifecycle rules to move files older than 30 days to Amazon S3 Standard Infrequent Access and move files older than 60 days to Amazon Glacier."
+      },
+      {
+        "questionId": "D",
+        "optionText": "Create lifecycle rules to move files older than 30 days to Amazon Glacier and move files older than 60 days to Amazon S3 Standard Infrequent Access"
+      }
+    ],
+    "questionAnswer": "C"
+  }
+]
