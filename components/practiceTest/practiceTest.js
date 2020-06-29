@@ -243,7 +243,7 @@ class practiceTest extends HTMLElement {
             var oldDom = this.shadowRoot.innerHTML;
             let questionOptions = '';
             question.questionOptions.forEach(option =>  {
-                questionOptions += ('<input id="'+question.questionId+option.optionId+'" name="answer'+question.questionId+'" type="radio" style="float: left;"><label id="'+question.questionId+option.optionId+'label" for="'+option.optionId+'" style="padding-left: 5px;float: left;">'+option.optionId + '. ' +option.optionText+'</label><br> <br>')
+                questionOptions += ('<input id="'+question.questionId+option.optionId+'" name="answer'+question.questionId+'" type="radio" style="float: left;"><label id="'+question.questionId+option.optionId+'label" for="'+question.questionId+option.optionId+'" style="padding-left: 5px;float: left;">'+option.optionId + '. ' +option.optionText+'</label><br> <br>')
             })
             const div = document.createElement('div');
             div.id="tmpDiv";
@@ -253,7 +253,7 @@ class practiceTest extends HTMLElement {
                 <link href="css/bootstrap.css" rel="stylesheet">
                 <link href="css/style.css" rel="stylesheet" type="text/css">
                 <div class="row" id="questionContainer${i}">
-                    <div class="col-lg-9">
+                    <div class="col-lg-12">
                         <h3 class="mb-3"><strong id="questionDescription">1. A Solutions Architect is designing an application that will encrypt all data in an Amazon Redshift cluster.<br>Which action will encrypt the data at rest?</strong></h3>
                         <BR>
                         <form>
@@ -262,9 +262,6 @@ class practiceTest extends HTMLElement {
                         <input id="prev" type="button" value="<" style="float: left;">
                         <input id="next" type="button" value=">" style="float: left;">
                         <input id="${question.questionId}showAnswer" type="button" value="Show answer" style="float: right;" >
-                    </div>
-                    <div class="col-lg-3 text-center">
-                        <img src="images/logo/avail/AWS-CSAA-badge.png" class="cert-cred">
                     </div>
                 </div>
             </template>`;
