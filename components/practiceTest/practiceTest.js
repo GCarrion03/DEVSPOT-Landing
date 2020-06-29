@@ -1,6 +1,6 @@
 const questions = [
     {
-        "questionId": "1",
+        "questionId": 1,
         "questionText": "A Solutions Architect is designing an application that will encrypt all data in an Amazon Redshift cluster.<br>Which action will encrypt the data at rest?",
         "questionOptions": [
             {
@@ -23,7 +23,7 @@ const questions = [
         "questionAnswer": "B"
     },
     {
-        "questionId": "2",
+        "questionId": 2,
         "questionText": "A website experiences unpredictable traffic. During peak traffic times, the database is unable to keep up with the write request.<br>Which AWS service will help decouple the web application from the database?",
         "questionOptions": [
             {
@@ -46,7 +46,7 @@ const questions = [
         "questionAnswer": "A"
     },
     {
-        "questionId": "3",
+        "questionId": 3,
         "questionText": "A legacy application needs to interact with local storage using iSCSI. A team needs to design a reliable storage solution to provision all new storage on AWS.<br>Which storage solution meets the legacy application requirements?",
         "questionOptions": [
             {
@@ -69,7 +69,7 @@ const questions = [
         "questionAnswer": "C"
     },
     {
-        "questionId": "4",
+        "questionId": 4,
         "questionText": "A Solutions Architect is designing an architecture for a mobile gaming application. The application is expected to be very popular. The Architect needs to prevent the Amazon RDS MySQL database from becoming a bottleneck due to frequently accessed queries.<br>Which service or feature should the Architect add to prevent a bottleneck?",
         "questionOptions": [
             {
@@ -92,7 +92,7 @@ const questions = [
         "questionAnswer": "D"
     },
     {
-        "questionId": "5",
+        "questionId": 5,
         "questionText": "A company is launching an application that it expects to be very popular. The company needs a database that can scale with the rest of the application. The schema will change frequently. The application cannot afford any downtime for database changes.<br>Which AWS service allows the company to achieve these objectives?",
         "questionOptions": [
             {
@@ -115,7 +115,7 @@ const questions = [
         "questionAnswer": "D"
     },
     {
-        "questionId": "6",
+        "questionId": 6,
         "questionText": "A Solution Architect is designing a disaster recovery solution for a 5 TB Amazon Redshift cluster. The recovery site must be at least 500 miles (805 kilometers) from the live site.<br>How should the Architect meet these requirements?",
         "questionOptions": [
             {
@@ -138,7 +138,7 @@ const questions = [
         "questionAnswer": "D"
     },
     {
-        "questionId": "7",
+        "questionId": 7,
         "questionText": "A customer has written an application that uses Amazon S3 exclusively as a data store. The application works well until the customer increases the rate at which the application is updating information. The customer now reports that outdated data occasionally appears when the application accesses objects in Amazon S3.<br>What could be the problem, given that the application logic is otherwise",
         "questionOptions": [
             {
@@ -161,7 +161,7 @@ const questions = [
         "questionAnswer": "D"
     },
     {
-        "questionId": "8",
+        "questionId": 8,
         "questionText": "A Solutions Architect is designing a new social media application. The application must provide a secure method for uploading profile photos. Each user should be able to upload a profile photo into a shared storage location for one week after their profile is created.<br>Which approach will meet all of these requirements?",
         "questionOptions": [
             {
@@ -184,7 +184,7 @@ const questions = [
         "questionAnswer": "C"
     },
     {
-        "questionId": "9",
+        "questionId": 9,
         "questionText": "An application requires block storage for file updates. The data is 500 GB and must continuously sustain 100 MiB/s of aggregate read/write operations.<br>Which storage option is appropriate for this application?",
         "questionOptions": [
             {
@@ -207,7 +207,7 @@ const questions = [
         "questionAnswer": "C"
     },
     {
-        "questionId": "10",
+        "questionId": 10,
         "questionText": "A mobile application serves scientific articles from individual files in an Amazon S3 bucket. Articles older than 30 days are rarely read. Articles older than 60 days no longer need to be available through the application, but the application owner would like to keep them for historical purposes.<br>Which cost-effective solution BEST meets these requirements?",
         "questionOptions": [
             {
@@ -252,16 +252,17 @@ class practiceTest extends HTMLElement {
                 <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
                 <link href="css/bootstrap.css" rel="stylesheet">
                 <link href="css/style.css" rel="stylesheet" type="text/css">
-                <div class="row" id="questionContainer${i}">
-                    <div class="col-lg-12">
-                        <h3 class="mb-3"><strong id="questionDescription">1. A Solutions Architect is designing an application that will encrypt all data in an Amazon Redshift cluster.<br>Which action will encrypt the data at rest?</strong></h3>
+                <div class="row" id="questionContainer${i}" style = "display:none">
+                    <div class="col-lg-12" style="min-height: 400px">
+                        <h4 class="mb-3"><strong id="questionDescription">1. A Solutions Architect is designing an application that will encrypt all data in an Amazon Redshift cluster.<br>Which action will encrypt the data at rest?</strong></h4>
                         <BR>
-                        <form>
                             ${questionOptions}
-                        </form>
-                        <input id="prev" type="button" value="<" style="float: left;">
-                        <input id="next" type="button" value=">" style="float: left;">
-                        <input id="${question.questionId}showAnswer" type="button" value="Show answer" style="float: right;" >
+                    </div>
+                    <div class="col-lg-12">
+                        <input id="prev${question.questionId}" type="button" value="<" style="float: left;">
+                        <input id="next${question.questionId}" type="button" value=">" style="float: left;">
+                        <input id="${question.questionId}showAnswer" type="button" value="Verify" style="float: right;" >
+                        <strong><label for="${question.questionId}showAnswer" style="float: right;">/${questions.length}&nbsp;</label><label name="score" for="${question.questionId}showAnswer" id="currentScore${question.questionId}" style="float: right;">0</label><label for="${question.questionId}showAnswer" style="float: right;">Score: &nbsp;</label></strong> 
                     </div>
                 </div>
             </template>`;
@@ -276,7 +277,7 @@ class practiceTest extends HTMLElement {
                     makeValidateCallback (shadowRoot, currentI, question);
                 }
             }}
-            var a = createValidateButton(this.shadowRoot, question.questionId+'', question);
+            var a = createValidateButton(this.shadowRoot, question.questionId, question);
             a.apply();
             i++;
             });
@@ -285,10 +286,39 @@ class practiceTest extends HTMLElement {
 customElements.define('practice-test', practiceTest);
 
 function makeValidateCallback (shadowRoot, currentI, question) {
+    if (currentI === 1){
+        shadowRoot.getElementById(`questionContainer${currentI}`).style.display = "inline";
+        shadowRoot.getElementById(`prev${currentI}`).disabled = true;
+    }
+
+    shadowRoot.getElementById(`next${currentI}`).onclick = () => {
+        shadowRoot.getElementById(`questionContainer${currentI}`).style.display = "none";
+        shadowRoot.getElementById(`questionContainer${currentI+1}`).style.display = "inline";
+        shadowRoot.getElementById(`prev${currentI+1}`).disabled = false;
+        if (currentI+1 === questions.length){
+            shadowRoot.getElementById(`next${currentI+1}`).disabled = true;
+        }
+    }
+
+    shadowRoot.getElementById(`prev${currentI}`).onclick = () => {
+        shadowRoot.getElementById(`questionContainer${currentI}`).style.display = "none";
+        shadowRoot.getElementById(`questionContainer${currentI-1}`).style.display = "inline";
+        shadowRoot.getElementById(`next${currentI-1}`).disabled = false;
+        if (currentI-1 === 1){
+            shadowRoot.getElementById(`prev${currentI-1}`).disabled = true;
+        }
+    }
+
     shadowRoot.getElementById(`${currentI}showAnswer`).onclick = () => {
         shadowRoot.getElementById(`${question.questionId+question.questionAnswer}label`).innerHTML += '&#9989;';
         if (!shadowRoot.getElementById(`${question.questionId+question.questionAnswer}`).checked) {
-            shadowRoot.getElementById(shadowRoot.querySelector(`input[name=answer${question.questionId}]:checked`).id + 'label').innerHTML += '&#10060;';
+            var incorrectAns = shadowRoot.querySelector(`input[name=answer${question.questionId}]:checked`);
+            if (incorrectAns){
+                shadowRoot.getElementById(incorrectAns.id + 'label').innerHTML += '&#10060;';
+            }
+        } else {
+            shadowRoot.querySelectorAll(`label[name=score]`).forEach(e => e.innerHTML = parseInt(e.innerHTML)+1);
+
         }
         shadowRoot.getElementById(`${currentI}showAnswer`).disabled = true;
 
