@@ -370,7 +370,7 @@ const questionBank = [
     },
     {
         "questionId": 17,
-        "questionText": "An Internet - facing multi - tier web application must be highly available.An ELB Classic Load Balancer is deployed in front of the web tier.Amazon EC2 instances at the web application tier are deployed evenly across two Availability Zones.The database is deployed using RDS Multi - AZ.A NAT instance is launched for Amazon EC2 instances and database resources to access the Internet. These instances are not assigned with public IP addresses.Which component poses a potential single point of failure in this architecture ? ",
+        "questionText": "An Internet-facing multi-tier web application must be highly available. An ELB Classic Load Balancer is deployed in front of the web tier. Amazon EC2 instances at the web application tier are deployed evenly across two Availability Zones.The database is deployed using RDS Multi-AZ. A NAT instance is launched for Amazon EC2 instances and database resources to access the Internet. These instances are not assigned with public IP addresses. Which component poses a potential single point of failure in this architecture?",
         "questionOptions": [
             {
                 "optionId": "A",
@@ -393,7 +393,7 @@ const questionBank = [
     },
     {
         "questionId": 18,
-        "questionText": "A call center application consists of a three - tier application using Auto Scaling groups to automatically scale resources as needed.Users report that every morning at 9 : 00 AM the system becomes very slowfor about 15 minutes.A Solution Architect determines that a large percentage of the call center staff starts work at 9: 00 AM,so Auto Scaling does not have enough time to scale out to meet demand.How can the Architect x the problem ? ",
+        "questionText": "A call center application consists of a three - tier application using Auto Scaling groups to automatically scale resources as needed. Users report that every morning at 9:00 AM the system becomes very slow for about 15 minutes.A Solution Architect determines that a large percentage of the call center staff starts work at 9:00 AM,so Auto Scaling does not have enough time to scale out to meet demand.How can the Architect x the problem?",
         "questionOptions": [
             {
                 "optionId": "A",
@@ -416,7 +416,7 @@ const questionBank = [
     },
     {
         "questionId": 19,
-        "questionText": " An e-commerce application is hosted in AWS. The last time a new product was launched, the application experienced a performance issue due to an enormous spike in traffic. Management decided that capacity must be doubled the week after the product is launched. Which is the MOST e cient way for management to ensure that capacity requirements are met?",
+        "questionText": "An e-commerce application is hosted in AWS. The last time a new product was launched, the application experienced a performance issue due to an enormous spike in traffic. Management decided that capacity must be doubled the week after the product is launched. Which is the MOST efficient way for management to ensure that capacity requirements are met?",
         "questionOptions": [
             {
                 "optionId": "A",
@@ -692,7 +692,7 @@ const questionBank = [
     },
     {
         "questionId": 31,
-        "questionText": "A company plans to use AWSfor all new batch processing workloads.The company 's developers use Docker containers for the new batch processing. The system design must accommodate critical and non-critical batch processing workloads 24/7. How should a Solutions Architect design this architecture in a cost-e cient manner?",
+        "questionText": "A company plans to use AWS for all new batch processing workloads.The company 's developers use Docker containers for the new batch processing. The system design must accommodate critical and non-critical batch processing workloads 24/7. How should a Solutions Architect design this architecture in a cost-efficient manner?",
         "questionOptions": [
             {
                 "optionId": "A",
@@ -922,7 +922,7 @@ const questionBank = [
     },
     {
         "questionId": 41,
-        "questionText": "A Solutions Architect is designing a mobile application that will capture receipt images to track expenses. The Architect wants to store the images on Amazon S3. However, uploading images through the web server will create too much traffic. What is the MOST e cient method to store images from a mobile application on Amazon S3?",
+        "questionText": "A Solutions Architect is designing a mobile application that will capture receipt images to track expenses. The Architect wants to store the images on Amazon S3. However, uploading images through the web server will create too much traffic. What is the MOST efficient method to store images from a mobile application on Amazon S3?",
         "questionOptions": [
             {
                 "optionId": "A",
@@ -991,7 +991,7 @@ const questionBank = [
     },
     {
         "questionId": 44,
-        "questionText": "A company is launching a marketing campaign on their website tomorrow and expects a signi cant increase in traffic. The website is designed as a multi-tiered web architecture, and the increase in traffic could potentially overwhelm the current design. What should a Solutions Architect do to minimize the effects from a potential failure in one or more of the tiers?",
+        "questionText": "A company is launching a marketing campaign on their website tomorrow and expects a significant increase in traffic. The website is designed as a multi-tiered web architecture, and the increase in traffic could potentially overwhelm the current design. What should a Solutions Architect do to minimize the effects from a potential failure in one or more of the tiers?",
         "questionOptions": [
             {
                 "optionId": "A",
@@ -1014,7 +1014,7 @@ const questionBank = [
     },
     {
         "questionId": 45,
-        "questionText": "A web application experiences high compute costs due to serving a high amount of static web content. How should the web server architecture be designed to be the MOST cost-e cient?",
+        "questionText": "A web application experiences high compute costs due to serving a high amount of static web content. How should the web server architecture be designed to be the MOST cost-efficient?",
         "questionOptions": [
             {
                 "optionId": "A",
@@ -1026,7 +1026,7 @@ const questionBank = [
             },
             {
                 "optionId": "C",
-                "optionText": "Leverage Reserved Instances to add additional capacity at a signi cantly lower price."
+                "optionText": "Leverage Reserved Instances to add additional capacity at a significantly lower price."
             },
             {
                 "optionId": "D",
@@ -1037,7 +1037,7 @@ const questionBank = [
     },
     {
         "questionId": 46,
-        "questionText": "A Solutions Architect plans to migrate NAT instances to NAT gateway. The Architect has NAT instances with scripts to manage high availability. What is the MOST e cient method to achieve similar high availability with NAT gateway?",
+        "questionText": "A Solutions Architect plans to migrate NAT instances to NAT gateway. The Architect has NAT instances with scripts to manage high availability. What is the MOST efficient method to achieve similar high availability with NAT gateway?",
         "questionOptions": [
             {
                 "optionId": "A",
@@ -1175,7 +1175,7 @@ const questionBank = [
     },
     {
         "questionId": 52,
-        "questionText": "A legacy application running in premises requires a Solutions Architect to be able to open a rewall to allow access to several Amazon S3 buckets. The Architect has a VPN connection to AWS in place. 1 How should the Architect meet this requirement?",
+        "questionText": "A legacy application running in premises requires a Solutions Architect to be able to open a firewall to allow access to several Amazon S3 buckets. The Architect has a VPN connection to AWS in place. How should the Architect meet this requirement?",
         "questionOptions": [
             {
                 "optionId": "A",
@@ -1428,7 +1428,7 @@ const questionBank = [
     },
     {
         "questionId": 63,
-        "questionText": "A Solutions Architect is designing a highly-available website that is served by multiple web servers hosted outside of AWS. If an instance becomes unresponsive, the Architect needs to remove it from the rotation. What is the MOST e cient way to ful ll this requirement?",
+        "questionText": "A Solutions Architect is designing a highly-available website that is served by multiple web servers hosted outside of AWS. If an instance becomes unresponsive, the Architect needs to remove it from the rotation. What is the MOST efficient way to ful ll this requirement?",
         "questionOptions": [
             {
                 "optionId": "A",
@@ -2325,7 +2325,7 @@ const questionBank = [
     },
     {
         "questionId": 102,
-        "questionText": "A Solutions Architect notices slower response times from an application. The CloudWatch metrics on the MySQL RDS indicate Read IOPS are high and uctuate signi cantly when the database is under load. How should the database environment be re-designed to resolve the IOPS uctuation?",
+        "questionText": "A Solutions Architect notices slower response times from an application. The CloudWatch metrics on the MySQL RDS indicate Read IOPS are high and uctuate significantly when the database is under load. How should the database environment be re-designed to resolve the IOPS uctuation?",
         "questionOptions": [
             {
                 "optionId": "A",
