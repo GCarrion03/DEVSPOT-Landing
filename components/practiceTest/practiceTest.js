@@ -25,7 +25,7 @@ const questionBank = [
     },
     {
         "questionId": 2,
-        "questionText": "A website experiences unpredictable tra c. During peak tra c times, the database is unable to keep up with the write request. Which AWS service will help decouple the web application from the database?",
+        "questionText": "A website experiences unpredictable traffic. During peak traffic times, the database is unable to keep up with the write request. Which AWS service will help decouple the web application from the database?",
         "questionOptions": [
             {
                 "optionId": "A",
@@ -167,11 +167,11 @@ const questionBank = [
         "questionOptions": [
             {
                 "optionId": "A",
-                "optionText": "Use Amazon Kinesis with AWS CloudTrail for auditing the speci c times when pro le photos are uploaded."
+                "optionText": "Use Amazon Kinesis with AWS CloudTrail for auditing the specific times when pro le photos are uploaded."
             },
             {
                 "optionId": "B",
-                "optionText": "Use Amazon EBS volumes with IAM policies restricting user access to speci c time periods."
+                "optionText": "Use Amazon EBS volumes with IAM policies restricting user access to specific time periods."
             },
             {
                 "optionId": "C",
@@ -179,7 +179,7 @@ const questionBank = [
             },
             {
                 "optionId": "D",
-                "optionText": "Use Amazon CloudFront with AWS CloudTrail for auditing the speci c times when pro le photos are uploaded."
+                "optionText": "Use Amazon CloudFront with AWS CloudTrail for auditing the specific times when pro le photos are uploaded."
             }
         ],
         "questionAnswer": "C"
@@ -324,7 +324,7 @@ const questionBank = [
     },
     {
         "questionId": 15,
-        "questionText": "A Solutions Architect is designing the architecture for a new three-tier web-based e-commerce site that must be available 24/7. Requests are expected to range from 100 to 10,000 each minute. Usage can vary depending on time of day, holidays, and promotions. The design should be able to handle these volumes, with the ability to handle higher volumes if necessary. How should the Architect design the architecture to ensure the web tier is cost-optimized and can handle the expected tra c? (Select two.)",
+        "questionText": "A Solutions Architect is designing the architecture for a new three-tier web-based e-commerce site that must be available 24/7. Requests are expected to range from 100 to 10,000 each minute. Usage can vary depending on time of day, holidays, and promotions. The design should be able to handle these volumes, with the ability to handle higher volumes if necessary. How should the Architect design the architecture to ensure the web tier is cost-optimized and can handle the expected traffic? (Select two.)",
         "questionOptions": [
             {
                 "optionId": "A",
@@ -340,30 +340,30 @@ const questionBank = [
             },
             {
                 "optionId": "D",
-                "optionText": "Use Amazon Route 53 to route tra c to the correct region. E. Use Amazon S3 multi-part uploads to improve upload times."
+                "optionText": "Use Amazon Route 53 to route traffic to the correct region. E. Use Amazon S3 multi-part uploads to improve upload times."
             }
         ],
         "questionAnswer": "AC"
     },
     {
         "questionId": 16,
-        "questionText": "A Solution Architect is designing a three-tier web application. The Architect wants to restrict access to the database tier to accept tra c from the application servers only. However, these application servers are in an Auto Scaling group and may vary in quantity. How should the Architect Configure the database servers to meet the requirements?",
+        "questionText": "A Solution Architect is designing a three-tier web application. The Architect wants to restrict access to the database tier to accept traffic from the application servers only. However, these application servers are in an Auto Scaling group and may vary in quantity. How should the Architect Configure the database servers to meet the requirements?",
         "questionOptions": [
             {
                 "optionId": "A",
-                "optionText": "Configure the database security group to allow database tra c from the application server IP addresses."
+                "optionText": "Configure the database security group to allow database traffic from the application server IP addresses."
             },
             {
                 "optionId": "B",
-                "optionText": "Configure the database security group to allow database tra c from the application server security group."
+                "optionText": "Configure the database security group to allow database traffic from the application server security group."
             },
             {
                 "optionId": "C",
-                "optionText": "Configure the database subnet network ACL to deny all inbound non-database tra c from the application-tier subnet."
+                "optionText": "Configure the database subnet network ACL to deny all inbound non-database traffic from the application-tier subnet."
             },
             {
                 "optionId": "D",
-                "optionText": "Configure the database subnet network ACL to allow inbound database tra c from the application-tier subnet."
+                "optionText": "Configure the database subnet network ACL to allow inbound database traffic from the application-tier subnet."
             }
         ],
         "questionAnswer": "B"
@@ -416,7 +416,7 @@ const questionBank = [
     },
     {
         "questionId": 19,
-        "questionText": " An e-commerce application is hosted in AWS. The last time a new product was launched, the application experienced a performance issue due to an enormous spike in tra c. Management decided that capacity must be doubled the week after the product is launched. Which is the MOST e cient way for management to ensure that capacity requirements are met?",
+        "questionText": " An e-commerce application is hosted in AWS. The last time a new product was launched, the application experienced a performance issue due to an enormous spike in traffic. Management decided that capacity must be doubled the week after the product is launched. Which is the MOST e cient way for management to ensure that capacity requirements are met?",
         "questionOptions": [
             {
                 "optionId": "A",
@@ -443,7 +443,7 @@ const questionBank = [
         "questionOptions": [
             {
                 "optionId": "A",
-                "optionText": "Create an Auto Scaling group with a minimum of one instance and a maximum of two instances, then use an Application Load Balancer to balance the tra c."
+                "optionText": "Create an Auto Scaling group with a minimum of one instance and a maximum of two instances, then use an Application Load Balancer to balance the traffic."
             },
             {
                 "optionId": "B",
@@ -451,7 +451,7 @@ const questionBank = [
             },
             {
                 "optionId": "C",
-                "optionText": "Create an Auto Scaling group with a maximum of two instances, then use an Application Load Balancer to balance the tra c."
+                "optionText": "Create an Auto Scaling group with a maximum of two instances, then use an Application Load Balancer to balance the traffic."
             },
             {
                 "optionId": "D",
@@ -922,7 +922,7 @@ const questionBank = [
     },
     {
         "questionId": 41,
-        "questionText": "A Solutions Architect is designing a mobile application that will capture receipt images to track expenses. The Architect wants to store the images on Amazon S3. However, uploading images through the web server will create too much tra c. What is the MOST e cient method to store images from a mobile application on Amazon S3?",
+        "questionText": "A Solutions Architect is designing a mobile application that will capture receipt images to track expenses. The Architect wants to store the images on Amazon S3. However, uploading images through the web server will create too much traffic. What is the MOST e cient method to store images from a mobile application on Amazon S3?",
         "questionOptions": [
             {
                 "optionId": "A",
@@ -968,7 +968,7 @@ const questionBank = [
     },
     {
         "questionId": 43,
-        "questionText": "A Solutions Architect has a multi-layer application running in Amazon VPC. The application has an ELB Classic Load Balancer as the front end in a public subnet, and an Amazon EC2-based reverse proxy that performs content-based routing to two backend Amazon EC2 instances hosted in a private subnet. The Architect sees tremendous tra c growth and is concerned that the reverse proxy and current backend set up will be insu cient. Which actions should the Architect take to achieve a cost-effective solution that ensures the application automatically scales to meet tra c demand? (Select two.)",
+        "questionText": "A Solutions Architect has a multi-layer application running in Amazon VPC. The application has an ELB Classic Load Balancer as the front end in a public subnet, and an Amazon EC2-based reverse proxy that performs content-based routing to two backend Amazon EC2 instances hosted in a private subnet. The Architect sees tremendous traffic growth and is concerned that the reverse proxy and current backend set up will be insu cient. Which actions should the Architect take to achieve a cost-effective solution that ensures the application automatically scales to meet traffic demand? (Select two.)",
         "questionOptions": [
             {
                 "optionId": "A",
@@ -991,7 +991,7 @@ const questionBank = [
     },
     {
         "questionId": 44,
-        "questionText": "A company is launching a marketing campaign on their website tomorrow and expects a signi cant increase in tra c. The website is designed as a multi-tiered web architecture, and the increase in tra c could potentially overwhelm the current design. What should a Solutions Architect do to minimize the effects from a potential failure in one or more of the tiers?",
+        "questionText": "A company is launching a marketing campaign on their website tomorrow and expects a signi cant increase in traffic. The website is designed as a multi-tiered web architecture, and the increase in traffic could potentially overwhelm the current design. What should a Solutions Architect do to minimize the effects from a potential failure in one or more of the tiers?",
         "questionOptions": [
             {
                 "optionId": "A",
@@ -1118,7 +1118,7 @@ const questionBank = [
             },
             {
                 "optionId": "C",
-                "optionText": "Launch Amazon EC2 instances in the public subnet and change the security group to allow outbound tra c on port 80."
+                "optionText": "Launch Amazon EC2 instances in the public subnet and change the security group to allow outbound traffic on port 80."
             },
             {
                 "optionId": "D",
@@ -1275,7 +1275,7 @@ const questionBank = [
             },
             {
                 "optionId": "B",
-                "optionText": "Allow Internet tra c on the private subnet through the network ACL."
+                "optionText": "Allow Internet traffic on the private subnet through the network ACL."
             },
             {
                 "optionId": "C",
@@ -1463,7 +1463,7 @@ const questionBank = [
             },
             {
                 "optionId": "C",
-                "optionText": "Create a network ACL on the web server's subnet, and allow HTTPS inbound, and specify the source as 0.0.0.0/0. Create a network ACL on a database subnet, allow MySQL port inbound for web servers, and deny all outbound tra c."
+                "optionText": "Create a network ACL on the web server's subnet, and allow HTTPS inbound, and specify the source as 0.0.0.0/0. Create a network ACL on a database subnet, allow MySQL port inbound for web servers, and deny all outbound traffic."
             },
             {
                 "optionId": "D",
@@ -1474,34 +1474,34 @@ const questionBank = [
     },
     {
         "questionId": 65,
-        "questionText": "Which service should an organization useif it requires an easily managed and scalable platform to host its web application running on Nginx ? ",
+        "questionText": "Which service should an organization use if it requires an easily managed and scalable platform to host its web application running on Nginx?",
         "questionOptions": [
             {
                 "optionId": "A",
-                "optionText": "AWS Lambda "
+                "optionText": "AWS Lambda"
             },
             {
                 "optionId": "B",
-                "optionText": "Auto Scaling "
+                "optionText": "Auto Scaling"
             },
             {
                 "optionId": "C",
-                "optionText": "AWS Elastic Beanstalk "
+                "optionText": "AWS Elastic Beanstalk"
             },
             {
                 "optionId": "D",
-                "optionText": "Elastic Load Balancing "
+                "optionText": "Elastic Load Balancing"
             }
         ],
         "questionAnswer": "C"
     },
     {
         "questionId": 66,
-        "questionText": "An Administrator is hosting an application on a single Amazon EC2 instance, which users can access by the public hostname. The administrator is adding a second instance, but does not want users to have to decide between many public hostnames. Which AWS service will decouple the users from speci c Amazon EC2 instances?",
+        "questionText": "An Administrator is hosting an application on a single Amazon EC2 instance, which users can access by the public hostname. The administrator is adding a second instance, but does not want users to have to decide between many public hostnames. Which AWS service will decouple the users from specific Amazon EC2 instances?",
         "questionOptions": [
             {
                 "optionId": "A",
-                "optionText": "Amazon SQS 1"
+                "optionText": "Amazon SQS"
             },
             {
                 "optionId": "B",
@@ -1520,7 +1520,7 @@ const questionBank = [
     },
     {
         "questionId": 67,
-        "questionText": "A Solutions Architect is designing a microservices-based application using Amazon ECS. The application includes a WebSocket component, and the tra c needs to be distributed between microservices based on the URL. Which service should the Architect choose to distribute the workload?",
+        "questionText": "A Solutions Architect is designing a microservices based application using Amazon ECS. The application includes a WebSocket component, and the traffic needs to be distributed between microservices based on the URL. Which service should the Architect choose to distribute the workload?",
         "questionOptions": [
             {
                 "optionId": "A",
@@ -1543,15 +1543,15 @@ const questionBank = [
     },
     {
         "questionId": 68,
-        "questionText": "A Solutions Architect is designing the storage layer for a production relational database. The database will run on Amazon EC2. The database is accessed by an application that performs intensive reads and writes, so the database requires the LOWEST random I/O latency. Which data storage method ful lls the above requirements?",
+        "questionText": "A Solutions Architect is designing the storage layer for a production relational database. The database will run on Amazon EC2. The database is accessed by an application that performs intensive reads and writes, so the database requires the LOWEST random I/O latency. Which data storage method fulfills the above requirements?",
         "questionOptions": [
             {
                 "optionId": "A",
-                "optionText": "Store data in a lesystem backed by Amazon Elastic File System (EFS)."
+                "optionText": "Store data in a filesystem backed by Amazon Elastic File System (EFS)."
             },
             {
                 "optionId": "B",
-                "optionText": "Store data in Amazon S3 and use a third-party solution to expose Amazon S3 as a lesystem to the database server."
+                "optionText": "Store data in Amazon S3 and use a third-party solution to expose Amazon S3 as a filesystem to the database server."
             },
             {
                 "optionId": "C",
@@ -1566,7 +1566,7 @@ const questionBank = [
     },
     {
         "questionId": 69,
-        "questionText": "A Solutions Architect is designing a VPC. Instances in a private subnet must be able to establish IPv6 tra c to the Internet. The design must scale automatically and not incur any additional cost. This can be accomplished with:",
+        "questionText": "A Solutions Architect is designing a VPC. Instances in a private subnet must be able to establish IPv6 traffic to the Internet. The design must scale automatically and not incur any additional cost. This can be accomplished with:",
         "questionOptions": [
             {
                 "optionId": "A",
@@ -1735,7 +1735,7 @@ const questionBank = [
             },
             {
                 "optionId": "B",
-                "optionText": "Use an application - speci c encryption API with AWS server - side encryption."
+                "optionText": "Use an application - specific encryption API with AWS server - side encryption."
             },
             {
                 "optionId": "C",
@@ -1842,30 +1842,30 @@ const questionBank = [
     },
     {
         "questionId": 81,
-        "questionText": "A company hosts a two-tier application that consists of a publicly accessible web server that communicates with a private database. Only HTTPS port 443 tra c to the web server must be allowed from the Internet. Which of the following options will achieve these requirements? (Choose two.)",
+        "questionText": "A company hosts a two-tier application that consists of a publicly accessible web server that communicates with a private database. Only HTTPS port 443 traffic to the web server must be allowed from the Internet. Which of the following options will achieve these requirements? (Choose two.)",
         "questionOptions": [
             {
                 "optionId": "A",
-                "optionText": "Security group rule that allows inbound Internet tra c for port 443."
+                "optionText": "Security group rule that allows inbound Internet traffic for port 443."
             },
             {
                 "optionId": "B",
-                "optionText": "Security group rule that denies all inbound Internet tra c except port 443."
+                "optionText": "Security group rule that denies all inbound Internet traffic except port 443."
             },
             {
                 "optionId": "C",
-                "optionText": "Network ACL rule that allows port 443 inbound and all ports outbound for Internet tra c."
+                "optionText": "Network ACL rule that allows port 443 inbound and all ports outbound for Internet traffic."
             },
             {
                 "optionId": "D",
-                "optionText": "Security group rule that allows Internet tra c for port 443 in both inbound and outbound. E. Network ACL rule that allows port 443 for both inbound and outbound for all Internet tra c."
+                "optionText": "Security group rule that allows Internet traffic for port 443 in both inbound and outbound. E. Network ACL rule that allows port 443 for both inbound and outbound for all Internet traffic."
             }
         ],
         "questionAnswer": "AC"
     },
     {
         "questionId": 82,
-        "questionText": "A Solutions Architect is designing an Amazon VPC. Applications in the VPC must have private connectivity to Amazon DynamoDB in the same AWS Region. The design should route DynamoDB tra c through:",
+        "questionText": "A Solutions Architect is designing an Amazon VPC. Applications in the VPC must have private connectivity to Amazon DynamoDB in the same AWS Region. The design should route DynamoDB traffic through:",
         "questionOptions": [
             {
                 "optionId": "A",
@@ -1980,7 +1980,7 @@ const questionBank = [
     },
     {
         "questionId": 87,
-        "questionText": "An organization runs an online media site,hosted on - premises.An employee posted a product review that contained videos and pictures.The review went viral and the organization needs to handle the resulting spike in website tra c.What action would provide an immediate solution ? ",
+        "questionText": "An organization runs an online media site,hosted on - premises.An employee posted a product review that contained videos and pictures.The review went viral and the organization needs to handle the resulting spike in website traffic.What action would provide an immediate solution ? ",
         "questionOptions": [
             {
                 "optionId": "A",
@@ -1996,14 +1996,14 @@ const questionBank = [
             },
             {
                 "optionId": "D",
-                "optionText": "Use Amazon ElasticCachefor Redisfor caching and reducing the load requests from the origin."
+                "optionText": "Use Amazon ElasticCache for Redis for caching and reducing the load requests from the origin."
             }
         ],
         "questionAnswer": "C"
     },
     {
         "questionId": 88,
-        "questionText": "A client notices that their engineers often make mistakes when creating Amazon SQS queuesfor their backend system.Which action should a Solutions Architect recommend to improve this process ? ",
+        "questionText": "A client notices that their engineers often make mistakes when creating Amazon SQS queues for their backend system.Which action should a Solutions Architect recommend to improve this process ?",
         "questionOptions": [
             {
                 "optionId": "A",
@@ -2026,30 +2026,30 @@ const questionBank = [
     },
     {
         "questionId": 89,
-        "questionText": "A development team is building an application with front - end and backend application tiers.Each tier consists of Amazon EC2 instances behind an ELB Classic Load Balancer.The instances run in Auto Scaling groups across multiple Availability Zones.The network team has allocated the 10.0 .0 .0 / 24 address spacefor this application.Only the front - end load balancer should be exposed to the Internet.There are concerns about the limited size of the address space and the ability of each tier to scale.What should the VPC subnet design be in each Availability Zone ? ",
+        "questionText": "A development team is building an application with front - end and backend application tiers.Each tier consists of Amazon EC2 instances behind an ELB Classic Load Balancer.The instances run in Auto Scaling groups across multiple Availability Zones.The network team has allocated the 10.0 .0 .0 / 24 address space for this application. Only the front-end load balancer should be exposed to the Internet.There are concerns about the limited size of the address space and the ability of each tier to scale.What should the VPC subnet design be in each Availability Zone?",
         "questionOptions": [
             {
                 "optionId": "A",
-                "optionText": "One public subnetfor the load balancer tier,one public subnetfor the front - end tier,and one private subnetfor the backend tier."
+                "optionText": "One public subnet for the load balancer tier,one public subnet for the front - end tier,and one private subnet for the backend tier."
             },
             {
                 "optionId": "B",
-                "optionText": "One shared public subnetfor all tiers of the application."
+                "optionText": "One shared public subnet for all tiers of the application."
             },
             {
                 "optionId": "C",
-                "optionText": "One public subnetfor the load balancer tier and one shared private subnetfor the application tiers."
+                "optionText": "One public subnet for the load balancer tier and one shared private subnet for the application tiers."
             },
             {
                 "optionId": "D",
-                "optionText": "One shared private subnetfor all tiers of the application."
+                "optionText": "One shared private subnet for all tiers of the application."
             }
         ],
         "questionAnswer": "A"
     },
     {
         "questionId": 90,
-        "questionText": "A Solutions Architect must select the storage typefor a big data application that requires very high sequential I / O.The data must persistif the instance is stopped.Which of the following storage types will provide the best t at the LOWEST costfor the application ? ",
+        "questionText": "A Solutions Architect must select the storage type for a big data application that requires very high sequential I / O. The data must persist if the instance is stopped.Which of the following storage types will provide the best at the LOWEST cost for the application?",
         "questionOptions": [
             {
                 "optionId": "A",
@@ -2072,7 +2072,7 @@ const questionBank = [
     },
     {
         "questionId": 91,
-        "questionText": "Two Auto Scaling applications,Application A and Application B,currently run within a shared set of subnets.A Solutions Architect wants to make sure that Application A can make requests to Application B,but Application B should be denied from making requests to Application A.Which is the SIMPLEST solution to achieve this policy ? ",
+        "questionText": "Two Auto Scaling applications, Application A and Application B, currently run within a shared set of subnets. A Solutions Architect wants to make sure that Application A can make requests to Application B, but Application B should be denied from making requests to Application A. Which is the SIMPLEST solution to achieve this policy ?",
         "questionOptions": [
             {
                 "optionId": "A",
@@ -2095,53 +2095,53 @@ const questionBank = [
     },
     {
         "questionId": 92,
-        "questionText": "Legacy applications currently send messages through a single Amazon EC2 instance,which then routes the messages to the appropriate destinations.The Amazon EC2 instance is a bottleneck and single point of failure,so the company would like to address these issues.Which services could address this architectural usecase ?(Choose two.)",
+        "questionText": "Legacy applications currently send messages through a single Amazon EC2 instance, which then routes the messages to the appropriate destinations. The Amazon EC2 instance is a bottleneck and single point of failure, so the company would like to address these issues.Which services could address this architectural use case?(Choose two.)",
         "questionOptions": [
             {
                 "optionId": "A",
-                "optionText": "Amazon SNS "
+                "optionText": "Amazon SNS"
             },
             {
                 "optionId": "B",
-                "optionText": "AWS STS "
+                "optionText": "AWS STS"
             },
             {
                 "optionId": "C",
-                "optionText": "Amazon SQS "
+                "optionText": "Amazon SQS"
             },
             {
                 "optionId": "D",
-                "optionText": "Amazon Route 53 E.AWS Glue "
+                "optionText": "Amazon Route 53 E.AWS Glue"
             }
         ],
         "questionAnswer": "AC"
     },
     {
         "questionId": 93,
-        "questionText": "A Solutions Architect needs to design an architecturefor a new,mission - critical batch processing billing application.The application is required to run Monday,Wednesday,and Friday from 5 AM to 11 AM.2 Which is the MOST cost - effective Amazon EC2 pricing model ? ",
+        "questionText": "A Solutions Architect needs to design an architecture for a new, mission - critical batch processing billing application. The application is required to run Monday, Wednesday,and Friday from 5 AM to 11 AM.2 Which is the MOST cost-effective Amazon EC2 pricing model?",
         "questionOptions": [
             {
                 "optionId": "A",
-                "optionText": "Amazon EC2 Spot Instances "
+                "optionText": "Amazon EC2 Spot Instances"
             },
             {
                 "optionId": "B",
-                "optionText": "On - Demand Amazon EC2 Instances "
+                "optionText": "On - Demand Amazon EC2 Instances"
             },
             {
                 "optionId": "C",
-                "optionText": "Scheduled Reserved Instances "
+                "optionText": "Scheduled Reserved Instances"
             },
             {
                 "optionId": "D",
-                "optionText": "Dedicated Amazon EC2 Instances "
+                "optionText": "Dedicated Amazon EC2 Instances"
             }
         ],
         "questionAnswer": "C"
     },
     {
         "questionId": 94,
-        "questionText": "A workload consists of downloading an image from an Amazon S3 bucket,processing the image,and moving it to another Amazon S3 bucket.An Amazon EC2 instance runs a scheduled task every hour to perform the operation.How should a Solutions Architect redesign the process so that it is highly available ? ",
+        "questionText": "A workload consists of downloading an image from an Amazon S3 bucket, processing the image, and moving it to another Amazon S3 bucket. An Amazon EC2 instance runs a scheduled task every hour to perform the operation.How should a Solutions Architect redesign the process so that it is highly available ? ",
         "questionOptions": [
             {
                 "optionId": "A",
@@ -2164,23 +2164,23 @@ const questionBank = [
     },
     {
         "questionId": 95,
-        "questionText": "An application is running on an Amazon EC2 instance in a private subnet. The application needs to read and write data onto Amazon Kinesis Data Streams, and corporate policy requires that this tra c should not go to the internet. How can these requirements be met?",
+        "questionText": "An application is running on an Amazon EC2 instance in a private subnet. The application needs to read and write data onto Amazon Kinesis Data Streams, and corporate policy requires that this traffic should not go to the internet. How can these requirements be met?",
         "questionOptions": [
             {
                 "optionId": "A",
-                "optionText": "Configure a NAT gateway in a public subnet and route all tra c to Amazon Kinesis through the NAT gateway."
+                "optionText": "Configure a NAT gateway in a public subnet and route all traffic to Amazon Kinesis through the NAT gateway."
             },
             {
                 "optionId": "B",
-                "optionText": "Configure a gateway VPC endpoint for Kinesis and route all tra c to Kinesis through the gateway VPC endpoint."
+                "optionText": "Configure a gateway VPC endpoint for Kinesis and route all traffic to Kinesis through the gateway VPC endpoint."
             },
             {
                 "optionId": "C",
-                "optionText": "Configure an interface VPC endpoint for Kinesis and route all tra c to Kinesis through the gateway VPC endpoint."
+                "optionText": "Configure an interface VPC endpoint for Kinesis and route all traffic to Kinesis through the gateway VPC endpoint."
             },
             {
                 "optionId": "D",
-                "optionText": "Configure an AWS Direct Connect private virtual interface for Kinesis and route all tra c to Kinesis through the virtual interface."
+                "optionText": "Configure an AWS Direct Connect private virtual interface for Kinesis and route all traffic to Kinesis through the virtual interface."
             }
         ],
         "questionAnswer": "C"
@@ -2210,11 +2210,11 @@ const questionBank = [
     },
     {
         "questionId": 97,
-        "questionText": "A Solutions Architect is de ning a shared Amazon S3 bucket where corporate applications will save objects. How can the Architect ensure that when an application uploads an object to the Amazon S3 bucket, the object is encrypted?",
+        "questionText": "A Solutions Architect is designing a shared Amazon S3 bucket where corporate applications will save objects. How can the Architect ensure that when an application uploads an object to the Amazon S3 bucket, the object is encrypted?",
         "questionOptions": [
             {
                 "optionId": "A",
-                "optionText": "Set a CORS con guration."
+                "optionText": "Set a CORS configuration."
             },
             {
                 "optionId": "B",
@@ -2233,7 +2233,7 @@ const questionBank = [
     },
     {
         "questionId": 98,
-        "questionText": "An application tier currently hosts two web services on the same set of instances,listening on different ports.Which AWS service should a Solutions Architect use to route tra c to the service based on the incoming request path ? ",
+        "questionText": "An application tier currently hosts two web services on the same set of instances, listening on different ports. Which AWS service should a Solutions Architect use to route traffic to the service based on the incoming request path?",
         "questionOptions": [
             {
                 "optionId": "A",
@@ -2256,7 +2256,7 @@ const questionBank = [
     },
     {
         "questionId": 99,
-        "questionText": "A data analytics startup company asks a Solutions Architect to recommend an AWS data store optionsfor indexed data.The data processing engine will generate and input more than 64 TB of processed data every day,with item sizes reaching up to 300 KB.The startup is exible with data storage and is more interested in a database that requires minimal effort to scale with a growing dataset size.Which AWS data store service should the Architect recommend ? ",
+        "questionText": "A data analytics startup company asks a Solutions Architect to recommend an AWS data store options for indexed data. The data processing engine will generate and input more than 64 TB of processed data every day, with item sizes reaching up to 300 KB.The startup is flexible with data storage and is more interested in a database that requires minimal effort to scale with a growing dataset size. Which AWS data store service should the Architect recommend?",
         "questionOptions": [
             {
                 "optionId": "A",
@@ -2279,7 +2279,7 @@ const questionBank = [
     },
     {
         "questionId": 100,
-        "questionText": "A Solutions Architect needs to allow developers to have SSH connectivity to web servers.The requirements are as follows : ✑Limit access to users origination from the corporate network.✑Web servers cannot have SSH access directly from the Internet.✑Web servers reside in a private subnet.Which combination of steps must the Architect complete to meet these requirements ? (Choose two.)",
+        "questionText": "A Solutions Architect needs to allow developers to have SSH connectivity to web servers.The requirements are as follows : ✑Limit access to users origination from the corporate network. ✑Web servers cannot have SSH access directly from the Internet. ✑Web servers reside in a private subnet. Which combination of steps must the Architect complete to meet these requirements?(Choose two.)",
         "questionOptions": [
             {
                 "optionId": "A",
@@ -2287,7 +2287,7 @@ const questionBank = [
             },
             {
                 "optionId": "B",
-                "optionText": "Create a bastion host with security group rules that only allow tra c from the corporate network."
+                "optionText": "Create a bastion host with security group rules that only allow traffic from the corporate network."
             },
             {
                 "optionId": "C",
@@ -2295,7 +2295,7 @@ const questionBank = [
             },
             {
                 "optionId": "D",
-                "optionText": "Configure the web servers ' security group to allow SSH tra c from a bastion host. E. Deny all SSH tra c from the corporate network in the inbound network ACL."
+                "optionText": "Configure the web servers ' security group to allow SSH traffic from a bastion host. E. Deny all SSH traffic from the corporate network in the inbound network ACL."
             }
         ],
         "questionAnswer": "BD"
@@ -2433,7 +2433,7 @@ const questionBank = [
             },
             {
                 "optionId": "D",
-                "optionText": "Ensure that the Amazon Machine Image associated with the application has the latest con gurations for the launch con guration."
+                "optionText": "Ensure that the Amazon Machine Image associated with the application has the latest configurations for the launch configuration."
             }
         ],
         "questionAnswer": "B"
