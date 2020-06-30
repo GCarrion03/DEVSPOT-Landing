@@ -627,19 +627,19 @@ const questionBank = [
         "questionOptions": [
             {
                 "optionId": "A",
-                "optionText": "Add a date as the pre x."
+                "optionText": "Add a date as the prefix."
             },
             {
                 "optionId": "B",
-                "optionText": "Add a sequential id as the su x."
+                "optionText": "Add a sequential id as the suffix."
             },
             {
                 "optionId": "C",
-                "optionText": "Add a hexadecimal hash as the su x."
+                "optionText": "Add a hexadecimal hash as the suffix."
             },
             {
                 "optionId": "D",
-                "optionText": "Add a hexadecimal hash as the pre x."
+                "optionText": "Add a hexadecimal hash as the prefix."
             }
         ],
         "questionAnswer": "B"
@@ -1064,7 +1064,7 @@ const questionBank = [
         "questionOptions": [
             {
                 "optionId": "A",
-                "optionText": "Randomize a key name pre x."
+                "optionText": "Randomize a key name prefix."
             },
             {
                 "optionId": "B",
@@ -1072,7 +1072,7 @@ const questionBank = [
             },
             {
                 "optionId": "C",
-                "optionText": "Randomize the key name su x."
+                "optionText": "Randomize the key name suffix."
             },
             {
                 "optionId": "D",
