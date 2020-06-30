@@ -113,7 +113,7 @@ const questionBank = [
                 "optionText": "Amazon Aurora"
             }
         ],
-        "questionAnswer": "A"
+        "questionAnswer": "D"
     },
     {
         "questionId": 6,
@@ -205,7 +205,7 @@ const questionBank = [
                 "optionText": "Amazon Glacier "
             }
         ],
-        "questionAnswer": "B"
+        "questionAnswer": "C"
     },
     {
         "questionId": 10,
@@ -282,7 +282,7 @@ const questionBank = [
         "questionOptions": [
             {
                 "optionId": "A",
-                "optionText": "Modify the Redshift cluster and con gure cross-region snapshots to the other region."
+                "optionText": "Modify the Redshift cluster and Configure cross-region snapshots to the other region."
             },
             {
                 "optionId": "B",
@@ -290,14 +290,14 @@ const questionBank = [
             },
             {
                 "optionId": "C",
-                "optionText": "Modify the Redshift cluster and con gure the backup and specify the Amazon S3 bucket in the other region."
+                "optionText": "Modify the Redshift cluster and Configure the backup and specify the Amazon S3 bucket in the other region."
             },
             {
                 "optionId": "D",
                 "optionText": "Modify the Redshift cluster to use AWS Snowball in export mode with data delivered to the other region."
             }
         ],
-        "questionAnswer": "B"
+        "questionAnswer": "A"
     },
     {
         "questionId": 14,
@@ -320,7 +320,7 @@ const questionBank = [
                 "optionText": "Create one or more read replicas."
             }
         ],
-        "questionAnswer": "C"
+        "questionAnswer": "D"
     },
     {
         "questionId": 15,
@@ -347,30 +347,30 @@ const questionBank = [
     },
     {
         "questionId": 16,
-        "questionText": "A Solution Architect is designing a three-tier web application. The Architect wants to restrict access to the database tier to accept tra c from the application servers only. However, these application servers are in an Auto Scaling group and may vary in quantity. How should the Architect con gure the database servers to meet the requirements?",
+        "questionText": "A Solution Architect is designing a three-tier web application. The Architect wants to restrict access to the database tier to accept tra c from the application servers only. However, these application servers are in an Auto Scaling group and may vary in quantity. How should the Architect Configure the database servers to meet the requirements?",
         "questionOptions": [
             {
                 "optionId": "A",
-                "optionText": "Con gure the database security group to allow database tra c from the application server IP addresses."
+                "optionText": "Configure the database security group to allow database tra c from the application server IP addresses."
             },
             {
                 "optionId": "B",
-                "optionText": "Con gure the database security group to allow database tra c from the application server security group."
+                "optionText": "Configure the database security group to allow database tra c from the application server security group."
             },
             {
                 "optionId": "C",
-                "optionText": "Con gure the database subnet network ACL to deny all inbound non-database tra c from the application-tier subnet."
+                "optionText": "Configure the database subnet network ACL to deny all inbound non-database tra c from the application-tier subnet."
             },
             {
                 "optionId": "D",
-                "optionText": "Con gure the database subnet network ACL to allow inbound database tra c from the application-tier subnet."
+                "optionText": "Configure the database subnet network ACL to allow inbound database tra c from the application-tier subnet."
             }
         ],
-        "questionAnswer": "C"
+        "questionAnswer": "B"
     },
     {
         "questionId": 17,
-        "questionText": "An Internet - facing multi - tier web application must be highly available.An ELB Classic Load Balancer is deployed in front of the web tier.Amazon EC2 instances at the web application tier are deployed evenly across two Availability Zones.The database is deployed using RDS Multi - AZ.A NAT instance is launchedfor Amazon EC2 instances and database resources to access the Internet.These instances are not assigned with public IP addresses.Which component poses a potential single point of failure in this architecture ? ",
+        "questionText": "An Internet - facing multi - tier web application must be highly available.An ELB Classic Load Balancer is deployed in front of the web tier.Amazon EC2 instances at the web application tier are deployed evenly across two Availability Zones.The database is deployed using RDS Multi - AZ.A NAT instance is launched for Amazon EC2 instances and database resources to access the Internet. These instances are not assigned with public IP addresses.Which component poses a potential single point of failure in this architecture ? ",
         "questionOptions": [
             {
                 "optionId": "A",
@@ -389,7 +389,7 @@ const questionBank = [
                 "optionText": "Amazon RDS "
             }
         ],
-        "questionAnswer": "C"
+        "questionAnswer": "B"
     },
     {
         "questionId": 18,
@@ -412,7 +412,7 @@ const questionBank = [
                 "optionText": "Permanently keep a steady state of instances that is needed at 9: 00 AM to guarantee available resources, but leverage Spot Instances."
             }
         ],
-        "questionAnswer": "A"
+        "questionAnswer": "B"
     },
     {
         "questionId": 19,
@@ -458,7 +458,7 @@ const questionBank = [
                 "optionText": "Recreate the API using Amazon API Gateway and integrate the new API with the existing backend service."
             }
         ],
-        "questionAnswer": "A"
+        "questionAnswer": "B"
     },
     {
         "questionId": 21,
@@ -504,7 +504,7 @@ const questionBank = [
                 "optionText": "Use an Amazon Route 53 weighted routing policy for the CloudFront domain name to distribute the GET request between CloudFront and the Amazon S3 bucket directly."
             }
         ],
-        "questionAnswer": "D"
+        "questionAnswer": "B"
     },
     {
         "questionId": 23,
@@ -619,7 +619,7 @@ const questionBank = [
                 "optionText": "EBS Cold HDD (sc1)"
             }
         ],
-        "questionAnswer": "C"
+        "questionAnswer": "A"
     },
     {
         "questionId": 28,
@@ -642,7 +642,7 @@ const questionBank = [
                 "optionText": "Add a hexadecimal hash as the pre x."
             }
         ],
-        "questionAnswer": "D"
+        "questionAnswer": "B"
     },
     {
         "questionId": 29,
@@ -654,7 +654,7 @@ const questionBank = [
             },
             {
                 "optionId": "B",
-                "optionText": "Enable Amazon CloudWatch logsfor all AWS services across all regions and aggregate them in a single Amazon S3 bucket."
+                "optionText": "Enable Amazon CloudWatch logs for all AWS services across all regions and aggregate them in a single Amazon S3 bucket."
             },
             {
                 "optionId": "C",
@@ -665,7 +665,7 @@ const questionBank = [
                 "optionText": "Enable AWS CloudTrail by creating a new trail and apply the trail to all regions."
             }
         ],
-        "questionAnswer": "D"
+        "questionAnswer": "B"
     },
     {
         "questionId": 30,
@@ -757,7 +757,7 @@ const questionBank = [
                 "optionText": "AWS Storage Gateway"
             }
         ],
-        "questionAnswer": "A"
+        "questionAnswer": "B"
     },
     {
         "questionId": 34,
@@ -849,7 +849,7 @@ const questionBank = [
                 "optionText": "Serve the website from an Amazon S3 bucket, and map a Route 53 alias record to the website endpoint. E. Create a Route 53 hosted zone, and set the NS records of the domain to use Route 53 name servers."
             }
         ],
-        "questionAnswer": "CD 1"
+        "questionAnswer": "CD"
     },
     {
         "questionId": 38,
@@ -872,7 +872,7 @@ const questionBank = [
                 "optionText": "Create an Amazon EC2 server farm behind an ELB to store the data in Amazon EBS Cold HDD volumes."
             }
         ],
-        "questionAnswer": "B"
+        "questionAnswer": "A"
     },
     {
         "questionId": 39,
@@ -911,7 +911,7 @@ const questionBank = [
             },
             {
                 "optionId": "C",
-                "optionText": "Con gure Direct Connect in each account."
+                "optionText": "Configure Direct Connect in each account."
             },
             {
                 "optionId": "D",
@@ -941,7 +941,7 @@ const questionBank = [
                 "optionText": "Expand the web server eet with Spot Instances to provide the resources to handle the images."
             }
         ],
-        "questionAnswer": "C"
+        "questionAnswer": "A"
     },
     {
         "questionId": 42,
@@ -987,7 +987,7 @@ const questionBank = [
                 "optionText": "Use t2 burstable instance types for the backend eet. E. Replace both the frontend and reverse proxy layers with an ELB Application Load Balancer."
             }
         ],
-        "questionAnswer": "AB"
+        "questionAnswer": "BE"
     },
     {
         "questionId": 44,
@@ -1010,7 +1010,7 @@ const questionBank = [
                 "optionText": "Use both a SQL and a NoSQL database in the design."
             }
         ],
-        "questionAnswer": "C 1"
+        "questionAnswer": "C"
     },
     {
         "questionId": 45,
@@ -1102,7 +1102,7 @@ const questionBank = [
                 "optionText": "Amazon API Gateway"
             }
         ],
-        "questionAnswer": "D"
+        "questionAnswer": "B"
     },
     {
         "questionId": 49,
@@ -1148,7 +1148,7 @@ const questionBank = [
                 "optionText": "Create a public subnet for the Amazon EC2 instances and a public subnet for the Amazon RDS cluster."
             }
         ],
-        "questionAnswer": "C"
+        "questionAnswer": "B"
     },
     {
         "questionId": 51,
@@ -1183,7 +1183,7 @@ const questionBank = [
             },
             {
                 "optionId": "B",
-                "optionText": "Con gure a proxy on Amazon EC2 and use an Amazon S3 VPC endpoint."
+                "optionText": "Configure a proxy on Amazon EC2 and use an Amazon S3 VPC endpoint."
             },
             {
                 "optionId": "C",
@@ -1194,7 +1194,7 @@ const questionBank = [
                 "optionText": "Configure IP whitelisting on the customer's gateway."
             }
         ],
-        "questionAnswer": "A"
+        "questionAnswer": "B"
     },
     {
         "questionId": 53,
@@ -1263,7 +1263,7 @@ const questionBank = [
                 "optionText": "Store the archive in Amazon S3 with a lifecycle policy to move this to S3 Infrequent Access after 30 days."
             }
         ],
-        "questionAnswer": "C 1 "
+        "questionAnswer": "C"
     },
     {
         "questionId": 56,
@@ -1309,7 +1309,7 @@ const questionBank = [
                 "optionText": "Create an IAM access and secret key,and store it in an encrypted RDS database."
             }
         ],
-        "questionAnswer": "C"
+        "questionAnswer": "B"
     },
     {
         "questionId": 58,
@@ -1417,14 +1417,14 @@ const questionBank = [
             },
             {
                 "optionId": "C",
-                "optionText": "Con gure CloudWatch alarms for any metrics the support team requires."
+                "optionText": "Configure CloudWatch alarms for any metrics the support team requires."
             },
             {
                 "optionId": "D",
                 "optionText": "Ensure that detailed monitoring for the EC2 instances is enabled. E. Create an application to export and save CloudWatch metrics for longer term trending analysis."
             }
         ],
-        "questionAnswer": "BD 1"
+        "questionAnswer": "AC"
     },
     {
         "questionId": 63,
@@ -1447,7 +1447,7 @@ const questionBank = [
                 "optionText": "Use Amazon Route 53 health checks."
             }
         ],
-        "questionAnswer": "C"
+        "questionAnswer": "D"
     },
     {
         "questionId": 64,
@@ -1516,7 +1516,7 @@ const questionBank = [
                 "optionText": "Amazon ELB"
             }
         ],
-        "questionAnswer": "B"
+        "questionAnswer": "D"
     },
     {
         "questionId": 67,
@@ -1539,7 +1539,7 @@ const questionBank = [
                 "optionText": "Amazon CloudFront"
             }
         ],
-        "questionAnswer": "C icmpid=link_from_whitepapers_page (13)"
+        "questionAnswer": "C"
     },
     {
         "questionId": 68,
@@ -1585,7 +1585,7 @@ const questionBank = [
                 "optionText": "a VPC endpoint"
             }
         ],
-        "questionAnswer": "A 2"
+        "questionAnswer": "A"
     },
     {
         "questionId": 70,
@@ -1601,14 +1601,14 @@ const questionBank = [
             },
             {
                 "optionId": "C",
-                "optionText": "Con gure the database to be in multiple regions."
+                "optionText": "Configure the database to be in multiple regions."
             },
             {
                 "optionId": "D",
                 "optionText": "Increase the number of provisioned storage IOPS."
             }
         ],
-        "questionAnswer": "B"
+        "questionAnswer": "A"
     },
     {
         "questionId": 71,
@@ -1723,7 +1723,7 @@ const questionBank = [
                 "optionText": "Amazon DynamoDB E.Amazon ElastiCache "
             }
         ],
-        "questionAnswer": "AE "
+        "questionAnswer": "AC"
     },
     {
         "questionId": 76,
@@ -1769,7 +1769,7 @@ const questionBank = [
                 "optionText": "Enable multi - factor authenticationfor the AWS root account."
             }
         ],
-        "questionAnswer": "B"
+        "questionAnswer": "C"
     },
     {
         "questionId": 78,
@@ -1792,7 +1792,7 @@ const questionBank = [
                 "optionText": "Change the EC2 instance type to one with burstable performance."
             }
         ],
-        "questionAnswer": "D"
+        "questionAnswer": "C"
     },
     {
         "questionId": 79,
@@ -1861,7 +1861,7 @@ const questionBank = [
                 "optionText": "Security group rule that allows Internet tra c for port 443 in both inbound and outbound. E. Network ACL rule that allows port 443 for both inbound and outbound for all Internet tra c."
             }
         ],
-        "questionAnswer": "AE"
+        "questionAnswer": "AC"
     },
     {
         "questionId": 82,
@@ -1884,7 +1884,7 @@ const questionBank = [
                 "optionText": "AWS Direct Connect"
             }
         ],
-        "questionAnswer": "C 2"
+        "questionAnswer": "C"
     },
     {
         "questionId": 83,
@@ -1907,7 +1907,7 @@ const questionBank = [
                 "optionText": "Amazon ElastiCache"
             }
         ],
-        "questionAnswer": "A"
+        "questionAnswer": "B"
     },
     {
         "questionId": 84,
@@ -1953,7 +1953,7 @@ const questionBank = [
                 "optionText": "Amazon EBS Provision IOPS SSD (io1) storage"
             }
         ],
-        "questionAnswer": "C"
+        "questionAnswer": "B"
     },
     {
         "questionId": 86,
@@ -1976,7 +1976,7 @@ const questionBank = [
                 "optionText": "Use Amazon Cognito user pools to integrate with external identity providers."
             }
         ],
-        "questionAnswer": "B"
+        "questionAnswer": "D"
     },
     {
         "questionId": 87,
@@ -2045,7 +2045,7 @@ const questionBank = [
                 "optionText": "One shared private subnetfor all tiers of the application."
             }
         ],
-        "questionAnswer": "A 2 "
+        "questionAnswer": "A"
     },
     {
         "questionId": 90,
@@ -2114,7 +2114,7 @@ const questionBank = [
                 "optionText": "Amazon Route 53 E.AWS Glue "
             }
         ],
-        "questionAnswer": "AC "
+        "questionAnswer": "AC"
     },
     {
         "questionId": 93,
@@ -2168,19 +2168,19 @@ const questionBank = [
         "questionOptions": [
             {
                 "optionId": "A",
-                "optionText": "Con gure a NAT gateway in a public subnet and route all tra c to Amazon Kinesis through the NAT gateway."
+                "optionText": "Configure a NAT gateway in a public subnet and route all tra c to Amazon Kinesis through the NAT gateway."
             },
             {
                 "optionId": "B",
-                "optionText": "Con gure a gateway VPC endpoint for Kinesis and route all tra c to Kinesis through the gateway VPC endpoint."
+                "optionText": "Configure a gateway VPC endpoint for Kinesis and route all tra c to Kinesis through the gateway VPC endpoint."
             },
             {
                 "optionId": "C",
-                "optionText": "Con gure an interface VPC endpoint for Kinesis and route all tra c to Kinesis through the gateway VPC endpoint."
+                "optionText": "Configure an interface VPC endpoint for Kinesis and route all tra c to Kinesis through the gateway VPC endpoint."
             },
             {
                 "optionId": "D",
-                "optionText": "Con gure an AWS Direct Connect private virtual interface for Kinesis and route all tra c to Kinesis through the virtual interface."
+                "optionText": "Configure an AWS Direct Connect private virtual interface for Kinesis and route all tra c to Kinesis through the virtual interface."
             }
         ],
         "questionAnswer": "C"
@@ -2206,7 +2206,7 @@ const questionBank = [
                 "optionText": "AWS Storage Gateway"
             }
         ],
-        "questionAnswer": "B Explanation Data stored in Amazon Glacier is immutable, meaning that after an archive is created it cannot be updated. This ensures that data such as compliance and regulatory records cannot be altered after they have been archived 2 compliance and regulatory records cannot be altered after they have been archived."
+        "questionAnswer": "B"
     },
     {
         "questionId": 97,
@@ -2275,7 +2275,7 @@ const questionBank = [
                 "optionText": "Amazon S3 "
             }
         ],
-        "questionAnswer": "C 2 "
+        "questionAnswer": "C"
     },
     {
         "questionId": 100,
@@ -2295,10 +2295,10 @@ const questionBank = [
             },
             {
                 "optionId": "D",
-                "optionText": "Con gure the web servers ' security group to allow SSH tra c from a bastion host. E. Deny all SSH tra c from the corporate network in the inbound network ACL."
+                "optionText": "Configure the web servers ' security group to allow SSH tra c from a bastion host. E. Deny all SSH tra c from the corporate network in the inbound network ACL."
             }
         ],
-        "questionAnswer": "AC"
+        "questionAnswer": "BD"
     },
     {
         "questionId": 101,
@@ -2310,7 +2310,7 @@ const questionBank = [
             },
             {
                 "optionId": "B",
-                "optionText": "Continuously replicate the production database server to Amazon RDS. Create one application load balancer and register on-premises servers. Con gure ELB Application Load Balancer to automatically deploy Amazon EC2 instances for application and additional servers if the on-premises application is down."
+                "optionText": "Continuously replicate the production database server to Amazon RDS. Create one application load balancer and register on-premises servers. Configure ELB Application Load Balancer to automatically deploy Amazon EC2 instances for application and additional servers if the on-premises application is down."
             },
             {
                 "optionId": "C",
@@ -2367,7 +2367,7 @@ const questionBank = [
                 "optionText": "Default monitoring of Amazon EC2 instances."
             }
         ],
-        "questionAnswer": "A"
+        "questionAnswer": "B"
     },
     {
         "questionId": 104,
@@ -2410,7 +2410,7 @@ const questionBank = [
             },
             {
                 "optionId": "D",
-                "optionText": "Enable versioning and con gure cross-region replication from the bucket in us-east-1 to the bucket in ap-southeast-2."
+                "optionText": "Enable versioning and Configure cross-region replication from the bucket in us-east-1 to the bucket in ap-southeast-2."
             }
         ],
         "questionAnswer": "D"
@@ -2448,18 +2448,18 @@ const questionBank = [
             },
             {
                 "optionId": "B",
-                "optionText": "O oad SELECT queries that can tolerate stale data to READ replica."
+                "optionText": "Offload SELECT queries that can tolerate stale data to READ replica."
             },
             {
                 "optionId": "C",
-                "optionText": "O oad SELECT and UPDATE queries to READ replica."
+                "optionText": "Offload SELECT and UPDATE queries to READ replica."
             },
             {
                 "optionId": "D",
-                "optionText": "O oad SELECT query that needs the most current data to READ replica."
+                "optionText": "Offload SELECT query that needs the most current data to READ replica."
             }
         ],
-        "questionAnswer": "A"
+        "questionAnswer": "B"
     }
 ];
 
