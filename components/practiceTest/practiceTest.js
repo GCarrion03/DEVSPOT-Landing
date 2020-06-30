@@ -1,4 +1,5 @@
-const questions = [
+const numberOfQuestions = 10;
+const questionBank = [
     {
         "questionId": 1,
         "questionText": "A Solutions Architect is designing an application that will encrypt all data in an Amazon Redshift cluster. Which action will encrypt the data at rest?",
@@ -59,7 +60,11 @@ const questions = [
             },
             {
                 "optionId": "C",
-                "optionText": "AWS Storage Gateway in stored mode for the legacy application storage to write data to Amazon S3. D An Amazon S3 volume mounted on the legacy application server locally using the File Gateway service"
+                "optionText": "AWS Storage Gateway in stored mode for the legacy application storage to write data to Amazon S3."
+            },
+            {
+                "optionId": "D",
+                "optionText": "An Amazon S3 volume mounted on the legacy application server locally using the File Gateway service"
             }
         ],
         "questionAnswer": "C"
@@ -2466,11 +2471,24 @@ class practiceTest extends HTMLElement {
     }
     connectedCallback() {
         let i = 1;
+
+        var questions = [];
+        var iterator;
+        for (iterator = 0; iterator<numberOfQuestions; iterator++) {
+            var questionToAdd = questionBank[Math.floor(Math.random() * questionBank.length)];
+            // Only get single chocice answer multiple choice not supported
+            if (questionToAdd.questionAnswer.length === 1)
+            {
+                questions.push(questionToAdd);
+            } else {
+                iterator--;
+            }
+        }
         questions.forEach(question => {
             var oldDom = this.shadowRoot.innerHTML;
             let questionOptions = '';
             question.questionOptions.forEach(option =>  {
-                questionOptions += ('<input id="'+question.questionId+option.optionId+'" name="answer'+question.questionId+'" type="radio" style="float: left;"><label id="'+question.questionId+option.optionId+'label" for="'+question.questionId+option.optionId+'" style="padding-left: 5px;float: left;">'+option.optionId + '. ' +option.optionText+'</label><br> <br>')
+                questionOptions += ('<input id="'+i+option.optionId+'" name="answer'+i+'" type="radio" style="float: left;"><label id="'+i+option.optionId+'label" for="'+i+option.optionId+'" style="padding-left: 5px;float: left;">'+option.optionId + '. ' +option.optionText+'</label><br> <br>')
             })
             const div = document.createElement('div');
             div.id="tmpDiv";
@@ -2486,17 +2504,17 @@ class practiceTest extends HTMLElement {
                             ${questionOptions}
                     </div>
                     <div class="col-lg-12">
-                        <input id="prev${question.questionId}" type="button" value="<" style="float: left;">
-                        <input id="next${question.questionId}" type="button" value=">" style="float: left;">
-                        <input id="${question.questionId}showAnswer" type="button" value="Verify" style="float: right;" >
-                        <strong><label for="${question.questionId}showAnswer" style="float: right;">/${questions.length}&nbsp;</label><label name="score" for="${question.questionId}showAnswer" id="currentScore${question.questionId}" style="float: right;">0</label><label for="${question.questionId}showAnswer" style="float: right;">Score: &nbsp;</label></strong> 
+                        <input id="prev${i}" type="button" value="<" style="float: left;">
+                        <input id="next${i}" type="button" value=">" style="float: left;">
+                        <input id="${i}showAnswer" type="button" value="Verify" style="float: right;" >
+                        <strong><label for="${i}showAnswer" style="float: right;">/${questions.length}&nbsp;</label><label name="score" for="${i}showAnswer" id="currentScore${i}" style="float: right;">0</label><label for="${i}showAnswer" style="float: right;">Score: &nbsp;</label></strong> 
                     </div>
                 </div>
             </template>`;
             this.shadowRoot.append(div);
             const template = this.shadowRoot.getElementById(`practiceTest-template${i}`);
             const node = document.importNode(template.content, true);
-            node.getElementById('questionDescription').innerHTML = `${question.questionId}. ${question.questionText}`;
+            node.getElementById('questionDescription').innerHTML = `${i}. ${question.questionText}<p style="display:none">${question.questionId}</p>`;
             this.shadowRoot.removeChild(div);
             this.shadowRoot.appendChild(node);
             var createValidateButton = function (shadowRoot, currentI, question) {
@@ -2504,7 +2522,7 @@ class practiceTest extends HTMLElement {
                     makeValidateCallback (shadowRoot, currentI, question);
                 }
             }}
-            var a = createValidateButton(this.shadowRoot, question.questionId, question);
+            var a = createValidateButton(this.shadowRoot, i, question);
             a.apply();
             i++;
             });
@@ -2522,7 +2540,7 @@ function makeValidateCallback (shadowRoot, currentI, question) {
         shadowRoot.getElementById(`questionContainer${currentI}`).style.display = "none";
         shadowRoot.getElementById(`questionContainer${currentI+1}`).style.display = "inline";
         shadowRoot.getElementById(`prev${currentI+1}`).disabled = false;
-        if (currentI+1 === questions.length){
+        if (currentI+1 === numberOfQuestions){
             shadowRoot.getElementById(`next${currentI+1}`).disabled = true;
         }
     }
@@ -2537,9 +2555,9 @@ function makeValidateCallback (shadowRoot, currentI, question) {
     }
 
     shadowRoot.getElementById(`${currentI}showAnswer`).onclick = () => {
-        shadowRoot.getElementById(`${question.questionId+question.questionAnswer}label`).innerHTML += '&#9989;';
-        if (!shadowRoot.getElementById(`${question.questionId+question.questionAnswer}`).checked) {
-            var incorrectAns = shadowRoot.querySelector(`input[name=answer${question.questionId}]:checked`);
+        shadowRoot.getElementById(`${currentI+question.questionAnswer}label`).innerHTML += '&#9989;';
+        if (!shadowRoot.getElementById(`${currentI+question.questionAnswer}`).checked) {
+            var incorrectAns = shadowRoot.querySelector(`input[name=answer${currentI}]:checked`);
             if (incorrectAns){
                 shadowRoot.getElementById(incorrectAns.id + 'label').innerHTML += '&#10060;';
             }
