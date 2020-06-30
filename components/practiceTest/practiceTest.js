@@ -2506,7 +2506,7 @@ class practiceTest extends HTMLElement {
                     <div class="col-lg-12">
                         <input id="prev${i}" type="button" value="<" style="float: left;">
                         <input id="next${i}" type="button" value=">" style="float: left;">
-                        <input id="${i}showAnswer" type="button" value="Verify" style="float: right;" >
+                        <input id="${i}showAnswer" type="button" value="Check Answer" style="float: right;" >
                         <strong><label for="${i}showAnswer" style="float: right;">/${questions.length}&nbsp;</label><label name="score" for="${i}showAnswer" id="currentScore${i}" style="float: right;">0</label><label for="${i}showAnswer" style="float: right;">Score: &nbsp;</label></strong> 
                     </div>
                 </div>
