@@ -163,11 +163,11 @@ const questionBank = [
     },
     {
         "questionId": 8,
-        "questionText": "A Solutions Architect is designing a new social media application. The application must provide a secure method for uploading pro le photos. Each user should be able to upload a pro le photo into a shared storage location for one week after their pro le is created. Which approach will meet all of these requirements?",
+        "questionText": "A Solutions Architect is designing a new social media application. The application must provide a secure method for uploading profile photos. Each user should be able to upload a profile photo into a shared storage location for one week after their profile is created. Which approach will meet all of these requirements?",
         "questionOptions": [
             {
                 "optionId": "A",
-                "optionText": "Use Amazon Kinesis with AWS CloudTrail for auditing the specific times when pro le photos are uploaded."
+                "optionText": "Use Amazon Kinesis with AWS CloudTrail for auditing the specific times when profile photos are uploaded."
             },
             {
                 "optionId": "B",
@@ -175,11 +175,11 @@ const questionBank = [
             },
             {
                 "optionId": "C",
-                "optionText": "Use Amazon S3 with the default private access policy and generate pre-signed URLs each time a new site pro le is created."
+                "optionText": "Use Amazon S3 with the default private access policy and generate pre-signed URLs each time a new site profile is created."
             },
             {
                 "optionId": "D",
-                "optionText": "Use Amazon CloudFront with AWS CloudTrail for auditing the specific times when pro le photos are uploaded."
+                "optionText": "Use Amazon CloudFront with AWS CloudTrail for auditing the specific times when profile photos are uploaded."
             }
         ],
         "questionAnswer": "C"
@@ -1225,7 +1225,7 @@ const questionBank = [
         "questionOptions": [
             {
                 "optionId": "A",
-                "optionText": "Create a Lambdafunctionfor each individual environment."
+                "optionText": "Create a Lambda functionfor each individual environment."
             },
             {
                 "optionId": "B",
@@ -1237,7 +1237,7 @@ const questionBank = [
             },
             {
                 "optionId": "D",
-                "optionText": "Implement a dedicated Lambdafunctionfor distributing variables."
+                "optionText": "Implement a dedicated Lambda functionfor distributing variables."
             }
         ],
         "questionAnswer": "C"
@@ -1290,15 +1290,15 @@ const questionBank = [
     },
     {
         "questionId": 57,
-        "questionText": "A Solutions Architect is designing a Lambdafunction that calls an API to list all running Amazon RDS instances.How should the request be authorized ? ",
+        "questionText": "A Solutions Architect is designing a Lambda function that calls an API to list all running Amazon RDS instances.How should the request be authorized ? ",
         "questionOptions": [
             {
                 "optionId": "A",
-                "optionText": "Create an IAM access and secret key,and store it in the Lambdafunction."
+                "optionText": "Create an IAM access and secret key,and store it in the Lambda function."
             },
             {
                 "optionId": "B",
-                "optionText": "Create an IAM role to the Lambdafunction with permissions to list all Amazon RDS instances."
+                "optionText": "Create an IAM role to the Lambda function with permissions to list all Amazon RDS instances."
             },
             {
                 "optionId": "C",
@@ -1325,11 +1325,11 @@ const questionBank = [
             },
             {
                 "optionId": "C",
-                "optionText": "Stop the Amazon EC2 instance and provision IOPSfor the EBS volume."
+                "optionText": "Stop the Amazon EC2 instance and provision IOPS for the EBS volume."
             },
             {
                 "optionId": "D",
-                "optionText": "Enable an API Gateway to change the endpointsfor the Amazon EC2 instances."
+                "optionText": "Enable an API Gateway to change the endpoints for the Amazon EC2 instances."
             }
         ],
         "questionAnswer": "B"
@@ -2153,7 +2153,7 @@ const questionBank = [
             },
             {
                 "optionId": "C",
-                "optionText": "Trigger a Lambdafunction when a new object is uploaded."
+                "optionText": "Trigger a Lambda function when a new object is uploaded."
             },
             {
                 "optionId": "D",
@@ -2484,8 +2484,27 @@ class practiceTest extends HTMLElement {
                 iterator--;
             }
         }
+
+        const div = document.createElement('div');
+        div.id="tmpDiv";
+        div.innerHTML =
+            `<template id="practiceTest-styles">
+                <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+                <link href="css/bootstrap.css" rel="stylesheet">
+                <link href="css/style.css" rel="stylesheet" type="text/css">
+                <div style="margin: 0 auto;" id="welcomeMessage">
+                    <h4>Welcome to the Amazon Web Services Certified Solutions Architect Associate Exam (SAA-C02) readiness quiz, we will randomly select 10 questions from our curated database, score more than 7/10 and you will be ready to sit for your exam</h4> 
+                    <label for="nameInput" style="float: left;">Your name: &nbsp;</label><input type="text" id="nameInput" style="float: left;" ><input type="button" id="start" value="Start Assessment" style="float: right;" >
+                </div>
+             </template>`
+        this.shadowRoot.append(div);
+        const template = this.shadowRoot.getElementById(`practiceTest-styles`);
+        const node = document.importNode(template.content, true);
+        // node.getElementById('questionDescription').innerHTML = `${i}. ${question.questionText}<p style="display:none">${question.questionId}</p>`;
+        this.shadowRoot.removeChild(div);
+        this.shadowRoot.appendChild(node);
+
         questions.forEach(question => {
-            var oldDom = this.shadowRoot.innerHTML;
             let questionOptions = '';
             question.questionOptions.forEach(option =>  {
                 questionOptions += ('<input id="'+i+option.optionId+'" name="answer'+i+'" type="radio" style="float: left;"><label id="'+i+option.optionId+'label" for="'+i+option.optionId+'" style="padding-left: 5px;float: left;">'+option.optionId + '. ' +option.optionText+'</label><br> <br>')
@@ -2494,9 +2513,6 @@ class practiceTest extends HTMLElement {
             div.id="tmpDiv";
             div.innerHTML =
                 `<template id="practiceTest-template${i}">
-                <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
-                <link href="css/bootstrap.css" rel="stylesheet">
-                <link href="css/style.css" rel="stylesheet" type="text/css">
                 <div class="row" id="questionContainer${i}" style = "display:none">
                     <div class="col-lg-12" style="min-height: 400px">
                         <h4 class="mb-3"><strong id="questionDescription">1. A Solutions Architect is designing an application that will encrypt all data in an Amazon Redshift cluster.<br>Which action will encrypt the data at rest?</strong></h4>
@@ -2531,9 +2547,12 @@ class practiceTest extends HTMLElement {
 customElements.define('practice-test', practiceTest);
 
 function makeValidateCallback (shadowRoot, currentI, question) {
-    if (currentI === 1){
-        shadowRoot.getElementById(`questionContainer${currentI}`).style.display = "inline";
-        shadowRoot.getElementById(`prev${currentI}`).disabled = true;
+    if (currentI === 1) {
+        shadowRoot.getElementById(`start`).onclick = () => {
+            shadowRoot.getElementById(`welcomeMessage`).style.display = "none";
+            shadowRoot.getElementById(`questionContainer${currentI}`).style.display = "inline";
+            shadowRoot.getElementById(`prev${currentI}`).disabled = true;
+        }
     }
 
     shadowRoot.getElementById(`next${currentI}`).onclick = () => {
@@ -2565,7 +2584,14 @@ function makeValidateCallback (shadowRoot, currentI, question) {
             shadowRoot.querySelectorAll(`label[name=score]`).forEach(e => e.innerHTML = parseInt(e.innerHTML)+1);
 
         }
-        shadowRoot.getElementById(`${currentI}showAnswer`).disabled = true;
+        if (shadowRoot.querySelectorAll(`input[name^=answer]:checked`).length === 10){
+            if (parseInt(shadowRoot.querySelector(`label[name=score]`).innerHTML) >= 7){
+                alert(`Congrats ${shadowRoot.getElementById('nameInput').value} you passed!`);
+            } else {
+                alert(`Oh no!, ${shadowRoot.getElementById('nameInput').value} you failed refresh the page to try again`);
+            }
 
+        }
+        shadowRoot.getElementById(`${currentI}showAnswer`).disabled = true;
     }
 }
