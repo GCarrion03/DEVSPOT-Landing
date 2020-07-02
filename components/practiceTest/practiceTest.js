@@ -715,7 +715,7 @@ const questionBank = [
     },
     {
         "questionId": 32,
-        "questionText": "A company is evaluating Amazon S3 as a data storage solution for their daily analyst reports. The company has implemented stringent requirements concerning the security of the data at rest. Speci cally, the CISO asked for the use of envelope encryption with separate permissions for the use of an envelope key, automated rotation of the encryption keys, and visibility into when an encryption key was used and by whom. Which steps should a Solutions Architect take to satisfy the security requirements requested by the CISO?",
+        "questionText": "A company is evaluating Amazon S3 as a data storage solution for their daily analyst reports. The company has implemented stringent requirements concerning the security of the data at rest. specifically, the CISO asked for the use of envelope encryption with separate permissions for the use of an envelope key, automated rotation of the encryption keys, and visibility into when an encryption key was used and by whom. Which steps should a Solutions Architect take to satisfy the security requirements requested by the CISO?",
         "questionOptions": [
             {
                 "optionId": "A",
@@ -1336,7 +1336,7 @@ const questionBank = [
     },
     {
         "questionId": 59,
-        "questionText": "A Solutions Architect is building a new feature using a Lambda to create metadata when a user uploads a picture to Amazon S3.All metadata must be indexed.Which AWS service should the Architect use to store this metadata ? ",
+        "questionText": "A Solutions Architect is building a new feature using a Lambda to create metadata when a user uploads a picture to Amazon S3. All metadata must be indexed.Which AWS service should the Architect use to store this metadata?",
         "questionOptions": [
             {
                 "optionId": "A",
@@ -1344,11 +1344,11 @@ const questionBank = [
             },
             {
                 "optionId": "B",
-                "optionText": "Amazon DynamoDB 1 "
+                "optionText": "Amazon DynamoDB"
             },
             {
                 "optionId": "C",
-                "optionText": "Amazon Kinesis "
+                "optionText": "Amazon Kinesis"
             },
             {
                 "optionId": "D",
@@ -1428,7 +1428,7 @@ const questionBank = [
     },
     {
         "questionId": 63,
-        "questionText": "A Solutions Architect is designing a highly-available website that is served by multiple web servers hosted outside of AWS. If an instance becomes unresponsive, the Architect needs to remove it from the rotation. What is the MOST efficient way to ful ll this requirement?",
+        "questionText": "A Solutions Architect is designing a highly-available website that is served by multiple web servers hosted outside of AWS. If an instance becomes unresponsive, the Architect needs to remove it from the rotation. What is the MOST efficient way to fulfill this requirement?",
         "questionOptions": [
             {
                 "optionId": "A",
@@ -2492,22 +2492,32 @@ class practiceTest extends HTMLElement {
                 <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
                 <link href="css/bootstrap.css" rel="stylesheet">
                 <link href="css/style.css" rel="stylesheet" type="text/css">
-                <div style="margin: 0 auto;" id="welcomeMessage">
-                    <h4>Welcome to the Amazon Web Services Certified Solutions Architect Associate Exam (SAA-C02) readiness quiz, we will randomly select 10 questions from our curated database, score more than 7/10 and you will be ready to sit for your exam</h4> 
+                <div id="welcomeMessage" style=" min-height: 400px;">
+                    <p style="text-align: center;"><strong>AWS-CSAA (SAA-C02)</strong></p>
+                    <p style="text-align: center;">Welcome to the Amazon Web Services Certified Solutions Architect Associate Exam<span>&nbsp;readiness quiz</span>&nbsp;</p>
+                    <p>We will randomly select 10 questions from our curated database, score more than 7/10 and you will be ready to sit for your exam</p> 
+                    <br>
                     <label for="nameInput" style="float: left;">Your name: &nbsp;</label><input type="text" id="nameInput" style="float: left;" ><input type="button" id="start" value="Start Assessment" style="float: right;" >
+                </div>
+                <div id="passMessage" style = "display:none;">
+                    <h4 id="passHeader" style="min-height: 100px;">Pass</h4>                    
+                    <input type="button" id="btnCertificate" value="Get your certificate!" style="float: right;" >
+                </div>
+                <div id="failMessage" style = "display:none;">
+                    <h4 id="failHeader" style="min-height: 100px;">Fail</h4> 
+                    <input type="button" id="btnRetake" value="Retake test" style="float: right;" onclick="location.reload();" >
                 </div>
              </template>`
         this.shadowRoot.append(div);
         const template = this.shadowRoot.getElementById(`practiceTest-styles`);
         const node = document.importNode(template.content, true);
-        // node.getElementById('questionDescription').innerHTML = `${i}. ${question.questionText}<p style="display:none">${question.questionId}</p>`;
         this.shadowRoot.removeChild(div);
         this.shadowRoot.appendChild(node);
 
         questions.forEach(question => {
             let questionOptions = '';
             question.questionOptions.forEach(option =>  {
-                questionOptions += ('<input id="'+i+option.optionId+'" name="answer'+i+'" type="radio" style="float: left;"><label id="'+i+option.optionId+'label" for="'+i+option.optionId+'" style="padding-left: 5px;float: left;">'+option.optionId + '. ' +option.optionText+'</label><br> <br>')
+                questionOptions += ('<input id="'+i+option.optionId+'" name="answer'+i+'" type="radio" style="float: left;"><label id="'+i+option.optionId+'label" for="'+i+option.optionId+'" style="padding-left: 5px;float: left;font-weight: 100;">'+option.optionId + '. ' +option.optionText+'</label><br> <br>')
             })
             const div = document.createElement('div');
             div.id="tmpDiv";
@@ -2515,7 +2525,7 @@ class practiceTest extends HTMLElement {
                 `<template id="practiceTest-template${i}">
                 <div class="row" id="questionContainer${i}" style = "display:none">
                     <div class="col-lg-12" style="min-height: 400px">
-                        <h4 class="mb-3"><strong id="questionDescription">1. A Solutions Architect is designing an application that will encrypt all data in an Amazon Redshift cluster.<br>Which action will encrypt the data at rest?</strong></h4>
+                        <h5 class="mb-3"><strong id="questionDescription">1. A Solutions Architect is designing an application that will encrypt all data in an Amazon Redshift cluster.<br>Which action will encrypt the data at rest?</strong></h5>
                         <BR>
                             ${questionOptions}
                     </div>
@@ -2585,10 +2595,15 @@ function makeValidateCallback (shadowRoot, currentI, question) {
 
         }
         if (shadowRoot.querySelectorAll(`input[name^=answer]:checked`).length === 10){
+            shadowRoot.getElementById(`questionContainer${currentI}`).style.display = "none";
             if (parseInt(shadowRoot.querySelector(`label[name=score]`).innerHTML) >= 7){
-                alert(`Congrats ${shadowRoot.getElementById('nameInput').value} you passed!`);
+                shadowRoot.getElementById(`passMessage`).style.display = "inline";
+                shadowRoot.getElementById(`welcomeMessage`).style.display = "none";
+                shadowRoot.getElementById(`passHeader`).innerHTML = `Congrats ${shadowRoot.getElementById('nameInput').value} you passed, Good luck on your exam!`;
             } else {
-                alert(`Oh no!, ${shadowRoot.getElementById('nameInput').value} you failed refresh the page to try again`);
+                shadowRoot.getElementById(`failMessage`).style.display = "inline";
+                shadowRoot.getElementById(`welcomeMessage`).style.display = "none";
+                shadowRoot.getElementById(`failHeader`).innerHTML = `Oh no! ${shadowRoot.getElementById('nameInput').value} you failed, click Retake test to try again.`;
             }
 
         }
