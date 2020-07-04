@@ -175,7 +175,7 @@ function makeValidateCallback(shadowRoot, currentI, question) {
             } else {
                 shadowRoot.getElementById(`failMessage`).style.display = "inline-block";
                 shadowRoot.getElementById(`welcomeMessage`).style.display = "none";
-                shadowRoot.getElementById(`failHeader`).innerHTML = `Oh no! ${shadowRoot.getElementById('nameInput').value} you failed, click Retake test to try again. Score: ${score}/${numberOfQuestions}`;
+                shadowRoot.getElementById(`failHeader`).innerHTML = `Oh no! ${shadowRoot.getElementById('nameInput').value} you failed, click Retake test or reload this page to try again. Score: ${score}/${numberOfQuestions}`;
             }
 
         }
