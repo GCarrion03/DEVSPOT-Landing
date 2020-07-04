@@ -608,7 +608,7 @@ export const questionBank =
         },
         {
             "questionId": 27,
-            "questionText": "A Solutions Architect is designing a log-processing solution that requires storage that supports up to 500 MB/s throughput. The data is sequentially accessed by an Amazon EC2 instance. Which Amazon storage type satis es these requirements?",
+            "questionText": "A Solutions Architect is designing a log-processing solution that requires storage that supports up to 500 MB/s throughput. The data is sequentially accessed by an Amazon EC2 instance. Which Amazon storage type satisfies these requirements?",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -2503,19 +2503,19 @@ export const questionBank =
             "questionOptions": [
                 {
                     "optionId": "A",
-                    "optionText ": "Configure active - active failover using Route 53 latency DNS records."
+                    "optionText": "Configure active - active failover using Route 53 latency DNS records."
                 },
                 {
                     "optionId": "B",
-                    "optionText ": "Configure active - passive failover using Route 53 latency DNS records."
+                    "optionText": "Configure active - passive failover using Route 53 latency DNS records."
                 },
                 {
                     "optionId": "C",
-                    "optionText ": "Configure active - active failover using Route 53 failover DNS records."
+                    "optionText": "Configure active - active failover using Route 53 failover DNS records."
                 },
                 {
                     "optionId": "D",
-                    "optionText ": "Configure active - passive failover using Route 53 failover DNS records."
+                    "optionText": "Configure active - passive failover using Route 53 failover DNS records."
                 }
             ],
             "questionAnswer": "A"
@@ -2526,19 +2526,19 @@ export const questionBank =
             "questionOptions": [
                 {
                     "optionId": "A",
-                    "optionText ": "Use Amazon ECS and Service Auto Scaling."
+                    "optionText": "Use Amazon ECS and Service Auto Scaling."
                 },
                 {
                     "optionId": "B",
-                    "optionText ": "Use Spot Instancesfor orchestration andfor scaling containers on existing Amazon EC2 instances."
+                    "optionText": "Use Spot Instancesfor orchestration andfor scaling containers on existing Amazon EC2 instances."
                 },
                 {
                     "optionId": "C",
-                    "optionText ": "Use AWS OpsWorks to launch containers in new Amazon EC2 instances."
+                    "optionText": "Use AWS OpsWorks to launch containers in new Amazon EC2 instances."
                 },
                 {
                     "optionId": "D",
-                    "optionText ": "Use Auto Scaling groups to launch containers on existing Amazon EC2 instances."
+                    "optionText": "Use Auto Scaling groups to launch containers on existing Amazon EC2 instances."
                 }
             ],
             "questionAnswer": "A"
@@ -2549,19 +2549,19 @@ export const questionBank =
             "questionOptions": [
                 {
                     "optionId": "A",
-                    "optionText ": "Amazon API Gateway and AWS Lambda "
+                    "optionText": "Amazon API Gateway and AWS Lambda "
                 },
                 {
                     "optionId": "B",
-                    "optionText ": "Elastic Load Balancing with Auto Scaling groups and Amazon EC2 "
+                    "optionText": "Elastic Load Balancing with Auto Scaling groups and Amazon EC2 "
                 },
                 {
                     "optionId": "C",
-                    "optionText ": "Amazon API Gateway and Amazon EC2 "
+                    "optionText": "Amazon API Gateway and Amazon EC2 "
                 },
                 {
                     "optionId": "D",
-                    "optionText ": "Amazon CloudFront and AWS Lambda "
+                    "optionText": "Amazon CloudFront and AWS Lambda "
                 }
             ],
             "questionAnswer": "D"
@@ -2572,19 +2572,19 @@ export const questionBank =
             "questionOptions": [
                 {
                     "optionId": "A",
-                    "optionText ": "Create a read replica of the primary database and deploy it in a different AWS Region."
+                    "optionText": "Create a read replica of the primary database and deploy it in a different AWS Region."
                 },
                 {
                     "optionId": "B",
-                    "optionText ": "Enable multi - AZ to create a standby database in a different Availability Zone."
+                    "optionText": "Enable multi - AZ to create a standby database in a different Availability Zone."
                 },
                 {
                     "optionId": "C",
-                    "optionText ": "Enable multi - AZ to create a standby database in a different AWS Region."
+                    "optionText": "Enable multi - AZ to create a standby database in a different AWS Region."
                 },
                 {
                     "optionId": "D",
-                    "optionText ": "Create a read replica of the primary database and deploy it in a different Availability Zone."
+                    "optionText": "Create a read replica of the primary database and deploy it in a different Availability Zone."
                 }
             ],
             "questionAnswer": "A"
@@ -2687,7 +2687,7 @@ export const questionBank =
             "questionOptions": [
                 {
                     "optionId": "A",
-                    "optionText": "The instance with the oldest launch con guration."
+                    "optionText": "The instance with the oldest launch configuration."
                 },
                 {
                     "optionId": "B",
@@ -2710,19 +2710,19 @@ export const questionBank =
             "questionOptions": [
                 {
                     "optionId": "A",
-                    "optionText ": "Implement an Amazon API Gateway to server as the HTTP endpoint.Have the API Gateway trigger an AWS Lambdafunction to process the messages,and save the results to an Amazon DynamoDB table."
+                    "optionText": "Implement an Amazon API Gateway to server as the HTTP endpoint.Have the API Gateway trigger an AWS Lambdafunction to process the messages,and save the results to an Amazon DynamoDB table."
                 },
                 {
                     "optionId": "B",
-                    "optionText ": "Create an Amazon EC2 instance to server as the HTTP endpoint and to process the messages.Save the results to Amazon S3for the Data Analysis team to download."
+                    "optionText": "Create an Amazon EC2 instance to server as the HTTP endpoint and to process the messages.Save the results to Amazon S3for the Data Analysis team to download."
                 },
                 {
                     "optionId": "C",
-                    "optionText ": "Use Amazon Route 53 to direct incoming sensor messages to a Lambdafunction to process the message and save the results to a Amazon DynamoDB table."
+                    "optionText": "Use Amazon Route 53 to direct incoming sensor messages to a Lambdafunction to process the message and save the results to a Amazon DynamoDB table."
                 },
                 {
                     "optionId": "D",
-                    "optionText ": "Use AWS Direct Connect to connect sensors to DynamoDB so that data can be written directly to a DynamoDB table where it can be accessed by the Data Analysis team."
+                    "optionText": "Use AWS Direct Connect to connect sensors to DynamoDB so that data can be written directly to a DynamoDB table where it can be accessed by the Data Analysis team."
                 }
             ],
             "questionAnswer": "A"
@@ -2733,19 +2733,19 @@ export const questionBank =
             "questionOptions": [
                 {
                     "optionId": "A",
-                    "optionText ": "Amazon RDS "
+                    "optionText": "Amazon RDS "
                 },
                 {
                     "optionId": "B",
-                    "optionText ": "Amazon RedShift "
+                    "optionText": "Amazon RedShift "
                 },
                 {
                     "optionId": "C",
-                    "optionText ": "Amazon DynamoDB Accelerator "
+                    "optionText": "Amazon DynamoDB Accelerator "
                 },
                 {
                     "optionId": "D",
-                    "optionText ": "Amazon ElastiCache "
+                    "optionText": "Amazon ElastiCache "
                 }
             ],
             "questionAnswer": "A"
@@ -2756,19 +2756,19 @@ export const questionBank =
             "questionOptions": [
                 {
                     "optionId": "A",
-                    "optionText ": "Use an Amazon Redshift database.Copy the product database into Redshift and allow the team to query it."
+                    "optionText": "Use an Amazon Redshift database.Copy the product database into Redshift and allow the team to query it."
                 },
                 {
                     "optionId": "B",
-                    "optionText ": "Use an Amazon RDS read replica of the production database and allow the team to query against it."
+                    "optionText": "Use an Amazon RDS read replica of the production database and allow the team to query against it."
                 },
                 {
                     "optionId": "C",
-                    "optionText ": "Use multiple Amazon EC2 instances running replicas of the production database,placed behind a load balancer."
+                    "optionText": "Use multiple Amazon EC2 instances running replicas of the production database,placed behind a load balancer."
                 },
                 {
                     "optionId": "D",
-                    "optionText ": "Use an Amazon DynamoDB table to store a copy of the data."
+                    "optionText": "Use an Amazon DynamoDB table to store a copy of the data."
                 }
             ],
             "questionAnswer": "B"
@@ -2779,19 +2779,19 @@ export const questionBank =
             "questionOptions": [
                 {
                     "optionId": "A",
-                    "optionText ": "Amazon Kinesis Data Firehouse "
+                    "optionText": "Amazon Kinesis Data Firehouse "
                 },
                 {
                     "optionId": "B",
-                    "optionText ": "Amazon SQS "
+                    "optionText": "Amazon SQS "
                 },
                 {
                     "optionId": "C",
-                    "optionText ": "Amazon Redshift "
+                    "optionText": "Amazon Redshift "
                 },
                 {
                     "optionId": "D",
-                    "optionText ": "Amazon SNS E.Amazon DynamoDB "
+                    "optionText": "Amazon SNS E.Amazon DynamoDB "
                 }
             ],
             "questionAnswer": "AC"
@@ -2802,19 +2802,19 @@ export const questionBank =
             "questionOptions": [
                 {
                     "optionId": "A",
-                    "optionText ": "Cross - region read replica "
+                    "optionText": "Cross - region read replica "
                 },
                 {
                     "optionId": "B",
-                    "optionText ": "Multiple Availability Zone snapshot copy "
+                    "optionText": "Multiple Availability Zone snapshot copy "
                 },
                 {
                     "optionId": "C",
-                    "optionText ": "Multiple Availability Zone read replica "
+                    "optionText": "Multiple Availability Zone read replica "
                 },
                 {
                     "optionId": "D",
-                    "optionText ": "Cross - region snapshot copy "
+                    "optionText": "Cross - region snapshot copy "
                 }
             ],
             "questionAnswer": "D"
@@ -2848,19 +2848,19 @@ export const questionBank =
             "questionOptions": [
                 {
                     "optionId": "A",
-                    "optionText ": "Amazon S3 "
+                    "optionText": "Amazon S3 "
                 },
                 {
                     "optionId": "B",
-                    "optionText ": "Amazon EBS "
+                    "optionText": "Amazon EBS "
                 },
                 {
                     "optionId": "C",
-                    "optionText ": "Amazon Glacier "
+                    "optionText": "Amazon Glacier "
                 },
                 {
                     "optionId": "D",
-                    "optionText ": "Amazon EFS "
+                    "optionText": "Amazon EFS "
                 }
             ],
             "questionAnswer": "C"
@@ -2894,19 +2894,19 @@ export const questionBank =
             "questionOptions": [
                 {
                     "optionId": "A",
-                    "optionText ": "Amazon Elasticsearch Service "
+                    "optionText": "Amazon Elasticsearch Service "
                 },
                 {
                     "optionId": "B",
-                    "optionText ": "Amazon Athena "
+                    "optionText": "Amazon Athena "
                 },
                 {
                     "optionId": "C",
-                    "optionText ": "Amazon Redshift "
+                    "optionText": "Amazon Redshift "
                 },
                 {
                     "optionId": "D",
-                    "optionText ": "Amazon Kinesis Data Analytics "
+                    "optionText": "Amazon Kinesis Data Analytics "
                 }
             ],
             "questionAnswer": "D"
@@ -2944,19 +2944,19 @@ export const questionBank =
             "questionOptions": [
                 {
                     "optionId": "A",
-                    "optionText ": "Encrypt the les on the client side and store the les on Amazon Glacier,then decrypt the reports on the client side."
+                    "optionText": "Encrypt the les on the client side and store the les on Amazon Glacier,then decrypt the reports on the client side."
                 },
                 {
                     "optionId": "B",
-                    "optionText ": "Move the les to Amazon ElastiCache and provide a username and passwordfor downloading the reports."
+                    "optionText": "Move the les to Amazon ElastiCache and provide a username and passwordfor downloading the reports."
                 },
                 {
                     "optionId": "C",
-                    "optionText ": "Specify the use of AWS KMS server - side encryption at the time of an object creation on Amazon S3."
+                    "optionText": "Specify the use of AWS KMS server - side encryption at the time of an object creation on Amazon S3."
                 },
                 {
                     "optionId": "D",
-                    "optionText ": "Store the les on Amazon S3 and use the application to generate S3 pre - signed URLs to users."
+                    "optionText": "Store the les on Amazon S3 and use the application to generate S3 pre - signed URLs to users."
                 }
             ],
             "questionAnswer": "D"
@@ -2967,19 +2967,19 @@ export const questionBank =
             "questionOptions": [
                 {
                     "optionId": "A",
-                    "optionText ": "AWS CloudTrail logs "
+                    "optionText": "AWS CloudTrail logs "
                 },
                 {
                     "optionId": "B",
-                    "optionText ": "Amazon VPC ow logs "
+                    "optionText": "Amazon VPC ow logs "
                 },
                 {
                     "optionId": "C",
-                    "optionText ": "Amazon S3 bucket logs "
+                    "optionText": "Amazon S3 bucket logs "
                 },
                 {
                     "optionId": "D",
-                    "optionText ": "Amazon CloudWatch Logs "
+                    "optionText": "Amazon CloudWatch Logs "
                 }
             ],
             "questionAnswer": "B"
@@ -2990,19 +2990,19 @@ export const questionBank =
             "questionOptions": [
                 {
                     "optionId": "A",
-                    "optionText ": "Amazon DynamoDB "
+                    "optionText": "Amazon DynamoDB "
                 },
                 {
                     "optionId": "B",
-                    "optionText ": "Amazon EBS Throughput Optimized HDD Volumes "
+                    "optionText": "Amazon EBS Throughput Optimized HDD Volumes "
                 },
                 {
                     "optionId": "C",
-                    "optionText ": "Amazon EBS Cold HDD Volumes "
+                    "optionText": "Amazon EBS Cold HDD Volumes "
                 },
                 {
                     "optionId": "D",
-                    "optionText ": "Amazon ElastiCache "
+                    "optionText": "Amazon ElastiCache "
                 }
             ],
             "questionAnswer": "A"
@@ -3013,19 +3013,19 @@ export const questionBank =
             "questionOptions": [
                 {
                     "optionId": "A",
-                    "optionText ": "Amazon S3 Standard "
+                    "optionText": "Amazon S3 Standard "
                 },
                 {
                     "optionId": "B",
-                    "optionText ": "Amazon Glacier standard retrievals "
+                    "optionText": "Amazon Glacier standard retrievals "
                 },
                 {
                     "optionId": "C",
-                    "optionText ": "Amazon Glacier bulk retrievals D Amazon S3 Standard Infrequent Access 3 "
+                    "optionText": "Amazon Glacier bulk retrievals D Amazon S3 Standard Infrequent Access 3 "
                 },
                 {
                     "optionId": "D",
-                    "optionText ": "Amazon S3 Standard Infrequent Access "
+                    "optionText": "Amazon S3 Standard Infrequent Access "
                 }
             ],
             "questionAnswer": "D"
@@ -3765,7 +3765,7 @@ export const questionBank =
                 },
                 {
                     "optionId": "C",
-                    "optionText": "CORS con guration"
+                    "optionText": "CORS configuration"
                 },
                 {
                     "optionId": "D",
@@ -3830,15 +3830,15 @@ export const questionBank =
                 },
                 {
                     "optionId": "B",
-                    "optionText": "Create a launch Configuration with the AMI ID of the web server image. Create an Auto Scaling group using the newly-created launch con guration, and a desired capacity of two web servers across multiple regions. Use an Application Load Balancer (ALB) to balance traffic across the Auto Scaling group."
+                    "optionText": "Create a launch Configuration with the AMI ID of the web server image. Create an Auto Scaling group using the newly-created launch configuration, and a desired capacity of two web servers across multiple regions. Use an Application Load Balancer (ALB) to balance traffic across the Auto Scaling group."
                 },
                 {
                     "optionId": "C",
-                    "optionText": "Create a launch Configuration with the AMI ID of the web server image. Create an Auto Scaling group using the newly-created launch con guration, and a desired capacity of two web servers across multiple Availability Zones. Use an ALB to balance traffic across the Auto Scaling group."
+                    "optionText": "Create a launch Configuration with the AMI ID of the web server image. Create an Auto Scaling group using the newly-created launch configuration, and a desired capacity of two web servers across multiple Availability Zones. Use an ALB to balance traffic across the Auto Scaling group."
                 },
                 {
                     "optionId": "D",
-                    "optionText": "Create a launch Configuration with the AMI ID of the web server image. Create an Auto Scaling group using the newly-created launch con guration, and a desired capacity of two web servers across multiple Availability Zones. Use Amazon Route 53 weighted routing to balance traffic across the Auto Scaling group."
+                    "optionText": "Create a launch Configuration with the AMI ID of the web server image. Create an Auto Scaling group using the newly-created launch configuration, and a desired capacity of two web servers across multiple Availability Zones. Use Amazon Route 53 weighted routing to balance traffic across the Auto Scaling group."
                 }
             ],
             "questionAnswer": "C"
@@ -5326,7 +5326,7 @@ export const questionBank =
         },
         {
             "questionId": 229,
-            "questionText": "A web server will be provisioned on two Amazon EC2 instances with an Application Load Balancer. Which of the following con gurations will allow traffic on HTTP and HTTPS when con guring a security group to apply to each of these servers?",
+            "questionText": "A web server will be provisioned on two Amazon EC2 instances with an Application Load Balancer. Which of the following configurations will allow traffic on HTTP and HTTPS when con guring a security group to apply to each of these servers?",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -6235,7 +6235,7 @@ export const questionBank =
         },
         {
             "questionId": 268,
-            "questionText": "A company plans to deploy a new application in AWS that reads and writes information to a database. The company wants to deploy the application in two different AWS Regions in an active-active con guration. The databases need to replicate to keep information in sync. What should be used to meet these requirements?",
+            "questionText": "A company plans to deploy a new application in AWS that reads and writes information to a database. The company wants to deploy the application in two different AWS Regions in an active-active configuration. The databases need to replicate to keep information in sync. What should be used to meet these requirements?",
             "questionOptions": [
                 {
                     "optionId": "A",

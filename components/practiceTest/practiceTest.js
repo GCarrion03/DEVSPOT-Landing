@@ -38,12 +38,12 @@ class practiceTest extends HTMLElement {
                     <label for="nameInput" style="float: left;">Your name: &nbsp;</label><input type="text" id="nameInput" style="float: left;" ><input type="button" id="start" value="Start Assessment" style="float: right;" >
                 </div>
                 <div id="passMessage" style = "display:none;">
-                    <h4 id="passHeader" style="min-height: 100px;">Pass</h4>                    
+                    <h4 id="passHeader" style="min-height: 50px;">Pass</h4>                    
                     <input type="button" id="btnCertificate" value="Get your certificate!" style="float: right;" >
                 </div>
                 <div id="failMessage" style = "display:none;">
-                    <h4 id="failHeader" style="min-height: 100px;">Fail</h4> 
-                    <input type="button" id="btnRetake" value="Retake test" style="float: right;" onclick="location.reload();" >
+                    <h4 id="failHeader" style="min-height: 50px;">Fail</h4> 
+                    <input type="button" id="btnRetake" value="Retake test" style="float: right;" onclick="location = location;" >
                 </div>
              </template>`
         this.shadowRoot.append(div);
@@ -56,11 +56,11 @@ class practiceTest extends HTMLElement {
             let questionOptions = '';
             if (question.questionAnswer && question.questionAnswer.length === 1) {
                 question.questionOptions.forEach(option => {
-                    questionOptions += ('<input id="' + i + option.optionId + '" name="answer' + i + '" type="radio" style="float: left;"><label id="' + i + option.optionId + 'label" for="' + i + option.optionId + '" style="padding-left: 5px;float: left;font-weight: 100;">' + option.optionId + '. ' + option.optionText + '</label><br> <br>')
+                    questionOptions += ('<span style="display: inline-flex;"><input id="' + i + option.optionId + '" name="answer' + i + '" type="radio" style="float: left;"><label id="' + i + option.optionId + 'label" for="' + i + option.optionId + '" style="padding-left: 5px;float: left;font-weight: 100;">' + option.optionId + '. ' + option.optionText + '</label></span><br>')
                 });
             } else {
                 question.questionOptions.forEach(option => {
-                    questionOptions += ('<input id="' + i + option.optionId + '" name="answer' + i + '" type="checkbox" style="float: left;"><label id="' + i + option.optionId + 'label" for="' + i + option.optionId + '" style="padding-left: 5px;float: left;font-weight: 100;">' + option.optionId + '. ' + option.optionText + '</label><br> <br>')
+                    questionOptions += ('<span style="display: inline-flex;"><input id="' + i + option.optionId + '" name="answer' + i + '" type="checkbox" style="float: left;"><label id="' + i + option.optionId + 'label" for="' + i + option.optionId + '" style="padding-left: 5px;float: left;font-weight: 100;">' + option.optionId + '. ' + option.optionText + '</label></span> <br>')
                 });
             }
             const div = document.createElement('div');
@@ -166,14 +166,15 @@ function makeValidateCallback(shadowRoot, currentI, question) {
 
         if (shadowRoot.querySelectorAll(`input[name^=answer]:checked`).length >= 10) {
             shadowRoot.getElementById(`questionContainer${currentI}`).style.display = "none";
-            if (parseInt(shadowRoot.querySelector(`label[name=score]`).innerHTML) >= 7) {
-                shadowRoot.getElementById(`passMessage`).style.display = "inline";
+            const score = parseInt(shadowRoot.querySelector(`label[name=score]`).innerHTML);
+            if (score >= 7) {
+                shadowRoot.getElementById(`passMessage`).style.display = "inline-block";
                 shadowRoot.getElementById(`welcomeMessage`).style.display = "none";
-                shadowRoot.getElementById(`passHeader`).innerHTML = `Congrats ${shadowRoot.getElementById('nameInput').value} you passed, Good luck on your exam!`;
+                shadowRoot.getElementById(`passHeader`).innerHTML = `Congrats ${shadowRoot.getElementById('nameInput').value} you passed, Good luck on your exam! Score: ${score}/${numberOfQuestions}`;
             } else {
-                shadowRoot.getElementById(`failMessage`).style.display = "inline";
+                shadowRoot.getElementById(`failMessage`).style.display = "inline-block";
                 shadowRoot.getElementById(`welcomeMessage`).style.display = "none";
-                shadowRoot.getElementById(`failHeader`).innerHTML = `Oh no! ${shadowRoot.getElementById('nameInput').value} you failed, click Retake test to try again.`;
+                shadowRoot.getElementById(`failHeader`).innerHTML = `Oh no! ${shadowRoot.getElementById('nameInput').value} you failed, click Retake test to try again. Score: ${score}/${numberOfQuestions}`;
             }
 
         }
