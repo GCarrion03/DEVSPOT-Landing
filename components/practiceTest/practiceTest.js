@@ -1,4 +1,4 @@
-const numberOfQuestions = 313;
+const numberOfQuestions = 10;
 
 
 
