@@ -164,7 +164,7 @@ function makeValidateCallback(shadowRoot, currentI, question) {
         }
 
 
-        if (shadowRoot.querySelectorAll(`input[name^=answer]:checked`).length === 10) {
+        if (shadowRoot.querySelectorAll(`input[name^=answer]:checked`).length >= 10) {
             shadowRoot.getElementById(`questionContainer${currentI}`).style.display = "none";
             if (parseInt(shadowRoot.querySelector(`label[name=score]`).innerHTML) >= 7) {
                 shadowRoot.getElementById(`passMessage`).style.display = "inline";
