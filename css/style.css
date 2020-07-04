@@ -2,6 +2,7 @@ body {
     font-family: 'Roboto', sans-serif;
     word-spacing: 1.5px;
     position: relative;
+    background: lightgray;
 }
 
 #carousel1 {

@@ -69,14 +69,15 @@ class practiceTest extends HTMLElement {
                 `<template id="practiceTest-template${i}">
                 <div class="row" id="questionContainer${i}" style = "display:none">
                     <div class="col-lg-12" style="min-height: 400px">
-                        <h5 class="mb-3"><strong id="questionDescription">1. A Solutions Architect is designing an application that will encrypt all data in an Amazon Redshift cluster.<br>Which action will encrypt the data at rest?</strong></h5>
-                        <BR>
+                        <h5 class="mb-3"><strong id="questionDescription">300. Question sample - A Solutions Architect is designing an application that will encrypt all data in an Amazon Redshift cluster.<br>Which action will encrypt the data at rest?</strong></h5>
+                        <div style="border-bottom: 1px solid black;"></div>
+                        <br>
                             ${questionOptions}
                     </div>
                     <div class="col-lg-12">
                         <button id="prev${i}" type="button" value="<" style="float: left;"><i class="fa fa-arrow-left"></i></button>
                         <button id="next${i}" type="button" value=">" style="float: left;"><i class="fa fa-arrow-right"></i></button>
-                        <button id="${i}showAnswer" type="button" style="float: right;" ><i class="fa fa-eye"> Check Answer</i></button>
+                        <button id="${i}showAnswer" type="button" style="float: right;" ><i class="fa fa-check-square-o"> Check Answer</i></button>
                         <strong><label for="${i}showAnswer" style="float: right;">/${questions.length}&nbsp;</label><label name="score" for="${i}showAnswer" id="currentScore${i}" style="float: right;">0</label><label for="${i}showAnswer" style="float: right;">Score: &nbsp;</label></strong> 
                     </div>
                 </div>
