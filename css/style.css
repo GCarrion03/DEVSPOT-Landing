@@ -487,3 +487,20 @@ button.navbar-toggle {
     }
 
 }
+
+button {
+    background: radial-gradient(circle, rgba(66,87,116,0.8127626050420168) 0%, rgba(0,0,0,1) 0%, rgba(0,142,255,1) 100%);
+    border-radius: 5px;
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 6px 10px; /* Some padding */
+    font-size: 14px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+    margin: 1px;
+}
+
+/* Darker background on mouse-over */
+button:hover {
+    background: radial-gradient(circle, rgba(66,87,116,0.8127626050420168) 0%, rgb(255, 255, 255) 0%, rgba(0,142,255,1) 100%);
+    color: black;
+}

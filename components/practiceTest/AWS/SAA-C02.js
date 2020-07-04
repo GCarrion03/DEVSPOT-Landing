@@ -3868,7 +3868,7 @@ export const questionBank =
         },
         {
             "questionId": 167,
-            "questionText": "A company wants to migrate a three-tier web application to AWS. The company wants to control the placement of the instances and have visibility 46/29/2020 p y g pp p y p y into underlying sockets and cores for licensing purposes. Which compute model should a Solutions Architect choose to accomplish this task?",
+            "questionText": "A company wants to migrate a three-tier web application to AWS. The company wants to control the placement of the instances and have visibility into underlying sockets and cores for licensing purposes. Which compute model should a Solutions Architect choose to accomplish this task?",
             "questionOptions": [
                 {
                     "optionId": "A",

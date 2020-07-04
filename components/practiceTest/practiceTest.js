@@ -35,15 +35,15 @@ class practiceTest extends HTMLElement {
                     <p style="text-align: center;">Welcome to the Amazon Web Services Certified Solutions Architect Associate Exam<span>&nbsp;readiness quiz</span>&nbsp;</p>
                     <p>We will randomly select 10 questions from our curated database, score more than 7/10 and you will be ready to sit for your exam</p> 
                     <br>
-                    <label for="nameInput" style="float: left;">Your name: &nbsp;</label><input type="text" id="nameInput" style="float: left;" ><input type="button" id="start" value="Start Assessment" style="float: right;" >
+                    <label for="nameInput" style="float: left;">Your name: &nbsp;</label><input type="text" id="nameInput" style="float: left;" ><button type="button" id="start" style="float: right;" ><i class="fa fa-flag"> Start Assessment</i></button>
                 </div>
                 <div id="passMessage" style = "display:none;">
                     <h4 id="passHeader" style="min-height: 50px;">Pass</h4>                    
-                    <input type="button" id="btnCertificate" value="Get your certificate!" style="float: right;" >
+                    <button type="button" id="btnCertificate" value="" style="float: right;" onclick="alert('Not yet implemented!, send me a message on linkedin or reddit to support this feature')"><i class="fa fa-certificate"> Get your certificate!</i></button>
                 </div>
-                <div id="failMessage" style = "display:none;">
+                <div id="failMessage" style = "display:none;" class="col-lg-12">
                     <h4 id="failHeader" style="min-height: 50px;">Fail</h4> 
-                    <input type="button" id="btnRetake" value="Retake test" style="float: right;" onclick="location = location;" >
+                    <button type="button" id="btnRetake"  style="float: right;" onclick="location = location;" ><i class="fa fa-repeat"> Retake test</i> </button>
                 </div>
              </template>`
         this.shadowRoot.append(div);
@@ -74,9 +74,9 @@ class practiceTest extends HTMLElement {
                             ${questionOptions}
                     </div>
                     <div class="col-lg-12">
-                        <input id="prev${i}" type="button" value="<" style="float: left;">
-                        <input id="next${i}" type="button" value=">" style="float: left;">
-                        <input id="${i}showAnswer" type="button" value="Check Answer" style="float: right;" >
+                        <button id="prev${i}" type="button" value="<" style="float: left;"><i class="fa fa-arrow-left"></i></button>
+                        <button id="next${i}" type="button" value=">" style="float: left;"><i class="fa fa-arrow-right"></i></button>
+                        <button id="${i}showAnswer" type="button" style="float: right;" ><i class="fa fa-eye"> Check Answer</i></button>
                         <strong><label for="${i}showAnswer" style="float: right;">/${questions.length}&nbsp;</label><label name="score" for="${i}showAnswer" id="currentScore${i}" style="float: right;">0</label><label for="${i}showAnswer" style="float: right;">Score: &nbsp;</label></strong> 
                     </div>
                 </div>
