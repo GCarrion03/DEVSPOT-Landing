@@ -16,7 +16,7 @@ class practiceTest extends HTMLElement {
         var iterator;
         for (iterator = 0; iterator < numberOfQuestions; iterator++) {
             var questionToAdd = questionBank[Math.floor(Math.random() * questionBank.length)];
-            if (questionToAdd.questionAnswer && questionToAdd.questionAnswer.length <= 4) {
+            if (questionToAdd.questionAnswer && questionToAdd.questionAnswer.length <= 4 && !questions.includes(questionToAdd)) {
                 questions.push(questionToAdd);
             } else {
                 console.error(`error on question ${questionToAdd.questionId} answer: ${questionToAdd.questionAnswer}` );
@@ -37,13 +37,17 @@ class practiceTest extends HTMLElement {
                     <br>
                     <label for="nameInput" style="float: left;">Your name: &nbsp;</label><input type="text" id="nameInput" style="float: left;" ><button type="button" id="start" style="float: right;" ><i class="fa fa-flag"> Start Assessment</i></button>
                 </div>
-                <div id="passMessage" style = "display:none;">
+                <div id="passMessage" style="display:none;">
                     <h4 id="passHeader" style="min-height: 50px;">Pass</h4>                    
-                    <button type="button" id="btnCertificate" value="" style="float: right;" onclick="alert('Not yet implemented!, send me a message on linkedin or reddit to support this feature')"><i class="fa fa-certificate"> Get your certificate!</i></button>
+                    <button type="button" id="btnCertificate" value="" style="float: right;" onclick="alert('Impressive but, this is not yet implemented!, comment my post on Linkedin or Reddit with your passing score to support this feature')"><i class="fa fa-certificate"> Get your certificate!</i></button>
                 </div>
                 <div id="failMessage" style = "display:none;" class="col-lg-12">
                     <h4 id="failHeader" style="min-height: 50px;">Fail</h4> 
                     <button type="button" id="btnRetake"  style="float: right;" onclick="location = location;" ><i class="fa fa-repeat"> Retake test</i> </button>
+                </div>
+                <div id="scoreSection" style="display:none;" class="col-lg-12">
+                    <div class="col-lg-12"><label style="float: right;">/&nbsp;${questions.length}</label><label id="currentSubmissions" style="float: right;color: dodgerblue; margin: 0px 0.5em;">0</label><label style="float: right;color: dodgerblue;">&nbsp;/</label><label name="score" id="currentScore" style="float: right; color: green">0</label><label style="float: right;">Score: &nbsp;</label></div>
+                    <div class="col-lg-12" style="border-bottom: 1px solid black;"></div>
                 </div>
              </template>`
         this.shadowRoot.append(div);
@@ -69,7 +73,7 @@ class practiceTest extends HTMLElement {
                 `<template id="practiceTest-template${i}">
                 <div class="row" id="questionContainer${i}" style = "display:none">
                     <div class="col-lg-12" style="min-height: 400px">
-                        <h5 class="mb-3"><strong id="questionDescription">300. Question sample - A Solutions Architect is designing an application that will encrypt all data in an Amazon Redshift cluster.<br>Which action will encrypt the data at rest?</strong></h5>
+                        <h5 class="mb-3"><strong id="questionDescription">300. Question sample - A Solutions Architect AWSCSAA SAA-C02 is designing an application that will encrypt all data in an Amazon Redshift cluster.<br>Which action will encrypt the data at rest?</strong></h5>
                         <div style="border-bottom: 1px solid black;"></div>
                         <br>
                             ${questionOptions}
@@ -77,8 +81,7 @@ class practiceTest extends HTMLElement {
                     <div class="col-lg-12">
                         <button id="prev${i}" type="button" value="<" style="float: left;"><i class="fa fa-arrow-left"></i></button>
                         <button id="next${i}" type="button" value=">" style="float: left;"><i class="fa fa-arrow-right"></i></button>
-                        <button id="${i}showAnswer" type="button" style="float: right;" ><i class="fa fa-check-square-o"> Check Answer</i></button>
-                        <strong><label for="${i}showAnswer" style="float: right;">/${questions.length}&nbsp;</label><label name="score" for="${i}showAnswer" id="currentScore${i}" style="float: right;">0</label><label for="${i}showAnswer" style="float: right;">Score: &nbsp;</label></strong> 
+                        <button id="${i}showAnswer" type="button" style="float: right;" ><i class="fa fa-check-square-o"> Check Answer</i></button> 
                     </div>
                 </div>
             </template>`;
@@ -109,6 +112,7 @@ function makeValidateCallback(shadowRoot, currentI, question) {
         shadowRoot.getElementById(`start`).onclick = () => {
             shadowRoot.getElementById(`welcomeMessage`).style.display = "none";
             shadowRoot.getElementById(`questionContainer${currentI}`).style.display = "inline";
+            shadowRoot.getElementById(`scoreSection`).style.display = "inline";
             shadowRoot.getElementById(`prev${currentI}`).disabled = true;
         }
     }
@@ -132,7 +136,9 @@ function makeValidateCallback(shadowRoot, currentI, question) {
     }
 
     shadowRoot.getElementById(`${currentI}showAnswer`).onclick = () => {
-
+        var currentScore = shadowRoot.querySelector(`label[id=currentScore]`);
+        var currentSubmissions = shadowRoot.querySelector(`label[id=currentSubmissions]`);
+        currentSubmissions.innerHTML = parseInt(currentSubmissions.innerHTML) + 1;
         if (question.questionAnswer && question.questionAnswer.length === 1) {
             shadowRoot.getElementById(`${currentI + question.questionAnswer}label`).innerHTML += '&#9989;';
             if (!shadowRoot.getElementById(`${currentI + question.questionAnswer}`).checked) {
@@ -141,7 +147,7 @@ function makeValidateCallback(shadowRoot, currentI, question) {
                     shadowRoot.getElementById(incorrectAns.id + 'label').innerHTML += '&#10060;';
                 }
             } else {
-                shadowRoot.querySelectorAll(`label[name=score]`).forEach(e => e.innerHTML = parseInt(e.innerHTML) + 1);
+                currentScore.innerHTML = parseInt(currentScore.innerHTML) + 1;
             }
         } else {
             var isCorrect = true;
@@ -160,14 +166,15 @@ function makeValidateCallback(shadowRoot, currentI, question) {
                 elementLabelSelected.innerHTML += '&#9989;';
             });
             if (isCorrect) {
-                shadowRoot.querySelectorAll(`label[name=score]`).forEach(e => e.innerHTML = parseInt(e.innerHTML) + 1);
+                currentScore.innerHTML = parseInt(currentScore.innerHTML) + 1;
             }
         }
 
 
-        if (shadowRoot.querySelectorAll(`input[name^=answer]:checked`).length >= 10) {
+        if (parseInt(currentSubmissions.innerHTML) >= numberOfQuestions) {
             shadowRoot.getElementById(`questionContainer${currentI}`).style.display = "none";
-            const score = parseInt(shadowRoot.querySelector(`label[name=score]`).innerHTML);
+            shadowRoot.getElementById(`scoreSection`).style.display = "none";
+            score = parseInt(currentScore.innerHTML);
             if (score >= 7) {
                 shadowRoot.getElementById(`passMessage`).style.display = "inline-block";
                 shadowRoot.getElementById(`welcomeMessage`).style.display = "none";

@@ -505,3 +505,8 @@ button:hover {
     background: radial-gradient(circle, rgba(66,87,116,0.8127626050420168) 0%, rgb(255, 255, 255) 0%, rgba(0,142,255,1) 100%);
     color: black;
 }
+
+button:disabled{
+    background: radial-gradient(circle, rgba(66,87,116,0.8127626050420168) 0%, rgb(255, 255, 255) 0%, rgba(0,142,255,1) 100%);
+    color: gray;
+}

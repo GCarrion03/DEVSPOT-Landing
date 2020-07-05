@@ -209,23 +209,23 @@ export const questionBank =
         },
         {
             "questionId": 10,
-            "questionText": "A mobile application serves scienti c articles from individual les in an Amazon S3 bucket.Articles older than 30 days are rarely read.Articles older than 60 days no longer need to be available through the application,but the application owner would like to keep themfor historical purposes.Which cost - effective solution BEST meets these requirements ? ",
+            "questionText": "A mobile application serves scienti c articles from individual files in an Amazon S3 bucket.Articles older than 30 days are rarely read.Articles older than 60 days no longer need to be available through the application,but the application owner would like to keep themfor historical purposes.Which cost - effective solution BEST meets these requirements ? ",
             "questionOptions": [
                 {
                     "optionId": "A",
-                    "optionText": "Create a Lambda function to move les older than 30 days to Amazon EBS and move les older than 60 days to Amazon Glacier."
+                    "optionText": "Create a Lambda function to move files older than 30 days to Amazon EBS and move files older than 60 days to Amazon Glacier."
                 },
                 {
                     "optionId": "B",
-                    "optionText": "Create a Lambda function to move les older than 30 days to Amazon Glacier and move les older than 60 days to Amazon EBS."
+                    "optionText": "Create a Lambda function to move files older than 30 days to Amazon Glacier and move files older than 60 days to Amazon EBS."
                 },
                 {
                     "optionId": "C",
-                    "optionText": "Create lifecycle rules to move les older than 30 days to Amazon S3 Standard Infrequent Access and move les older than 60 days to Amazon Glacier."
+                    "optionText": "Create lifecycle rules to move files older than 30 days to Amazon S3 Standard Infrequent Access and move files older than 60 days to Amazon Glacier."
                 },
                 {
                     "optionId": "D",
-                    "optionText": "Create lifecycle rules to move les older than 30 days to Amazon Glacier and move les older than 60 days to Amazon S3 Standard "
+                    "optionText": "Create lifecycle rules to move files older than 30 days to Amazon Glacier and move files older than 60 days to Amazon S3 Standard "
                 }
             ],
             "questionAnswer": "C"
@@ -336,7 +336,7 @@ export const questionBank =
                 },
                 {
                     "optionId": "B",
-                    "optionText": "Store all static les in a multi-AZ Amazon Aurora database."
+                    "optionText": "Store all static files in a multi-AZ Amazon Aurora database."
                 },
                 {
                     "optionId": "C",
@@ -969,7 +969,7 @@ export const questionBank =
                 },
                 {
                     "optionId": "C",
-                    "optionText": "Enable AWS CloudTrail logging and specify an Amazon S3 bucket for storing log les."
+                    "optionText": "Enable AWS CloudTrail logging and specify an Amazon S3 bucket for storing log files."
                 },
                 {
                     "optionId": "D",
@@ -1260,7 +1260,7 @@ export const questionBank =
         },
         {
             "questionId": 55,
-            "questionText": "A news organization plans to migrate their 20 TB video archive to AWS.The les are rarely accessed,but when they are,a request is made in advance and a 3 to 5 - hour retrieval time frame is acceptable.However,when there is a breaking news story,the editors require access to archived footage within minutes.Which storage solution meets the needs of this organizationwhile providing the LOWEST cost of storage ? ",
+            "questionText": "A news organization plans to migrate their 20 TB video archive to AWS.The files are rarely accessed,but when they are,a request is made in advance and a 3 to 5 - hour retrieval time frame is acceptable.However,when there is a breaking news story,the editors require access to archived footage within minutes.Which storage solution meets the needs of this organizationwhile providing the LOWEST cost of storage ? ",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -1705,7 +1705,7 @@ export const questionBank =
         },
         {
             "questionId": 74,
-            "questionText": "A media company asked a Solutions Architect to design a highly available storage solution to serve as a centralized document storefor their Amazon EC2 instances.The storage solution needs to be POSIX - compliant,scale dynamically,and be able to serve up to 100 concurrent EC2 instances.Which solution meets these requirements ? ",
+            "questionText": "A media company asked a Solutions Architect to design a highly available storage solution to serve as a centralized document store for their Amazon EC2 instances. The storage solution needs to be POSIX - compliant, scale dynamically, and be able to serve up to 100 concurrent EC2 instances.Which solution meets these requirements ? ",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -1939,7 +1939,7 @@ export const questionBank =
         },
         {
             "questionId": 84,
-            "questionText": "A Solutions Architect is developing a solution for sharing les in an organization. The solution must allow multiple users to access the storage service at once from different virtual machines and scale automatically. It must also support le-level locking. Which storage service meets the requirements of this use case?",
+            "questionText": "A Solutions Architect is developing a solution for sharing files in an organization. The solution must allow multiple users to access the storage service at once from different virtual machines and scale automatically. It must also support le-level locking. Which storage service meets the requirements of this use case?",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -2430,11 +2430,11 @@ export const questionBank =
         },
         {
             "questionId": 105,
-            "questionText": "A company needs to quickly ensure that all les created in an Amazon S3 bucket in us-east-1 are also available in another bucket in ap-southeast2. Which option represents the SIMPLIEST way to implement this design?",
+            "questionText": "A company needs to quickly ensure that all files created in an Amazon S3 bucket in us-east-1 are also available in another bucket in ap-southeast2. Which option represents the SIMPLIEST way to implement this design?",
             "questionOptions": [
                 {
                     "optionId": "A",
-                    "optionText": "Add an S3 lifecycle rule to move any les from the bucket in us-east-1 to the bucket in ap-southeast-2."
+                    "optionText": "Add an S3 lifecycle rule to move any files from the bucket in us-east-1 to the bucket in ap-southeast-2."
                 },
                 {
                     "optionId": "B",
@@ -2637,7 +2637,7 @@ export const questionBank =
         },
         {
             "questionId": 114,
-            "questionText": "A company hosts a website on premises. The website has a mix of static and dynamic content, but users experience latency when loading static les. Which AWS service can help reduce latency?",
+            "questionText": "A company hosts a website on premises. The website has a mix of static and dynamic content, but users experience latency when loading static files. Which AWS service can help reduce latency?",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -2653,7 +2653,7 @@ export const questionBank =
                 },
                 {
                     "optionId": "D",
-                    "optionText": "Amazon EFS to store and server static les"
+                    "optionText": "Amazon EFS to store and server static files"
                 }
             ],
             "questionAnswer": "A"
@@ -2944,11 +2944,11 @@ export const questionBank =
             "questionOptions": [
                 {
                     "optionId": "A",
-                    "optionText": "Encrypt the les on the client side and store the les on Amazon Glacier,then decrypt the reports on the client side."
+                    "optionText": "Encrypt the files on the client side and store the files on Amazon Glacier,then decrypt the reports on the client side."
                 },
                 {
                     "optionId": "B",
-                    "optionText": "Move the les to Amazon ElastiCache and provide a username and passwordfor downloading the reports."
+                    "optionText": "Move the files to Amazon ElastiCache and provide a username and passwordfor downloading the reports."
                 },
                 {
                     "optionId": "C",
@@ -2956,7 +2956,7 @@ export const questionBank =
                 },
                 {
                     "optionId": "D",
-                    "optionText": "Store the les on Amazon S3 and use the application to generate S3 pre - signed URLs to users."
+                    "optionText": "Store the files on Amazon S3 and use the application to generate S3 pre - signed URLs to users."
                 }
             ],
             "questionAnswer": "D"
@@ -3078,7 +3078,7 @@ export const questionBank =
         },
         {
             "questionId": 133,
-            "questionText": "A media company must store 10 TB of audio recordings. Retrieval happens infrequently and requestors agree on an 8-hour turnaround time. What is the MOST cost-effective solution to store the les?",
+            "questionText": "A media company must store 10 TB of audio recordings. Retrieval happens infrequently and requestors agree on an 8-hour turnaround time. What is the MOST cost-effective solution to store the files?",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -3147,7 +3147,7 @@ export const questionBank =
         },
         {
             "questionId": 136,
-            "questionText": "A Solutions Architect is designing a solution that will include a database in Amazon RDS. Corporate security policy mandates that the database, its logs, and its backups are all encrypted. Which is the MOST e cient option to ful ll the security policy using Amazon RDS?",
+            "questionText": "A Solutions Architect is designing a solution that will include a database in Amazon RDS. Corporate security policy mandates that the database, its logs, and its backups are all encrypted. Which is the MOST efficient option to fulfill the security policy using Amazon RDS?",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -3216,7 +3216,7 @@ export const questionBank =
         },
         {
             "questionId": 139,
-            "questionText": "A company has gigabytes of web log les stored in an Amazon S3 bucket. A Solutions Architect wants to copy those les into Amazon Redshift for analysis. The company's security policy mandates that data is encrypted at rest both in the Amazon Redshift cluster and the Amazon S3 bucket. Which process will ful ll the security requirements?",
+            "questionText": "A company has gigabytes of web log files stored in an Amazon S3 bucket. A Solutions Architect wants to copy those files into Amazon Redshift for analysis. The company's security policy mandates that data is encrypted at rest both in the Amazon Redshift cluster and the Amazon S3 bucket. Which process will fulfill the security requirements?",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -3243,7 +3243,7 @@ export const questionBank =
             "questionOptions": [
                 {
                     "optionId": "A",
-                    "optionText": "Use ephemeral volumes to store the log les."
+                    "optionText": "Use ephemeral volumes to store the log files."
                 },
                 {
                     "optionId": "B",
@@ -3301,7 +3301,7 @@ export const questionBank =
                 },
                 {
                     "optionId": "C",
-                    "optionText": "Use an Auto Scaling group to scale the number of EC2 instances to match the site tra c."
+                    "optionText": "Use an Auto Scaling group to scale the number of EC2 instances to match the site traffic."
                 },
                 {
                     "optionId": "D",
@@ -3427,7 +3427,7 @@ export const questionBank =
         },
         {
             "questionId": 148,
-            "questionText": "An organization runs an online voting system for a television program. During broadcasts, hundreds of thousands of votes are submitted within minutes and sent to a front-end fleet of auto-scaled Amazon EC2 instances. The EC2 instances push the votes to an RDBMS database. The database is unable to keep up with the front-end connection requests. What is the MOST e cient and cost-effective way of ensuring that votes are processed in a timely manner?",
+            "questionText": "An organization runs an online voting system for a television program. During broadcasts, hundreds of thousands of votes are submitted within minutes and sent to a front-end fleet of auto-scaled Amazon EC2 instances. The EC2 instances push the votes to an RDBMS database. The database is unable to keep up with the front-end connection requests. What is the MOST efficient and cost-effective way of ensuring that votes are processed in a timely manner?",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -3542,7 +3542,7 @@ export const questionBank =
         },
         {
             "questionId": 153,
-            "questionText": "A prediction process requires access to a trained model that is stored in an Amazon S3 bucket. The process takes a few seconds to process an image and make a prediction. The process is not overly resource-intensive, does not require any specialized hardware, and takes less than 512 MB of memory to run. What would be the MOST effective compute solution for this use case?",
+            "questionText": "A prediction process requires access to a trained model that is stored in an Amazon S3 bucket. The process takes a few seconds to process an image and make a prediction. The process is not overly resource-intensive, does not require any specialized hardware, and takes filess than 512 MB of memory to run. What would be the MOST effective compute solution for this use case?",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -3634,7 +3634,7 @@ export const questionBank =
         },
         {
             "questionId": 157,
-            "questionText": "A company is looking for a fully-managed solution to store its players' state information for a rapidly growing game. The application runs on multiple Amazon EC2 nodes, which can scale according to the incoming tra c. The request can be routed to any of the nodes, therefore, the state information must be stored in a centralized database. The players' state information needs to be read with strong consistency and needs conditional updates for any changes. Which service would be MOST cost-effective, and scale seamlessly?",
+            "questionText": "A company is looking for a fully-managed solution to store its players' state information for a rapidly growing game. The application runs on multiple Amazon EC2 nodes, which can scale according to the incoming traffic. The request can be routed to any of the nodes, therefore, the state information must be stored in a centralized database. The players' state information needs to be read with strong consistency and needs conditional updates for any changes. Which service would be MOST cost-effective, and scale seamlessly?",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -3742,7 +3742,7 @@ export const questionBank =
                 },
                 {
                     "optionId": "C",
-                    "optionText": "Increase the number of Amazon EC2 instances to support the tra c."
+                    "optionText": "Increase the number of Amazon EC2 instances to support the traffic."
                 },
                 {
                     "optionId": "D",
@@ -4052,7 +4052,7 @@ export const questionBank =
         },
         {
             "questionId": 175,
-            "questionText": "A Solutions Architect was tasked with reviewing several templates that build VPCs and ensuring that they meet speci c security requirements. After reviewing the templates, the Architect realizes that all of the templates are missing important security best practices. What should the Architect do to implement security best practices in an e cient manner?",
+            "questionText": "A Solutions Architect was tasked with reviewing several templates that build VPCs and ensuring that they meet speci c security requirements. After reviewing the templates, the Architect realizes that all of the templates are missing important security best practices. What should the Architect do to implement security best practices in an efficient manner?",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -4217,7 +4217,7 @@ export const questionBank =
             "questionOptions": [
                 {
                     "optionId": "A",
-                    "optionText": "Move static les from ECS to Amazon S3"
+                    "optionText": "Move static files from ECS to Amazon S3"
                 },
                 {
                     "optionId": "B",
@@ -4263,7 +4263,7 @@ export const questionBank =
         },
         {
             "questionId": 184,
-            "questionText": "A web application is running on Amazon EC2 instances behind an Elastic Load Balancing Application Load Balancer (ALB). The EC2 instances should receive no tra c, except for web requests to the application. Based on these requirements, what security group rules should be put on the Amazon EC2 instances?",
+            "questionText": "A web application is running on Amazon EC2 instances behind an Elastic Load Balancing Application Load Balancer (ALB). The EC2 instances should receive no traffic, except for web requests to the application. Based on these requirements, what security group rules should be put on the Amazon EC2 instances?",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -4601,7 +4601,7 @@ export const questionBank =
                 },
                 {
                     "optionId": "D",
-                    "optionText": "Configure the web servers to communicate with RDS by using SSL, and issue certi cates to the web tier EC2 instances."
+                    "optionText": "Configure the web servers to communicate with RDS by using SSL, and issue certificates to the web tier EC2 instances."
                 },
                 {
                     "optionId": "E",
@@ -4750,7 +4750,7 @@ export const questionBank =
         },
         {
             "questionId": 205,
-            "questionText": "A Solutions Architect must review an application deployed on EC2 instances that currently stores multiple 5-GB les on attached instance store volumes. The company recently experienced a significant data loss after stopping and starting their instances and wants to prevent the data loss from happening again. The solution should minimize performance impact and the number of code changes required. What should the Solutions Architect recommend?",
+            "questionText": "A Solutions Architect must review an application deployed on EC2 instances that currently stores multiple 5-GB files on attached instance store volumes. The company recently experienced a significant data loss after stopping and starting their instances and wants to prevent the data loss from happening again. The solution should minimize performance impact and the number of code changes required. What should the Solutions Architect recommend?",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -4823,7 +4823,7 @@ export const questionBank =
         },
         {
             "questionId": 208,
-            "questionText": "A company uses Amazon S3 for storing a variety of les. A Solutions Architect needs to design a feature that will allow users to instantly restore any deleted les within 30 days of deletion. Which is the MOST cost-efficient cient solution?",
+            "questionText": "A company uses Amazon S3 for storing a variety of files. A Solutions Architect needs to design a feature that will allow users to instantly restore any deleted files within 30 days of deletion. Which is the MOST cost-efficient cient solution?",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -4896,7 +4896,7 @@ export const questionBank =
         },
         {
             "questionId": 211,
-            "questionText": "A Solutions Architect must design an Amazon DynamoDB table to store data about customer activities. The data is used to analyze recent customer behavior, so data that is less than a week old is heavily accessed and older data is accessed infrequently. Data that is more than one month old never needs to be referenced by the application, but needs to be archived for year-end analytics. What is the MOST cost-efficient cient way to meet these requirements? (Choose two.)",
+            "questionText": "A Solutions Architect must design an Amazon DynamoDB table to store data about customer activities. The data is used to analyze recent customer behavior, so data that is filess than a week old is heavily accessed and older data is accessed infrequently. Data that is more than one month old never needs to be referenced by the application, but needs to be archived for year-end analytics. What is the MOST cost-efficient cient way to meet these requirements? (Choose two.)",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -4946,7 +4946,7 @@ export const questionBank =
         },
         {
             "questionId": 213,
-            "questionText": "A large media site has multiple applications in Amazon ECS. A Solutions Architect needs to use content metadata and route traffic to speci c services. What is the MOST e cient method to perform this task?",
+            "questionText": "A large media site has multiple applications in Amazon ECS. A Solutions Architect needs to use content metadata and route traffic to speci c services. What is the MOST efficient method to perform this task?",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -5084,7 +5084,7 @@ export const questionBank =
         },
         {
             "questionId": 219,
-            "questionText": "A Solutions Architect is designing a shared le system for a company. Multiple users will be accessing it at any given time. Different teams will have their own directories, and the company wants to secure les so that users can access only les owned by their team. How should the Solutions Architect design this?",
+            "questionText": "A Solutions Architect is designing a shared le system for a company. Multiple users will be accessing it at any given time. Different teams will have their own directories, and the company wants to secure files so that users can access only files owned by their team. How should the Solutions Architect design this?",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -5330,7 +5330,7 @@ export const questionBank =
             "questionOptions": [
                 {
                     "optionId": "A",
-                    "optionText": "Allow all inbound tra c, with explicit denies on non-HTTP and non-HTTPS ports."
+                    "optionText": "Allow all inbound traffic, with explicit denies on non-HTTP and non-HTTPS ports."
                 },
                 {
                     "optionId": "B",
@@ -5361,7 +5361,7 @@ export const questionBank =
                 },
                 {
                     "optionId": "C",
-                    "optionText": "S3 buckets can be encrypted, allowing for secure storage of the web les. EBS volumes cannot be encrypted."
+                    "optionText": "S3 buckets can be encrypted, allowing for secure storage of the web files. EBS volumes cannot be encrypted."
                 },
                 {
                     "optionId": "D",
@@ -5487,7 +5487,7 @@ export const questionBank =
         },
         {
             "questionId": 236,
-            "questionText": "A company is migrating on-premises databases to AWS. The company's backend application produces a large amount of database queries for reporting purposes, and the company wants to o oad some of those reads to Read Replica, allowing the primary database to continue performing e ciently. Which AWS database platforms will accomplish this? (Select TWO.)",
+            "questionText": "A company is migrating on-premises databases to AWS. The company's backend application produces a large amount of database queries for reporting purposes, and the company wants to o oad some of those reads to Read Replica, allowing the primary database to continue performing efficiently. Which AWS database platforms will accomplish this? (Select TWO.)",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -5541,7 +5541,7 @@ export const questionBank =
             "questionOptions": [
                 {
                     "optionId": "A",
-                    "optionText": "Enable EBS optimization on the instance and keep the temporary les on the existing volume."
+                    "optionText": "Enable EBS optimization on the instance and keep the temporary files on the existing volume."
                 },
                 {
                     "optionId": "B",
@@ -5618,7 +5618,7 @@ export const questionBank =
                 },
                 {
                     "optionId": "C",
-                    "optionText": "Create a VPC endpoint for Amazon EC2 access D C t NAT t f A EC2 7"
+                    "optionText": "Create a VPC endpoint for Amazon EC2 access"
                 },
                 {
                     "optionId": "D",
@@ -5710,7 +5710,7 @@ export const questionBank =
                 },
                 {
                     "optionId": "C",
-                    "optionText": "AWS Storage Gateway for les"
+                    "optionText": "AWS Storage Gateway for files"
                 },
                 {
                     "optionId": "D",
@@ -5963,7 +5963,7 @@ export const questionBank =
                 },
                 {
                     "optionId": "C",
-                    "optionText": "Write the les to an S3 bucket and use Amazon Athena to query the data."
+                    "optionText": "Write the files to an S3 bucket and use Amazon Athena to query the data."
                 },
                 {
                     "optionId": "D",
@@ -6013,11 +6013,11 @@ export const questionBank =
                 },
                 {
                     "optionId": "D",
-                    "optionText": "Use an Application Load Balancer (ALB) with an HTTPS listener, then install SSL certi cates on the ALB and EC2 instances.,"
+                    "optionText": "Use an Application Load Balancer (ALB) with an HTTPS listener, then install SSL certificates on the ALB and EC2 instances.,"
                 },
                 {
                     "optionId": "E",
-                    "optionText": "Use a Network Load Balancer (NLB) with an HTTPS listener, then install SSL certi cates on the NLB and EC2 instances."
+                    "optionText": "Use a Network Load Balancer (NLB) with an HTTPS listener, then install SSL certificates on the NLB and EC2 instances."
                 }
             ],
             "questionAnswer": "CD"
@@ -6339,7 +6339,7 @@ export const questionBank =
                 },
                 {
                     "optionId": "C",
-                    "optionText": "Allow X.509 certi cates to authenticate tra c."
+                    "optionText": "Allow X.509 certificates to authenticate traffic."
                 },
                 {
                     "optionId": "D",
@@ -6454,7 +6454,7 @@ export const questionBank =
         },
         {
             "questionId": 277,
-            "questionText": "A company deployed a three-tier web application on Amazon EBS backed Amazon EC2 instances for the web and application tiers, and Amazon RDS for the database tier. The company is concerned about loss of data in the web and application tiers. What is the MOST e cient way to prevent data loss?",
+            "questionText": "A company deployed a three-tier web application on Amazon EBS backed Amazon EC2 instances for the web and application tiers, and Amazon RDS for the database tier. The company is concerned about loss of data in the web and application tiers. What is the MOST efficient way to prevent data loss?",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -6527,7 +6527,7 @@ export const questionBank =
         },
         {
             "questionId": 280,
-            "questionText": "A Solution Architect is creating a serverless web application that must access mapping data in hundreds of data les, each containing approximately 30 KB of data. The storage required is expected to grow to hundreds of terabytes. Which storage solution is most cost-effective, yet still meets the requirements for this use case?",
+            "questionText": "A Solution Architect is creating a serverless web application that must access mapping data in hundreds of data files, each containing approximately 30 KB of data. The storage required is expected to grow to hundreds of terabytes. Which storage solution is most cost-effective, yet still meets the requirements for this use case?",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -6627,7 +6627,7 @@ export const questionBank =
                 },
                 {
                     "optionId": "B",
-                    "optionText": "Store the invoices as text les. Use Amazon CloudFront to convert the invoices from text to PDF when customers download invoices."
+                    "optionText": "Store the invoices as text files. Use Amazon CloudFront to convert the invoices from text to PDF when customers download invoices."
                 },
                 {
                     "optionId": "C",
@@ -6665,7 +6665,7 @@ export const questionBank =
         },
         {
             "questionId": 286,
-            "questionText": "An application server needs to be in a private subnet without access to the Internet. The solution must retrieve and upload les to an Amazon S3 bucket. How should a Solutions Architect design a solution to meet these requirements?",
+            "questionText": "An application server needs to be in a private subnet without access to the Internet. The solution must retrieve and upload files to an Amazon S3 bucket. How should a Solutions Architect design a solution to meet these requirements?",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -6711,15 +6711,15 @@ export const questionBank =
         },
         {
             "questionId": 288,
-            "questionText": "A Solutions Architect plans to migrate a load balancer tier from a data center to AWS. Several websites have multiple domains that require secure load balancing. The Architect decides to use Elastic Load Balancing Application Load Balancers. What is the MOST e cient method for achieving secure communication?",
+            "questionText": "A Solutions Architect plans to migrate a load balancer tier from a data center to AWS. Several websites have multiple domains that require secure load balancing. The Architect decides to use Elastic Load Balancing Application Load Balancers. What is the MOST efficient method for achieving secure communication?",
             "questionOptions": [
                 {
                     "optionId": "A",
-                    "optionText": "Create a wildcard certi cate and upload it to the Application Load Balancer"
+                    "optionText": "Create a wildcard certificate and upload it to the Application Load Balancer"
                 },
                 {
                     "optionId": "B",
-                    "optionText": "Create an SNI certi cate and upload it to the Application Load Balancer"
+                    "optionText": "Create an SNI certificate and upload it to the Application Load Balancer"
                 },
                 {
                     "optionId": "C",
@@ -6727,7 +6727,7 @@ export const questionBank =
                 },
                 {
                     "optionId": "D",
-                    "optionText": "Let a third-party Certi cate Manager manage certi cates required to all domains and upload them to the Application Load Balancer 8"
+                    "optionText": "Let a third-party certificate Manager manage certificates required to all domains and upload them to the Application Load Balancer 8"
                 }
             ],
             "questionAnswer": "B"
@@ -6834,7 +6834,7 @@ export const questionBank =
         },
         {
             "questionId": 293,
-            "questionText": "A customer has an application that is used by enterprise customers outside of AWS. Some of these customers use legacy rewalls that cannot whitelist by DNS name, but whitelist based only on IP address. The application is currently deployed in two Availability Zones, with one EC2 instance in each that has Elastic IP addresses. The customer wants to whitelist only two IP addresses, but the two existing EC2 instances cannot sustain the amount of tra c. What can a Solutions Architect do to support the customer and allow for more capacity? (Choose two.)",
+            "questionText": "A customer has an application that is used by enterprise customers outside of AWS. Some of these customers use legacy rewalls that cannot whitelist by DNS name, but whitelist based only on IP address. The application is currently deployed in two Availability Zones, with one EC2 instance in each that has Elastic IP addresses. The customer wants to whitelist only two IP addresses, but the two existing EC2 instances cannot sustain the amount of traffic. What can a Solutions Architect do to support the customer and allow for more capacity? (Choose two.)",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -7045,7 +7045,7 @@ export const questionBank =
         },
         {
             "questionId": 302,
-            "questionText": "An organization uses Amazon S3 to store video content served via its website. It only has rights to deliver this content to users within its own country and needs to restrict access. How can the organization ensure that these les are only accessible from within its country?",
+            "questionText": "An organization uses Amazon S3 to store video content served via its website. It only has rights to deliver this content to users within its own country and needs to restrict access. How can the organization ensure that these files are only accessible from within its country?",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -7149,7 +7149,7 @@ export const questionBank =
                 },
                 {
                     "optionId": "C",
-                    "optionText": "Use Amazon DynamoDB strongly consistent reads to adjust for the increase in tra c"
+                    "optionText": "Use Amazon DynamoDB strongly consistent reads to adjust for the increase in traffic"
                 },
                 {
                     "optionId": "D",
@@ -7183,19 +7183,19 @@ export const questionBank =
         },
         {
             "questionId": 308,
-            "questionText": "A company has thousands of les stored in an Amazon S3 bucket that has a well-de ned access pattern. The les are accessed by an application multiple times a day for the rst 30 days. Files are rarely accessed within the next 90 days. After that, the les are never accessed again. During the rst 120 days accessing these les should never take more than a few seconds 9 the rst 120 days, accessing these les should never take more than a few seconds. Which lifecycle policy should be used for the S3 objects to minimize costs based on the access pattern?",
+            "questionText": "A company has thousands of files stored in an Amazon S3 bucket that has a well-de ned access pattern. The files are accessed by an application multiple times a day for the rst 30 days. Files are rarely accessed within the next 90 days. After that, the files are never accessed again. During the rst 120 days accessing these files should never take more than a few seconds 9 the rst 120 days, accessing these files should never take more than a few seconds. Which lifecycle policy should be used for the S3 objects to minimize costs based on the access pattern?",
             "questionOptions": [
                 {
                     "optionId": "A",
-                    "optionText": "Use Amazon S3 Standard-Infrequent Access (S3 Standard-IA) storage for the rst 30 days. Then move the les to the GLACIER storage class for the next 90 days. Allow the data to expire after that."
+                    "optionText": "Use Amazon S3 Standard-Infrequent Access (S3 Standard-IA) storage for the rst 30 days. Then move the files to the GLACIER storage class for the next 90 days. Allow the data to expire after that."
                 },
                 {
                     "optionId": "B",
-                    "optionText": "Use Amazon S3 Standard storage for the rst 30 days. Then move the les to Amazon S3 Standard-Infrequent Access (S3 Standard-IA) for the next 90 days. Allow the data to expire after that."
+                    "optionText": "Use Amazon S3 Standard storage for the rst 30 days. Then move the files to Amazon S3 Standard-Infrequent Access (S3 Standard-IA) for the next 90 days. Allow the data to expire after that."
                 },
                 {
                     "optionId": "C",
-                    "optionText": "Use Amazon S3 Standard storage for rst 30 days. Then move the les to the GLACIER storage class for the next 90 days. Allow the data to expire after that."
+                    "optionText": "Use Amazon S3 Standard storage for rst 30 days. Then move the files to the GLACIER storage class for the next 90 days. Allow the data to expire after that."
                 },
                 {
                     "optionId": "D",
