@@ -2821,7 +2821,7 @@ export const questionBank =
         },
         {
             "questionId": 122,
-            "questionText": "After reviewing their logs, a startup company noticed large, random spikes in traffic to their web application. The company wants to Configure a cost-e cient Auto Scaling solution to support high availability of the web application. Which scaling plan should a Solutions Architect recommend to meet the company's needs?",
+            "questionText": "After reviewing their logs, a startup company noticed large, random spikes in traffic to their web application. The company wants to Configure a cost-efficient cient Auto Scaling solution to support high availability of the web application. Which scaling plan should a Solutions Architect recommend to meet the company's needs?",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -3657,7 +3657,7 @@ export const questionBank =
         },
         {
             "questionId": 158,
-            "questionText": "An application is running on Amazon EC2 instances behind an Application Load Balancer. The instances run in an Auto Scaling group across multiple Availability Zones. Four instances are required to handle a predictable traffic load. The Solutions Architect wants to ensure that the operation is fault-tolerant up to the loss of one Availability Zone. Which is the MOST cost-e cient way to meet these requirements?",
+            "questionText": "An application is running on Amazon EC2 instances behind an Application Load Balancer. The instances run in an Auto Scaling group across multiple Availability Zones. Four instances are required to handle a predictable traffic load. The Solutions Architect wants to ensure that the operation is fault-tolerant up to the loss of one Availability Zone. Which is the MOST cost-efficient cient way to meet these requirements?",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -3730,7 +3730,7 @@ export const questionBank =
         },
         {
             "questionId": 161,
-            "questionText": "A web application running on Amazon EC2 instances writes data synchronously to an Amazon DynamoDB table Configured for 60 write capacity units. During normal operation the application writes 50 KB/s to the tale, but can scale up to 500 KB/ s during peak hours. The application is currently throttling errors from the DynamoDB table during peak hours. What is the MOST cost-e cient change to support the increased traffic with minimal changes to the application?",
+            "questionText": "A web application running on Amazon EC2 instances writes data synchronously to an Amazon DynamoDB table Configured for 60 write capacity units. During normal operation the application writes 50 KB/s to the tale, but can scale up to 500 KB/ s during peak hours. The application is currently throttling errors from the DynamoDB table during peak hours. What is the MOST cost-efficient cient change to support the increased traffic with minimal changes to the application?",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -4539,7 +4539,7 @@ export const questionBank =
         },
         {
             "questionId": 196,
-            "questionText": "A company plans to migrate a website to AWS to use a serverless architecture. The website contains both static and dynamic content and is accessed by users across the world. The website should maintain sessions for returning users to improve the user experience. Which service should a Solutions Architect use for a cost-e cient solution with the LOWEST latency?",
+            "questionText": "A company plans to migrate a website to AWS to use a serverless architecture. The website contains both static and dynamic content and is accessed by users across the world. The website should maintain sessions for returning users to improve the user experience. Which service should a Solutions Architect use for a cost-efficient cient solution with the LOWEST latency?",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -4823,7 +4823,7 @@ export const questionBank =
         },
         {
             "questionId": 208,
-            "questionText": "A company uses Amazon S3 for storing a variety of les. A Solutions Architect needs to design a feature that will allow users to instantly restore any deleted les within 30 days of deletion. Which is the MOST cost-e cient solution?",
+            "questionText": "A company uses Amazon S3 for storing a variety of les. A Solutions Architect needs to design a feature that will allow users to instantly restore any deleted les within 30 days of deletion. Which is the MOST cost-efficient cient solution?",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -4896,7 +4896,7 @@ export const questionBank =
         },
         {
             "questionId": 211,
-            "questionText": "A Solutions Architect must design an Amazon DynamoDB table to store data about customer activities. The data is used to analyze recent customer behavior, so data that is less than a week old is heavily accessed and older data is accessed infrequently. Data that is more than one month old never needs to be referenced by the application, but needs to be archived for year-end analytics. What is the MOST cost-e cient way to meet these requirements? (Choose two.)",
+            "questionText": "A Solutions Architect must design an Amazon DynamoDB table to store data about customer activities. The data is used to analyze recent customer behavior, so data that is less than a week old is heavily accessed and older data is accessed infrequently. Data that is more than one month old never needs to be referenced by the application, but needs to be archived for year-end analytics. What is the MOST cost-efficient cient way to meet these requirements? (Choose two.)",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -5180,7 +5180,7 @@ export const questionBank =
         },
         {
             "questionId": 223,
-            "questionText": "A Solutions Architect must select the most cost-e cient architecture for a service that responds to web requests. These web requests are small and query a DynamoDB table. The request rate ranges from zero to several hundred each second, without any predictable patterns. What is the MOST cost-e cient architecture for this service?",
+            "questionText": "A Solutions Architect must select the most cost-efficient cient architecture for a service that responds to web requests. These web requests are small and query a DynamoDB table. The request rate ranges from zero to several hundred each second, without any predictable patterns. What is the MOST cost-efficient cient architecture for this service?",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -5537,7 +5537,7 @@ export const questionBank =
         },
         {
             "questionId": 238,
-            "questionText": "A data-processing application runs on an i3.large EC2 instance with a single 100 GB EBS gp2 volume. The application stores temporary data in a small database (less than 30 GB) located on the EBS root volume. The application is struggling to process the data fast enough, and a Solutions Architect has determined that the I/O speed of the temporary database is the bottleneck. What is the MOST cost-e cient way to improve the database response times?",
+            "questionText": "A data-processing application runs on an i3.large EC2 instance with a single 100 GB EBS gp2 volume. The application stores temporary data in a small database (less than 30 GB) located on the EBS root volume. The application is struggling to process the data fast enough, and a Solutions Architect has determined that the I/O speed of the temporary database is the bottleneck. What is the MOST cost-efficient cient way to improve the database response times?",
             "questionOptions": [
                 {
                     "optionId": "A",
