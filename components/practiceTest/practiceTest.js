@@ -71,8 +71,8 @@ class practiceTest extends HTMLElement {
             div.innerHTML =
                 `<template id="practiceTest-template${i}">
                 <div class="row" id="questionContainer${i}" style = "display:none">
-                    <div class="col-lg-12" style="min-height: 400px">
-                        <h5 class="mb-3"><strong id="questionDescription">300. Question sample - A Solutions Architect AWSCSAA SAA-C02 is designing an application that will encrypt all data in an Amazon Redshift cluster.<br>Which action will encrypt the data at rest?</strong></h5>
+                    <div class="col-lg-12" style="min-height: 400px:">
+                        <h5 class="mb-3" style="margin-top:0px;"><strong id="questionDescription">300. Question sample - A Solutions Architect AWSCSAA SAA-C02 is designing an application that will encrypt all data in an Amazon Redshift cluster.<br>Which action will encrypt the data at rest?</strong></h5>
                         <div style="border-bottom: 1px solid black;"></div>
                         <br>
                             ${questionOptions}
