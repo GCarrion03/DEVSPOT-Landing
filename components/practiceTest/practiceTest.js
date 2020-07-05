@@ -46,8 +46,7 @@ class practiceTest extends HTMLElement {
                     <button type="button" id="btnRetake"  style="float: right;" onclick="location = location;" ><i class="fa fa-repeat"> Retake test</i> </button>
                 </div>
                 <div id="scoreSection" style="display:none;" class="col-lg-12">
-                    <div class="col-lg-12"><label style="float: right;">/&nbsp;${questions.length}</label><label id="currentSubmissions" style="float: right;color: dodgerblue; margin: 0px 0.5em;">0</label><label style="float: right;color: dodgerblue;">&nbsp;/</label><label name="score" id="currentScore" style="float: right; color: green">0</label><label style="float: right;">Score: &nbsp;</label></div>
-                    <div class="col-lg-12" style="border-bottom: 1px solid black;"></div>
+                    <div class="col-lg-12" style="min-height: 30px; border-bottom: 1px solid black;"><label style="float: right;">/&nbsp;${questions.length}</label><label id="currentSubmissions" style="float: right;color: dodgerblue; margin: 0px 0.5em;">0</label><label style="float: right;color: dodgerblue;">&nbsp;/</label><label name="score" id="currentScore" style="float: right; color: green">0</label><label style="float: right;">Score: &nbsp;</label></div>
                 </div>
              </template>`
         this.shadowRoot.append(div);
