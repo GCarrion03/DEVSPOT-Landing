@@ -46,7 +46,7 @@ class practiceTest extends HTMLElement {
                     <button type="button" id="btnRetake"  style="float: right;" onclick="location = location;" ><i class="fa fa-repeat"> Retake test</i> </button>
                 </div>
                 <div id="scoreSection" style="display:none;" class="col-lg-12">
-                    <div class="col-lg-12" style="min-height: 30px; border-bottom: 1px solid black;"><label style="float: right;">/&nbsp;${questions.length}</label><label id="currentSubmissions" style="float: right;color: dodgerblue; margin: 0px 0.5em;">0</label><label style="float: right;color: dodgerblue;">&nbsp;/</label><label name="score" id="currentScore" style="float: right; color: green">0</label><label style="float: right;">Score: &nbsp;</label></div>
+                    <div class="col-lg-12" style="min-height: 25px; border-bottom: 1px solid black;"><label style="float: right;">/&nbsp;${questions.length}</label><label id="currentSubmissions" style="float: right;color: dodgerblue; margin: 0px 0.5em;">0</label><label style="float: right;color: dodgerblue;">&nbsp;/</label><label name="score" id="currentScore" style="float: right; color: green">0</label><label style="float: right;">Score: &nbsp;</label></div>
                 </div>
              </template>`
         this.shadowRoot.append(div);
@@ -72,7 +72,7 @@ class practiceTest extends HTMLElement {
                 `<template id="practiceTest-template${i}">
                 <div class="row" id="questionContainer${i}" style = "display:none">
                     <div class="col-lg-12" style="min-height: 400px:">
-                        <h5 class="mb-3" style="margin-top:0px;"><strong id="questionDescription">300. Question sample - A Solutions Architect AWSCSAA SAA-C02 is designing an application that will encrypt all data in an Amazon Redshift cluster.<br>Which action will encrypt the data at rest?</strong></h5>
+                        <h5 class="mb-3" style="margin-top:5px;"><strong id="questionDescription">300. Question sample - A Solutions Architect AWSCSAA SAA-C02 is designing an application that will encrypt all data in an Amazon Redshift cluster.<br>Which action will encrypt the data at rest?</strong></h5>
                         <div style="border-bottom: 1px solid black;"></div>
                         <br>
                             ${questionOptions}
