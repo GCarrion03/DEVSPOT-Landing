@@ -36,16 +36,15 @@ class practiceTest extends HTMLElement {
                     <p style="text-align: center;">Welcome to the Amazon Web Services Certified Solutions Architect Associate Exam<span>&nbsp;readiness quiz</span>&nbsp;</p>
                     <p>We will randomly select 10 questions from our curated database, score more than 7/10 and you will be ready to sit for your exam</p> 
                     <br>
-                    <label for="nameInput" style="float: left;">Your name: &nbsp;</label><input type="text" id="nameInput" style="float: left;" ><button type="button" id="start" style="float: right;" ><i class="fa fa-flag"> Start Assessment</i></button>
+                    <label for="nameInput" style="float: left;">Your name: &nbsp;</label><input type="text" id="nameInput" style="float: left;" ><button type="button" class="stdButton" id="start" style="float: right;" ><i class="fa fa-flag"> Start Assessment</i></button>
                 </div>
                 <div id="passMessage" style="display:none;">
                     <h4 id="passHeader" style="min-height: 50px;">Pass</h4>                   
-                     
-                    <button type="button" id="btnCertificate" value="" style="float: right;" onclick="alert('Impressive but, this is not yet implemented!, comment my post on Linkedin or Reddit with your passing score to support this feature')"><i class="fa fa-certificate"> Get your certificate!</i></button>
+                    <button type="button" id="btnCertificate" class="stdButton" value="" style="float: right;" onclick="alert('Impressive but, this is not yet implemented!, comment my post on Linkedin or Reddit with your passing score to support this feature')"><i class="fa fa-certificate"> Get your certificate!</i></button>
                 </div>
                 <div id="failMessage" style = "display:none;" class="col-lg-12">
                     <h4 id="failHeader" style="min-height: 50px;">Fail</h4> 
-                    <button type="button" id="btnRetake"  style="float: right;" onclick="location = location;" ><i class="fa fa-repeat"> Retake test</i> </button>
+                    <button class="stdButton" type="button" id="btnRetake"  style="float: right;" onclick="location = location;" ><i class="fa fa-repeat"> Retake test</i> </button>
                 </div>
                 <div id="scoreSection" style="display:none;" class="col-lg-12">
                     <div class="col-lg-12" style="min-height: 25px; border-bottom: 1px solid black;"><label style="float: right;">/&nbsp;${questions.length}</label><label id="currentSubmissions" style="float: right;color: dodgerblue; margin: 0px 0.5em;">0</label><label style="float: right;color: dodgerblue;">&nbsp;/</label><label name="score" id="currentScore" style="float: right; color: green">0</label><label style="float: right;">Score: &nbsp;</label></div>
@@ -80,9 +79,9 @@ class practiceTest extends HTMLElement {
                             ${questionOptions}
                     </div>
                     <div class="col-lg-12">
-                        <button id="prev${i}" type="button" value="<" style="float: left;"><i class="fa fa-arrow-left"></i></button>
-                        <button id="next${i}" type="button" value=">" style="float: left;"><i class="fa fa-arrow-right"></i></button>
-                        <button id="${i}showAnswer" type="button" style="float: right;" ><i class="fa fa-check-square-o"> Check Answer</i></button> 
+                        <button id="prev${i}" class="stdButton" type="button" value="<" style="float: left;"><i class="fa fa-arrow-left"></i></button>
+                        <button id="next${i}" class="stdButton" type="button" value=">" style="float: left;"><i class="fa fa-arrow-right"></i></button>
+                        <button id="${i}showAnswer" class="stdButton" type="button" style="float: right;" ><i class="fa fa-check-square-o"> Check Answer</i></button> 
                     </div>
                 </div>
             </template>`;

@@ -489,7 +489,7 @@ button.navbar-toggle {
 
 }
 
-button {
+.stdButton{
     font-family: 'robotolight', sans-serif;
     background: radial-gradient(circle, rgba(66,87,116,0.8127626050420168) 0%, rgba(0,0,0,1) 0%, rgba(0,142,255,1) 100%);
     border-radius: 5px;
@@ -502,12 +502,12 @@ button {
 }
 
 /* Darker background on mouse-over */
-button:hover {
+.stdButton:hover {
     background: radial-gradient(circle, rgba(66,87,116,0.8127626050420168) 0%, rgb(255, 255, 255) 0%, rgba(0,142,255,1) 100%);
     color: black;
 }
 
-button:disabled{
+.stdButton:disabled{
     background: radial-gradient(circle, rgba(66,87,116,0.8127626050420168) 0%, rgb(255, 255, 255) 0%, rgba(0,142,255,1) 100%);
     color: gray;
 }
