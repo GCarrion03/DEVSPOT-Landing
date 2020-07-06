@@ -30,6 +30,7 @@ class practiceTest extends HTMLElement {
                 <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
                 <link href="css/bootstrap.css" rel="stylesheet">
                 <link href="css/style.css" rel="stylesheet" type="text/css">
+                <link rel="stylesheet" type="text/css" href="css/roboto_light/stylesheet.css">
                 <div id="welcomeMessage" style=" min-height: 400px;">
                     <p style="text-align: center;"><strong>AWS-CSAA (SAA-C02)</strong></p>
                     <p style="text-align: center;">Welcome to the Amazon Web Services Certified Solutions Architect Associate Exam<span>&nbsp;readiness quiz</span>&nbsp;</p>
@@ -38,7 +39,8 @@ class practiceTest extends HTMLElement {
                     <label for="nameInput" style="float: left;">Your name: &nbsp;</label><input type="text" id="nameInput" style="float: left;" ><button type="button" id="start" style="float: right;" ><i class="fa fa-flag"> Start Assessment</i></button>
                 </div>
                 <div id="passMessage" style="display:none;">
-                    <h4 id="passHeader" style="min-height: 50px;">Pass</h4>                    
+                    <h4 id="passHeader" style="min-height: 50px;">Pass</h4>                   
+                     
                     <button type="button" id="btnCertificate" value="" style="float: right;" onclick="alert('Impressive but, this is not yet implemented!, comment my post on Linkedin or Reddit with your passing score to support this feature')"><i class="fa fa-certificate"> Get your certificate!</i></button>
                 </div>
                 <div id="failMessage" style = "display:none;" class="col-lg-12">
@@ -71,7 +73,7 @@ class practiceTest extends HTMLElement {
             div.innerHTML =
                 `<template id="practiceTest-template${i}">
                 <div class="row" id="questionContainer${i}" style = "display:none">
-                    <div class="col-lg-12" style="min-height: 400px:">
+                    <div class="col-lg-12" style="min-height: 400px;">
                         <h5 class="mb-3" style="margin-top:5px;"><strong id="questionDescription">300. Question sample - A Solutions Architect AWSCSAA SAA-C02 is designing an application that will encrypt all data in an Amazon Redshift cluster.<br>Which action will encrypt the data at rest?</strong></h5>
                         <div style="border-bottom: 1px solid black;"></div>
                         <br>
