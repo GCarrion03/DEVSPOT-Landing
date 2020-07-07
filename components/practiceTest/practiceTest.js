@@ -39,8 +39,16 @@ class practiceTest extends HTMLElement {
                     <label for="nameInput" style="float: left;">Your name: &nbsp;</label><input type="text" id="nameInput" style="float: left;" ><button type="button" class="stdButton" id="start" style="float: right;" ><i class="fa fa-flag"> Start Assessment</i></button>
                 </div>
                 <div id="passMessage" style="display:none;">
-                    <h4 id="passHeader" style="min-height: 50px;">Pass</h4>                   
-                    <button type="button" id="btnCertificate" class="stdButton" value="" style="float: right;" onclick="alert('Impressive but, this is not yet implemented!, comment my post on Linkedin or Reddit with your passing score to support this feature')"><i class="fa fa-certificate"> Get your certificate!</i></button>
+                    <h4 id="passHeader" style="min-height: 20px;">Pass</h4>                   
+                    <button class="stdButton" type="button" id="btnRetake"  style="float: right;" onclick="location = location;" ><i class="fa fa-repeat"> Do it again!</i> </button>
+                    <h4 id="passHeader">Share your achievement:</h4>
+                    <div class="shareon">
+                        <a class="facebook" data-title="&#127882;&#127881;I passed my Amazon Web Services Certified Solutions Architect Associate Readiness Exam!&#127881;&#127882; Give it a try here: "></a>
+                        <a class="linkedin" data-title="&#127882;&#127881;I passed my Amazon Web Services Certified Solutions Architect Associate Readiness Exam!&#127881;&#127882; Give it a try here: "></a>
+                        <a class="reddit" data-title="&#127882;&#127881;I passed my Amazon Web Services Certified Solutions Architect Associate Readiness Exam!&#127881;&#127882; Give it a try here: "></a>
+                        <a class="twitter" data-title="&#127882;&#127881;I passed my Amazon Web Services Certified Solutions Architect Associate Readiness Exam!&#127881;&#127882; Give it a try here: "></a>
+                        <a class="whatsapp" data-title="&#127882;&#127881;I passed my Amazon Web Services Certified Solutions Architect Associate Readiness Exam!&#127881;&#127882; Give it a try here: "></a>
+                    </div>
                 </div>
                 <div id="failMessage" style = "display:none;" class="col-lg-12">
                     <h4 id="failHeader" style="min-height: 50px;">Fail</h4> 
@@ -84,6 +92,8 @@ class practiceTest extends HTMLElement {
                         <button id="${i}showAnswer" class="stdButton" type="button" style="float: right;" ><i class="fa fa-check-square-o"> Check Answer</i></button> 
                     </div>
                 </div>
+                <link href="https://cdn.jsdelivr.net/npm/shareon@1.2.0/dist/shareon.min.css" rel="stylesheet">
+                <script src="https://cdn.jsdelivr.net/npm/shareon@1.2.0/dist/shareon.min.js" type="text/javascript"></script>
             </template>`;
             this.shadowRoot.append(div);
             const template = this.shadowRoot.getElementById(`practiceTest-template${i}`);

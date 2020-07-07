@@ -209,7 +209,7 @@ export const questionBank =
         },
         {
             "questionId": 10,
-            "questionText": "A mobile application serves scienti c articles from individual files in an Amazon S3 bucket.Articles older than 30 days are rarely read.Articles older than 60 days no longer need to be available through the application,but the application owner would like to keep themfor historical purposes.Which cost - effective solution BEST meets these requirements ? ",
+            "questionText": "A mobile application serves scientific articles from individual files in an Amazon S3 bucket.Articles older than 30 days are rarely read.Articles older than 60 days no longer need to be available through the application,but the application owner would like to keep themfor historical purposes.Which cost - effective solution BEST meets these requirements ? ",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -2626,7 +2626,7 @@ export const questionBank =
                 },
                 {
                     "optionId": "C",
-                    "optionText": "Amazon RDS 3"
+                    "optionText": "Amazon RDS"
                 },
                 {
                     "optionId": "D",
@@ -3960,7 +3960,7 @@ export const questionBank =
         },
         {
             "questionId": 171,
-            "questionText": "As part of a migration strategy, a Solutions Architect needs to analyze workloads that can be optimized for performance and cost. The Solutions Architect has identi ed a stateless application that serves static content as a potential candidate to move to the cloud. The Solutions Architect has the exibility to choose an identity solution between Facebook, Twitter, and Amazon. Which AWS solution offers exibility and ease of use, and the LEAST operational overhead for this migration?",
+            "questionText": "As part of a migration strategy, a Solutions Architect needs to analyze workloads that can be optimized for performance and cost. The Solutions Architect has identified a stateless application that serves static content as a potential candidate to move to the cloud. The Solutions Architect has the exibility to choose an identity solution between Facebook, Twitter, and Amazon. Which AWS solution offers exibility and ease of use, and the LEAST operational overhead for this migration?",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -4923,7 +4923,7 @@ export const questionBank =
         },
         {
             "questionId": 212,
-            "questionText": "A Solutions Architect is concerned that the current security group rules for a database tier are too permissive and may permit requests that should be restricted. Below are the current security group permissions for the database tier: ✑ Protocol: TCP ✑ Port Range: 1433 (MS SQL) ✑ Source: ALL Currently, the only identi ed resource that needs to connect to the databases is the application tier consisting of an Auto Scaling group of EC2 instances. What changes can be made to this security group that would offer the users LEAST privilege?",
+            "questionText": "A Solutions Architect is concerned that the current security group rules for a database tier are too permissive and may permit requests that should be restricted. Below are the current security group permissions for the database tier: ✑ Protocol: TCP ✑ Port Range: 1433 (MS SQL) ✑ Source: ALL Currently, the only identified resource that needs to connect to the databases is the application tier consisting of an Auto Scaling group of EC2 instances. What changes can be made to this security group that would offer the users LEAST privilege?",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -5372,7 +5372,7 @@ export const questionBank =
         },
         {
             "questionId": 231,
-            "questionText": "A company is moving to AWS. Management has identi ed a set of approved AWS services that meet all deployment requirements. The company would like to restrict access to all other unapproved services to which employees would have access. Which solution meets these requirements with the LEAST amount of operational overhead?",
+            "questionText": "A company is moving to AWS. Management has identified a set of approved AWS services that meet all deployment requirements. The company would like to restrict access to all other unapproved services to which employees would have access. Which solution meets these requirements with the LEAST amount of operational overhead?",
             "questionOptions": [
                 {
                     "optionId": "A",
@@ -5844,7 +5844,7 @@ export const questionBank =
                 },
                 {
                     "optionId": "B",
-                    "optionText": "Amazon S3 One Zone-Infrequent Access (S3 One Zone-IA) C A S3 St d d I f tA (S3 St d d IA) 7"
+                    "optionText": "Amazon S3 One Zone-Infrequent Access (S3 One Zone-IA)"
                 },
                 {
                     "optionId": "C",
@@ -6930,7 +6930,7 @@ export const questionBank =
         },
         {
             "questionId": 297,
-            "questionText": "A Solutions Architect designed a system based on Amazon Kinesis Data Streams. After the work ow was put into production, the company noticed it performed slowly and identi ed Kinesis Data Streams as the problem. One of the streams has a total of 10 Mb/s throughput. What should the Solutions Architect recommend to improve performance?",
+            "questionText": "A Solutions Architect designed a system based on Amazon Kinesis Data Streams. After the work ow was put into production, the company noticed it performed slowly and identified Kinesis Data Streams as the problem. One of the streams has a total of 10 Mb/s throughput. What should the Solutions Architect recommend to improve performance?",
             "questionOptions": [
                 {
                     "optionId": "A",
