@@ -1,7 +1,4 @@
 const numberOfQuestions = 10;
-
-
-
 class practiceTest extends HTMLElement {
     constructor() {
         super();
@@ -19,7 +16,7 @@ class practiceTest extends HTMLElement {
             if (questionToAdd.questionAnswer && questionToAdd.questionAnswer.length <= 4 && !questions.includes(questionToAdd)) {
                 questions.push(questionToAdd);
             } else {
-                console.error(`error on question ${questionToAdd.questionId} answer: ${questionToAdd.questionAnswer}` );
+                console.error(`duplicated question ${questionToAdd.questionId}` );
                 iterator--;
             }
         }
