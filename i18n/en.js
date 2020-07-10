@@ -1,3 +1,4 @@
+export const translation =
 {
   "nav-aboutus":"About us",
   "nav-services": "Services",
