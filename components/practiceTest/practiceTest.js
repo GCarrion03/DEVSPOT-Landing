@@ -181,7 +181,7 @@ function makeValidateCallback(shadowRoot, currentI, question) {
         if (parseInt(currentSubmissions.innerHTML) >= numberOfQuestions) {
             shadowRoot.getElementById(`questionContainer${currentI}`).style.display = "none";
             shadowRoot.getElementById(`scoreSection`).style.display = "none";
-            score = parseInt(currentScore.innerHTML);
+            const score = parseInt(currentScore.innerHTML);
             if (score >= 7) {
                 shadowRoot.getElementById(`passMessage`).style.display = "inline-block";
                 shadowRoot.getElementById(`welcomeMessage`).style.display = "none";
