@@ -7,7 +7,8 @@ class practiceTest extends HTMLElement {
 
     async connectedCallback() {
         var originalQuestionBank = await import(this.getAttribute("questionBankPath"));
-        var questionBank = originalQuestionBank.questionBank;
+        var exam = originalQuestionBank.questionBank;
+        var questionBank = originalQuestionBank.questionBank.questions;
         let i = 1;
         var questions = [];
         var iterator;
@@ -28,9 +29,14 @@ class practiceTest extends HTMLElement {
                 <link href="css/bootstrap.css" rel="stylesheet">
                 <link href="css/style.css" rel="stylesheet" type="text/css">
                 <link rel="stylesheet" type="text/css" href="css/roboto_light/stylesheet.css">
+                <div class="section-title">
+                    <span class="caption d-block small">Exam</span>
+                    <h3>${exam.examID}</h3>
+                    <img src="images/logo/avail/${exam.badgeFile}" class="cert-cred">
+                </div>
                 <div id="welcomeMessage" style=" min-height: 400px;">
-                    <p style="text-align: center;"><strong>AWS-CSAA (SAA-C02)</strong></p>
-                    <p style="text-align: center;">Welcome to the Amazon Web Services Certified Solutions Architect Associate Exam<span>&nbsp;readiness quiz</span>&nbsp;</p>
+                    <p style="text-align: center;"><strong>${exam.examAcronym} (${exam.examID})</strong></p>
+                    <p style="text-align: center;">Welcome to the ${exam.examProvider} ${exam.examName} Exam<span>&nbsp;readiness quiz</span>&nbsp;</p>
                     <p>We will randomly select 10 questions from our curated database, score more than 7/10 and you will be ready to sit for your exam</p> 
                     <br>
                     <label for="nameInput" style="float: left;">Your name: &nbsp;</label><input type="text" id="nameInput" style="float: left;" ><button type="button" class="stdButton" id="start" style="float: right;" ><i class="fa fa-flag"> Start Assessment</i></button>
