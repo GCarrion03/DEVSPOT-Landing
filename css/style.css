@@ -268,13 +268,11 @@ img.logomain {
 }
 
 .nav.navbar-nav li a:hover {
-    background-color: transparent;
-    border-bottom: 1px solid #3333ff;
+
 }
 
 .nav.navbar-nav li.active a {
-    background-color: transparent;
-    border-bottom: 1px solid #3333ff;
+
 }
 
 .section-title {

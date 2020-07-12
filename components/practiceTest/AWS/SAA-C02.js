@@ -5304,7 +5304,7 @@ export const questionBank = {
                         "optionText": "img"
                     }
                 ],
-                "questionAnswer": "C"
+                "questionAnswer": "CCCCCCC"
             },
             {
                 "questionId": 228,
