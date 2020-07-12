@@ -1633,7 +1633,7 @@ export const questionBank = {
                         },
                         {
                             "optionId": "C",
-                            "optionText": "Lambda functions have a maximum execution limit of 300 seconds, therefore the function is not completing."
+                            "optionText": "Lambda functions have a maximum execution limit of 900 seconds, therefore the function is not completing."
                         },
                         {
                             "optionId": "D",
