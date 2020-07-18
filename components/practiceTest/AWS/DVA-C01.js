@@ -4,6 +4,7 @@ export const questionBank = {
         "examProvider": "Amazon Web Services",
         "examName": "Certified Developer Associate",
         "badgeFile": "AWS-CDA-badge.png",
+        "timePerQuestion": "120",
         "questions": [
             {
                 "questionId": 1,
@@ -1877,35 +1878,19 @@ export const questionBank = {
                     [
                         {
                             "optionId": "A",
-                            "optionText": "Use an Amazon CloudWatch event backed by an AWS Lambda function. Issue an Amazon S3 API call to get a list of all Amazon S3 objects and persist the metadata within DynamoD"
+                            "optionText": "Use an Amazon CloudWatch event backed by an AWS Lambda function. Issue an Amazon S3 API call to get a list of all Amazon S3 objects and persist the metadata within DynamoDB. Have the web application poll the DynamoDB table to reflect this change."
                         },
                         {
                             "optionId": "B",
-                            "optionText": "Have the web application poll the DynamoDB table to reflect this change. "
-                        },
-                        {
-                            "optionId": "B",
-                            "optionText": "Use Amazon S3 Event Notification backed by a Lambda function to persist the metadata into  DynamoD"
-                        },
-                        {
-                            "optionId": "B",
-                            "optionText": "Have the web application poll the DynamoDB table to reflect this change."
+                            "optionText": "Use Amazon S3 Event Notification backed by a Lambda function to persist the metadata into DynamoDB. Have the web application poll the DynamoDB table to reflect this change."
                         },
                         {
                             "optionId": "C",
-                            "optionText": "Run a cron job within an Amazon EC2 instance to list all objects within Amazon S3 and persist the metadata into DynamoD"
-                        },
-                        {
-                            "optionId": "B",
-                            "optionText": "Have the web application poll the DynamoDB table to reflect this change."
+                            "optionText": "Run a cron job within an Amazon EC2 instance to list all objects within Amazon S3 and persist the metadata into DynamoDB. Have the web application poll the DynamoDB table to reflect this change."
                         },
                         {
                             "optionId": "D",
-                            "optionText": "Create a new Amazon EMR cluster to get all the metadata about Amazon S3 objects; persist the metadata into DynamoD"
-                        },
-                        {
-                            "optionId": "B",
-                            "optionText": "Have the web application poll the DynamoDB table to reflect this change."
+                            "optionText": "Create a new Amazon EMR cluster to get all the metadata about Amazon S3 objects; persist the metadata into DynamoDB. Have the web application poll the DynamoDB table to reflect this change."
                         }
                     ],
                 "questionAnswer":
@@ -2161,11 +2146,7 @@ export const questionBank = {
                         },
                         {
                             "optionId": "D",
-                            "optionText": "Write all new orders to Amazon DynamoD"
-                        },
-                        {
-                            "optionId": "B",
-                            "optionText": "Configure DynamoDB Streams to include all new orders. Subscribe a Lambda function to automatically read batches of records from the Kinesis Stream. The Lambda function includes the fraud detection software and will update the order with a pass or fail status."
+                            "optionText": "Write all new orders to Amazon DynamoDB. Configure DynamoDB Streams to include all new orders. Subscribe a Lambda function to automatically read batches of records from the Kinesis Stream. The Lambda function includes the fraud detection software and will update the order with a pass or fail status."
                         }
                     ],
                 "questionAnswer":

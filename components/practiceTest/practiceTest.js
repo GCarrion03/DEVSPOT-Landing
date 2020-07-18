@@ -1,26 +1,18 @@
-const numberOfQuestions = 10;
 class practiceTest extends HTMLElement {
+    originalQuestionBank;
+    exam;
+    questionBank;
+    numberOfQuestions = 10;
+
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
     }
 
     async connectedCallback() {
-        var originalQuestionBank = await import(this.getAttribute("questionBankPath"));
-        var exam = originalQuestionBank.questionBank;
-        var questionBank = originalQuestionBank.questionBank.questions;
-        let i = 1;
-        var questions = [];
-        var iterator;
-        for (iterator = 0; iterator < numberOfQuestions; iterator++) {
-            var questionToAdd = questionBank[Math.floor(Math.random() * questionBank.length)];
-            if (questionToAdd.questionAnswer && questionToAdd.questionAnswer.length <= 4 && !questions.includes(questionToAdd)) {
-                questions.push(questionToAdd);
-            } else {
-                console.error(`duplicated question ${questionToAdd.questionId}` );
-                iterator--;
-            }
-        }
+        this.originalQuestionBank = await import(this.getAttribute("questionBankPath"));
+        this.exam = this.originalQuestionBank.questionBank;
+        this.questionBank = this.originalQuestionBank.questionBank.questions;
         const div = document.createElement('div');
         div.id = "tmpDiv";
         div.innerHTML =
@@ -31,34 +23,21 @@ class practiceTest extends HTMLElement {
                 <link rel="stylesheet" type="text/css" href="css/roboto_light/stylesheet.css">
                 <div class="section-title">
                     <span class="caption d-block small">Exam</span>
-                    <h3>${exam.examID}</h3>
-                    <img src="images/logo/avail/${exam.badgeFile}" class="cert-cred">
+                    <h3>${this.exam.examID}</h3>
+                    <img src="images/logo/avail/${this.exam.badgeFile}" class="cert-cred">
                 </div>
                 <div id="welcomeMessage" style=" min-height: 400px;">
-                    <p style="text-align: center;"><strong>${exam.examAcronym} (${exam.examID})</strong></p>
-                    <p style="text-align: center;">Welcome to the ${exam.examProvider} ${exam.examName} Exam<span>&nbsp;readiness quiz</span>&nbsp;</p>
-                    <p>We will randomly select 10 questions from our curated database, score more than 7/10 and you will be ready to sit for your exam</p> 
+                    <p style="text-align: center;"><strong>${this.exam.examAcronym} (${this.exam.examID})</strong></p>
+                    <p style="text-align: center;">Welcome to the ${this.exam.examProvider} ${this.exam.examName} Exam<span>&nbsp;readiness quiz</span>&nbsp;</p>
+                    <p>Select the number of questions that will be randomly selected from our curated database, score more than 70% and you will be ready to sit for your exam</p> 
                     <br>
-                    <label for="nameInput" style="float: left;">Your name: &nbsp;</label><input type="text" id="nameInput" style="float: left;" ><button type="button" class="stdButton" id="start" style="float: right;" ><i class="fa fa-flag"> Start Assessment</i></button>
-                </div>
-                <div id="passMessage" style="display:none;">
-                    <h4 id="passHeader" style="min-height: 20px;">Pass</h4>                   
-                    <button class="stdButton" type="button" id="btnRetake"  style="float: right;" onclick="location = location;" ><i class="fa fa-repeat"> Do it again!</i> </button>
-                    <h4 id="passHeader">Share your achievement:</h4>
-                    <div class="shareon">
-                        <a class="facebook" data-title="&#127882;&#127881;I passed my Amazon Web Services Certified Solutions Architect Associate Readiness Exam!&#127881;&#127882; Give it a try here: "></a>
-                        <a class="linkedin" data-title="&#127882;&#127881;I passed my Amazon Web Services Certified Solutions Architect Associate Readiness Exam!&#127881;&#127882; Give it a try here: "></a>
-                        <a class="reddit" data-title="&#127882;&#127881;I passed my Amazon Web Services Certified Solutions Architect Associate Readiness Exam!&#127881;&#127882; Give it a try here: "></a>
-                        <a class="twitter" data-title="&#127882;&#127881;I passed my Amazon Web Services Certified Solutions Architect Associate Readiness Exam!&#127881;&#127882; Give it a try here: "></a>
-                        <a class="whatsapp" data-title="&#127882;&#127881;I passed my Amazon Web Services Certified Solutions Architect Associate Readiness Exam!&#127881;&#127882; Give it a try here: "></a>
-                    </div>
-                </div>
-                <div id="failMessage" style = "display:none;" class="col-lg-12">
-                    <h4 id="failHeader" style="min-height: 50px;">Fail</h4> 
-                    <button class="stdButton" type="button" id="btnRetake"  style="float: right;" onclick="location = location;" ><i class="fa fa-repeat"> Retake test</i> </button>
-                </div>
-                <div id="scoreSection" style="display:none;" class="col-lg-12">
-                    <div class="col-lg-12" style="min-height: 25px; border-bottom: 1px solid black;"><label style="float: right;">/&nbsp;${questions.length}</label><label id="currentSubmissions" style="float: right;color: dodgerblue; margin: 0px 0.5em;">0</label><label style="float: right;color: dodgerblue;">&nbsp;/</label><label name="score" id="currentScore" style="float: right; color: green">0</label><label style="float: right;">Score: &nbsp;</label></div>
+                    <label for="nameInput" style="float: left;">Your name: &nbsp;</label><input type="text" id="nameInput" style="float: left;" >
+                    <label for="examLength" style="float: left;">&nbsp; Exam Length: &nbsp;</label>
+                    <select name="examLength" id="examLength" style="float: left;">
+                      <option value="10">10 Questions</option>
+                      <option value="30">30 Questions</option>
+                    </select>
+                    <button type="button" class="stdButton" id="start" style="float: right;" ><i class="fa fa-flag"> Start Assessment</i></button>
                 </div>
              </template>`
         this.shadowRoot.append(div);
@@ -66,6 +45,65 @@ class practiceTest extends HTMLElement {
         const node = document.importNode(template.content, true);
         this.shadowRoot.removeChild(div);
         this.shadowRoot.appendChild(node);
+        this.shadowRoot.getElementById(`start`).onclick = () => this.createTest();
+    };
+
+    createTest() {
+
+        this.numberOfQuestions = +this.shadowRoot.getElementById('examLength').value;
+        const div = document.createElement('div');
+        div.id = "tmpDiv";
+        div.innerHTML =
+            `<template id="master-section">
+                <div id="passMessage" style="display:none;">
+                    <h4 id="passHeader" style="min-height: 20px;">Pass</h4>
+                    <button class="stdButton" type="button" id="btnRetake"  style="float: right;" onclick="location = location;" ><i class="fa fa-repeat"> Do it again!</i> </button>
+                    <h4 id="passHeader">Share your achievement:</h4>
+                    <!--div class="shareon">
+                        <a class="facebook" data-title="&#127882;&#127881;I passed my ${this.exam.examProvider} ${this.exam.examName} (${this.exam.examID}) Readiness Exam!&#127881;&#127882; Give it a try here: "></a>
+                        <a class="linkedin" data-title="&#127882;&#127881;I passed my ${this.exam.examProvider} ${this.exam.examName} (${this.exam.examID}) Readiness Exam!&#127881;&#127882; Give it a try here: "></a>
+                        <a class="reddit" data-title="&#127882;&#127881;I passed my ${this.exam.examProvider} ${this.exam.examName} (${this.exam.examID}) Readiness Exam!&#127881;&#127882; Give it a try here: "></a>
+                        <a class="twitter" data-title="&#127882;&#127881;I passed my ${this.exam.examProvider} ${this.exam.examName} (${this.exam.examID}) Readiness Exam!&#127881;&#127882; Give it a try here: "></a>
+                        <a class="whatsapp" data-title="&#127882;&#127881;I passed my ${this.exam.examProvider} ${this.exam.examName} (${this.exam.examID}) Readiness Exam!&#127881;&#127882; Give it a try here: "></a>
+                    </div-->
+                </div>
+                <div id="failMessage" style = "display:none;" class="col-lg-12">
+                    <h4 id="failHeader" style="min-height: 50px;">Fail</h4> 
+                    <button class="stdButton" type="button" id="btnRetake"  style="float: right;" onclick="location = location;" ><i class="fa fa-repeat"> Retake test</i> </button>
+                </div>
+                <div id="scoreSection" style="display:none;" class="col-lg-12">
+                    <div class="col-lg-12" style="min-height: 25px; border-bottom: 1px solid black;">
+                        <label style="float: left;">Time remaining: &nbsp;</label>
+                        <span id="time" style="float: left;">00:00</span>
+                        <label style="float: right;">/&nbsp;${this.numberOfQuestions}</label>
+                        <label id="currentSubmissions" style="float: right;color: dodgerblue; margin: 0px 0.5em;">0</label>
+                        <label style="float: right;color: dodgerblue;">&nbsp;/</label>
+                        <label name="score" id="currentScore" style="float: right; color: green">0</label>
+                        <label style="float: right;">Score: &nbsp;</label>
+                    </div>
+                </div>
+             </template>`
+        this.shadowRoot.append(div);
+        const template = this.shadowRoot.getElementById(`master-section`);
+        const node = document.importNode(template.content, true);
+        this.shadowRoot.removeChild(div);
+        this.shadowRoot.appendChild(node);
+
+        const examDuration = this.exam.timePerQuestion * this.numberOfQuestions;
+        const display = this.shadowRoot.getElementById('time');
+        startTimer(examDuration, display);
+        let i = 1;
+        let questions = [];
+        let iterator;
+        for (iterator = 0; iterator < this.numberOfQuestions; iterator++) {
+            let questionToAdd = this.questionBank[Math.floor(Math.random() * this.questionBank.length)];
+            if (questionToAdd.questionAnswer && questionToAdd.questionAnswer.length <= 4 && !questions.includes(questionToAdd)) {
+                questions.push(questionToAdd);
+            } else {
+                console.error(`duplicated question ${questionToAdd.questionId}`);
+                iterator--;
+            }
+        }
 
         questions.forEach(question => {
             let questionOptions = '';
@@ -104,31 +142,32 @@ class practiceTest extends HTMLElement {
             node.getElementById('questionDescription').innerHTML = `${i}. ${question.questionText}<p style="display:none">${question.questionId}</p>`;
             this.shadowRoot.removeChild(div);
             this.shadowRoot.appendChild(node);
-            var createValidateButton = function (shadowRoot, currentI, question) {
+            let createValidateButton = function (shadowRoot, currentI, question, numberOfQuestions) {
                 return {
                     apply: function () {
-                        makeValidateCallback(shadowRoot, currentI, question);
+                        makeValidateCallback(shadowRoot, currentI, question, numberOfQuestions);
                     }
                 }
             }
-            var a = createValidateButton(this.shadowRoot, i, question);
+            let a = createValidateButton(this.shadowRoot, i, question, this.numberOfQuestions);
             a.apply();
             i++;
         });
-    };
+        this.enableStart();
+    }
+
+    enableStart() {
+        this.shadowRoot.getElementById(`welcomeMessage`).style.display = "none";
+        this.shadowRoot.getElementById(`questionContainer1`).style.display = "inline";
+        this.shadowRoot.getElementById(`scoreSection`).style.display = "inline";
+        this.shadowRoot.getElementById(`prev1`).disabled = true;
+    }
 }
 
 customElements.define('practice-test', practiceTest);
 
-function makeValidateCallback(shadowRoot, currentI, question) {
-    if (currentI === 1) {
-        shadowRoot.getElementById(`start`).onclick = () => {
-            shadowRoot.getElementById(`welcomeMessage`).style.display = "none";
-            shadowRoot.getElementById(`questionContainer${currentI}`).style.display = "inline";
-            shadowRoot.getElementById(`scoreSection`).style.display = "inline";
-            shadowRoot.getElementById(`prev${currentI}`).disabled = true;
-        }
-    }
+
+function makeValidateCallback(shadowRoot, currentI, question, numberOfQuestions) {
 
     shadowRoot.getElementById(`next${currentI}`).onclick = () => {
         shadowRoot.getElementById(`questionContainer${currentI}`).style.display = "none";
@@ -166,7 +205,10 @@ function makeValidateCallback(shadowRoot, currentI, question) {
             var isCorrect = true;
             var answers = question.questionAnswer.split('');
             const answersSelected = shadowRoot.querySelectorAll(`input[name=answer${currentI}]:checked`);
-            if (answersSelected.length !== answers.length) { isCorrect = false };
+            if (answersSelected.length !== answers.length) {
+                isCorrect = false
+            }
+            ;
             answersSelected.forEach(selectedAns => {
                     if (!answers.includes(selectedAns.id.substr(-1))) {
                         shadowRoot.getElementById(selectedAns.id + 'label').innerHTML += '&#10060;';
@@ -188,7 +230,7 @@ function makeValidateCallback(shadowRoot, currentI, question) {
             shadowRoot.getElementById(`questionContainer${currentI}`).style.display = "none";
             shadowRoot.getElementById(`scoreSection`).style.display = "none";
             const score = parseInt(currentScore.innerHTML);
-            if (score >= 7) {
+            if (score >= (numberOfQuestions * 0.7)) {
                 shadowRoot.getElementById(`passMessage`).style.display = "inline-block";
                 shadowRoot.getElementById(`welcomeMessage`).style.display = "none";
                 shadowRoot.getElementById(`passHeader`).innerHTML = `Congrats ${shadowRoot.getElementById('nameInput').value} you passed, Good luck on your exam! Score: ${score}/${numberOfQuestions}`;
@@ -201,4 +243,21 @@ function makeValidateCallback(shadowRoot, currentI, question) {
         }
         shadowRoot.getElementById(`${currentI}showAnswer`).disabled = true;
     }
+}
+
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
 }

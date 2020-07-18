@@ -4,6 +4,7 @@ export const questionBank = {
         "examProvider": "Amazon Web Services",
         "examName": "Certified Solutions Architect Associate",
         "badgeFile": "AWS-CSAA-badge.png",
+        "timePerQuestion": "120",
         "questions": [
             {
                 "questionId": 1,
@@ -966,7 +967,7 @@ export const questionBank = {
                 "questionOptions": [
                     {
                         "optionId": "A",
-                        "optionText": "Create VPC ow logs on the subnet."
+                        "optionText": "Create VPC flow logs on the subnet."
                     },
                     {
                         "optionId": "B",
@@ -1749,7 +1750,11 @@ export const questionBank = {
                     },
                     {
                         "optionId": "D",
-                        "optionText": "Amazon DynamoDB E.Amazon ElastiCache "
+                        "optionText": "Amazon DynamoDB "
+                    },
+                    {
+                        "optionId": "E",
+                        "optionText": "Amazon ElastiCache "
                     }
                 ],
                 "questionAnswer": "AC"
@@ -2186,7 +2191,7 @@ export const questionBank = {
                     },
                     {
                         "optionId": "B",
-                        "optionText": "Launch a second Amazon EC2 instance to monitor the health of the rst."
+                        "optionText": "Launch a second Amazon EC2 instance to monitor the health of the rest."
                     },
                     {
                         "optionId": "C",
@@ -2688,7 +2693,7 @@ export const questionBank = {
             },
             {
                 "questionId": 116,
-                "questionText": "A media company has deployed a multi-tier architecture on AWS. Web servers are deployed in two Availability Zones using an Auto Scaling group with a default Auto Scaling termination policy. The web servers' Auto Scaling group currently has 15 instances running. Which instance will be terminated rst during a scale-in operation?",
+                "questionText": "A media company has deployed a multi-tier architecture on AWS. Web servers are deployed in two Availability Zones using an Auto Scaling group with a default Auto Scaling termination policy. The web servers' Auto Scaling group currently has 15 instances running. Which instance will be terminated rest during a scale-in operation?",
                 "questionOptions": [
                     {
                         "optionId": "A",
@@ -2976,7 +2981,7 @@ export const questionBank = {
                     },
                     {
                         "optionId": "B",
-                        "optionText": "Amazon VPC ow logs "
+                        "optionText": "Amazon VPC flow logs "
                     },
                     {
                         "optionId": "C",
@@ -3183,7 +3188,7 @@ export const questionBank = {
                     },
                     {
                         "optionId": "B",
-                        "optionText": "AWS CloudFormation 4"
+                        "optionText": "AWS CloudFormation"
                     },
                     {
                         "optionId": "C",
@@ -3942,7 +3947,7 @@ export const questionBank = {
             },
             {
                 "questionId": 170,
-                "questionText": "A university is running an internal web application on AWS that students can access from the university network to check their exam results. The web application runs on Amazon EC2 instances and pulls results from an Amazon DynamoDB table. Auto Scaling is currently Configured to add a new web server when CPU is greater than 80% for 5 minutes. DynamoDB is Configured to increase both read and write capacity units by ve when utilization is greater than 80%. Exam results are released at 9:00 a.m. each Monday, and 80% of students, attempt to access their unique result within the rst 30 minutes. Despite Auto Scaling being enabled, students are complaining of slow response times and errors when they view the site. There are no performance complaints after 9:30 a.m. on Monday. 56/29/2020 p p y Which recommendation should a Solutions Architect make to improve performance in a cost-effective manner?",
+                "questionText": "A university is running an internal web application on AWS that students can access from the university network to check their exam results. The web application runs on Amazon EC2 instances and pulls results from an Amazon DynamoDB table. Auto Scaling is currently Configured to add a new web server when CPU is greater than 80% for 5 minutes. DynamoDB is Configured to increase both read and write capacity units by ve when utilization is greater than 80%. Exam results are released at 9:00 a.m. each Monday, and 80% of students, attempt to access their unique result within the rest 30 minutes. Despite Auto Scaling being enabled, students are complaining of slow response times and errors when they view the site. There are no performance complaints after 9:30 a.m. on Monday. 56/29/2020 p p y Which recommendation should a Solutions Architect make to improve performance in a cost-effective manner?",
                 "questionOptions": [
                     {
                         "optionId": "A",
@@ -4974,7 +4979,7 @@ export const questionBank = {
             },
             {
                 "questionId": 214,
-                "questionText": "A Solutions Architect must build a secure document storage platform that allows clients to access data stored on Amazon S3. Documents must be readily available for the rst 15 days. After that, documents need not be readily available, and storage costs should be reduced as much as possible. Which of the following approaches will satisfy these requirements?",
+                "questionText": "A Solutions Architect must build a secure document storage platform that allows clients to access data stored on Amazon S3. Documents must be readily available for the rest 15 days. After that, documents need not be readily available, and storage costs should be reduced as much as possible. Which of the following approaches will satisfy these requirements?",
                 "questionOptions": [
                     {
                         "optionId": "A",
@@ -6452,7 +6457,7 @@ export const questionBank = {
                     },
                     {
                         "optionId": "E",
-                        "optionText": "Convert the SQS queue to a rst-in rst-out (FIFO) queue"
+                        "optionText": "Convert the SQS queue to a rest-in rest-out (FIFO) queue"
                     }
                 ],
                 "questionAnswer": "CE"
@@ -7188,23 +7193,23 @@ export const questionBank = {
             },
             {
                 "questionId": 308,
-                "questionText": "A company has thousands of files stored in an Amazon S3 bucket that has a well-de ned access pattern. The files are accessed by an application multiple times a day for the rst 30 days. Files are rarely accessed within the next 90 days. After that, the files are never accessed again. During the rst 120 days accessing these files should never take more than a few seconds 9 the rst 120 days, accessing these files should never take more than a few seconds. Which lifecycle policy should be used for the S3 objects to minimize costs based on the access pattern?",
+                "questionText": "A company has thousands of files stored in an Amazon S3 bucket that has a well-de ned access pattern. The files are accessed by an application multiple times a day for the rest 30 days. Files are rarely accessed within the next 90 days. After that, the files are never accessed again. During the rest 120 days accessing these files should never take more than a few seconds 9 the rest 120 days, accessing these files should never take more than a few seconds. Which lifecycle policy should be used for the S3 objects to minimize costs based on the access pattern?",
                 "questionOptions": [
                     {
                         "optionId": "A",
-                        "optionText": "Use Amazon S3 Standard-Infrequent Access (S3 Standard-IA) storage for the rst 30 days. Then move the files to the GLACIER storage class for the next 90 days. Allow the data to expire after that."
+                        "optionText": "Use Amazon S3 Standard-Infrequent Access (S3 Standard-IA) storage for the rest 30 days. Then move the files to the GLACIER storage class for the next 90 days. Allow the data to expire after that."
                     },
                     {
                         "optionId": "B",
-                        "optionText": "Use Amazon S3 Standard storage for the rst 30 days. Then move the files to Amazon S3 Standard-Infrequent Access (S3 Standard-IA) for the next 90 days. Allow the data to expire after that."
+                        "optionText": "Use Amazon S3 Standard storage for the rest 30 days. Then move the files to Amazon S3 Standard-Infrequent Access (S3 Standard-IA) for the next 90 days. Allow the data to expire after that."
                     },
                     {
                         "optionId": "C",
-                        "optionText": "Use Amazon S3 Standard storage for rst 30 days. Then move the files to the GLACIER storage class for the next 90 days. Allow the data to expire after that."
+                        "optionText": "Use Amazon S3 Standard storage for rest 30 days. Then move the files to the GLACIER storage class for the next 90 days. Allow the data to expire after that."
                     },
                     {
                         "optionId": "D",
-                        "optionText": "Use Amazon S3 Standard-Infrequent Access (S3 Standard-IA) for the rst 30 days. After that, move the data to the GLACIER storage class, where is will be deleted automatically."
+                        "optionText": "Use Amazon S3 Standard-Infrequent Access (S3 Standard-IA) for the rest 30 days. After that, move the data to the GLACIER storage class, where is will be deleted automatically."
                     }
                 ],
                 "questionAnswer": "B"
