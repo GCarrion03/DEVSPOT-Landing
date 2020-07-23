@@ -15,19 +15,19 @@ class postsSidebar extends HTMLElement {
     
                 <div class="trend-entry d-flex">
                     <div class="trend-contents">
-                        <h4><a href="blog-01.html">My journey to become an AWS Certified Solutions Architect Associate</a></h4>
+                        <h4><a href="blog-01.html" rel="author">My journey to become an AWS Certified Solutions Architect Associate</a></h4>
                         <div class="post-meta">
                             <span class="d-block"><a href="#">Gustavo Carrion</a></span>
-                            <span class="date-read">Jun 14 <span class="mx-1">•</span> 3 min read <span class="icon-star2"></span></span>
+                            <span class="date-read">Jun 02 <span class="mx-1">•</span> 3 min read <span class="icon-star2"></span></span>
                         </div>
                     </div>
                 </div>
                 <div class="trend-entry d-flex">
                     <div class="trend-contents">
-                        <h4><a href="blog-02.html">My thoughts on the AWS Certified Developer Associate exam</a></h4>
+                        <h4><a href="blog-02.html" rel="author">My thoughts on the AWS Certified Developer Associate exam</a></h4>
                         <div class="post-meta">
                             <span class="d-block"><a href="#">Gustavo Carrion</a></span>
-                            <span class="date-read">Jun 14 <span class="mx-1">•</span> 3 min read <span class="icon-star2"></span></span>
+                            <span class="date-read">Jun 23 <span class="mx-1">•</span> 3 min read <span class="icon-star2"></span></span>
                         </div>
                     </div>
                 </div>
