@@ -20,8 +20,9 @@ class menuHeader extends HTMLElement {
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                                        aria-expanded="false">Exam Simulator<span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="SAA-C02.html">SAA-C02</a></li>
-                                        <li><a href="DVA-C01.html">DVA-C01</a></li>
+                                        <li><a href="SAA-C02.html">Architect A.(SAA-C02)</a></li>
+                                        <li><a href="DVA-C01.html">Developer A.(DVA-C01)</a></li>
+                                        <li><a href="SOA-C01.html">SysOps A.(SOA-C01)</a></li>
                                     </ul>
                                 </li>
                             </ul>
