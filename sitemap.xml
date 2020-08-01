@@ -1,52 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
-        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-  <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 
-  <url>
-    <loc>http://devspot.org/</loc>
-    <lastmod>2020-07-23T13:56:34+00:00</lastmod>
-    <priority>1.00</priority>
-  </url>
-  <url>
-    <loc>http://devspot.org/blog.html</loc>
-    <lastmod>2020-07-23T13:56:29+00:00</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>http://devspot.org/SAA-C02.html</loc>
-    <lastmod>2020-07-23T13:56:29+00:00</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>http://devspot.org/DVA-C01.html</loc>
-    <lastmod>2020-07-23T13:56:29+00:00</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>http://devspot.org/blog-01.html</loc>
-    <lastmod>2020-07-23T13:56:29+00:00</lastmod>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://devspot.org/blog-02.html</loc>
-    <lastmod>2020-07-23T13:56:29+00:00</lastmod>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>http://devspot.org/index.html</loc>
-    <lastmod>2020-07-23T13:56:34+00:00</lastmod>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://devspot.org/practiceTestsAWSCSAA.html</loc>
-    <lastmod>2020-07-23T13:56:36+00:00</lastmod>
-    <priority>0.51</priority>
-  </url>
+<url>
+  <loc>http://devspot.org/</loc>
+  <lastmod>2020-08-01T19:55:43+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>http://devspot.org/blog.html</loc>
+  <lastmod>2020-08-01T19:55:38+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://devspot.org/SAA-C02.html</loc>
+  <lastmod>2020-08-01T19:55:38+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://devspot.org/DVA-C01.html</loc>
+  <lastmod>2020-08-01T19:55:38+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://devspot.org/SOA-C01.html</loc>
+  <lastmod>2020-08-01T19:55:38+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://devspot.org/blog-01.html</loc>
+  <lastmod>2020-08-01T19:55:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://devspot.org/blog-02.html</loc>
+  <lastmod>2020-08-01T19:55:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://devspot.org/blog-03.html</loc>
+  <lastmod>2020-08-01T19:55:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://devspot.org/practiceTestsAWSCSAA.html</loc>
+  <lastmod>2020-08-01T19:55:46+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>http://devspot.org/index.html</loc>
+  <lastmod>2020-08-01T19:55:43+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
 
 
 </urlset>
