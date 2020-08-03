@@ -12,7 +12,7 @@ class menuHeader extends HTMLElement {
                                 <ul class="dropdown-menu">
                                      <li><a href="?signout=true">Sign out</a></li>
                                 </ul>` :
-            `<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Visitor<span class="caret"></span></a>
+            `<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="background-color: orange;">Visitor<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                      <li><a href="https://devspot.auth.us-east-1.amazoncognito.com/login?client_id=6ua8mf7vk1eh8hqofll0ggshk3&response_type=token&scope=email+openid&redirect_uri=https://devspot.org">Sign in</a></li>
                                      <li><a href="https://devspot.auth.us-east-1.amazoncognito.com/signup?client_id=6ua8mf7vk1eh8hqofll0ggshk3&response_type=token&scope=email+openid&redirect_uri=https://devspot.org">Sign up</a></li>
