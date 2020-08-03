@@ -35,7 +35,7 @@ class practiceTest extends HTMLElement {
                     <label for="examLength" style="float: left;">&nbsp; Exam Length: &nbsp;</label>
                     <select name="examLength" id="examLength" style="float: left;">
                       <option value="10">10 Questions</option>
-                      <option value="30">30 Questions</option>
+                      ${window.sessionStorage.accessToken ? '<option value="30">30 Questions</option>' : '<option value="1" disabled>(Sign In) 30 Questions</option>'} 
                       ${window.sessionStorage.accessToken ? '<option value="65">65 Questions</option>' : '<option value="1" disabled>(Sign In) 65 Questions</option>'} 
                     </select>
                     <button type="button" class="stdButton" id="start" style="float: right;" ><i class="fa fa-flag"> Start Assessment</i></button>
