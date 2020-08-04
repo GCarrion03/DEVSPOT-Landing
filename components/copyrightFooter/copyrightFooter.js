@@ -6,11 +6,11 @@ class copyrightFooter extends HTMLElement {
     connectedCallback() {
         this.shadowRoot.innerHTML =
             `<template id="footer-template">
-                <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
-                <link href="css/bootstrap.css" rel="stylesheet">
-                <link rel="stylesheet" type="text/css" href="fontawesome/css/font-awesome.min.css"/>
-                <link rel="stylesheet" type="text/css" href="js/lightbox/css/lightbox.min.css">
-                <link href="css/style.css" rel="stylesheet" type="text/css">
+                <link href="/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+                <link href="/css/bootstrap.css" rel="stylesheet">
+                <link rel="stylesheet" type="text/css" href="/fontawesome/css/font-awesome.min.css"/>
+                <link rel="stylesheet" type="text/css" href="/js/lightbox/css/lightbox.min.css">
+                <link href="/css/style.css" rel="stylesheet" type="text/css">
                 <footer class="footer container-fluid text-center">
                     <div class="logo"><span>DEVSPOT</span></div>
                     <div class="socials">

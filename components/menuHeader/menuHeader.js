@@ -23,18 +23,18 @@ class menuHeader extends HTMLElement {
                     <div class="container">
                         <div class="collapse navbar-collapse" id="topFixedNavbar1">
                             <div id="logo" class="fl_left">
-                                <img src="images/logo/Main-logo-png200px.png" class="logomain" alt="logo" longdesc="http://index.html"/>
+                                <img src="/images/logo/Main-logo-png200px.png" class="logomain" alt="logo" longdesc="http://index.html"/>
                             </div>
                             <ul class="nav navbar-nav navbar-right text-uppercase">
-                                <li><a href="index.html#carousel1">Home</a></li>
-                                <li><a href="blog.html">Blog</a></li>
+                                <li><a href="/index.html#carousel1">Home</a></li>
+                                <li><a href="/blog.html">Blog</a></li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                                        aria-expanded="false">Exam Simulator<span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="SAA-C02.html">Architect A.(SAA-C02)</a></li>
-                                        <li><a href="DVA-C01.html">Developer A.(DVA-C01)</a></li>
-                                        <li><a href="SOA-C01.html">SysOps A.(SOA-C01)</a></li>
+                                        <li><a href="/SAA-C02.html">Architect A.(SAA-C02)</a></li>
+                                        <li><a href="/DVA-C01.html">Developer A.(DVA-C01)</a></li>
+                                        <li><a href="/SOA-C01.html">SysOps A.(SOA-C01)</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown">
