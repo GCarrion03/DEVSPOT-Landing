@@ -33,7 +33,7 @@ class postsSidebar extends HTMLElement {
                 </div>
                 <div class="trend-entry d-flex">
                     <div class="trend-contents">
-                        <h4><a href="/blog-03.html" rel="author">Passed the Certified SysOps Admin Associate Exam, AWS Associate Trifecta complete now!</a></h4>
+                        <h4><a href="/blog-03.html" rel="author">Passed the Certified SysOps Administrator Associate Exam, AWS Associate Trifecta complete now!</a></h4>
                         <div class="post-meta">
                             <span class="d-block"><a href="#">Gustavo Carrion</a></span>
                             <span class="date-read">Jul 29 <span class="mx-1">•</span> 3 min read <span class="icon-star2"></span></span>
