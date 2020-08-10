@@ -1,5 +1,5 @@
 class practiceTest extends HTMLElement {
-    originalQuestionBank;
+    constants;
     exam;
     questionBank;
     numberOfQuestions = 10;
@@ -10,9 +10,11 @@ class practiceTest extends HTMLElement {
     }
 
     async connectedCallback() {
-        this.originalQuestionBank = await import(this.getAttribute("questionBankPath"));
-        this.exam = this.originalQuestionBank.questionBank;
-        this.questionBank = this.originalQuestionBank.questionBank.questions;
+        this.constants = (await import('/components/practiceTest/practiceTestConstants.js')).constants;
+
+        let body = {"examId":this.getAttribute("examId"),"examProvider":this.getAttribute("examProvider")};
+        this.exam = await fetchFromPost(this.constants.examEndpoint, body);
+        this.questionBank = this.exam.questions;
         const div = document.createElement('div');
         div.id = "tmpDiv";
         div.innerHTML =
@@ -23,13 +25,13 @@ class practiceTest extends HTMLElement {
                 <link rel="stylesheet" type="text/css" href="css/roboto_light/stylesheet.css">
                 <div class="section-title">
                     <span class="caption d-block small">Exam</span>
-                    <h3>${this.exam.examID}</h3>
+                    <h3>${this.exam.examId}</h3>
                     <img src="images/logo/avail/${this.exam.badgeFile}" class="cert-cred">
                 </div>
                 <div id="welcomeMessage" style=" min-height: 400px;">
-                    <p style="text-align: center;"><strong>${this.exam.examAcronym} (${this.exam.examID})</strong></p>
+                    <p style="text-align: center;"><strong>${this.exam.examAcronym} (${this.exam.examId})</strong></p>
                     <p style="text-align: center;">Welcome to the ${this.exam.examProvider} ${this.exam.examName} Exam<span>&nbsp;readiness quiz</span>&nbsp;</p>
-                    <p>Select the number of questions that will be randomly selected from our curated database, score more than 70% and you will be ready to sit for your exam</p> 
+                    <p>Select the number of questions that will be randomly selected from our curated database of ${this.exam.totalNumberOfQuestions} questions, score more than 70% and you will be ready to sit for your exam</p> 
                     <br>
                     <label for="nameInput" style="float: left;">Your name: &nbsp;</label><input type="text" id="nameInput" style="float: left;" >
                     <label for="examLength" style="float: left;">&nbsp; Exam Length: &nbsp;</label>
@@ -46,10 +48,13 @@ class practiceTest extends HTMLElement {
         const node = document.importNode(template.content, true);
         this.shadowRoot.removeChild(div);
         this.shadowRoot.appendChild(node);
-        this.shadowRoot.getElementById(`start`).onclick = () => this.createTest();
+        this.shadowRoot.getElementById(`start`).onclick = () => {
+            this.shadowRoot.getElementById(`start`).disabled=
+            this.createTest();
+        };
     };
 
-    createTest() {
+    async createTest() {
 
         this.numberOfQuestions = +this.shadowRoot.getElementById('examLength').value;
         const div = document.createElement('div');
@@ -61,11 +66,11 @@ class practiceTest extends HTMLElement {
                     <button class="stdButton" type="button" id="btnRetake"  style="float: right;" onclick="location = location;" ><i class="fa fa-repeat"> Do it again!</i> </button>
                     <h4 id="passHeader">Share your achievement:</h4>
                     <!--div class="shareon">
-                        <a class="facebook" data-title="&#127882;&#127881;I passed my ${this.exam.examProvider} ${this.exam.examName} (${this.exam.examID}) Readiness Exam!&#127881;&#127882; Give it a try here: "></a>
-                        <a class="linkedin" data-title="&#127882;&#127881;I passed my ${this.exam.examProvider} ${this.exam.examName} (${this.exam.examID}) Readiness Exam!&#127881;&#127882; Give it a try here: "></a>
-                        <a class="reddit" data-title="&#127882;&#127881;I passed my ${this.exam.examProvider} ${this.exam.examName} (${this.exam.examID}) Readiness Exam!&#127881;&#127882; Give it a try here: "></a>
-                        <a class="twitter" data-title="&#127882;&#127881;I passed my ${this.exam.examProvider} ${this.exam.examName} (${this.exam.examID}) Readiness Exam!&#127881;&#127882; Give it a try here: "></a>
-                        <a class="whatsapp" data-title="&#127882;&#127881;I passed my ${this.exam.examProvider} ${this.exam.examName} (${this.exam.examID}) Readiness Exam!&#127881;&#127882; Give it a try here: "></a>
+                        <a class="facebook" data-title="&#127882;&#127881;I passed my ${this.exam.examProvider} ${this.exam.examName} (${this.exam.examId}) Readiness Exam!&#127881;&#127882; Give it a try here: "></a>
+                        <a class="linkedin" data-title="&#127882;&#127881;I passed my ${this.exam.examProvider} ${this.exam.examName} (${this.exam.examId}) Readiness Exam!&#127881;&#127882; Give it a try here: "></a>
+                        <a class="reddit" data-title="&#127882;&#127881;I passed my ${this.exam.examProvider} ${this.exam.examName} (${this.exam.examId}) Readiness Exam!&#127881;&#127882; Give it a try here: "></a>
+                        <a class="twitter" data-title="&#127882;&#127881;I passed my ${this.exam.examProvider} ${this.exam.examName} (${this.exam.examId}) Readiness Exam!&#127881;&#127882; Give it a try here: "></a>
+                        <a class="whatsapp" data-title="&#127882;&#127881;I passed my ${this.exam.examProvider} ${this.exam.examName} (${this.exam.examId}) Readiness Exam!&#127881;&#127882; Give it a try here: "></a>
                     </div-->
                 </div>
                 <div id="failMessage" style = "display:none;" class="col-lg-12">
@@ -94,17 +99,10 @@ class practiceTest extends HTMLElement {
         const display = this.shadowRoot.getElementById('time');
         startTimer(examDuration, display);
         let i = 1;
-        let questions = [];
-        let iterator;
-        for (iterator = 0; iterator < this.numberOfQuestions; iterator++) {
-            let questionToAdd = this.questionBank[Math.floor(Math.random() * this.questionBank.length)];
-            if (questionToAdd.questionAnswer && questionToAdd.questionAnswer.length <= 4 && !questions.includes(questionToAdd)) {
-                questions.push(questionToAdd);
-            } else {
-                console.error(`duplicated question ${questionToAdd.questionId}`);
-                iterator--;
-            }
-        }
+
+        let body = {"examId":this.exam.examId,"examProvider":this.exam.examProvider,"numberOfQuestions":this.numberOfQuestions,"totalNumberOfQuestions":this.exam.totalNumberOfQuestions};
+        let questions = (await fetchFromPost(this.constants.questionEndpoint, body)).questions;
+
 
         questions.forEach(question => {
             let questionOptions = '';
@@ -127,6 +125,7 @@ class practiceTest extends HTMLElement {
                         <div style="border-bottom: 1px solid black;"></div>
                         <br>
                             ${questionOptions}
+                        <div id="${i}divQuestionExplanation"></div>
                     </div>
                     <div class="col-lg-12">
                         <button id="prev${i}" class="stdButton" type="button" value="<" style="float: left;"><i class="fa fa-arrow-left"></i></button>
@@ -192,6 +191,14 @@ function makeValidateCallback(shadowRoot, currentI, question, numberOfQuestions)
         var currentScore = shadowRoot.querySelector(`label[id=currentScore]`);
         var currentSubmissions = shadowRoot.querySelector(`label[id=currentSubmissions]`);
         currentSubmissions.innerHTML = parseInt(currentSubmissions.innerHTML) + 1;
+        if (question.questionAnswerExplanation) {
+            shadowRoot.getElementById(`${currentI}divQuestionExplanation`).innerHTML =
+                `<div class="col-lg-12" style="margin-top:15px;">
+                        <div style="border-bottom: 1px solid black;"></div>
+                        <h5 class="mb-3" style="margin-top:5px;"><strong>Explanation: </strong></h5>
+                        <h5 class="mb-3">${question.questionAnswerExplanation}</h5>
+                        <div style="border-bottom: 1px solid black;"></div></div>`;
+        }
         if (question.questionAnswer && question.questionAnswer.length === 1) {
             shadowRoot.getElementById(`${currentI + question.questionAnswer}label`).innerHTML += '&#9989;';
             if (!shadowRoot.getElementById(`${currentI + question.questionAnswer}`).checked) {
@@ -261,4 +268,17 @@ function startTimer(duration, display) {
             timer = duration;
         }
     }, 1000);
+}
+
+async function fetchFromPost(url,body) {
+    let response = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(body)
+    });
+
+    let result = await response.json();
+    return (result);
 }
