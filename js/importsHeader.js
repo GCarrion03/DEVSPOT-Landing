@@ -6,7 +6,7 @@ import * as shareon from 'https://cdn.jsdelivr.net/npm/shareon@1.2.0/dist/shareo
 import * as jquery from '../js/jquery-1.11.3.min.js';
 import * as bootstrap from '../js/bootstrap.js';
 import * as ScrollMagic from '../js/ScrollMagic.min.js';
-import * as velocity from '../js/velocity.js';
+import * as velocity from 'https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.min.js';
 import * as velocityui from '../js/velocity.ui.js';
 import * as animation from '../js/animation.velocity.min.js';
 import * as jquerymixit from '../js/jquery.mixitup.min.js';
