@@ -31,7 +31,7 @@ class practiceTest extends HTMLElement {
                 <div id="welcomeMessage" style=" min-height: 400px;">
                     <p style="text-align: center;"><strong>${this.exam.examAcronym} (${this.exam.examId})</strong></p>
                     <p style="text-align: center;">Welcome to the ${this.exam.examProvider} ${this.exam.examName} Exam<span>&nbsp;readiness quiz</span>&nbsp;</p>
-                    <p>Select the number of questions that will be randomly selected from our curated database, score more than 70% and you will be ready to sit for your exam</p> 
+                    <p>Select the number of questions that will be randomly selected from our curated database of ${this.exam.totalNumberOfQuestions} questions, score more than 70% and you will be ready to sit for your exam</p> 
                     <br>
                     <label for="nameInput" style="float: left;">Your name: &nbsp;</label><input type="text" id="nameInput" style="float: left;" >
                     <label for="examLength" style="float: left;">&nbsp; Exam Length: &nbsp;</label>
@@ -48,7 +48,10 @@ class practiceTest extends HTMLElement {
         const node = document.importNode(template.content, true);
         this.shadowRoot.removeChild(div);
         this.shadowRoot.appendChild(node);
-        this.shadowRoot.getElementById(`start`).onclick = () => this.createTest();
+        this.shadowRoot.getElementById(`start`).onclick = () => {
+            this.shadowRoot.getElementById(`start`).disabled=
+            this.createTest();
+        };
     };
 
     async createTest() {
@@ -122,6 +125,7 @@ class practiceTest extends HTMLElement {
                         <div style="border-bottom: 1px solid black;"></div>
                         <br>
                             ${questionOptions}
+                        <div id="${i}divQuestionExplanation"></div>
                     </div>
                     <div class="col-lg-12">
                         <button id="prev${i}" class="stdButton" type="button" value="<" style="float: left;"><i class="fa fa-arrow-left"></i></button>
@@ -187,6 +191,14 @@ function makeValidateCallback(shadowRoot, currentI, question, numberOfQuestions)
         var currentScore = shadowRoot.querySelector(`label[id=currentScore]`);
         var currentSubmissions = shadowRoot.querySelector(`label[id=currentSubmissions]`);
         currentSubmissions.innerHTML = parseInt(currentSubmissions.innerHTML) + 1;
+        if (question.questionAnswerExplanation) {
+            shadowRoot.getElementById(`${currentI}divQuestionExplanation`).innerHTML =
+                `<div class="col-lg-12" style="margin-top:15px;">
+                        <div style="border-bottom: 1px solid black;"></div>
+                        <h5 class="mb-3" style="margin-top:5px;"><strong>Explanation: </strong></h5>
+                        <h5 class="mb-3">${question.questionAnswerExplanation}</h5>
+                        <div style="border-bottom: 1px solid black;"></div></div>`;
+        }
         if (question.questionAnswer && question.questionAnswer.length === 1) {
             shadowRoot.getElementById(`${currentI + question.questionAnswer}label`).innerHTML += '&#9989;';
             if (!shadowRoot.getElementById(`${currentI + question.questionAnswer}`).checked) {
