@@ -4529,6 +4529,23 @@ function mergeQaA() {
     //run this method from an html and in dev tools JSON.stringify(arr3) in watch to copy the array
 }
 
+function TestMergeByProp() {
+    const mergeByProperty = (target, source, prop) => {
+        source.forEach(sourceElement => {
+            let targetElement = target.find(targetElement => {
+                return sourceElement[prop] === targetElement[prop];
+            })
+            targetElement ? Object.assign(targetElement, sourceElement) : target.push(sourceElement);
+        })
+    }
+    var target /* arr1 */ = [{name: "lang", value: "English"}, {name: "age", value: "18"}];
+    var source /* arr2 */ = [{name: "childs", value: '5'}, {name: "lang", value: "German"}];
+
+    mergeByProperty(target, source, 'name');
+
+    console.log(target);
+}
+
 function enumerateQs() {
     let questions = [
         {
