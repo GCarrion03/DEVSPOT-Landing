@@ -10,7 +10,7 @@ class practiceTest extends HTMLElement {
     }
 
     async connectedCallback() {
-        this.constants = (await import('/components/practiceTest/practiceTestConstants.js')).constants;
+        this.constants = (await import('/js/site/siteConstants.js')).constants;
 
         let body = {"examId":this.getAttribute("examId"),"examProvider":this.getAttribute("examProvider")};
         this.exam = await fetchFromPost(this.constants.examEndpoint, body);
@@ -55,7 +55,6 @@ class practiceTest extends HTMLElement {
     };
 
     async createTest() {
-
         this.numberOfQuestions = +this.shadowRoot.getElementById('examLength').value;
         const div = document.createElement('div');
         div.id = "tmpDiv";

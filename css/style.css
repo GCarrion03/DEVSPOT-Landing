@@ -1,8 +1,8 @@
-@import "../layout/styles/layout.css";
-@import "../css/bootstrap.css";
-@import "../fontawesome/css/font-awesome.min.css";
-@import "../js/lightbox/css/lightbox.min.css";
-@import "../css/roboto_light/stylesheet.css";
+@import "/layout/styles/layout.css";
+@import "/css/bootstrap.css";
+@import "/fontawesome/css/font-awesome.min.css";
+@import "/js/third-party/lightbox/css/lightbox.min.css";
+@import "/css/roboto_light/stylesheet.css";
 @import url("https://cdn.jsdelivr.net/npm/shareon@1.2.0/dist/shareon.min.css");
 body {
     font-family: 'robotolight', sans-serif;
