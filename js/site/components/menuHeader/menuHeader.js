@@ -23,10 +23,11 @@ class menuHeader extends HTMLElement {
                     <div class="container">
                         <div class="collapse navbar-collapse" id="topFixedNavbar1">
                             <div id="logo" class="fl_left">
-                                <img src="/images/logo/Main-logo-png200px.png" class="logomain" alt="logo" longdesc="http://index.html"/>
+                                <a href="/index.html#carousel1">
+                                    <img src="/images/logo/Main-logo-png200px.png" href="/index.html#carousel1" class="logomain" alt="logo" longdesc="http://index.html"/>
+                                </a>
                             </div>
                             <ul class="nav navbar-nav navbar-right text-uppercase">
-                                <li><a href="/index.html#carousel1">Home</a></li>
                                 <li><a href="/blog.html">Blog</a></li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
