@@ -1,4 +1,5 @@
 import { DevspotBase } from '/js/site/commons/DevspotBase.js';
+import { fetchFromPost } from "/js/site/commons/HttpUtils.js";
 class MyTrack extends DevspotBase {
     constants;
     exam;
@@ -21,8 +22,10 @@ class MyTrack extends DevspotBase {
             let tooltipText = (userAnswer.status !== 'notRequested') ?
                 `<span class="basicTooltipText">
                     <strong>Question: </strong>${userAnswer.questionText}<br>
-                    <strong>Correct Answer: </strong>  ${userAnswer.questionOptions.find( x=> x.optionId === userAnswer.questionAnswer).optionText}<br>
-                    <strong>Your Answer: </strong> ${userAnswer.questionOptions.find( x=> x.optionId === userAnswer.userQuestionAnswer).optionText}
+                    <strong>Correct Answer: </strong>  ${userAnswer.questionAnswer.length < 2 ? 
+                    userAnswer.questionOptions.find( x=> x.optionId === userAnswer.questionAnswer)?.optionText
+                    : userAnswer.questionOptions.find( x=> x.optionId === userAnswer.questionAnswer)?.optionText}<br>
+                    <strong>Your Answer: </strong> ${userAnswer.questionOptions.find( x=> x.optionId === userAnswer.userQuestionAnswer)?.optionText}
                 </span>`
                 : '<span class="basicTooltipText">Not yet answered!</span>';
             let answerColor = '';
@@ -281,17 +284,4 @@ function startTimer(duration, display) {
             timer = duration;
         }
     }, 1000);
-}
-
-async function fetchFromPost(url,body) {
-    let response = await fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-        },
-        body: JSON.stringify(body)
-    });
-
-    let result = await response.json();
-    return (result);
 }
