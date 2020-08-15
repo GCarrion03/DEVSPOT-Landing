@@ -1,7 +1,8 @@
-class practiceTest extends HTMLElement {
+import { DevspotBase } from '/js/site/commons/DevspotBase.js';
+class MyTrack extends DevspotBase {
     constants;
     exam;
-    questionBank;
+    myTrackData;
     numberOfQuestions = 10;
 
     constructor() {
@@ -12,9 +13,32 @@ class practiceTest extends HTMLElement {
     async connectedCallback() {
         this.constants = (await import('/js/site/siteConstants.js')).constants;
 
-        let body = {"examId":this.getAttribute("examId"),"examProvider":this.getAttribute("examProvider")};
-        this.exam = await fetchFromPost(this.constants.examEndpoint, body);
-        this.questionBank = this.exam.questions;
+        let body = {"examId":this.getAttribute("examId"),"userId":this.userData.username};
+        this.exam = await fetchFromPost(this.constants.myTrackEndpoint, body);
+        this.myTrackData = this.exam.myTrackData;
+        let mytrack = '';
+        this.myTrackData.forEach(userAnswer => {
+            let tooltipText = (userAnswer.status !== 'notRequested') ?
+                `<span class="basicTooltipText">
+                    <strong>Question: </strong>${userAnswer.questionText}<br>
+                    <strong>Correct Answer: </strong>  ${userAnswer.questionOptions.find( x=> x.optionId === userAnswer.questionAnswer).optionText}<br>
+                    <strong>Your Answer: </strong> ${userAnswer.questionOptions.find( x=> x.optionId === userAnswer.userQuestionAnswer).optionText}
+                </span>`
+                : '<span class="basicTooltipText">Not yet answered!</span>';
+            let answerColor = '';
+            switch(userAnswer.status) {
+                case 'incorrect':
+                    answerColor = 'darkRed';;
+                    break;
+                case 'correct':
+                    answerColor = 'darkGreen';;
+                    break;
+                case 'notRequested':
+                    answerColor = 'darkBlue';;
+                    break;
+            }
+            mytrack += `<div class="col-sm-1 userAnswer basicTooltip padding-sides-0 ${answerColor}">${userAnswer.questionSkId} ${tooltipText}</div>`
+        });
         const div = document.createElement('div');
         div.id = "tmpDiv";
         div.innerHTML =
@@ -24,23 +48,13 @@ class practiceTest extends HTMLElement {
                 <link href="/css/style.css" rel="stylesheet" type="text/css">
                 <link rel="stylesheet" type="text/css" href="/css/roboto_light/stylesheet.css">
                 <div class="section-title">
-                    <span class="caption d-block small">Exam</span>
+                    <span class="caption d-block small">My Track</span>
                     <h3>${this.exam.examId}</h3>
                     <img src="/images/logo/avail/${this.exam.badgeFile}" class="cert-cred">
                 </div>
-                <div id="welcomeMessage" style=" min-height: 400px;">
-                    <p style="text-align: center;"><strong>${this.exam.examAcronym} (${this.exam.examId})</strong></p>
-                    <p style="text-align: center;">Welcome to the ${this.exam.examProvider} ${this.exam.examName} Exam<span>&nbsp;readiness quiz</span>&nbsp;</p>
-                    <p>Select the number of questions that will be randomly selected from our curated database of ${this.exam.totalNumberOfQuestions} questions, score more than 70% and you will be ready to sit for your exam</p> 
-                    <br>
-                    <label for="nameInput" style="float: left;">Your name: &nbsp;</label><input type="text" id="nameInput" style="float: left;" >
-                    <label for="examLength" style="float: left;">&nbsp; Exam Length: &nbsp;</label>
-                    <select name="examLength" id="examLength" style="float: left;">
-                      <option value="10">10 Questions</option>
-                      ${window.sessionStorage.accessToken ? '<option value="30">30 Questions</option>' : '<option value="1" disabled>(Sign In) 30 Questions</option>'} 
-                      ${window.sessionStorage.accessToken ? '<option value="65">65 Questions</option>' : '<option value="1" disabled>(Sign In) 65 Questions</option>'} 
-                    </select>
-                    <button type="button" class="stdButton" id="start" style="float: right;" ><i class="fa fa-flag"> Start Assessment</i></button>
+                <div id="userAnswersContainer" style="min-height: 400px;">
+                        ${mytrack}
+<!--                    <button type="button" class="stdButton" id="start" style="float: right;" ><i class="fa fa-flag"> Start Assessment</i></button>-->
                 </div>
              </template>`
         this.shadowRoot.append(div);
@@ -48,10 +62,10 @@ class practiceTest extends HTMLElement {
         const node = document.importNode(template.content, true);
         this.shadowRoot.removeChild(div);
         this.shadowRoot.appendChild(node);
-        this.shadowRoot.getElementById(`start`).onclick = () => {
+        /*this.shadowRoot.getElementById(`start`).onclick = () => {
             this.shadowRoot.getElementById(`start`).disabled=
             this.createTest();
-        };
+        };*/
     };
 
     async createTest() {
@@ -163,7 +177,7 @@ class practiceTest extends HTMLElement {
     }
 }
 
-customElements.define('practice-test', practiceTest);
+customElements.define('my-track', MyTrack);
 
 
 function makeValidateCallback(shadowRoot, currentI, question, numberOfQuestions) {

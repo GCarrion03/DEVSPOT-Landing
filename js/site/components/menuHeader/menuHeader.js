@@ -58,22 +58,24 @@ class menuHeader extends HTMLElement {
         let id_token = getParameterByName('id_token');
         if (getParameterByName('signout'))
         {
-            window.sessionStorage.accessToken = '';
+            localStorage.setItem('accessToken','');
             this.accessToken = '';
             this.userData = '';
-            return;
-        }
-        if (id_token) {
-            window.sessionStorage.accessToken = id_token;
-            this.accessToken = id_token;
-            this.userData =  parseJwt(id_token);
         } else {
-            id_token = window.sessionStorage.accessToken;
             if (id_token) {
-                this.accessToken = window.sessionStorage.accessToken;
-                this.userData =  parseJwt(this.accessToken);
+                localStorage.setItem('accessToken',id_token);
+                this.accessToken = id_token;
+                this.userData = parseJwt(id_token);
+            } else {
+                id_token = localStorage.getItem('accessToken');
+                if (id_token) {
+                    this.accessToken = localStorage.getItem('accessToken');
+                    this.userData = parseJwt(this.accessToken);
+                }
             }
         }
+        localStorage.setItem('userData', JSON.stringify(this.userData));
+        return;
     }
 }
 customElements.define('header-menu', menuHeader);

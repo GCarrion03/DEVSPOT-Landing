@@ -15,7 +15,7 @@ function Translate() {
             var elem = allDom[i];
             var key = elem.getAttribute(_self.attribute);
             if (key != null) {
-                console.log(key);
+                // console.log(key);
                 elem.innerHTML = LngObject[key];
             }
         }

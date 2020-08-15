@@ -8,7 +8,7 @@ body {
     font-family: 'robotolight', sans-serif;
     word-spacing: 1.5px;
     position: relative;
-    background: lightgray;
+    background: aliceblue;
 }
 
 #carousel1 {
@@ -293,7 +293,7 @@ img.logomain {
     padding-top: 5px;
     padding-bottom: 20px;
     border-bottom: 1px solid #F1F1F1;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .carousel-caption h3 {
@@ -514,4 +514,52 @@ button.navbar-toggle {
 .stdButton:disabled{
     background: radial-gradient(circle, rgba(66,87,116,0.8127626050420168) 0%, rgb(255, 255, 255) 0%, rgba(0,142,255,1) 100%);
     color: gray;
+}
+
+.userAnswer {
+    text-align: center;
+    border: 3px double white;
+    color: white;
+}
+
+.darkGreen{
+    background-color: darkgreen;
+}
+
+.darkRed{
+    background-color: darkred;
+}
+
+.darkBlue{
+    background-color: darkblue;
+}
+
+
+/*Tooltip section W3schools*/
+
+.basicTooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.basicTooltip .basicTooltipText {
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 5px;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    width: 300px;
+    bottom: 100%;
+    left: 50%;
+    margin-left: 10px;
+}
+
+.basicTooltip:hover .basicTooltipText {
+    visibility: visible;
 }

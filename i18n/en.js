@@ -1,6 +1,6 @@
 export const translation =
 {
-  "nav-aboutus":"About us",
+  "nav-aboutus":"Devspot.org All rights reserved",
   "nav-services": "Services",
   "nav-testimonials": "Clients",
   "nav-portfolio": "Portfolio",
