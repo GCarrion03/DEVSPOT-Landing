@@ -33,11 +33,13 @@ class practiceTest extends DevspotBase {
                 <div id="welcomeMessage" style=" min-height: 400px;">
                     <p style="text-align: center;"><strong>${this.exam.examAcronym} (${this.exam.examId})</strong></p>
                     <p style="text-align: center;">Welcome to the ${this.exam.examProvider} ${this.exam.examName} Exam<span>&nbsp;readiness quiz</span>&nbsp;</p>
-                    <p>Select the number of questions that will be randomly selected from our curated database of ${this.exam.totalNumberOfQuestions} questions, score more than 70% and you will be ready to sit for your exam</p> 
+                    <p>Select the number of questions that will be randomly selected from our curated database of ${this.exam.totalNumberOfQuestions} questions, score more than 70% and you will be ready to sit for your exam.</p>
+                    <p><strong>Note:</strong> Please register to keep track of your completion progress in the 'My Tracks' option.</p> 
                     <br>
                     <label for="nameInput" style="float: left;">Your name: &nbsp;</label><input type="text" id="nameInput" style="float: left;" >
                     <label for="examLength" style="float: left;">&nbsp; Exam Length: &nbsp;</label>
                     <select name="examLength" id="examLength" style="float: left;">
+                      <option value="5">5 Questions</option>
                       <option value="10">10 Questions</option>
                       ${this.userData.username ? '<option value="30">30 Questions</option>' : '<option value="1" disabled>(Sign In) 30 Questions</option>'} 
                       ${this.userData.username ? '<option value="65">65 Questions</option>' : '<option value="1" disabled>(Sign In) 65 Questions</option>'} 
@@ -64,7 +66,8 @@ class practiceTest extends DevspotBase {
             `<template id="master-section">
                 <div id="passMessage" style="display:none;" class="col-lg-12">
                     <h4 id="passHeader" style="min-height: 20px;">Pass</h4>
-                    <button class="stdButton" type="button" id="btnSaveToMyTrack"  style="float: right;"><i class="fa fa-save"> Save results to My Track</i> </button>
+                    ${this.userData?.username ?  '<button class="stdButton" type="button" id="btnSaveToMyTrack"  style="float: right;"><i class="fa fa-save"> Save results to My Track</i> </button>' :
+                                                '<button class="stdButton" type="button" id="btnSaveToMyTrack"  style="float: right;" disabled><i class="fa fa-save"> (Sign In) Save results to My Track</i> </button>'}
                     <button class="stdButton" type="button" id="btnRetake"  style="float: right;" onclick="location = location;" ><i class="fa fa-repeat"> Do it again!</i> </button>
                     <h4 id="passHeader">Share your achievement:</h4>
                     <!--div class="shareon">
@@ -225,16 +228,17 @@ function makeValidateCallback(shadowRoot, currentI, question, numberOfQuestions)
                         <div style="border-bottom: 1px solid black;"></div></div>`;
         }
         if (question.questionAnswer && question.questionAnswer.length === 1) {
+            const selectedAns = shadowRoot.querySelector(`input[name=answer${currentI}]:checked`);
             shadowRoot.getElementById(`${currentI + question.questionAnswer}label`).innerHTML += '&#9989;';
             if (!shadowRoot.getElementById(`${currentI + question.questionAnswer}`).checked) {
-                var incorrectAns = shadowRoot.querySelector(`input[name=answer${currentI}]:checked`);
+                var incorrectAns = selectedAns;
                 if (incorrectAns) {
-                    shadowRoot.getElementById(`u${question.questionSkId}`).innerHTML = incorrectAns.id.substr(-1);
                     shadowRoot.getElementById(incorrectAns.id + 'label').innerHTML += '&#10060;';
                 }
             } else {
                 currentScore.innerHTML = parseInt(currentScore.innerHTML) + 1;
             }
+            shadowRoot.getElementById(`u${question.questionSkId}`).innerHTML += selectedAns.id.substr(-1);
         } else {
             var isCorrect = true;
             var answers = question.questionAnswer.split('');
@@ -242,7 +246,6 @@ function makeValidateCallback(shadowRoot, currentI, question, numberOfQuestions)
             if (answersSelected.length !== answers.length) {
                 isCorrect = false
             }
-            ;
             answersSelected.forEach(selectedAns => {
                 shadowRoot.getElementById(`u${question.questionSkId}`).innerHTML += selectedAns.id.substr(-1);
                     if (!answers.includes(selectedAns.id.substr(-1))) {

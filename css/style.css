@@ -20,6 +20,18 @@ body {
     border-bottom: 1px solid #3333ff;
     padding: 6px;
 }
+.padding-margin-0 {
+    padding:0;
+    margin: 0;
+}
+
+.padding-bottom-sm{
+    padding-bottom: 2px;
+}
+.padding-bottom-md{
+    padding-bottom: 5px;
+}
+
 .padding-sides-0{
     padding-left: 0;
     padding-right: 0;
@@ -520,6 +532,13 @@ button.navbar-toggle {
     text-align: center;
     border: 3px double white;
     color: white;
+}
+
+.legendText {
+    text-align: center;
+    border: none;
+    color: black;
+    font-weight: bold;
 }
 
 .darkGreen{
