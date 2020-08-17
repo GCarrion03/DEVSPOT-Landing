@@ -1,6 +1,6 @@
 import * as footer from '/js/site/components/copyrightFooter/copyrightFooter.js';
 import * as practiceTest from '/js/site/components/examSimulator/practiceTest.js';
-import * as myTrack from '/js/site/components/myTrack/myTrack.js';
+import * as myTrack from '/js/site/components/myTrack/MyTrack.js';
 import * as postsSidebar from '/js/site/components/blog/popularPostsSidebar/postsSidebar.js';
 import * as translator from '/i18n/translate.js';
 import * as shareon from 'https://cdn.jsdelivr.net/npm/shareon@1.2.0/dist/shareon.min.js';
