@@ -39,6 +39,15 @@ class menuHeader extends HTMLElement {
                                     </ul>
                                 </li>
                                 <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                    ${this?.userData ? '':'style="background-color: orange;"'} aria-expanded="false">My Tracks<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/mytrack/SAA-C02.html">Architect A.(SAA-C02)</a></li>
+                                        <li><a href="/mytrack/DVA-C01.html">Developer A.(DVA-C01)</a></li>
+                                        <li><a href="/mytrack/SOA-C01.html">SysOps A.(SOA-C01)</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
                                     ${userMenu}
                                 </li>
                             </ul>
@@ -58,22 +67,24 @@ class menuHeader extends HTMLElement {
         let id_token = getParameterByName('id_token');
         if (getParameterByName('signout'))
         {
-            window.sessionStorage.accessToken = '';
+            localStorage.setItem('accessToken','');
             this.accessToken = '';
             this.userData = '';
-            return;
-        }
-        if (id_token) {
-            window.sessionStorage.accessToken = id_token;
-            this.accessToken = id_token;
-            this.userData =  parseJwt(id_token);
         } else {
-            id_token = window.sessionStorage.accessToken;
             if (id_token) {
-                this.accessToken = window.sessionStorage.accessToken;
-                this.userData =  parseJwt(this.accessToken);
+                localStorage.setItem('accessToken',id_token);
+                this.accessToken = id_token;
+                this.userData = parseJwt(id_token);
+            } else {
+                id_token = localStorage.getItem('accessToken');
+                if (id_token) {
+                    this.accessToken = localStorage.getItem('accessToken');
+                    this.userData = parseJwt(this.accessToken);
+                }
             }
         }
+        localStorage.setItem('userData', JSON.stringify(this.userData));
+        return;
     }
 }
 customElements.define('header-menu', menuHeader);

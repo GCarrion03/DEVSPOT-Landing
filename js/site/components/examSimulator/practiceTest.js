@@ -1,4 +1,6 @@
-class practiceTest extends HTMLElement {
+import { DevspotBase } from '/js/site/commons/DevspotBase.js';
+import { fetchFromPost, fetchFromPut } from "/js/site/commons/HttpUtils.js";
+class practiceTest extends DevspotBase {
     constants;
     exam;
     questionBank;
@@ -19,26 +21,28 @@ class practiceTest extends HTMLElement {
         div.id = "tmpDiv";
         div.innerHTML =
             `<template id="practiceTest-styles">
-                <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
-                <link href="css/bootstrap.css" rel="stylesheet">
-                <link href="css/style.css" rel="stylesheet" type="text/css">
-                <link rel="stylesheet" type="text/css" href="css/roboto_light/stylesheet.css">
+                <link href="/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+                <link href="/css/bootstrap.css" rel="stylesheet">
+                <link href="/css/style.css" rel="stylesheet" type="text/css">
+                <link rel="stylesheet" type="text/css" href="/css/roboto_light/stylesheet.css">
                 <div class="section-title">
                     <span class="caption d-block small">Exam</span>
                     <h3>${this.exam.examId}</h3>
-                    <img src="images/logo/avail/${this.exam.badgeFile}" class="cert-cred">
+                    <img src="/images/logo/avail/${this.exam.badgeFile}" class="cert-cred">
                 </div>
                 <div id="welcomeMessage" style=" min-height: 400px;">
                     <p style="text-align: center;"><strong>${this.exam.examAcronym} (${this.exam.examId})</strong></p>
                     <p style="text-align: center;">Welcome to the ${this.exam.examProvider} ${this.exam.examName} Exam<span>&nbsp;readiness quiz</span>&nbsp;</p>
-                    <p>Select the number of questions that will be randomly selected from our curated database of ${this.exam.totalNumberOfQuestions} questions, score more than 70% and you will be ready to sit for your exam</p> 
+                    <p>Select the number of questions that will be randomly selected from our curated database of ${this.exam.totalNumberOfQuestions} questions, score more than 70% and you will be ready to sit for your exam.</p>
+                    <p><strong>Note:</strong> Please register to keep track of your completion progress in the 'My Tracks' option.</p> 
                     <br>
                     <label for="nameInput" style="float: left;">Your name: &nbsp;</label><input type="text" id="nameInput" style="float: left;" >
                     <label for="examLength" style="float: left;">&nbsp; Exam Length: &nbsp;</label>
                     <select name="examLength" id="examLength" style="float: left;">
+                      <option value="5">5 Questions</option>
                       <option value="10">10 Questions</option>
-                      ${window.sessionStorage.accessToken ? '<option value="30">30 Questions</option>' : '<option value="1" disabled>(Sign In) 30 Questions</option>'} 
-                      ${window.sessionStorage.accessToken ? '<option value="65">65 Questions</option>' : '<option value="1" disabled>(Sign In) 65 Questions</option>'} 
+                      ${this.userData.username ? '<option value="30">30 Questions</option>' : '<option value="1" disabled>(Sign In) 30 Questions</option>'} 
+                      ${this.userData.username ? '<option value="65">65 Questions</option>' : '<option value="1" disabled>(Sign In) 65 Questions</option>'} 
                     </select>
                     <button type="button" class="stdButton" id="start" style="float: right;" ><i class="fa fa-flag"> Start Assessment</i></button>
                 </div>
@@ -49,7 +53,7 @@ class practiceTest extends HTMLElement {
         this.shadowRoot.removeChild(div);
         this.shadowRoot.appendChild(node);
         this.shadowRoot.getElementById(`start`).onclick = () => {
-            this.shadowRoot.getElementById(`start`).disabled=
+            this.shadowRoot.getElementById(`start`).disabled= true;
             this.createTest();
         };
     };
@@ -60,8 +64,10 @@ class practiceTest extends HTMLElement {
         div.id = "tmpDiv";
         div.innerHTML =
             `<template id="master-section">
-                <div id="passMessage" style="display:none;">
+                <div id="passMessage" style="display:none;" class="col-lg-12">
                     <h4 id="passHeader" style="min-height: 20px;">Pass</h4>
+                    ${this.userData?.username ?  '<button class="stdButton" type="button" id="btnSaveToMyTrack"  style="float: right;"><i class="fa fa-save"> Save results to My Track</i> </button>' :
+                                                '<button class="stdButton" type="button" id="btnSaveToMyTrack"  style="float: right;" disabled><i class="fa fa-save"> (Sign In) Save results to My Track</i> </button>'}
                     <button class="stdButton" type="button" id="btnRetake"  style="float: right;" onclick="location = location;" ><i class="fa fa-repeat"> Do it again!</i> </button>
                     <h4 id="passHeader">Share your achievement:</h4>
                     <!--div class="shareon">
@@ -72,10 +78,11 @@ class practiceTest extends HTMLElement {
                         <a class="whatsapp" data-title="&#127882;&#127881;I passed my ${this.exam.examProvider} ${this.exam.examName} (${this.exam.examId}) Readiness Exam!&#127881;&#127882; Give it a try here: "></a>
                     </div-->
                 </div>
-                <div id="failMessage" style = "display:none;" class="col-lg-12">
-                    <h4 id="failHeader" style="min-height: 50px;">Fail</h4> 
-                    <button class="stdButton" type="button" id="btnRetake"  style="float: right;" onclick="location = location;" ><i class="fa fa-repeat"> Retake test</i> </button>
-                </div>
+<!--                <div id="failMessage" style = "display:none;" class="col-lg-12">-->
+<!--                    <h4 id="failHeader" style="min-height: 50px;">Fail</h4> -->
+<!--                    <button class="stdButton" type="button" id="btnSaveToMyTrack"  style="float: right;"><i class="fa fa-save"> Save results to My Track</i> </button>-->
+<!--                    <button class="stdButton" type="button" id="btnRetake"  style="float: right;" onclick="location = location;" ><i class="fa fa-repeat"> Retake test</i> </button>-->
+<!--                </div>-->
                 <div id="scoreSection" style="display:none;" class="col-lg-12">
                     <div class="col-lg-12" style="min-height: 25px; border-bottom: 1px solid black;">
                         <label style="float: left;">Time remaining: &nbsp;</label>
@@ -138,7 +145,9 @@ class practiceTest extends HTMLElement {
             this.shadowRoot.append(div);
             const template = this.shadowRoot.getElementById(`practiceTest-template${i}`);
             const node = document.importNode(template.content, true);
-            node.getElementById('questionDescription').innerHTML = `${i}. ${question.questionText}<p style="display:none">${question.questionId}</p>`;
+            node.getElementById('questionDescription').innerHTML = `${i}. ${question.questionText}
+                                            <p style="display:none">${question.questionId}</p>
+                                            <label class="userAnswer" id="u${question.questionSkId}" style="display:none"></label>`;
             this.shadowRoot.removeChild(div);
             this.shadowRoot.appendChild(node);
             let createValidateButton = function (shadowRoot, currentI, question, numberOfQuestions) {
@@ -152,6 +161,26 @@ class practiceTest extends HTMLElement {
             a.apply();
             i++;
         });
+        this.shadowRoot.getElementById(`btnSaveToMyTrack`).onclick = async () => {
+            const userAnswers = this.shadowRoot.querySelectorAll(`label[class=userAnswer`);
+            const myTrackItems = [];
+            userAnswers.forEach(answer => {
+                myTrackItems.push(
+                    {
+                        userId: this.userData.username,
+                        examId: this.exam.examId,
+                        questionSkId: +answer.id.substr(1),
+                        userQuestionAnswer: answer.innerHTML,
+                        createdDT: Date.now()
+                    }
+                )
+            });
+            console.log(myTrackItems);
+            this.shadowRoot.getElementById(`btnSaveToMyTrack`).disabled = true;
+            const result = await fetchFromPut(this.constants.myTrackEndpoint, myTrackItems);
+            console.log(result);
+
+        };
         this.enableStart();
     }
 
@@ -199,15 +228,17 @@ function makeValidateCallback(shadowRoot, currentI, question, numberOfQuestions)
                         <div style="border-bottom: 1px solid black;"></div></div>`;
         }
         if (question.questionAnswer && question.questionAnswer.length === 1) {
+            const selectedAns = shadowRoot.querySelector(`input[name=answer${currentI}]:checked`);
             shadowRoot.getElementById(`${currentI + question.questionAnswer}label`).innerHTML += '&#9989;';
             if (!shadowRoot.getElementById(`${currentI + question.questionAnswer}`).checked) {
-                var incorrectAns = shadowRoot.querySelector(`input[name=answer${currentI}]:checked`);
+                var incorrectAns = selectedAns;
                 if (incorrectAns) {
                     shadowRoot.getElementById(incorrectAns.id + 'label').innerHTML += '&#10060;';
                 }
             } else {
                 currentScore.innerHTML = parseInt(currentScore.innerHTML) + 1;
             }
+            shadowRoot.getElementById(`u${question.questionSkId}`).innerHTML += selectedAns.id.substr(-1);
         } else {
             var isCorrect = true;
             var answers = question.questionAnswer.split('');
@@ -215,8 +246,8 @@ function makeValidateCallback(shadowRoot, currentI, question, numberOfQuestions)
             if (answersSelected.length !== answers.length) {
                 isCorrect = false
             }
-            ;
             answersSelected.forEach(selectedAns => {
+                shadowRoot.getElementById(`u${question.questionSkId}`).innerHTML += selectedAns.id.substr(-1);
                     if (!answers.includes(selectedAns.id.substr(-1))) {
                         shadowRoot.getElementById(selectedAns.id + 'label').innerHTML += '&#10060;';
                         isCorrect = false;
@@ -231,22 +262,21 @@ function makeValidateCallback(shadowRoot, currentI, question, numberOfQuestions)
                 currentScore.innerHTML = parseInt(currentScore.innerHTML) + 1;
             }
         }
+        shadowRoot.querySelectorAll(`input[name=answer${currentI}]`).forEach(elem => elem.disabled = true);
 
 
         if (parseInt(currentSubmissions.innerHTML) >= numberOfQuestions) {
             shadowRoot.getElementById(`questionContainer${currentI}`).style.display = "none";
             shadowRoot.getElementById(`scoreSection`).style.display = "none";
             const score = parseInt(currentScore.innerHTML);
+            shadowRoot.getElementById(`passMessage`).style.display = "inline-block";
+            shadowRoot.getElementById(`welcomeMessage`).style.display = "none";
             if (score >= (numberOfQuestions * 0.7)) {
-                shadowRoot.getElementById(`passMessage`).style.display = "inline-block";
-                shadowRoot.getElementById(`welcomeMessage`).style.display = "none";
+
                 shadowRoot.getElementById(`passHeader`).innerHTML = `Congrats ${shadowRoot.getElementById('nameInput').value} you passed, Good luck on your exam! Score: ${score}/${numberOfQuestions}`;
             } else {
-                shadowRoot.getElementById(`failMessage`).style.display = "inline-block";
-                shadowRoot.getElementById(`welcomeMessage`).style.display = "none";
-                shadowRoot.getElementById(`failHeader`).innerHTML = `Oh no! ${shadowRoot.getElementById('nameInput').value} you failed, click Retake test or reload this page to try again. Score: ${score}/${numberOfQuestions}`;
+                shadowRoot.getElementById(`passHeader`).innerHTML = `Oh no! ${shadowRoot.getElementById('nameInput').value} you failed, click Retake test or reload this page to try again. Score: ${score}/${numberOfQuestions}`;
             }
-
         }
         shadowRoot.getElementById(`${currentI}showAnswer`).disabled = true;
     }
@@ -267,17 +297,4 @@ function startTimer(duration, display) {
             timer = duration;
         }
     }, 1000);
-}
-
-async function fetchFromPost(url,body) {
-    let response = await fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-        },
-        body: JSON.stringify(body)
-    });
-
-    let result = await response.json();
-    return (result);
 }
