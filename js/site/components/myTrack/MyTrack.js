@@ -35,8 +35,7 @@ class MyTrack extends DevspotBase {
                 <div class="col-sm-1 padding-bottom-md" >
                     <h4 class="padding-margin-0"> ${(this.myTrackData.filter(e => e.status !== 'notRequested').length * 100 / this.exam.totalNumberOfQuestions).toFixed(2)}%</h4>
                 </div>
-                </div>
-            `;
+                </div>`;
         this.myTrackData.forEach(userAnswer => {
             let correctAnswerText = '';
             if (userAnswer?.questionAnswer?.length < 2) {
