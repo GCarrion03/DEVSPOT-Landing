@@ -1,14 +1,14 @@
-import { DevspotBase } from '/js/site/commons/DevspotBase.js';
 import { fetchFromPost, fetchFromPut } from "/js/site/commons/HttpUtils.js";
 import { paymentModal, renderPaypalButtons } from "/js/site/components/paymentModal/PaymentModal.js";
+import { DevspotBase, Role } from "../../commons/DevspotBase.js";
 class practiceTest extends DevspotBase {
     constants;
     exam;
     accessData;
     questionBank;
     numberOfQuestions = 10;
-    hasSupporterAccess = false;
     componentRoot = (document.body.querySelector('practice-test'));
+    userRole;
 
     constructor() {
         super();
@@ -19,12 +19,8 @@ class practiceTest extends DevspotBase {
         this.constants = (await import('/js/site/siteConstants.js')).constants;
         let body = {"examId":this.getAttribute("examId"),"examProvider":this.getAttribute("examProvider")};
         this.exam = await fetchFromPost(this.constants.examEndpoint, body);
-        body = {userId: this.userData.username, examId: this.exam.examId};
-        this.accessData = await fetchFromPost(this.constants.paymentEndpoint, body);
-        if (this.accessData?.transactionId?.length === 17) {
-            this.hasSupporterAccess = true;
-        }
         this.questionBank = this.exam.questions;
+        this.userRole = await this.getAssignedUserRole(this.exam);
         const div = document.createElement('div');
         div.id = "tmpDiv";
         div.innerHTML =
@@ -46,8 +42,8 @@ class practiceTest extends DevspotBase {
                     <select name="examLength" id="examLength" style="float: left;">
                       <option value="5">5 Questions</option>
                       <option value="10">10 Questions</option>
-                      ${this.userData.username ? '<option value="30">30 Questions</option>' : '<option value="1" disabled>(Sign In) 30 Questions</option>'} 
-                      ${this.userData.username ? '<option value="65">65 Questions</option>' : '<option value="1" disabled>(Sign In) 65 Questions</option>'} 
+                      ${this.userData ? '<option value="30">30 Questions</option>' : '<option value="1" disabled>(Sign In) 30 Questions</option>'} 
+                      ${this.userData ? '<option value="65">65 Questions</option>' : '<option value="1" disabled>(Sign In) 65 Questions</option>'} 
                     </select>
                     <button type="button" class="btn stdButton" id="start" style="float: right;" ><i class="fa fa-flag"> Start Assessment</i></button>
                 </div>
@@ -66,7 +62,9 @@ class practiceTest extends DevspotBase {
                 document.querySelector('#btnClosePopup').click();
                 //Save to rest service from table userExam details
             };
-            renderPaypalButtons(onApproveRerenderCallback, this.userData.username, this.exam.examId);
+            if (this.userRole !== Role.VISITOR) {
+                renderPaypalButtons(onApproveRerenderCallback, this.userData.username, this.exam.examId);
+            }
             this.componentRoot.querySelector(`#start`).disabled= true;
             this.createTest();
         };
@@ -74,6 +72,15 @@ class practiceTest extends DevspotBase {
 
     async createTest() {
         this.numberOfQuestions = +this.componentRoot.querySelector('#examLength').value;
+        let body = {
+            "examId": this.exam.examId,
+            "examProvider": this.exam.examProvider,
+            "numberOfQuestions": this.numberOfQuestions,
+            "totalNumberOfQuestions": this.exam.totalNumberOfQuestions,
+            "userId": this.userData?.username,
+            "userRole": this.userRole
+        };
+        let examQuestionInfo = (await fetchFromPost(this.constants.questionEndpoint, body));
         const div = document.createElement('div');
         div.id = "tmpDiv";
         div.innerHTML =
@@ -84,12 +91,7 @@ class practiceTest extends DevspotBase {
                     <button class="btn stdButton" type="button" id="btnRetake" onclick="window.location.reload();" ><i class="fa fa-repeat"> Try again!</i> </button>
                     </div>
                     <div class="col-lg-4 text-align-center">
-                    ${(this.userData?.username && this.hasSupporterAccess)?
-                        '<button class="btn stdButton basicTooltip" type="button" id="btnSaveToMyTrack" ><i class="fa fa-save"> Save results to My Track</i></button>'
-                                                : !(this.userData?.username)
-                                                        ?'<button class="btn stdButton basicTooltip" type="button" id="btnSaveToMyTrack"  disabled><i class="fa fa-save"> Save results to My Track</i><span class="col-sm-1 basicTooltipText">Sign In to save up to 65 questions in "Your Track"<br></span></button>'
-                                                        :`<button class="btn stdButton basicTooltip" type="button" id="btnSaveToMyTrack" style="display: none"><i class="fa fa-save"> Save results to My Track</i></button> 
-                                                          <button id="btnContribute" type="button" class="btn stdButton" data-toggle="modal" data-target="#myModal"><i class="fa fa-credit-card-alt"> Supporter Access!</i></button>`}
+                    ${this.getSaveToMyTrackMenu(examQuestionInfo.myTrackQuestionCount + examQuestionInfo.examQuestionCount)}
                     </div>
                     <div class="col-lg-4 text-align-center">
                     </div>
@@ -117,11 +119,8 @@ class practiceTest extends DevspotBase {
         startTimer(examDuration, display);
         let i = 1;
 
-        let body = {"examId":this.exam.examId,"examProvider":this.exam.examProvider,"numberOfQuestions":this.numberOfQuestions,"totalNumberOfQuestions":this.exam.totalNumberOfQuestions};
-        let questions = (await fetchFromPost(this.constants.questionEndpoint, body)).questions;
 
-
-        questions.forEach(question => {
+        examQuestionInfo.questions.forEach(question => {
             let questionOptions = '';
             if (question.questionAnswer && question.questionAnswer.length === 1) {
                 question.questionOptions.forEach(option => {
@@ -190,7 +189,9 @@ class practiceTest extends DevspotBase {
                 console.log(myTrackItems);
                 this.componentRoot.querySelector(`#btnSaveToMyTrack`).disabled = true;
                 const result = await fetchFromPut(this.constants.myTrackEndpoint, myTrackItems);
-                console.log(result);
+                this.componentRoot.querySelector(`#btnSaveToMyTrack`).style.display = 'none';
+                this.componentRoot.querySelector('#btnShowMyTrack').style.display = 'inline-block';
+                // console.log(result);
 
             };
         }
@@ -202,6 +203,29 @@ class practiceTest extends DevspotBase {
         this.componentRoot.querySelector(`#questionContainer1`).style.display = "inline";
         this.componentRoot.querySelector(`#scoreSection`).style.display = "inline";
         this.componentRoot.querySelector(`#prev1`).disabled = true;
+    }
+
+    getSaveToMyTrackMenu(consumedQuota){
+        let strToReturn = '';
+        switch (this.userRole) {
+            case (Role.CONTRIBUTOR):
+                strToReturn = '<button class="btn stdButton basicTooltip" type="button" id="btnSaveToMyTrack" ><i class="fa fa-save"> Save results to "My Track"</i></button>';
+                strToReturn += `<button class="btn stdButton basicTooltip" type="button" id="btnShowMyTrack" style="display: none" onclick="window.location.href='/mytrack/${this.exam.examId}.html'"><i class="fa fa-save"> Go to "My Track"</i></button>`;
+                break;
+            case (Role.USER):
+                if ( consumedQuota > 65 ) {
+                    strToReturn = `<button class="btn stdButton basicTooltip" type="button" id="btnShowMyTrack" style="display: none" href="/mytrack/${this.exam.examId}.html"><i class="fa fa-save"> Save results to "My Track"</i></button>`;
+                    strToReturn += '<button class="btn stdButton basicTooltip" type="button" id="btnSaveToMyTrack" style="display: none"><i class="fa fa-save"> Save results to "My Track"</i></button>';
+                    strToReturn += '<button id="btnContribute" type="button" class="btn stdButton basicTooltip" data-toggle="modal" data-target="#myModal"><i class="fa fa-credit-card-alt"> Get Contributor Access!</i><span class="col-sm-1 basicTooltipText">Uh Oh, You have used "My Track" 65 questions free quota, please consider getting contributor access<br></span></button>';
+                } else {
+                    strToReturn = '<button class="btn stdButton basicTooltip" type="button" id="btnSaveToMyTrack" ><i class="fa fa-save"> Save results to "My Track"</i></button>';
+                }
+                break;
+            case (Role.VISITOR):
+                strToReturn = '<button class="btn stdButton basicTooltip" type="button" id="btnSaveToMyTrack"  disabled><i class="fa fa-save"> Save results to "My Track"</i><span class="col-sm-1 basicTooltipText">Sign In to save up to 65 questions in "My Track"<br></span></button>';
+                break;
+        }
+        return strToReturn;
     }
 }
 
