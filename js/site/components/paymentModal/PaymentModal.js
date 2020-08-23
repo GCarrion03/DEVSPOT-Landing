@@ -1,4 +1,4 @@
-import { fetchFromPost, fetchFromPut } from "/js/site/commons/HttpUtils.js";
+import { fetchFromPut } from "/js/site/commons/HttpUtils.js";
 import { constants } from "/js/site/siteConstants.js";
 export const paymentModal =
     `<div id="myModal" class="modal fade" role="dialog">
@@ -14,7 +14,7 @@ export const paymentModal =
     <h5 class="bold">Make use of all the simulator features, improve your passing odds!</h5>
 <p>Supporter access will grant you the following features to ace your exam:</p>
 <ul>
-<li>Save any number of answered questions in "Your Track".</li>
+<li>Save all you answered questions to "My Track".</li>
 <li>Create practice exams from the "not yet taken" questions only.</li>
 <li>Try again the "incorrect" questions to improve your score.</li>
 <li>Reset "Your Track".</li>
@@ -52,7 +52,7 @@ per day):</label>
 </div>
 
 <div id="paypal-button-container"></div>
-    <script src="https://www.paypal.com/sdk/js?client-id=AbmxaQozKWK874PgsBI6KySynlfN_S8Ae_J_7n1CXKOXkaMhdUBB_JupCFpKfUcmrINNosBDdTT5Bd8D&currency=USD" data-sdk-integration-source="button-factory"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=${constants.paypalClientId}&currency=USD" data-sdk-integration-source="button-factory"></script>
 </div>
 <div class="modal-footer">
     <button type="button"name="" class="btn btn-default" id="btnClosePopup" data-dismiss="modal">Close</button>

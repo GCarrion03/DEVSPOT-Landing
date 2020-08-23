@@ -1,10 +1,10 @@
 import { fetchFromPost, fetchFromPut } from "/js/site/commons/HttpUtils.js";
 import { paymentModal, renderPaypalButtons } from "/js/site/components/paymentModal/PaymentModal.js";
-import { DevspotBase, Role } from "../../commons/DevspotBase.js";
+import { DevspotBase, Role } from "/js/site/commons/DevspotBase.js";
+import { constants } from "/js/site/siteConstants.js";
 class practiceTest extends DevspotBase {
     constants;
     exam;
-    accessData;
     questionBank;
     numberOfQuestions = 10;
     componentRoot = (document.body.querySelector('practice-test'));
@@ -55,7 +55,7 @@ class practiceTest extends DevspotBase {
         this.componentRoot.appendChild(node);
         this.componentRoot.querySelector(`#start`).onclick = async () => {
             //We import paypal AFTER inserting in the dom the paypal form
-            (await import('https://www.paypal.com/sdk/js?client-id=AbmxaQozKWK874PgsBI6KySynlfN_S8Ae_J_7n1CXKOXkaMhdUBB_JupCFpKfUcmrINNosBDdTT5Bd8D&currency=USD'));
+            (await import(`https://www.paypal.com/sdk/js?client-id=${constants.paypalClientId}&currency=USD`));
             let onApproveRerenderCallback = (details) => {
                 document.querySelector('#btnContribute').style.display = 'none';
                 document.querySelector('#btnSaveToMyTrack').style.display = 'block';
@@ -210,11 +210,11 @@ class practiceTest extends DevspotBase {
         switch (this.userRole) {
             case (Role.CONTRIBUTOR):
                 strToReturn = '<button class="btn stdButton basicTooltip" type="button" id="btnSaveToMyTrack" ><i class="fa fa-save"> Save results to "My Track"</i></button>';
-                strToReturn += `<button class="btn stdButton basicTooltip" type="button" id="btnShowMyTrack" style="display: none" onclick="window.location.href='/mytrack/${this.exam.examId}.html'"><i class="fa fa-save"> Go to "My Track"</i></button>`;
+                strToReturn += `<button class="btn stdButton basicTooltip" type="button" id="btnShowMyTrack" style="display: none" onclick="window.location.href='/mytrack/${this.exam.examId}.html'"><i class="fa fa-map"> Go to "My Track"</i></button>`;
                 break;
             case (Role.USER):
                 if ( consumedQuota > 65 ) {
-                    strToReturn = `<button class="btn stdButton basicTooltip" type="button" id="btnShowMyTrack" style="display: none" href="/mytrack/${this.exam.examId}.html"><i class="fa fa-save"> Save results to "My Track"</i></button>`;
+                    strToReturn = `<button class="btn stdButton basicTooltip" type="button" id="btnShowMyTrack" style="display: none" onclick="window.location.href='/mytrack/${this.exam.examId}.html'"><i class="fa fa-map"> Go to "My Track"</i></button>`;
                     strToReturn += '<button class="btn stdButton basicTooltip" type="button" id="btnSaveToMyTrack" style="display: none"><i class="fa fa-save"> Save results to "My Track"</i></button>';
                     strToReturn += '<button id="btnContribute" type="button" class="btn stdButton basicTooltip" data-toggle="modal" data-target="#myModal"><i class="fa fa-credit-card-alt"> Get Contributor Access!</i><span class="col-sm-1 basicTooltipText">Uh Oh, You have used "My Track" 65 questions free quota, please consider getting contributor access<br></span></button>';
                 } else {
