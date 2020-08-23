@@ -511,7 +511,7 @@ button.navbar-toggle {
     border-radius: 5px;
     border: none; /* Remove borders */
     color: white; /* White text */
-    padding: 6px 10px; /* Some padding */
+    padding: 10px 14px; /* Some padding */
     font-size: 14px; /* Set a font size */
     cursor: pointer; /* Mouse pointer on hover */
     margin: 1px;
@@ -559,7 +559,7 @@ button.navbar-toggle {
 .basicTooltip {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted black;
+    border-bottom: 1px;
 }
 
 .basicTooltip .basicTooltipText {
@@ -577,8 +577,13 @@ button.navbar-toggle {
     bottom: 100%;
     left: 50%;
     margin-left: 10px;
+    white-space: normal;
 }
 
 .basicTooltip:hover .basicTooltipText {
     visibility: visible;
+}
+
+.text-align-center{
+    text-align: center;
 }

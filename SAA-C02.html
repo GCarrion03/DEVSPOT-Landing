@@ -23,8 +23,34 @@
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <script type="module" src="/js/site/importsHeader.js"></script>
 </head>
+<!--script type="module">
+    import { fetchFromPost } from "/js/site/commons/HttpUtils.js";
+    import { constants } from "/js/site/siteConstants.js";
+    export async function loadPayment() {
+        var button = document.querySelector('#submit-button');
+        let body = {"customerID" : "gcarrion03"};
+        const paymentToken = await fetchFromPost(constants.paymentEndpoint+ '?action=get-client-token', body);
+
+        braintree.dropin.create({
+            authorization: paymentToken.response.result.clientToken,
+            container: '#dropin-container'
+        }, function (createErr, instance) {
+            button.addEventListener('click', function () {
+                instance.requestPaymentMethod(async function (err, payload) {
+                    // Submit payload.nonce to your server
+                    body = {"paymentMethodNonce" : payload.nonce, "amount": 20};
+                    const purchaseItemOutcome = await fetchFromPost(constants.paymentEndpoint+ '?action=purchase-item', body);
+                    console.log(JSON.stringify(purchaseItemOutcome));
+                });
+            });
+        });
+    }
+    document.body.onload = loadPayment();
+</script-->
+
 <body>
 <header-menu></header-menu>
+
 <section class="container section" id="testBody" style="padding-top: 5%;">
     <div class="row">
         <div class="col-lg-9">
