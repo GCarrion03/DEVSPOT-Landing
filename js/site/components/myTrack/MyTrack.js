@@ -12,7 +12,7 @@ class MyTrack extends DevspotBase {
     async connectedCallback() {
         this.constants = (await import('/js/site/siteConstants.js')).constants;
 
-        let body = {"examId":this.getAttribute("examId"),"userId":this.userData.username};
+        let body = {"examId":this.getAttribute("examId"),"userId":this.userData?.username};
         this.exam = await fetchFromPost(this.constants.myTrackEndpoint, body);
         this.myTrackData = this.exam.myTrackData;
         let mytrack = `<div class="col-sm-12 padding-bottom-sm" >

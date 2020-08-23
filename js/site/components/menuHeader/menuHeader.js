@@ -70,11 +70,13 @@ class menuHeader extends HTMLElement {
             localStorage.setItem('accessToken','');
             this.accessToken = '';
             this.userData = '';
+            window.location = location.protocol + '//' + location.host + location.pathname;
         } else {
             if (id_token) {
                 localStorage.setItem('accessToken',id_token);
                 this.accessToken = id_token;
                 this.userData = parseJwt(id_token);
+                window.location = location.protocol + '//' + location.host + location.pathname;
             } else {
                 id_token = localStorage.getItem('accessToken');
                 if (id_token) {

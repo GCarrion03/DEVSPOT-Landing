@@ -1,31 +1,32 @@
-import { DevspotBase } from '/js/site/commons/DevspotBase.js';
 import { fetchFromPost, fetchFromPut } from "/js/site/commons/HttpUtils.js";
+import { paymentModal, renderPaypalButtons } from "/js/site/components/paymentModal/PaymentModal.js";
+import { DevspotBase, Role } from "/js/site/commons/DevspotBase.js";
+import { constants } from "/js/site/siteConstants.js";
 class practiceTest extends DevspotBase {
     constants;
     exam;
     questionBank;
     numberOfQuestions = 10;
+    componentRoot = (document.body.querySelector('practice-test'));
+    userRole;
 
     constructor() {
         super();
-        this.attachShadow({mode: 'open'});
+        // this.attachShadow({mode: 'open'});
     }
 
     async connectedCallback() {
         this.constants = (await import('/js/site/siteConstants.js')).constants;
-
         let body = {"examId":this.getAttribute("examId"),"examProvider":this.getAttribute("examProvider")};
         this.exam = await fetchFromPost(this.constants.examEndpoint, body);
         this.questionBank = this.exam.questions;
+        this.userRole = await this.getAssignedUserRole(this.exam);
         const div = document.createElement('div');
         div.id = "tmpDiv";
         div.innerHTML =
             `<template id="practiceTest-styles">
-                <link href="/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
-                <link href="/css/bootstrap.css" rel="stylesheet">
-                <link href="/css/style.css" rel="stylesheet" type="text/css">
-                <link rel="stylesheet" type="text/css" href="/css/roboto_light/stylesheet.css">
                 <div class="section-title">
+                ${paymentModal}
                     <span class="caption d-block small">Exam</span>
                     <h3>${this.exam.examId}</h3>
                     <img src="/images/logo/avail/${this.exam.badgeFile}" class="cert-cred">
@@ -41,48 +42,60 @@ class practiceTest extends DevspotBase {
                     <select name="examLength" id="examLength" style="float: left;">
                       <option value="5">5 Questions</option>
                       <option value="10">10 Questions</option>
-                      ${this.userData.username ? '<option value="30">30 Questions</option>' : '<option value="1" disabled>(Sign In) 30 Questions</option>'} 
-                      ${this.userData.username ? '<option value="65">65 Questions</option>' : '<option value="1" disabled>(Sign In) 65 Questions</option>'} 
+                      ${this.userData ? '<option value="30">30 Questions</option>' : '<option value="1" disabled>(Sign In) 30 Questions</option>'} 
+                      ${this.userData ? '<option value="65">65 Questions</option>' : '<option value="1" disabled>(Sign In) 65 Questions</option>'} 
                     </select>
-                    <button type="button" class="stdButton" id="start" style="float: right;" ><i class="fa fa-flag"> Start Assessment</i></button>
+                    <button type="button" class="btn stdButton" id="start" style="float: right;" ><i class="fa fa-flag"> Start Assessment</i></button>
                 </div>
              </template>`
-        this.shadowRoot.append(div);
-        const template = this.shadowRoot.getElementById(`practiceTest-styles`);
+        this.componentRoot.append(div);
+        const template = this.componentRoot.querySelector(`#practiceTest-styles`);
         const node = document.importNode(template.content, true);
-        this.shadowRoot.removeChild(div);
-        this.shadowRoot.appendChild(node);
-        this.shadowRoot.getElementById(`start`).onclick = () => {
-            this.shadowRoot.getElementById(`start`).disabled= true;
+        this.componentRoot.innerHTML='';
+        this.componentRoot.appendChild(node);
+        this.componentRoot.querySelector(`#start`).onclick = async () => {
+            //We import paypal AFTER inserting in the dom the paypal form
+            (await import(`https://www.paypal.com/sdk/js?client-id=${constants.paypalClientId}&currency=USD`));
+            let onApproveRerenderCallback = (details) => {
+                document.querySelector('#btnContribute').style.display = 'none';
+                document.querySelector('#btnSaveToMyTrack').style.display = 'block';
+                document.querySelector('#btnClosePopup').click();
+                //Save to rest service from table userExam details
+            };
+            if (this.userRole !== Role.VISITOR) {
+                renderPaypalButtons(onApproveRerenderCallback, this.userData.username, this.exam.examId);
+            }
+            this.componentRoot.querySelector(`#start`).disabled= true;
             this.createTest();
         };
     };
 
     async createTest() {
-        this.numberOfQuestions = +this.shadowRoot.getElementById('examLength').value;
+        this.numberOfQuestions = +this.componentRoot.querySelector('#examLength').value;
+        let body = {
+            "examId": this.exam.examId,
+            "examProvider": this.exam.examProvider,
+            "numberOfQuestions": this.numberOfQuestions,
+            "totalNumberOfQuestions": this.exam.totalNumberOfQuestions,
+            "userId": this.userData?.username,
+            "userRole": this.userRole
+        };
+        let examQuestionInfo = (await fetchFromPost(this.constants.questionEndpoint, body));
         const div = document.createElement('div');
         div.id = "tmpDiv";
         div.innerHTML =
             `<template id="master-section">
                 <div id="passMessage" style="display:none;" class="col-lg-12">
-                    <h4 id="passHeader" style="min-height: 20px;">Pass</h4>
-                    ${this.userData?.username ?  '<button class="stdButton" type="button" id="btnSaveToMyTrack"  style="float: right;"><i class="fa fa-save"> Save results to My Track</i> </button>' :
-                                                '<button class="stdButton" type="button" id="btnSaveToMyTrack"  style="float: right;" disabled><i class="fa fa-save"> (Sign In) Save results to My Track</i> </button>'}
-                    <button class="stdButton" type="button" id="btnRetake"  style="float: right;" onclick="location = location;" ><i class="fa fa-repeat"> Do it again!</i> </button>
-                    <h4 id="passHeader">Share your achievement:</h4>
-                    <!--div class="shareon">
-                        <a class="facebook" data-title="&#127882;&#127881;I passed my ${this.exam.examProvider} ${this.exam.examName} (${this.exam.examId}) Readiness Exam!&#127881;&#127882; Give it a try here: "></a>
-                        <a class="linkedin" data-title="&#127882;&#127881;I passed my ${this.exam.examProvider} ${this.exam.examName} (${this.exam.examId}) Readiness Exam!&#127881;&#127882; Give it a try here: "></a>
-                        <a class="reddit" data-title="&#127882;&#127881;I passed my ${this.exam.examProvider} ${this.exam.examName} (${this.exam.examId}) Readiness Exam!&#127881;&#127882; Give it a try here: "></a>
-                        <a class="twitter" data-title="&#127882;&#127881;I passed my ${this.exam.examProvider} ${this.exam.examName} (${this.exam.examId}) Readiness Exam!&#127881;&#127882; Give it a try here: "></a>
-                        <a class="whatsapp" data-title="&#127882;&#127881;I passed my ${this.exam.examProvider} ${this.exam.examName} (${this.exam.examId}) Readiness Exam!&#127881;&#127882; Give it a try here: "></a>
-                    </div-->
+                    <h4 id="passHeader" class="col-lg-12" style="min-height: 20px;">Message</h4>
+                    <div class="col-lg-4 text-align-center">
+                    <button class="btn stdButton" type="button" id="btnRetake" onclick="window.location.reload();" ><i class="fa fa-repeat"> Try again!</i> </button>
+                    </div>
+                    <div class="col-lg-4 text-align-center">
+                    ${this.getSaveToMyTrackMenu(examQuestionInfo.myTrackQuestionCount + examQuestionInfo.examQuestionCount)}
+                    </div>
+                    <div class="col-lg-4 text-align-center">
+                    </div>
                 </div>
-<!--                <div id="failMessage" style = "display:none;" class="col-lg-12">-->
-<!--                    <h4 id="failHeader" style="min-height: 50px;">Fail</h4> -->
-<!--                    <button class="stdButton" type="button" id="btnSaveToMyTrack"  style="float: right;"><i class="fa fa-save"> Save results to My Track</i> </button>-->
-<!--                    <button class="stdButton" type="button" id="btnRetake"  style="float: right;" onclick="location = location;" ><i class="fa fa-repeat"> Retake test</i> </button>-->
-<!--                </div>-->
                 <div id="scoreSection" style="display:none;" class="col-lg-12">
                     <div class="col-lg-12" style="min-height: 25px; border-bottom: 1px solid black;">
                         <label style="float: left;">Time remaining: &nbsp;</label>
@@ -95,30 +108,27 @@ class practiceTest extends DevspotBase {
                     </div>
                 </div>
              </template>`
-        this.shadowRoot.append(div);
-        const template = this.shadowRoot.getElementById(`master-section`);
+        this.componentRoot.append(div);
+        const template = this.componentRoot.querySelector(`#master-section`);
         const node = document.importNode(template.content, true);
-        this.shadowRoot.removeChild(div);
-        this.shadowRoot.appendChild(node);
+        this.componentRoot.removeChild(div);
+        this.componentRoot.appendChild(node);
 
         const examDuration = this.exam.timePerQuestion * this.numberOfQuestions;
-        const display = this.shadowRoot.getElementById('time');
+        const display = this.componentRoot.querySelector('#time');
         startTimer(examDuration, display);
         let i = 1;
 
-        let body = {"examId":this.exam.examId,"examProvider":this.exam.examProvider,"numberOfQuestions":this.numberOfQuestions,"totalNumberOfQuestions":this.exam.totalNumberOfQuestions};
-        let questions = (await fetchFromPost(this.constants.questionEndpoint, body)).questions;
 
-
-        questions.forEach(question => {
+        examQuestionInfo.questions.forEach(question => {
             let questionOptions = '';
             if (question.questionAnswer && question.questionAnswer.length === 1) {
                 question.questionOptions.forEach(option => {
-                    questionOptions += ('<span style="display: inline-flex;"><input id="' + i + option.optionId + '" name="answer' + i + '" type="radio" style="float: left;"><label id="' + i + option.optionId + 'label" for="' + i + option.optionId + '" style="padding-left: 5px;float: left;font-weight: 100;">' + option.optionId + '. ' + option.optionText + '</label></span><br>')
+                    questionOptions += ('<span style="display: inline-flex;"><input id="option' + i + option.optionId + '" name="answer' + i + '" type="radio" style="float: left;"><label id="label' + i + option.optionId + '" for="option' + i + option.optionId + '" style="padding-left: 5px;float: left;font-weight: 100;">' + option.optionId + '. ' + option.optionText + '</label></span><br>')
                 });
             } else {
                 question.questionOptions.forEach(option => {
-                    questionOptions += ('<span style="display: inline-flex;"><input id="' + i + option.optionId + '" name="answer' + i + '" type="checkbox" style="float: left;"><label id="' + i + option.optionId + 'label" for="' + i + option.optionId + '" style="padding-left: 5px;float: left;font-weight: 100;">' + option.optionId + '. ' + option.optionText + '</label></span> <br>')
+                    questionOptions += ('<span style="display: inline-flex;"><input id="option' + i + option.optionId + '" name="answer' + i + '" type="checkbox" style="float: left;"><label id="label' + i + option.optionId + '" for="option' + i + option.optionId + '" style="padding-left: 5px;float: left;font-weight: 100;">' + option.optionId + '. ' + option.optionText + '</label></span> <br>')
                 });
             }
             const div = document.createElement('div');
@@ -134,22 +144,22 @@ class practiceTest extends DevspotBase {
                         <div id="${i}divQuestionExplanation"></div>
                     </div>
                     <div class="col-lg-12">
-                        <button id="prev${i}" class="stdButton" type="button" value="<" style="float: left;"><i class="fa fa-arrow-left"></i></button>
-                        <button id="next${i}" class="stdButton" type="button" value=">" style="float: left;"><i class="fa fa-arrow-right"></i></button>
-                        <button id="${i}showAnswer" class="stdButton" type="button" style="float: right;" ><i class="fa fa-check-square-o"> Check Answer</i></button> 
+                        <button id="prev${i}" class="btn stdButton" type="btn button" value="<" style="float: left;"><i class="fa fa-arrow-left"></i></button>
+                        <button id="next${i}" class="btn stdButton" type="btn button" value=">" style="float: left;"><i class="fa fa-arrow-right"></i></button>
+                        <button id="showAnswer${i}" class="btn stdButton" type="btn button" style="float: right;" ><i class="fa fa-check-square-o"> Check Answer</i></button> 
                     </div>
                 </div>
                 <link href="https://cdn.jsdelivr.net/npm/shareon@1.2.0/dist/shareon.min.css" rel="stylesheet">
                 <script src="https://cdn.jsdelivr.net/npm/shareon@1.2.0/dist/shareon.min.js" type="text/javascript"></script>
             </template>`;
-            this.shadowRoot.append(div);
-            const template = this.shadowRoot.getElementById(`practiceTest-template${i}`);
+            this.componentRoot.append(div);
+            const template = this.componentRoot.querySelector(`#practiceTest-template${i}`);
             const node = document.importNode(template.content, true);
-            node.getElementById('questionDescription').innerHTML = `${i}. ${question.questionText}
+            node.querySelector('#questionDescription').innerHTML = `${i}. ${question.questionText}
                                             <p style="display:none">${question.questionId}</p>
                                             <label class="userAnswer" id="u${question.questionSkId}" style="display:none"></label>`;
-            this.shadowRoot.removeChild(div);
-            this.shadowRoot.appendChild(node);
+            this.componentRoot.removeChild(div);
+            this.componentRoot.appendChild(node);
             let createValidateButton = function (shadowRoot, currentI, question, numberOfQuestions) {
                 return {
                     apply: function () {
@@ -157,38 +167,65 @@ class practiceTest extends DevspotBase {
                     }
                 }
             }
-            let a = createValidateButton(this.shadowRoot, i, question, this.numberOfQuestions);
+            let a = createValidateButton(this.componentRoot, i, question, this.numberOfQuestions);
             a.apply();
             i++;
         });
-        this.shadowRoot.getElementById(`btnSaveToMyTrack`).onclick = async () => {
-            const userAnswers = this.shadowRoot.querySelectorAll(`label[class=userAnswer`);
-            const myTrackItems = [];
-            userAnswers.forEach(answer => {
-                myTrackItems.push(
-                    {
-                        userId: this.userData.username,
-                        examId: this.exam.examId,
-                        questionSkId: +answer.id.substr(1),
-                        userQuestionAnswer: answer.innerHTML,
-                        createdDT: Date.now()
-                    }
-                )
-            });
-            console.log(myTrackItems);
-            this.shadowRoot.getElementById(`btnSaveToMyTrack`).disabled = true;
-            const result = await fetchFromPut(this.constants.myTrackEndpoint, myTrackItems);
-            console.log(result);
+        if (this.componentRoot.querySelector(`#btnSaveToMyTrack`)) {
+            this.componentRoot.querySelector(`#btnSaveToMyTrack`).onclick = async () => {
+                const userAnswers = this.componentRoot.querySelectorAll(`label[class=userAnswer`);
+                const myTrackItems = [];
+                userAnswers.forEach(answer => {
+                    myTrackItems.push(
+                        {
+                            userId: this.userData.username,
+                            examId: this.exam.examId,
+                            questionSkId: +answer.id.substr(1),
+                            userQuestionAnswer: answer.innerHTML,
+                            createdDT: Date.now()
+                        }
+                    )
+                });
+                console.log(myTrackItems);
+                this.componentRoot.querySelector(`#btnSaveToMyTrack`).disabled = true;
+                const result = await fetchFromPut(this.constants.myTrackEndpoint, myTrackItems);
+                this.componentRoot.querySelector(`#btnSaveToMyTrack`).style.display = 'none';
+                this.componentRoot.querySelector('#btnShowMyTrack').style.display = 'inline-block';
+                // console.log(result);
 
-        };
+            };
+        }
         this.enableStart();
     }
 
     enableStart() {
-        this.shadowRoot.getElementById(`welcomeMessage`).style.display = "none";
-        this.shadowRoot.getElementById(`questionContainer1`).style.display = "inline";
-        this.shadowRoot.getElementById(`scoreSection`).style.display = "inline";
-        this.shadowRoot.getElementById(`prev1`).disabled = true;
+        this.componentRoot.querySelector(`#welcomeMessage`).style.display = "none";
+        this.componentRoot.querySelector(`#questionContainer1`).style.display = "inline";
+        this.componentRoot.querySelector(`#scoreSection`).style.display = "inline";
+        this.componentRoot.querySelector(`#prev1`).disabled = true;
+    }
+
+    getSaveToMyTrackMenu(consumedQuota){
+        let strToReturn = '';
+        switch (this.userRole) {
+            case (Role.CONTRIBUTOR):
+                strToReturn = '<button class="btn stdButton basicTooltip" type="button" id="btnSaveToMyTrack" ><i class="fa fa-save"> Save results to "My Track"</i></button>';
+                strToReturn += `<button class="btn stdButton basicTooltip" type="button" id="btnShowMyTrack" style="display: none" onclick="window.location.href='/mytrack/${this.exam.examId}.html'"><i class="fa fa-map"> Go to "My Track"</i></button>`;
+                break;
+            case (Role.USER):
+                if ( consumedQuota > 65 ) {
+                    strToReturn = `<button class="btn stdButton basicTooltip" type="button" id="btnShowMyTrack" style="display: none" onclick="window.location.href='/mytrack/${this.exam.examId}.html'"><i class="fa fa-map"> Go to "My Track"</i></button>`;
+                    strToReturn += '<button class="btn stdButton basicTooltip" type="button" id="btnSaveToMyTrack" style="display: none"><i class="fa fa-save"> Save results to "My Track"</i></button>';
+                    strToReturn += '<button id="btnContribute" type="button" class="btn stdButton basicTooltip" data-toggle="modal" data-target="#myModal"><i class="fa fa-credit-card-alt"> Get Contributor Access!</i><span class="col-sm-1 basicTooltipText">Uh Oh, You have used "My Track" 65 questions free quota, please consider getting contributor access<br></span></button>';
+                } else {
+                    strToReturn = '<button class="btn stdButton basicTooltip" type="button" id="btnSaveToMyTrack" ><i class="fa fa-save"> Save results to "My Track"</i></button>';
+                }
+                break;
+            case (Role.VISITOR):
+                strToReturn = '<button class="btn stdButton basicTooltip" type="button" id="btnSaveToMyTrack"  disabled><i class="fa fa-save"> Save results to "My Track"</i><span class="col-sm-1 basicTooltipText">Sign In to save up to 65 questions in "My Track"<br></span></button>';
+                break;
+        }
+        return strToReturn;
     }
 }
 
@@ -197,30 +234,30 @@ customElements.define('practice-test', practiceTest);
 
 function makeValidateCallback(shadowRoot, currentI, question, numberOfQuestions) {
 
-    shadowRoot.getElementById(`next${currentI}`).onclick = () => {
-        shadowRoot.getElementById(`questionContainer${currentI}`).style.display = "none";
-        shadowRoot.getElementById(`questionContainer${currentI + 1}`).style.display = "inline";
-        shadowRoot.getElementById(`prev${currentI + 1}`).disabled = false;
+    shadowRoot.querySelector(`#next${currentI}`).onclick = () => {
+        shadowRoot.querySelector(`#questionContainer${currentI}`).style.display = "none";
+        shadowRoot.querySelector(`#questionContainer${currentI + 1}`).style.display = "inline";
+        shadowRoot.querySelector(`#prev${currentI + 1}`).disabled = false;
         if (currentI + 1 === numberOfQuestions) {
-            shadowRoot.getElementById(`next${currentI + 1}`).disabled = true;
+            shadowRoot.querySelector(`#next${currentI + 1}`).disabled = true;
         }
     }
 
-    shadowRoot.getElementById(`prev${currentI}`).onclick = () => {
-        shadowRoot.getElementById(`questionContainer${currentI}`).style.display = "none";
-        shadowRoot.getElementById(`questionContainer${currentI - 1}`).style.display = "inline";
-        shadowRoot.getElementById(`next${currentI - 1}`).disabled = false;
+    shadowRoot.querySelector(`#prev${currentI}`).onclick = () => {
+        shadowRoot.querySelector(`#questionContainer${currentI}`).style.display = "none";
+        shadowRoot.querySelector(`#questionContainer${currentI - 1}`).style.display = "inline";
+        shadowRoot.querySelector(`#next${currentI - 1}`).disabled = false;
         if (currentI - 1 === 1) {
-            shadowRoot.getElementById(`prev${currentI - 1}`).disabled = true;
+            shadowRoot.querySelector(`#prev${currentI - 1}`).disabled = true;
         }
     }
 
-    shadowRoot.getElementById(`${currentI}showAnswer`).onclick = () => {
+    shadowRoot.querySelector(`#showAnswer${currentI}`).onclick = () => {
         var currentScore = shadowRoot.querySelector(`label[id=currentScore]`);
         var currentSubmissions = shadowRoot.querySelector(`label[id=currentSubmissions]`);
         currentSubmissions.innerHTML = parseInt(currentSubmissions.innerHTML) + 1;
         if (question.questionAnswerExplanation) {
-            shadowRoot.getElementById(`${currentI}divQuestionExplanation`).innerHTML =
+            shadowRoot.querySelector(`#${currentI}divQuestionExplanation`).innerHTML =
                 `<div class="col-lg-12" style="margin-top:15px;">
                         <div style="border-bottom: 1px solid black;"></div>
                         <h5 class="mb-3" style="margin-top:5px;"><strong>Explanation: </strong></h5>
@@ -229,16 +266,15 @@ function makeValidateCallback(shadowRoot, currentI, question, numberOfQuestions)
         }
         if (question.questionAnswer && question.questionAnswer.length === 1) {
             const selectedAns = shadowRoot.querySelector(`input[name=answer${currentI}]:checked`);
-            shadowRoot.getElementById(`${currentI + question.questionAnswer}label`).innerHTML += '&#9989;';
-            if (!shadowRoot.getElementById(`${currentI + question.questionAnswer}`).checked) {
-                var incorrectAns = selectedAns;
-                if (incorrectAns) {
-                    shadowRoot.getElementById(incorrectAns.id + 'label').innerHTML += '&#10060;';
+            shadowRoot.querySelector(`#label${currentI + question.questionAnswer}`).innerHTML += '&#9989;';
+            if (!shadowRoot.querySelector(`#option${currentI + question.questionAnswer}`).checked) {
+                if (selectedAns) {
+                    shadowRoot.querySelector('#label'+selectedAns.id.replace('option','')).innerHTML += '&#10060;';
                 }
             } else {
                 currentScore.innerHTML = parseInt(currentScore.innerHTML) + 1;
             }
-            shadowRoot.getElementById(`u${question.questionSkId}`).innerHTML += selectedAns.id.substr(-1);
+            shadowRoot.querySelector(`#u${question.questionSkId}`).innerHTML += (selectedAns?.id?.substr(-1)) ? selectedAns?.id?.substr(-1) : '';
         } else {
             var isCorrect = true;
             var answers = question.questionAnswer.split('');
@@ -247,15 +283,15 @@ function makeValidateCallback(shadowRoot, currentI, question, numberOfQuestions)
                 isCorrect = false
             }
             answersSelected.forEach(selectedAns => {
-                shadowRoot.getElementById(`u${question.questionSkId}`).innerHTML += selectedAns.id.substr(-1);
+                shadowRoot.querySelector(`#u${question.questionSkId}`).innerHTML += selectedAns.id.substr(-1);
                     if (!answers.includes(selectedAns.id.substr(-1))) {
-                        shadowRoot.getElementById(selectedAns.id + 'label').innerHTML += '&#10060;';
+                        shadowRoot.querySelector('#label' + selectedAns.id.replace('option','')).innerHTML += '&#10060;';
                         isCorrect = false;
                     }
                 }
             );
             answers.forEach(answer => {
-                const elementLabelSelected = shadowRoot.getElementById(`${currentI + answer}label`);
+                const elementLabelSelected = shadowRoot.querySelector(`#label${currentI + answer}`);
                 elementLabelSelected.innerHTML += '&#9989;';
             });
             if (isCorrect) {
@@ -266,19 +302,19 @@ function makeValidateCallback(shadowRoot, currentI, question, numberOfQuestions)
 
 
         if (parseInt(currentSubmissions.innerHTML) >= numberOfQuestions) {
-            shadowRoot.getElementById(`questionContainer${currentI}`).style.display = "none";
-            shadowRoot.getElementById(`scoreSection`).style.display = "none";
+            shadowRoot.querySelector(`#questionContainer${currentI}`).style.display = "none";
+            shadowRoot.querySelector(`#scoreSection`).style.display = "none";
             const score = parseInt(currentScore.innerHTML);
-            shadowRoot.getElementById(`passMessage`).style.display = "inline-block";
-            shadowRoot.getElementById(`welcomeMessage`).style.display = "none";
+            shadowRoot.querySelector(`#passMessage`).style.display = "inline-block";
+            shadowRoot.querySelector(`#welcomeMessage`).style.display = "none";
             if (score >= (numberOfQuestions * 0.7)) {
 
-                shadowRoot.getElementById(`passHeader`).innerHTML = `Congrats ${shadowRoot.getElementById('nameInput').value} you passed, Good luck on your exam! Score: ${score}/${numberOfQuestions}`;
+                shadowRoot.querySelector(`#passHeader`).innerHTML = `Congrats ${shadowRoot.querySelector('#nameInput').value} you passed, Good luck on your exam! Score: ${score}/${numberOfQuestions}`;
             } else {
-                shadowRoot.getElementById(`passHeader`).innerHTML = `Oh no! ${shadowRoot.getElementById('nameInput').value} you failed, click Retake test or reload this page to try again. Score: ${score}/${numberOfQuestions}`;
+                shadowRoot.querySelector(`#passHeader`).innerHTML = `Oh no! ${shadowRoot.querySelector('#nameInput').value} you failed, click Retake test or reload this page to try again. Score: ${score}/${numberOfQuestions}`;
             }
         }
-        shadowRoot.getElementById(`${currentI}showAnswer`).disabled = true;
+        shadowRoot.querySelector(`#showAnswer${currentI}`).disabled = true;
     }
 }
 
@@ -297,4 +333,8 @@ function startTimer(duration, display) {
             timer = duration;
         }
     }, 1000);
+}
+
+function hideButton(){
+
 }
