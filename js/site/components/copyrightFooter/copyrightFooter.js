@@ -14,6 +14,7 @@ class copyrightFooter extends HTMLElement {
                 <footer class="footer container-fluid text-center">
                     <div class="logo"><span>DEVSPOT</span></div>
                     <div class="socials">
+                        <a href="https://www.reddit.com/r/devspot/"><span class="fa fa-reddit-alien"></span></a>
                         <a href="http://twitter.com/gusmcarrion"><span class="fa fa-twitter"></span></a>
                         <a href="https://www.linkedin.com/in/gusmcarrion"><span class="fa fa-linkedin"></span></a>
                     </div>
