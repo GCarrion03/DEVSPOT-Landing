@@ -213,16 +213,16 @@ class practiceTest extends DevspotBase {
                 strToReturn += `<button class="btn stdButton basicTooltip" type="button" id="btnShowMyTrack" style="display: none" onclick="window.location.href='/mytrack/${this.exam.examId}.html'"><i class="fa fa-map"> Go to "My Track"</i></button>`;
                 break;
             case (Role.USER):
-                if ( consumedQuota > 65 ) {
+                if ( consumedQuota > 30 ) {
                     strToReturn += '<button class="btn stdButton basicTooltip" type="button" id="btnSaveToMyTrack" style="display: none"><i class="fa fa-save"> Save results to "My Track"</i></button>';
-                    strToReturn += '<button id="btnContribute" type="button" class="btn stdButton basicTooltip" data-toggle="modal" data-target="#myModal"><i class="fa fa-credit-card-alt"> Get Contributor Access!</i><span class="col-sm-1 basicTooltipText">Uh Oh, You have used "My Track" 65 questions free quota, please consider getting contributor access<br></span></button>';
+                    strToReturn += '<button id="btnContribute" type="button" class="btn stdButton basicTooltip" data-toggle="modal" data-target="#myModal"><i class="fa fa-credit-card-alt"> Get Contributor Access!</i><span class="col-sm-1 basicTooltipText">Uh Oh, You have used "My Track" 30 questions free quota, please consider getting contributor access<br></span></button>';
                 } else {
                     strToReturn += '<button class="btn stdButton basicTooltip" type="button" id="btnSaveToMyTrack" ><i class="fa fa-save"> Save results to "My Track"</i></button>';
                 }
                 strToReturn += `<button class="btn stdButton basicTooltip" type="button" id="btnShowMyTrack" style="display: none" onclick="window.location.href='/mytrack/${this.exam.examId}.html'"><i class="fa fa-map"> Go to "My Track"</i></button>`;
                 break;
             case (Role.VISITOR):
-                strToReturn = '<button class="btn stdButton basicTooltip" type="button" id="btnSaveToMyTrack"  disabled><i class="fa fa-save"> Save results to "My Track"</i><span class="col-sm-1 basicTooltipText">Sign In to save up to 65 questions in "My Track"<br></span></button>';
+                strToReturn = '<button class="btn stdButton basicTooltip" type="button" id="btnSaveToMyTrack"  disabled><i class="fa fa-save"> Save results to "My Track"</i><span class="col-sm-1 basicTooltipText">Sign In to save up to 30 questions in "My Track"<br></span></button>';
                 break;
         }
         return strToReturn;
