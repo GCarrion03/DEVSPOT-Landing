@@ -561,7 +561,6 @@ button.navbar-toggle {
     display: inline-block;
     border-bottom: 1px;
 }
-
 .basicTooltip .basicTooltipText {
     visibility: hidden;
     background-color: black;
@@ -578,6 +577,10 @@ button.navbar-toggle {
     left: 50%;
     margin-left: 10px;
     white-space: normal;
+}
+
+.basicTooltip .displayTooltipCenter {
+    left: -135px;
 }
 
 .basicTooltip:hover .basicTooltipText {
