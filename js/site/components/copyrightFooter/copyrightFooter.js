@@ -14,9 +14,10 @@ class copyrightFooter extends HTMLElement {
                 <footer class="footer container-fluid text-center">
                     <div class="logo"><span>DEVSPOT</span></div>
                     <div class="socials">
-                        <a href="https://www.reddit.com/r/devspot/"><span class="fa fa-reddit-alien"></span></a>
-                        <a href="http://twitter.com/gusmcarrion"><span class="fa fa-twitter"></span></a>
-                        <a href="https://www.linkedin.com/in/gusmcarrion"><span class="fa fa-linkedin"></span></a>
+                        <a href="https://discord.gg/2yquf9V" class="basicTooltip"><span class="fa fa-bug"></span><span class="basicTooltipText">Report a bug on Discord</span></a>
+                        <a href="https://www.reddit.com/r/devspot/" class="basicTooltip"><span class="fa fa-reddit-alien"></span><span class="basicTooltipText">No Discord? Visit us on Reddit</span></a>
+                        <a href="https://www.linkedin.com/in/gusmcarrion" class="basicTooltip"><span class="fa fa-linkedin"></span><span class="basicTooltipText">Add DevSpot Exam simulator author to your LinkedIn Network</span></a>
+                        <a href="http://twitter.com/gusmcarrion" class="basicTooltip"><span class="fa fa-twitter"></span><span class="basicTooltipText">Follow DevSpot Exam simulator author on Twitter</span></a>
                     </div>
                     <p>Copyright 2015 ${(new Date().getFullYear() > 2015) ? ("- " + new Date().getFullYear()) : ''}, DEVSPOT all rights reserved
                     </p>
