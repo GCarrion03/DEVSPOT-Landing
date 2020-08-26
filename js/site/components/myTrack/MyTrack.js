@@ -16,25 +16,30 @@ class MyTrack extends DevspotBase {
         this.exam = await fetchFromPost(this.constants.myTrackEndpoint, body);
         this.myTrackData = this.exam.myTrackData;
         let mytrack = `<div class="col-sm-12 padding-bottom-sm" >
-                <div class="col-sm-9">
-                    <h4 style="font-weight: bolder;" class="padding-margin-0">Get your Track Score above 80% to pass your exam, guaranteed!</h4>
+                
+                <div class="col-sm-2 text-align-center"><h4 class="padding-margin-0" style="font-weight: bold;">Track Score:</h4></div>
+                <div class="col-sm-2 text-align-center basicTooltip" >
+                    <h4 class="padding-margin-0" style="font-weight: bolder"> ${(this.myTrackData.filter(e => e.status === 'correct').length * 100 / this.exam.totalNumberOfQuestions).toFixed(2)}%</h4>
+                    <span class="col-sm-1 basicTooltipText">Get your this score above 80% to pass your exam, guaranteed!<br></span>
                 </div>
-                <div class="col-sm-2"><h4 class="padding-margin-0" style="font-weight: bold;">Track Score:</h4></div>
-                <div class="col-sm-1" ><h4 class="padding-margin-0" style="font-weight: bolder"> ${(this.myTrackData.filter(e => e.status === 'correct').length * 100 / this.exam.totalNumberOfQuestions).toFixed(2)}%</h4></div>
+                <div class="col-sm-2 text-align-center" ><h4 class="padding-margin-0"style="font-weight: bold;">Completed:</h4></div>
+                <div class="col-sm-2 text-align-center padding-bottom-md basicTooltip" >
+                    <h4 class="padding-margin-0"> ${(this.myTrackData.filter(e => e.status !== 'notRequested').length * 100 / this.exam.totalNumberOfQuestions).toFixed(2)}%</h4>
+                    <span class="col-sm-1 basicTooltipText">Your completion rate.<br></span>
+                </div>
+                <div class="col-sm-2 text-align-center" ><h4 class="padding-margin-0"style="font-weight: bold;">Error ratio:</h4></div>
+                <div class="col-sm-2 text-align-center padding-bottom-md basicTooltip" >
+                    <h4 class="padding-margin-0"> ${this.myTrackData.filter(e => e.status === 'correct').length === 0 ? '---' : (this.myTrackData.filter(e => e.status === 'incorrect').length / this.myTrackData.filter(e => e.status === 'correct').length).toFixed(2)}%</h4>
+                    <span class="col-sm-1 basicTooltipText">A good error rate is less than 20%<br></span>
+                </div>
                 </div>
                 <div class="col-sm-12 padding-bottom-md" >
-                <div class="col-sm-1 legendText  padding-sides-0">Legend:</div>
-                <div class="col-sm-1 userAnswer  padding-sides-0 darkGreen">&nbsp;</div>
-                <div class="col-sm-1 legendText  padding-sides-0">Correct</div>
-                <div class="col-sm-1 userAnswer  padding-sides-0 darkRed">&nbsp;</div>
-                <div class="col-sm-1 legendText  padding-sides-0">Incorrect</div>
-                <div class="col-sm-1 userAnswer  padding-sides-0 darkBlue">&nbsp;</div>
-                <div class="col-sm-2 legendText  padding-sides-0">Not yet taken</div>
-                <div class="col-sm-1"></div>
-                <div class="col-sm-2" ><h4 class="padding-margin-0"style="font-weight: bold;">Completed:</h4></div>
-                <div class="col-sm-1 padding-bottom-md" >
-                    <h4 class="padding-margin-0"> ${(this.myTrackData.filter(e => e.status !== 'notRequested').length * 100 / this.exam.totalNumberOfQuestions).toFixed(2)}%</h4>
-                </div>
+                <div class="col-sm-2 legendText  padding-sides-0">Correct:</div>
+                <div class="col-sm-2 userAnswer  padding-sides-0 darkGreen">${(this.myTrackData.filter(e => e.status === 'correct').length)}</div>
+                <div class="col-sm-2 legendText  padding-sides-0">Incorrect:</div>
+                <div class="col-sm-2 userAnswer  padding-sides-0 darkRed">${(this.myTrackData.filter(e => e.status === 'incorrect').length)}</div>
+                <div class="col-sm-2 legendText  padding-sides-0">Not yet answered:</div>
+                <div class="col-sm-2 userAnswer  padding-sides-0 darkBlue">${(this.myTrackData.filter(e => e.status === 'notRequested').length)}</div>
                 </div>`;
         this.myTrackData.forEach(userAnswer => {
             let correctAnswerText = '';

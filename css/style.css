@@ -32,6 +32,16 @@ body {
     padding-bottom: 5px;
 }
 
+.padding-top-sm{
+    padding-top: 2px;
+}
+.padding-top-md{
+    padding-top: 5px;
+}
+.padding-top-lg{
+    padding-top: 10px;
+}
+
 .padding-sides-0{
     padding-left: 0;
     padding-right: 0;
@@ -568,6 +578,7 @@ button.navbar-toggle {
     text-align: center;
     border-radius: 6px;
     padding: 5px 5px;
+    text-transform: none;
 
     /* Position the tooltip */
     position: absolute;

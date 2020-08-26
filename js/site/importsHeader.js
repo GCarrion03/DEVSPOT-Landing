@@ -1,5 +1,6 @@
 // import * as paypal from 'https://www.paypal.com/sdk/js?client-id=AfPqQQeT9UQLa8TBIHQTdwBP_uHPU5LQRxCkFKS79WZGCjgCg_aNHiSTVs5wZm7X3mMMel5nsj6VMBGb&currency=USD';
-import * as footer from '/js/site/components/copyrightFooter/copyrightFooter.js';
+import * as footer from '/js/site/components/addToAny/AddToAnySharer.js';
+import * as sharer from '/js/site/components/copyrightFooter/copyrightFooter.js';
 import * as practiceTest from '/js/site/components/examSimulator/practiceTest.js';
 import * as myTrack from '/js/site/components/myTrack/MyTrack.js';
 import * as postsSidebar from '/js/site/components/blog/popularPostsSidebar/postsSidebar.js';
