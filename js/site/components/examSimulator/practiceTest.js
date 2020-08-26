@@ -214,7 +214,7 @@ class practiceTest extends DevspotBase {
             case (Role.USER):
                 if ( consumedQuota > 30 ) {
                     strToReturn += '<button class="btn stdButton basicTooltip" type="button" id="btnSaveToMyTrack" style="display: none"><i class="fa fa-save"> Save results to "My Track"</i></button>';
-                    strToReturn += '<button id="btnContribute" type="button" class="btn stdButton basicTooltip" data-toggle="modal" data-target="#myModal"><i class="fa fa-credit-card-alt"> Get Contributor Access!</i><span class="col-sm-1 basicTooltipText">You have used "My Track" 30 questions free quota, share this page using the share buttons below to save up to 65 questions or get contributor access to unlock all the features!<br></span></button>';
+                    strToReturn += '<button id="btnContribute" type="button" class="btn stdButton basicTooltip" data-toggle="modal" data-target="#myModal"><i class="fa fa-credit-card-alt"> Get Contributor Access!</i><span class="col-sm-1 basicTooltipText">You have used "My Track" 30 questions free quota, share this page using the share buttons below&#128317; to save up to 65 questions or get contributor access to unlock all the features!<br></span></button>';
                 } else {
                     strToReturn += '<button class="btn stdButton basicTooltip" type="button" id="btnSaveToMyTrack" ><i class="fa fa-save"> Save results to "My Track"</i></button>';
                 }
