@@ -58,7 +58,7 @@ class practiceTest extends DevspotBase {
             (await import(`https://www.paypal.com/sdk/js?client-id=${constants.paypalClientId}&currency=USD`));
             let onApproveRerenderCallback = (details) => {
                 document.querySelector('#btnContribute').style.display = 'none';
-                document.querySelector('#btnSaveToMyTrack').style.display = 'block';
+                document.querySelector('#btnSaveToMyTrack').style.display = 'inline-block';
                 document.querySelector('#btnClosePopup').click();
                 //Save to rest service from table userExam details
             };
@@ -90,7 +90,7 @@ class practiceTest extends DevspotBase {
                     <div class="col-lg-4 text-align-center">
                     <button class="btn stdButton" type="button" id="btnRetake" onclick="window.location.reload();" ><i class="fa fa-repeat"> Try again!</i> </button>
                     </div>
-                    <div class="col-lg-4 text-align-center">
+                    <div class="col-lg-4 text-align-center padding-sides-0">
                     ${this.getSaveToMyTrackMenu(examQuestionInfo.myTrackQuestionCount + examQuestionInfo.examQuestionCount)}
                     </div>
                     <div class="col-lg-4 text-align-center">
@@ -214,7 +214,7 @@ class practiceTest extends DevspotBase {
             case (Role.USER):
                 if ( consumedQuota > 30 ) {
                     strToReturn += '<button class="btn stdButton basicTooltip" type="button" id="btnSaveToMyTrack" style="display: none"><i class="fa fa-save"> Save results to "My Track"</i></button>';
-                    strToReturn += '<button id="btnContribute" type="button" class="btn stdButton basicTooltip" data-toggle="modal" data-target="#myModal"><i class="fa fa-credit-card-alt"> Get Contributor Access!</i><span class="col-sm-1 basicTooltipText">You have used "My Track" 30 questions free quota, share this page using the share buttons below&#128317; to save up to 65 questions or get contributor access to unlock all the features!<br></span></button>';
+                    strToReturn += '<button id="btnContribute" type="button" class="btn stdButton basicTooltip white-space-normal" data-toggle="modal" data-target="#myModal"><i class="fa fa-credit-card-alt"> Share us, or get Contributor Access &nbsp; to save your results</i><span class="col-sm-1 basicTooltipText">You have used "My Track" 30 questions free quota, share this page using the share buttons below&#128317; to save up to 65 questions or get contributor access to unlock all the features!<br></span></button>';
                 } else {
                     strToReturn += '<button class="btn stdButton basicTooltip" type="button" id="btnSaveToMyTrack" ><i class="fa fa-save"> Save results to "My Track"</i></button>';
                 }

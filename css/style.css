@@ -9,6 +9,7 @@ body {
     word-spacing: 1.5px;
     position: relative;
     background: aliceblue;
+    overflow-x: hidden;
 }
 
 #carousel1 {
@@ -606,4 +607,8 @@ button.navbar-toggle {
 
 .text-align-center{
     text-align: center;
+}
+
+.white-space-normal {
+    white-space: normal;
 }

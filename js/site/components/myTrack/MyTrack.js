@@ -15,29 +15,31 @@ class MyTrack extends DevspotBase {
         let body = {"examId":this.getAttribute("examId"),"userId":this.userData?.username};
         this.exam = await fetchFromPost(this.constants.myTrackEndpoint, body);
         this.myTrackData = this.exam.myTrackData;
-        let mytrack = `<div class="col-sm-12 padding-bottom-sm" >
+        let mytrack = `<div class="col-sm-12 padding-bottom-md" >
                 
-                <div class="col-md-2 col-sm-3 legendText padding-sides-0 text-align-center"><h4 class="padding-margin-0" style="font-weight: bold;">Track Score:</h4></div>
-                <div class="col-md-2 col-sm-3 padding-sides-0 text-align-center basicTooltip" >
-                    <h4 class="padding-margin-0" style="font-weight: bolder"> ${(this.myTrackData.filter(e => e.status === 'correct').length * 100 / this.exam.totalNumberOfQuestions).toFixed(2)}%</h4>
+                <div class="col-md-2 col-sm-3 legendText padding-sides-0 text-align-center bold">Track Score:</div>
+                <div class="col-md-2 col-sm-3 padding-sides-0 text-align-center basicTooltip bold" >
+                    ${(this.myTrackData.filter(e => e.status === 'correct').length * 100 / this.exam.totalNumberOfQuestions).toFixed(2)}%
                     <span class="basicTooltipText">Get your this score above 80% to pass your exam, guaranteed!<br></span>
                 </div>
-                <div class="col-md-2 col-sm-3 legendText padding-sides-0 text-align-center" ><h4 class="padding-margin-0"style="font-weight: bold;">Completed:</h4></div>
-                <div class="col-md-2 col-sm-3 padding-sides-0 text-align-center padding-bottom-md basicTooltip" >
-                    <h4 class="padding-margin-0"> ${(this.myTrackData.filter(e => e.status !== 'notRequested').length * 100 / this.exam.totalNumberOfQuestions).toFixed(2)}%</h4>
+                <div class="col-md-2 col-sm-3 legendText padding-sides-0 text-align-center bold" >Completed:</div>
+                <div class="col-md-2 col-sm-3 padding-sides-0 text-align-center basicTooltip bold" >
+                    ${(this.myTrackData.filter(e => e.status !== 'notRequested').length * 100 / this.exam.totalNumberOfQuestions).toFixed(2)}%
                     <span class="basicTooltipText">Your completion rate.<br></span>
                 </div>
-                <div class="col-md-2 col-sm-3 legendText padding-sides-0 text-align-center" ><h4 class="padding-margin-0"style="font-weight: bold;">Error ratio:</h4></div>
-                <div class="col-md-2 col-sm-3 padding-sides-0 text-align-center padding-bottom-md basicTooltip" >
-                    <h4 class="padding-margin-0"> ${this.myTrackData.filter(e => e.status === 'correct').length === 0 ? '---' : (100 * this.myTrackData.filter(e => e.status === 'incorrect').length / this.myTrackData.filter(e => e.status === 'correct').length).toFixed(2)}%</h4>
+                <div class="col-md-2 col-sm-3 legendText padding-sides-0 text-align-center bold">Error ratio:</div>
+                <div class="col-md-2 col-sm-3 padding-sides-0 text-align-center basicTooltip bold" >
+                    ${this.myTrackData.filter(e => e.status === 'correct').length === 0 ? '---' : (100 * this.myTrackData.filter(e => e.status === 'incorrect').length / this.myTrackData.filter(e => e.status === 'correct').length).toFixed(2)}%
                     <span class="basicTooltipText">A good error ratio is less than 30%.<br></span>
                 </div>
-                <div class="col-md-2 col-sm-3 legendText  padding-sides-0">Correct:</div>
-                <div class="col-md-2 col-sm-3 userAnswer  padding-sides-0 darkGreen">${(this.myTrackData.filter(e => e.status === 'correct').length)}</div>
-                <div class="col-md-2 col-sm-3 legendText  padding-sides-0">Incorrect:</div>
-                <div class="col-md-2 col-sm-3 userAnswer  padding-sides-0 darkRed">${(this.myTrackData.filter(e => e.status === 'incorrect').length)}</div>
-                <div class="col-md-2 col-sm-3 legendText  padding-sides-0">Not yet answered:</div>
-                <div class="col-md-2 col-sm-3 userAnswer  padding-sides-0 darkBlue">${(this.myTrackData.filter(e => e.status === 'notRequested').length)}</div>
+                <div class="col-md-2 col-sm-3 legendText padding-sides-0">Answered:</div>
+                <div class="col-md-2 col-sm-3 padding-sides-0 text-align-center bold">${(this.myTrackData.filter(e => e.status !== 'notRequested').length)}</div>
+                <div class="col-md-2 col-sm-3 legendText padding-sides-0">Correct:</div>
+                <div class="col-md-2 col-sm-3 userAnswer padding-sides-0 darkGreen">${(this.myTrackData.filter(e => e.status === 'correct').length)}</div>
+                <div class="col-md-2 col-sm-3 legendText padding-sides-0">Incorrect:</div>
+                <div class="col-md-2 col-sm-3 userAnswer padding-sides-0 darkRed">${(this.myTrackData.filter(e => e.status === 'incorrect').length)}</div>
+                <div class="col-md-2 col-sm-3 legendText padding-sides-0">Not yet answered:</div>
+                <div class="col-md-2 col-sm-3 userAnswer padding-sides-0 darkBlue">${(this.myTrackData.filter(e => e.status === 'notRequested').length)}</div>
                 </div>`;
         this.myTrackData.forEach(userAnswer => {
             let correctAnswerText = '';

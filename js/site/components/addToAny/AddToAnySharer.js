@@ -16,7 +16,7 @@ class AddToAnySharer extends HTMLElement {
                 <style type="text/css">
                 #my_centered_buttons { display: flex; justify-content: center; }
                 </style>
-                <div class="col-lg-12" style="padding-top: 1em;">
+                <div class="col-lg-12 display-inline-block" style="padding-top: 1em;">
                     <div class="col-lg-12 font-x2 text-align-center">Enjoying it?, make this Exam Simulator reach more people:</div>
                     <div class="col-lg-12 text-align-center padding-top-lg">
                         <div class="a2a_kit a2a_kit_size_32 a2a_default_style" id="my_centered_buttons">
@@ -43,7 +43,7 @@ class AddToAnySharer extends HTMLElement {
                     document.querySelector('#cogLoading').style.display = 'inline-block';
                     document.querySelector('#btnContribute').style.display = 'none';
                     setTimeout(function () {   
-                        document.querySelector('#btnSaveToMyTrack').style.display = 'block';
+                        document.querySelector('#btnSaveToMyTrack').style.display = 'inline-block';
                         document.querySelector('#cogLoading').style.display = 'none';
                     }, 5000);      
                     }            
