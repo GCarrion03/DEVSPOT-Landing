@@ -54,6 +54,12 @@ body {
     padding-left: 5px;
     padding-right: 5px;
 }
+.display-none {
+    display: none;
+}
+.display-inline-block {
+    display: inline-block;
+}
 
 #portfolio #portfolio-cats li:hover {
     border: 1px solid #3333ff;
@@ -585,7 +591,7 @@ button.navbar-toggle {
     z-index: 1;
     width: 300px;
     bottom: 100%;
-    left: 50%;
+    left: -135px;
     margin-left: 10px;
     white-space: normal;
 }

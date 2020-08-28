@@ -17,29 +17,27 @@ class MyTrack extends DevspotBase {
         this.myTrackData = this.exam.myTrackData;
         let mytrack = `<div class="col-sm-12 padding-bottom-sm" >
                 
-                <div class="col-sm-2 text-align-center"><h4 class="padding-margin-0" style="font-weight: bold;">Track Score:</h4></div>
-                <div class="col-sm-2 text-align-center basicTooltip" >
+                <div class="col-md-2 col-sm-3 legendText padding-sides-0 text-align-center"><h4 class="padding-margin-0" style="font-weight: bold;">Track Score:</h4></div>
+                <div class="col-md-2 col-sm-3 padding-sides-0 text-align-center basicTooltip" >
                     <h4 class="padding-margin-0" style="font-weight: bolder"> ${(this.myTrackData.filter(e => e.status === 'correct').length * 100 / this.exam.totalNumberOfQuestions).toFixed(2)}%</h4>
-                    <span class="col-sm-1 basicTooltipText">Get your this score above 80% to pass your exam, guaranteed!<br></span>
+                    <span class="basicTooltipText">Get your this score above 80% to pass your exam, guaranteed!<br></span>
                 </div>
-                <div class="col-sm-2 text-align-center" ><h4 class="padding-margin-0"style="font-weight: bold;">Completed:</h4></div>
-                <div class="col-sm-2 text-align-center padding-bottom-md basicTooltip" >
+                <div class="col-md-2 col-sm-3 legendText padding-sides-0 text-align-center" ><h4 class="padding-margin-0"style="font-weight: bold;">Completed:</h4></div>
+                <div class="col-md-2 col-sm-3 padding-sides-0 text-align-center padding-bottom-md basicTooltip" >
                     <h4 class="padding-margin-0"> ${(this.myTrackData.filter(e => e.status !== 'notRequested').length * 100 / this.exam.totalNumberOfQuestions).toFixed(2)}%</h4>
-                    <span class="col-sm-1 basicTooltipText">Your completion rate.<br></span>
+                    <span class="basicTooltipText">Your completion rate.<br></span>
                 </div>
-                <div class="col-sm-2 text-align-center" ><h4 class="padding-margin-0"style="font-weight: bold;">Error ratio:</h4></div>
-                <div class="col-sm-2 text-align-center padding-bottom-md basicTooltip" >
-                    <h4 class="padding-margin-0"> ${this.myTrackData.filter(e => e.status === 'correct').length === 0 ? '---' : (this.myTrackData.filter(e => e.status === 'incorrect').length / this.myTrackData.filter(e => e.status === 'correct').length).toFixed(2)}%</h4>
-                    <span class="col-sm-1 basicTooltipText">A good error rate is less than 20%<br></span>
+                <div class="col-md-2 col-sm-3 legendText padding-sides-0 text-align-center" ><h4 class="padding-margin-0"style="font-weight: bold;">Error ratio:</h4></div>
+                <div class="col-md-2 col-sm-3 padding-sides-0 text-align-center padding-bottom-md basicTooltip" >
+                    <h4 class="padding-margin-0"> ${this.myTrackData.filter(e => e.status === 'correct').length === 0 ? '---' : (100 * this.myTrackData.filter(e => e.status === 'incorrect').length / this.myTrackData.filter(e => e.status === 'correct').length).toFixed(2)}%</h4>
+                    <span class="basicTooltipText">A good error ratio is less than 30%.<br></span>
                 </div>
-                </div>
-                <div class="col-sm-12 padding-bottom-md" >
-                <div class="col-sm-2 legendText  padding-sides-0">Correct:</div>
-                <div class="col-sm-2 userAnswer  padding-sides-0 darkGreen">${(this.myTrackData.filter(e => e.status === 'correct').length)}</div>
-                <div class="col-sm-2 legendText  padding-sides-0">Incorrect:</div>
-                <div class="col-sm-2 userAnswer  padding-sides-0 darkRed">${(this.myTrackData.filter(e => e.status === 'incorrect').length)}</div>
-                <div class="col-sm-2 legendText  padding-sides-0">Not yet answered:</div>
-                <div class="col-sm-2 userAnswer  padding-sides-0 darkBlue">${(this.myTrackData.filter(e => e.status === 'notRequested').length)}</div>
+                <div class="col-md-2 col-sm-3 legendText  padding-sides-0">Correct:</div>
+                <div class="col-md-2 col-sm-3 userAnswer  padding-sides-0 darkGreen">${(this.myTrackData.filter(e => e.status === 'correct').length)}</div>
+                <div class="col-md-2 col-sm-3 legendText  padding-sides-0">Incorrect:</div>
+                <div class="col-md-2 col-sm-3 userAnswer  padding-sides-0 darkRed">${(this.myTrackData.filter(e => e.status === 'incorrect').length)}</div>
+                <div class="col-md-2 col-sm-3 legendText  padding-sides-0">Not yet answered:</div>
+                <div class="col-md-2 col-sm-3 userAnswer  padding-sides-0 darkBlue">${(this.myTrackData.filter(e => e.status === 'notRequested').length)}</div>
                 </div>`;
         this.myTrackData.forEach(userAnswer => {
             let correctAnswerText = '';
@@ -59,12 +57,12 @@ class MyTrack extends DevspotBase {
                 userAnswerText = 'Not answered!';
             }
             let tooltipText = (userAnswer.status !== 'notRequested') ?
-                `<span class="basicTooltipText">
+                `<span class="basicTooltipText displayTooltipCenter">
                     <strong>Question: </strong>${userAnswer.questionText}<br>
                     <strong>Correct Answer: </strong>  ${correctAnswerText}
                     ${userAnswer.status === 'incorrect' ? '<br><strong>Your Answer: </strong>' +userAnswerText : ''}
                 </span>`
-                : this.userData?.username ? '<span class="basicTooltipText">Not registered yet!</span>' : '<span class="basicTooltipText">Sign In to track your progress! </span>';
+                : this.userData?.username ? '<span class="basicTooltipText displayTooltipCenter">Not registered yet!</span>' : '<span class="basicTooltipText displayTooltipCenter">Sign In to track your progress! </span>';
             let answerColor = '';
             switch(userAnswer.status) {
                 case 'incorrect':
@@ -77,7 +75,7 @@ class MyTrack extends DevspotBase {
                     answerColor = 'darkBlue';;
                     break;
             }
-            mytrack += `<div class="col-sm-1 userAnswer basicTooltip padding-sides-0 ${answerColor}">${userAnswer.questionSkId} ${tooltipText}</div>`
+            mytrack += `<div class="col-md-1 col-sm-2 userAnswer basicTooltip padding-sides-0 ${answerColor}">${userAnswer.questionSkId} ${tooltipText}</div>`
         });
         const div = document.createElement('div');
         div.id = "tmpDiv";
