@@ -1,4 +1,5 @@
 import { fetchFromPost } from "/js/site/commons/HttpUtils.js";
+import { constants } from "/js/site/siteConstants.js";
 export const Role = {
     VISITOR: 'visitor',
     USER: 'user',
@@ -7,6 +8,7 @@ export const Role = {
 
 export class DevspotBase extends HTMLElement {
     userData = {};
+    userRole;
     constructor(){
         super();
         const userData = localStorage.getItem('userData');
@@ -18,11 +20,11 @@ export class DevspotBase extends HTMLElement {
         }
     }
 
-    async getAssignedUserRole (exam) {
+    async getAssignedUserRole (examId) {
         let assignedUserRole;
         if (this.userData?.username) {
-            let body = {userId: this.userData.username, examId: exam.examId};
-            this.accessData = await fetchFromPost(this.constants.paymentEndpoint, body);
+            let body = {userId: this.userData.username, examId: examId};
+            this.accessData = await fetchFromPost(constants.paymentEndpoint, body);
             if (this.accessData?.transactionId?.length === 17) {
                 assignedUserRole = Role.CONTRIBUTOR;
             } else {

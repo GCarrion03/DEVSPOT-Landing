@@ -39,7 +39,7 @@ class AddToAnySharer extends HTMLElement {
                     ad: false
                 };
                 function my_addtoany_onshare(data) {
-                 if (65 > +document.querySelector('#consumedQuota')?.innerHTML) {
+                 if (65 >= +document.querySelector('#consumedQuota')?.innerHTML) {
                     document.querySelector('#cogLoading').style.display = 'inline-block';
                     document.querySelector('#btnContribute').style.display = 'none';
                     setTimeout(function () {   

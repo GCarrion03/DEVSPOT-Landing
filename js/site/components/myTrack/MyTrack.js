@@ -1,4 +1,4 @@
-import { DevspotBase } from '/js/site/commons/DevspotBase.js';
+import { DevspotBase, Role } from '/js/site/commons/DevspotBase.js';
 import { fetchFromPost } from "/js/site/commons/HttpUtils.js";
 class MyTrack extends DevspotBase {
     constants;
@@ -16,7 +16,6 @@ class MyTrack extends DevspotBase {
         this.exam = await fetchFromPost(this.constants.myTrackEndpoint, body);
         this.myTrackData = this.exam.myTrackData;
         let mytrack = `<div class="col-sm-12 padding-bottom-md" >
-                
                 <div class="col-md-2 col-sm-3 legendText padding-sides-0 text-align-center bold">Track Score:</div>
                 <div class="col-md-2 col-sm-3 padding-sides-0 text-align-center basicTooltip bold" >
                     ${(this.myTrackData.filter(e => e.status === 'correct').length * 100 / this.exam.totalNumberOfQuestions).toFixed(2)}%
@@ -80,6 +79,7 @@ class MyTrack extends DevspotBase {
             mytrack += `<div class="col-md-1 col-sm-2 userAnswer basicTooltip padding-sides-0 ${answerColor}">${userAnswer.questionSkId} ${tooltipText}</div>`
         });
         const div = document.createElement('div');
+        this.userRole = await this.getAssignedUserRole(this.exam);
         div.id = "tmpDiv";
         div.innerHTML =
             `<template id="practiceTest-styles">
@@ -90,7 +90,9 @@ class MyTrack extends DevspotBase {
                 <div class="section-title">
                     <span class="caption d-block small">My Track</span>
                     <h3>${this.exam.examId}</h3>
-                    <img src="/images/logo/avail/${this.exam.badgeFile}" class="cert-cred">
+                    <div class="watermarked ${this.userRole === Role.CONTRIBUTOR ? 'watermarked-contributor' : 'watermarked-free'}">
+                        <img src="/images/logo/avail/${this.exam.badgeFile}" class="cert-cred">
+                    </div>
                 </div>
                 <div id="userAnswersContainer" style="min-height: 400px;">
                         ${mytrack}

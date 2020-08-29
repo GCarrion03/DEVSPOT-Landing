@@ -8,7 +8,7 @@ class practiceTest extends DevspotBase {
     questionBank;
     numberOfQuestions = 10;
     componentRoot = (document.body.querySelector('practice-test'));
-    userRole;
+    hasFreeDailyQuota = false;
 
     constructor() {
         super();
@@ -16,11 +16,15 @@ class practiceTest extends DevspotBase {
     }
 
     async connectedCallback() {
+        const examId = this.getAttribute("examId");
+        this.userRole = await this.getAssignedUserRole(examId);
         this.constants = (await import('/js/site/siteConstants.js')).constants;
-        let body = {"examId":this.getAttribute("examId"),"examProvider":this.getAttribute("examProvider")};
+        let body = {"examId": examId,"examProvider":this.getAttribute("examProvider"), "userId": this.userData?.username, "userRole": this.userRole};
         this.exam = await fetchFromPost(this.constants.examEndpoint, body);
         this.questionBank = this.exam.questions;
-        this.userRole = await this.getAssignedUserRole(this.exam);
+        if (this.userRole === Role.USER){
+            this.hasFreeDailyQuota = this.hasDailyQuota();
+        }
         const div = document.createElement('div');
         div.id = "tmpDiv";
         div.innerHTML =
@@ -29,23 +33,37 @@ class practiceTest extends DevspotBase {
                 ${paymentModal}
                     <span class="caption d-block small">Exam</span>
                     <h3>${this.exam.examId}</h3>
-                    <img src="/images/logo/avail/${this.exam.badgeFile}" class="cert-cred">
+                    <div class="watermarked ${this.userRole === Role.CONTRIBUTOR ? 'watermarked-contributor' : 'watermarked-free'}">
+                        <img src="/images/logo/avail/${this.exam.badgeFile}" class="cert-cred">
+                    </div>
                 </div>
                 <div id="welcomeMessage" style=" min-height: 400px;">
                     <p style="text-align: center;"><strong>${this.exam.examAcronym} (${this.exam.examId})</strong></p>
+                    ${this.userRole !== Role.VISITOR ? '<p style="text-align: center;"><strong>My Track: </strong>'+this.exam.myTrackQuestionCount+' of '+this.exam.totalNumberOfQuestions + ' Questions Completed (' + (100 * this.exam.myTrackQuestionCount / this.exam.totalNumberOfQuestions).toFixed(2)+'%)</p>' : ''}
                     <p style="text-align: center;">Welcome to the ${this.exam.examProvider} ${this.exam.examName} Exam<span>&nbsp;readiness quiz</span>&nbsp;</p>
                     <p>Select the number of questions that will be randomly selected from our curated database of ${this.exam.totalNumberOfQuestions} questions, score more than 70% and you will be ready to sit for your exam.</p>
-                    <p><strong>Note:</strong> Please register to keep track of your completion progress in the 'My Tracks' option.</p> 
+                    ${this.userRole === Role.VISITOR ? '<p><strong>Note:</strong> Please register to keep track of your completion progress in the "My Tracks" option.</p>' : ''}
+                    ${this.userRole === Role.USER ? '<p><strong>Note:</strong> Visit us everyday to get 5 more free question saves to this exam Track.</p>' : ''} 
                     <br>
-                    <label for="nameInput" style="float: left;">Your name: &nbsp;</label><input type="text" id="nameInput" style="float: left;" >
-                    <label for="examLength" style="float: left;">&nbsp; Exam Length: &nbsp;</label>
-                    <select name="examLength" id="examLength" style="float: left;">
-                      <option value="5">5 Questions</option>
+                    <div class="col-lg-3 text-align-center">
+                    <label for="nameInput">Your name: &nbsp;</label></div>
+                    <div class="col-lg-3 text-align-center">
+                        <input type="text" id="nameInput" class="display-inline-block">
+                    </div>
+                    <div class="col-lg-3 text-align-center">
+                    <label for="examLength">&nbsp; Exam Length: &nbsp;</label>
+                    </div>
+                    <div class="col-lg-3 text-align-center">
+                    <select name="examLength" id="examLength" class="display-inline-block">
+                      <option value="5">5 Questions${this.hasFreeDailyQuota ? ' (Free Daily Save)' : ''}</option>
                       <option value="10">10 Questions</option>
                       ${this.userData ? '<option value="30">30 Questions</option>' : '<option value="1" disabled>(Sign In) 30 Questions</option>'} 
                       ${this.userData ? '<option value="65">65 Questions</option>' : '<option value="1" disabled>(Sign In) 65 Questions</option>'} 
                     </select>
-                    <button type="button" class="btn stdButton" id="start" style="float: right;" ><i class="fa fa-flag"> Start Assessment</i></button>
+                    </div>
+                    <div class="col-sm-12 text-align-center padding-top-md">
+                    <button type="button" class="btn stdButton" id="start"><i class="fa fa-flag"> Start Assessment</i></button>
+                    </div>
                 </div>
              </template>`
         this.componentRoot.append(div);
@@ -85,13 +103,13 @@ class practiceTest extends DevspotBase {
         div.id = "tmpDiv";
         div.innerHTML =
             `<template id="master-section">
-                <div id="passMessage" style="display:none;" class="col-lg-12">
+                <div id="passMessage" style="display:none;min-height: 400px;" class="col-lg-12">
                     <h4 id="passHeader" class="col-lg-12" style="min-height: 20px;">Message</h4>
                     <div class="col-lg-4 text-align-center">
-                    <button class="btn stdButton" type="button" id="btnRetake" onclick="window.location.reload();" ><i class="fa fa-repeat"> Try again!</i> </button>
+                        <button class="btn stdButton" type="button" id="btnRetake" onclick="window.location.reload();" ><i class="fa fa-repeat"> Try again!</i> </button>
                     </div>
                     <div class="col-lg-4 text-align-center padding-sides-0">
-                    ${this.getSaveToMyTrackMenu(examQuestionInfo.myTrackQuestionCount + examQuestionInfo.examQuestionCount)}
+                        ${this.getSaveToMyTrackMenu(examQuestionInfo.myTrackQuestionCount, examQuestionInfo.examQuestionCount)}
                     </div>
                     <div class="col-lg-4 text-align-center">
                     </div>
@@ -203,8 +221,8 @@ class practiceTest extends DevspotBase {
         this.componentRoot.querySelector(`#prev1`).disabled = true;
     }
 
-    getSaveToMyTrackMenu(consumedQuota){
-        let strToReturn = `<label id="consumedQuota" style="display: none;">${consumedQuota}</label>`;
+    getSaveToMyTrackMenu(consumedQuota, toBeConsumedQuota){
+        let strToReturn = `<label id="consumedQuota" style="display: none;">${consumedQuota + toBeConsumedQuota}</label>`;
         strToReturn += `<i id="cogLoading" class="fa fa-cog fa-spin fa-2x fa-fw" style="display: none"></i>`;
         switch (this.userRole) {
             case (Role.CONTRIBUTOR):
@@ -212,11 +230,11 @@ class practiceTest extends DevspotBase {
                 strToReturn += `<button class="btn stdButton basicTooltip" type="button" id="btnShowMyTrack" style="display: none" onclick="window.location.href='/mytrack/${this.exam.examId}.html'"><i class="fa fa-map"> Go to "My Track"</i></button>`;
                 break;
             case (Role.USER):
-                if ( consumedQuota > 30 ) {
+                if ((consumedQuota + toBeConsumedQuota) > 30 && !(toBeConsumedQuota <= 5 && this.hasFreeDailyQuota)) {
                     strToReturn += '<button class="btn stdButton basicTooltip" type="button" id="btnSaveToMyTrack" style="display: none"><i class="fa fa-save"> Save results to "My Track"</i></button>';
-                    strToReturn += '<button id="btnContribute" type="button" class="btn stdButton basicTooltip white-space-normal" data-toggle="modal" data-target="#myModal"><i class="fa fa-credit-card-alt"> Share us, or get Contributor Access &nbsp; to save your results</i><span class="col-sm-1 basicTooltipText">You have used "My Track" 30 questions free quota, share this page using the share buttons below&#128317; to save up to 65 questions or get contributor access to unlock all the features!<br></span></button>';
+                    strToReturn += '<button id="btnContribute" type="button" class="btn stdButton basicTooltip white-space-normal" data-toggle="modal" data-target="#myModal"><i class="fa fa-credit-card-alt"> Share us, or get Contributor Access &nbsp; to save your results</i><span class="col-sm-1 basicTooltipText" style="left: -15px;">You have used "My Track" 30 questions free quota, share this page using the share buttons below&#128317; to save up to 65 questions or get contributor access to unlock all the features!<br></span></button>';
                 } else {
-                    strToReturn += '<button class="btn stdButton basicTooltip" type="button" id="btnSaveToMyTrack" ><i class="fa fa-save"> Save results to "My Track"</i></button>';
+                    strToReturn += '<button class="btn stdButton basicTooltip" type="button" id="btnSaveToMyTrack" ><i class="fa fa-save"> Save results to "My Track"</i><span class="col-sm-1 basicTooltipText">Save up to 30 questions to "My Track", then get 5 more question saves Everyday!</span></button>';
                 }
                 strToReturn += `<button class="btn stdButton basicTooltip" type="button" id="btnShowMyTrack" style="display: none" onclick="window.location.href='/mytrack/${this.exam.examId}.html'"><i class="fa fa-map"> Go to "My Track"</i></button>`;
                 break;
@@ -225,6 +243,17 @@ class practiceTest extends DevspotBase {
                 break;
         }
         return strToReturn;
+    }
+
+    hasDailyQuota(){
+        const today = new Date();
+        today.setUTCHours(0,0,0,0);
+        // if the user has not saved questions today allow him to save
+        if (today.getTime() > this.exam.lastSavedDate){
+            return true;
+        } else {
+            return false
+        }
     }
 }
 
