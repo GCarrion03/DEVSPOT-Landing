@@ -12,6 +12,7 @@ class MyTrack extends DevspotBase {
     async connectedCallback() {
         this.constants = (await import('/js/site/siteConstants.js')).constants;
 
+        this.userRole = await this.getAssignedUserRole(this.getAttribute("examId"));
         let body = {"examId":this.getAttribute("examId"),"userId":this.userData?.username};
         this.exam = await fetchFromPost(this.constants.myTrackEndpoint, body);
         this.myTrackData = this.exam.myTrackData;
@@ -79,7 +80,6 @@ class MyTrack extends DevspotBase {
             mytrack += `<div class="col-md-1 col-sm-2 userAnswer basicTooltip padding-sides-0 ${answerColor}">${userAnswer.questionSkId} ${tooltipText}</div>`
         });
         const div = document.createElement('div');
-        this.userRole = await this.getAssignedUserRole(this.exam);
         div.id = "tmpDiv";
         div.innerHTML =
             `<template id="practiceTest-styles">
