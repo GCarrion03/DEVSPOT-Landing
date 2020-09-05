@@ -9,7 +9,6 @@ class MyTrack extends DevspotBase {
     componentRoot = (document.body.querySelector('my-track'));
     constructor() {
         super();
-        // this.attachShadow({mode: 'open'});
     }
 
     async connectedCallback() {
@@ -167,7 +166,6 @@ class MyTrack extends DevspotBase {
                         'width': 170,
                         'elementHandlers': specialElementHandlers
                     });
-                    // doc.text(JSON.stringify(mytrack), 10, 10);
                     doc.save(`${this.exam.examId}.pdf`);
                 }
             }
