@@ -541,6 +541,10 @@ button.navbar-toggle {
     cursor: pointer; /* Mouse pointer on hover */
     margin: 1px;
 }
+.mdMinWidth{
+    min-width: 20em;
+    max-width: 20em;
+}
 
 /* Darker background on mouse-over */
 .stdButton:hover {
