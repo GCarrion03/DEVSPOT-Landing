@@ -19,3 +19,4 @@ import * as jqueryCountTo from '/js/third-party/jquery.countTo.js';
 import * as main from '/js/third-party/main.js';
 // import * as paypal1 from 'https://www.paypal.com/sdk/js';
 import * as header from '/js/site/components/menuHeader/menuHeader.js';
+import * as jspdf from 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js';

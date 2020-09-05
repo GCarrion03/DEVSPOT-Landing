@@ -20,12 +20,22 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
     <link href="/css/style.css" rel="stylesheet" type="text/css">
 <!--    <script type="module" src="js/importsHeader.js"></script>-->
     <script src="js/site/fallback/AWS/mergeQ&A.js"></script>
 </head>
 <body>
-<script>enumerateQs();</script>
+
+<script>
+
+    // Default export is a4 paper, portrait, using millimeters for units
+    const doc = new jsPDF();
+
+    doc.text("Hello world!", 10, 10);
+    doc.save("a4.pdf");
+</script>
+<!--<script>enumerateQs();</script>-->
 <section class="container section" id="testBody" style="padding-top: 5%;">
     <div class="row">
         <div class="col-lg-9">
