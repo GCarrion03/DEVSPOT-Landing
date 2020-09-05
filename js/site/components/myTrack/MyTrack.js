@@ -131,7 +131,7 @@ class MyTrack extends DevspotBase {
                         </div>
                     </div>
                 </div>
-                <div id="userAnswersContainer" onload="alert('test');" style="min-height: 400px;">
+                <div id="userAnswersContainer" style="min-height: 400px;">
                         ${mytrack}
                 </div>
              </template>`
