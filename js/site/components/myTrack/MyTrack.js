@@ -21,7 +21,6 @@ class MyTrack extends DevspotBase {
         let htmlToExportToPDF =`<div style="text-align: center;">
                                     <h2>${this.exam.examId} - ${this.exam.examName}</h2></div>
                                     <div style="text-align: center;"><h4>From: https://devspot.org/${this.exam.examId}.html</h4></div>`;
-        // ToDo: we need to change my track retrieval(getTrack) so it retrieves all the questions without answers as well and retrieve everyithing in a single call???
 
         let mytrack = `<div class="col-sm-12 padding-bottom-md" >
                 <div class="col-md-2 col-sm-3 legendText padding-sides-0 text-align-center bold">Track Score:</div>
