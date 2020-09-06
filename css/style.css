@@ -10,8 +10,8 @@ body {
     position: relative;
     background: aliceblue;
     overflow-x: hidden;
-    padding-left: 2px;
-    padding-right: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 #carousel1 {
@@ -540,6 +540,10 @@ button.navbar-toggle {
     font-size: 14px; /* Set a font size */
     cursor: pointer; /* Mouse pointer on hover */
     margin: 1px;
+}
+.mdMinWidth{
+    min-width: 20em;
+    max-width: 20em;
 }
 
 /* Darker background on mouse-over */

@@ -17,9 +17,9 @@ export const paymentModal =
 <li>Save all you answered questions to "My Track".</li>
 <li>Create practice exams from the "not yet taken" questions only.</li>
 <li>Premium Support.</li>
-<li>Try again the "incorrect" questions to improve your score(coming soon).</li>
-<li>Reset "Your Track"(coming soon).</li>
-<li>Download and Print all the exam questions database with answers and the most liked comment(coming soon).</li>
+<li>Reset "Your Track".</li>
+<li>Try again the "incorrect" questions to improve your score.</li>
+<li>Download and Print all the exam questions database with answers.</li>
 </ul>
 <p>Finally it will give us the means to grow this platform to provide a totally free high quality exam simulator.</p>
 <p class="padding-bottom-md">Thanks for your support.</p>
