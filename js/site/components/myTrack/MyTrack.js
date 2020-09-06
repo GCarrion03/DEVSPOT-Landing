@@ -162,6 +162,7 @@ class MyTrack extends DevspotBase {
 
                     const doc = new jsPDF();
 
+                    htmlToExportToPDF = htmlToExportToPDF.replace(/\n|\t/g, ' ');
                     doc.fromHTML(htmlToExportToPDF, 10, 10, {
                         'width': 170,
                         'elementHandlers': specialElementHandlers
