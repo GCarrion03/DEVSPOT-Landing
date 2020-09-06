@@ -4,13 +4,13 @@ export const paymentModal =
     `<div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
     <!-- Modal content-->
-<div class="modal-content">
+<div class="modal-content" style="max-width:440px;">
     <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal">&times;</button>
 <h4 class="modal-title">Become a supporter!</h4>
 </div>
 <div class="modal-body">
-    <div class="col-lg-12">
+    <div class="col-lg-12 padding-sides-0">
     <h5 class="bold">Make use of all the simulator features, improve your passing odds!</h5>
 <p>Supporter access will grant you the following features to ace your exam:</p>
 <ul>
@@ -25,30 +25,30 @@ export const paymentModal =
 <p class="padding-bottom-md">Thanks for your support.</p>
 <h5 class="bold">Please select your supporter status duration:</h5>
 </div>
-<div class="col-lg-9">
+<div class="col-lg-9 col-sm-6 padding-sides-0">
     <input type="radio" value="9.99" name="subscriptionType" id="months1" style="float: left;">
     <label id="1MonthRadioLabel" for="months1"
     style="padding-left: 5px;float: left;font-weight: 100;">1 month ($0.33 per day):</label>
 </div>
-<div class="col-lg-3">
+<div class="col-lg-3 col-sm-6 padding-sides-0">
     <label style="float: right;">$9.99 USD</label>
 </div>
-<div class="col-lg-9">
+<div class="col-lg-9 col-sm-6 padding-sides-0">
     <input type="radio" value="14.99" name="subscriptionType" id="months3" style="float: left;">
     <label id="3MonthsRadioLabel" for="months3"
     style="padding-left: 5px;float: left;font-weight: 100;">3 months ($0.17
 per day):</label>
 </div>
-<div class="col-lg-3">
+<div class="col-lg-3 col-sm-6 padding-sides-0">
     <label style="float: right;">$14.99 USD</label>
 </div>
-<div class="col-lg-9 padding-bottom-md">
+<div class="col-lg-9 col-sm-6 padding-sides-0 padding-bottom-md">
     <input type="radio" value="19.99" name="subscriptionType" id="months12" style="float: left;" checked>
 <label id="12MonthsRadioLabel" for="months12"
     style="padding-left: 5px;float: left;font-weight: 100;">12 months
 ($0.05 per day):</label>
 </div>
-<div class="col-lg-3">
+<div class="col-lg-3 col-sm-6 padding-sides-0">
     <label style="float: right;">$19.99 USD</label>
 </div>
 
@@ -68,6 +68,7 @@ export function renderPaypalButtons(onApproveRerenderCallback, payerUserId, paye
             shape: 'pill',
             color: 'blue',
             layout: 'vertical',
+            size: 'small',
             label: 'buynow',
 
         },
