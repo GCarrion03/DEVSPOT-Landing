@@ -97,3 +97,7 @@ replace `“` for `'`
 replace `”` for `'`
 
 	import minify to 1 line and pste at the end of postQuestion lambda
+	
+	Must be in this format:
+	
+	```[{"questionId":114,"questionText":"While developing an application that runs on Amazon EC2 in an Amazon VPC, a Developer identifies the need for centralized storage of application-level logs. Which AWS service can be used to securely store these logs?","questionOptions":[{"optionId":"A","optionText":"Amazon EC2 VPC Flow Logs "},{"optionId":"B","optionText":"Amazon CloudWatch Logs"},{"optionId":"C","optionText":"Amazon CloudSearch"},{"optionId":"D","optionText":"AWS CloudTrail"}],"questionAnswer":"B","examId":"DVA-C01","questionSkId":113},{"questionId":115,"questionText":" A stock market monitoring application uses Amazon Kinesis for data ingestion. During simulated tests of peak data rates, the Kinesis stream cannot keep up with the incoming data. What step will allow Kinesis to accommodate the traffic during peak hours?","questionOptions":[{"optionId":"A","optionText":"Install the Kinesis Producer Library (KPL) for ingesting data into the stream. "},{"optionId":"B","optionText":"Reduce the data retention period to allow for more data ingestion using DecreaseStreamRetentionPeriod."},{"optionId":"C","optionText":"Increase the shard count of the stream using UpdateShardCount."},{"optionId":"D","optionText":"Ingest multiple records into the stream in a single call using PutRecords."}],"questionAnswer":"C","examId":"DVA-C01","questionSkId":114}];
