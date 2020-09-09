@@ -75,7 +75,7 @@ for
 					`"}]},{`  twice
 					12) Replace empty values in notepad++ toolbucket multiline replace
 					13) format it in postman
-					14) copy the answers file to excel, use the formula to convert to an appropiate json object by assingning an id and the respective question answer and explanation if available
+					14) copy the answers file to excel, use the formula to convert to an appropiate json object by assingning an id and the respective question answer and explanation if available, validate json dont forget the examid for dynamo db
 					15) put only the questions that are mapped correctly to your answers file
 					16) paste both arrays in mergeQ&A.js
 					17) create the new html file import and on the onload set this
