@@ -15,14 +15,14 @@ class copyrightFooter extends HTMLElement {
                     <div class="logo"><span>DEVSPOT</span></div>
                     <div class="socials">
                         <a href="https://discord.gg/2yquf9V" class="basicTooltip"><span class="fa fa-bug"></span><span class="basicTooltipText displayTooltipCenter">Report a bug on Discord</span></a>
-                        <a href="https://www.reddit.com/r/devspot/" class="basicTooltip"><span class="fa fa-reddit-alien"></span><span class="basicTooltipText displayTooltipCenter">No Discord? Visit us on Reddit</span></a>
+                        <a href="https://www.reddit.com/r/devspot/" class="basicTooltip"><span class="fa fa-reddit-alien"></span><span class="basicTooltipText displayTooltipCenter">No Discord? Follow DevSpot Exam simulator updates on Reddit</span></a>
                         <a href="https://www.linkedin.com/in/gusmcarrion" class="basicTooltip"><span class="fa fa-linkedin"></span><span class="basicTooltipText displayTooltipCenter">Add DevSpot Exam simulator author to your LinkedIn Network</span></a>
-                        <a href="http://twitter.com/gusmcarrion" class="basicTooltip"><span class="fa fa-twitter"></span><span class="basicTooltipText displayTooltipCenter">Follow DevSpot Exam simulator updates on Twitter</span></a>
                     </div>
                     <p>Copyright 2015 ${(new Date().getFullYear() > 2015) ? ("- " + new Date().getFullYear()) : ''}, DEVSPOT all rights reserved
                     </p>
                 </footer>
             </template>`;
+        //<a href="http://twitter.com/gusmcarrion" class="basicTooltip"><span class="fa fa-twitter"></span><span class="basicTooltipText displayTooltipCenter">Follow DevSpot Exam simulator updates on Twitter</span></a>
         const template = this.shadowRoot.getElementById('footer-template');
         const node = document.importNode(template.content, true);
         this.shadowRoot.innerHTML = '';
