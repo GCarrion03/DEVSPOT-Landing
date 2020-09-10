@@ -570,6 +570,14 @@ button.navbar-toggle {
     font-weight: bold;
 }
 
+.lightRed{
+    background-color: #ffd3cf;
+}
+
+.lightGreen{
+    background-color: #b8eeb9;
+}
+
 .darkGreen{
     background-color: darkgreen;
 }
