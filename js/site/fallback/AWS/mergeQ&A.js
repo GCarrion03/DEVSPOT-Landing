@@ -1,1822 +1,2954 @@
 const questionBank = [{
-    "questionId": 1,
-    "questionText": "Company C is currently hosting their corporate site in an Amazon S3 bucket with Static Website Hosting enabled. Currently, when visitors go to http://www.companyc.com the index.html page is returned. Company C now would like a new page welcome.html to be returned when a visitor enters http://www.companyc.com in the browser.<br>Which of the following steps will allow Company C to meet this requirement? (Choose two.)<br>",
-    "questionOptions": [
-        {
-            "optionId": "A",
-            "optionText": "Upload an html page named welcome.html to their S3 bucket"
-        },
+    "questionId": 281,
+    "questionText": "An organization has setup Auto Scaling with ELB. Due to some manual error, one of the instances got rebooted. Thus, it failed the Auto Scaling health check. Auto Scaling has marked it for replacement. How can the system admin ensure that the instance does not get terminated?",
+    "questionOptions": [{
+        "optionId": "A",
+        "optionText": "Update the Auto Scaling group to ignore the instance reboot event"
+    },
         {
             "optionId": "B",
-            "optionText": "Create a welcome subfolder in their S3 bucket"
+            "optionText": "It is not possible to change the status once it is marked for replacement"
         },
         {
             "optionId": "C",
-            "optionText": "Set the Index Document property to welcome.html"
+            "optionText": "Manually add that instance to the Auto Scaling group after reboot to avoid replacement"
         },
         {
             "optionId": "D",
-            "optionText": "Move the index.html page to a welcome subfolder"
-        },
-        {
-            "optionId": "E",
-            "optionText": "Set the Error Document property to welcome.html"
+            "optionText": "Change the health of the instance to healthy using the Auto Scaling commands"
         }
-    ]},{
-    "questionId": 2,
-    "questionText": "What type of block cipher does Amazon S3 offer for server side encryption?<br>",
-    "questionOptions": [
-        {
-            "optionId": "A",
-            "optionText": "Triple DES"
-        },
-        {
-            "optionId": "B",
-            "optionText": "Advanced Encryption Standard"
-        },
-        {
-            "optionId": "C",
-            "optionText": "Blowfish"
-        },
-        {
-            "optionId": "D",
-            "optionText": "RC5"
-        }
-    ]},{
-    "questionId": 3,
-    "questionText": "If an application is storing hourly log files from thousands of instances from a high traffic web site, which naming scheme would give optimal performance on S3?<br>",
-    "questionOptions": [
-        {
-            "optionId": "A",
-            "optionText": "Sequential"
-        },
-        {
-            "optionId": "B",
-            "optionText": "instanceID_log-HH-DD-MM-YYYY"
-        },
-        {
-            "optionId": "C",
-            "optionText": "instanceID_log-YYYY-MM-DD-HH"
-        },
-        {
-            "optionId": "D",
-            "optionText": "HH-DD-MM-YYYY-log_instanceID"
-        },
-        {
-            "optionId": "E",
-            "optionText": "YYYY-MM-DD-HH-log_instanceID"
-        }
-    ]},{
-    "questionId": 4,
-    "questionText": "Which of the following statements about SQS is true?<br>",
-    "questionOptions": [
-        {
-            "optionId": "A",
-            "optionText": "Messages will be delivered exactly once and messages will be delivered in First in, First out order"
-        },
-        {
-            "optionId": "B",
-            "optionText": "Messages will be delivered exactly once and message delivery order is indeterminate"
-        },
-        {
-            "optionId": "C",
-            "optionText": "Messages will be delivered one or more times and messages will be delivered in First in, First out order"
-        },
-        {
-            "optionId": "D",
-            "optionText": "Messages will be delivered one or more times and message delivery order is indeterminate"
-        }
-    ]},{
-    "questionId": 5,
-    "questionText": "A corporate web application is deployed within an Amazon VPC, and is connected to the corporate data center via IPSec VPN. The application must authenticate against the on-premise LDAP server. Once authenticated, logged-in users can only access an S3 keyspace specific to the user.<br>Which two approaches can satisfy the objectives? (Choose two.)<br>",
-    "questionOptions": [
-        {
-            "optionId": "A",
-            "optionText": "The application authenticates against LDAP. The application then calls the IAM Security Service to login to IAM using the LDAP credentials. The application can use the IAM temporary credentials to access the appropriate S3 bucket."
-        },
-        {
-            "optionId": "B",
-            "optionText": "The application authenticates against LDAP, and retrieves the name of an IAM role associated with the user. The application then calls the IAM Security Token Service to assume that IAM Role. The application can use the temporary credentials to access the appropriate S3 bucket."
-        },
-        {
-            "optionId": "C",
-            "optionText": "The application authenticates against IAM Security Token Service using the LDAP credentials. The application uses those temporary AWS security credentials to access the appropriate S3 bucket."
-        },
-        {
-            "optionId": "D",
-            "optionText": "Develop an identity broker which authenticates against LDAP, and then calls IAM Security Token Service to get IAM federated user credentials. The application calls the identity broker to get IAM federated user credentials with access to the appropriate S3 bucket."
-        },
-        {
-            "optionId": "E",
-            "optionText": "Develop an identity broker which authenticates against IAM Security Token Service to assume an IAM Role to get temporary AWS security credentials. The application calls the identity broker to get AWS"
-        }
-    ]},{
-    "questionId": 6,
-    "questionText": "Company B provides an online image recognition service and utilizes SQS to decouple system components for scalability The SQS consumers poll the imaging queue as often as possible to keep end-to-end throughput as high as possible. However, Company B is realizing that polling in tight loops is burning CPU cycles and increasing costs with empty responses.<br>How can Company B reduce the number of empty responses?<br>",
-    "questionOptions": [
-        {
-            "optionId": "A",
-            "optionText": "Set the imaging queue visibility Timeout attribute to 20 seconds"
-        },
-        {
-            "optionId": "B",
-            "optionText": "Set the Imaging queue ReceiveMessageWaitTimeSeconds attribute to 20 seconds"
-        },
-        {
-            "optionId": "C",
-            "optionText": "Set the imaging queue MessageRetentionPeriod attribute to 20 seconds"
-        },
-        {
-            "optionId": "D",
-            "optionText": "Set the DelaySeconds parameter of a message to 20 seconds"
-        }
-    ]},{
-    "questionId": 7,
-    "questionText": "An Amazon S3 bucket, 'myawsbucket' is configured with website hosting in Tokyo region, what is the region- specific website endpoint?<br>",
-    "questionOptions": [
-        {
-            "optionId": "A",
-            "optionText": "www.myawsbucket.ap-northeast-1.amazonaws.com"
-        },
-        {
-            "optionId": "B",
-            "optionText": "myawsbucket.s3-website-ap-northeast-1.amazonawscom"
-        },
-        {
-            "optionId": "C",
-            "optionText": "myawsbucket.amazonaws.com"
-        },
-        {
-            "optionId": "D",
-            "optionText": "myawsbucket.tokyo.amazonaws.com"
-        }
-    ]},{
-    "questionId": 8,
-    "questionText": "You are inserting 1000 new items every second in a DynamoDB table. Once an hour these items are analyzed and then are no longer needed. You need to minimize provisioned throughput, storage, and API calls.<br>Given these requirements, what is the most efficient way to manage these Items after the analysis?<br>",
-    "questionOptions": [
-        {
-            "optionId": "A",
-            "optionText": "Retain the items in a single table"
-        },
-        {
-            "optionId": "B",
-            "optionText": "Delete items individually over a 24 hour period"
-        },
-        {
-            "optionId": "C",
-            "optionText": "Delete the table and create a new table per hour"
-        },
-        {
-            "optionId": "D",
-            "optionText": "Create a new table per hour"
-        }
-    ]},{
-    "questionId": 9,
-    "questionText": "You have written an application that uses the Elastic Load Balancing service to spread traffic to several web servers. Your users complain that they are sometimes forced to login again in the middle of using your application, after they have already logged in. This is not behavior you have designed.<br>What is a possible solution to prevent this happening?<br>",
-    "questionOptions": [
-        {
-            "optionId": "A",
-            "optionText": "Use instance memory to save session state."
-        },
-        {
-            "optionId": "B",
-            "optionText": "Use instance storage to save session state."
-        },
-        {
-            "optionId": "C",
-            "optionText": "Use EBS to save session state"
-        },
-        {
-            "optionId": "D",
-            "optionText": "Use ElastiCache to save session state."
-        },
-        {
-            "optionId": "E",
-            "optionText": "Use Glacier to save session slate."
-        }
-    ]},{
-    "questionId": 10,
-    "questionText": "You run an ad-supported photo sharing website using S3 to serve photos to visitors of your site. At some point you find out that other sites have been linking to the photos on your site, causing loss to your business.<br>What is an effective method to mitigate this?<br>",
-    "questionOptions": [
-        {
-            "optionId": "A",
-            "optionText": "Store photos on an EBS volume of the web server"
-        },
-        {
-            "optionId": "B",
-            "optionText": "Remove public read access and use signed URLs with expiry dates."
-        },
-        {
-            "optionId": "C",
-            "optionText": "Use CloudFront distributions for static content."
-        },
-        {
-            "optionId": "D",
-            "optionText": "Block the IPs of the offending websites in Security Groups."
-        }
-    ]},{
-    "questionId": 11,
-    "questionText": "Which statements about DynamoDB are true? (Choose two.)<br>",
-    "questionOptions": [
-        {
-            "optionId": "A",
-            "optionText": "DynamoDB uses a pessimistic locking model"
-        },
-        {
-            "optionId": "B",
-            "optionText": "DynamoDB uses optimistic concurrency control"
-        },
-        {
-            "optionId": "C",
-            "optionText": "DynamoDB uses conditional writes for consistency"
-        },
-        {
-            "optionId": "D",
-            "optionText": "DynamoDB restricts item access during reads"
-        },
-        {
-            "optionId": "E",
-            "optionText": "DynamoDB restricts item access during writes"
-        }
-    ]},{
-    "questionId": 12,
-    "questionText": "You are providing AWS consulting services for a company developing a new mobile application that will be leveraging Amazon SNS Mobile Push for push notifications. In order to send direct notification messages to individual devices each device registration identifier or token needs to be registered with SNS; however the developers are not sure of the best way to do this.<br>You advise them to:<br>",
-    "questionOptions": [
-        {
-            "optionId": "A",
-            "optionText": "Bulk upload the device tokens contained in a CSV file via the AWS Management Console."
-        },
-        {
-            "optionId": "B",
-            "optionText": "Let the push notification service (e.g. Amazon Device Messaging) handle the registration."
-        },
-        {
-            "optionId": "C",
-            "optionText": "Implement a token vending service to handle the registration."
-        },
-        {
-            "optionId": "D",
-            "optionText": "Call the CreatePlatformEndPoint API function to register multiple device tokens"
-        }
-    ]},{
-    "questionId": 13,
-    "questionText": "You are writing to a DynamoDB table and receive the following exception:'ProvisionedThroughputExceededException'. though according to your Cloudwatch metrics for the table, you are not exceeding your provisioned throughput.<br>What could be an explanation for this?<br>",
-    "questionOptions": [
-        {
-            "optionId": "A",
-            "optionText": "You haven't provisioned enough DynamoDB storage instances"
-        },
-        {
-            "optionId": "B",
-            "optionText": "You're exceeding your capacity on a particular Range Key"
-        },
-        {
-            "optionId": "C",
-            "optionText": "You're exceeding your capacity on a particular Hash Key"
-        },
-        {
-            "optionId": "D",
-            "optionText": "You're exceeding your capacity on a particular Sort Key"
-        },
-        {
-            "optionId": "E",
-            "optionText": "You haven't configured DynamoDB Auto Scaling triggers"
-        }
-    ]},
+    ]
+},
     {
-        "questionId": 14,
-        "questionText": "Which of the following services are included at no additional cost with the use of the AWS platform? (Choose two.)<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "Simple Storage Service"
-            },
+        "questionId": 282,
+        "questionText": "A system admin wants to add more zones to the existing ELB. The system admin wants to perform this activity from CLI. Which of the below mentioned command helps the system admin to add new zones to the existingELB?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "elb-enable-zones-for-lb"
+        },
             {
                 "optionId": "B",
-                "optionText": "Elastic Compute Cloud"
+                "optionText": "elb-add-zones-for-lb"
             },
             {
                 "optionId": "C",
-                "optionText": "Auto Scaling"
+                "optionText": "It is not possible to add more zones to the existing ELB"
             },
             {
                 "optionId": "D",
+                "optionText": "elb-configure-zones-for-lb"
+            }
+        ]
+    },
+    {
+        "questionId": 283,
+        "questionText": "An organization is planning to create a user with IAM. They are trying to understand the limitations of IAM so that they can plan accordingly. Which of the below mentioned statements is not true with respect to the limitations of IAM?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "One IAM user can be a part of a maximum of 5 groups"
+        },
+            {
+                "optionId": "B",
+                "optionText": "The organization can create 100 groups per AWS account"
+            },
+            {
+                "optionId": "C",
+                "optionText": "One AWS account can have a maximum of 5000 IAM users"
+            },
+            {
+                "optionId": "D",
+                "optionText": "One AWS account can have 250 roles"
+            }
+        ]
+    },
+    {
+        "questionId": 284,
+        "questionText": "A user is planning to scale up an application by 8 AM and scale down by 7 PM daily using Auto Scaling. What should the user do in this case?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Setup the scaling policy to scale up and down based on the CloudWatch alarms"
+        },
+            {
+                "optionId": "B",
+                "optionText": "The user should increase the desired capacity at 8 AM and decrease it by 7 PM manually"
+            },
+            {
+                "optionId": "C",
+                "optionText": "The user should setup a batch process which launches the EC2 instance at a specific time"
+            },
+            {
+                "optionId": "D",
+                "optionText": "Setup scheduled actions to scale up or down at a specific time"
+            }
+        ]
+    },
+    {
+        "questionId": 285,
+        "questionText": "A user has created a VPC with two subnets: one public and one private. The user is planning to run the patch update for the instances in the private subnet. How can the instances in the private subnet connect to theInternet?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Use the internet gateway with a private IP"
+        },
+            {
+                "optionId": "B",
+                "optionText": "Allow outbound traffic in the security group for port 80 to allow internet updates"
+            },
+            {
+                "optionId": "C",
+                "optionText": "The private subnet can never connect to the internet"
+            },
+            {
+                "optionId": "D",
+                "optionText": "Use NAT with an elastic IP"
+            }
+        ]
+    },
+    {
+        "questionId": 286,
+        "questionText": "A user has configured an EC2 instance in the US-East-1a zone. The user has enabled detailed monitoring of the instance. The user is trying to get the data from CloudWatch using a CLI. Which of the below mentionedCloudWatch endpoint URLs should the user use?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "monitoring.us-east-1.amazonaws.com"
+        },
+            {
+                "optionId": "B",
+                "optionText": "monitoring.us-east-1-a.amazonaws.com"
+            },
+            {
+                "optionId": "C",
+                "optionText": "monitoring.us-east-1a.amazonaws.com"
+            },
+            {
+                "optionId": "D",
+                "optionText": "cloudwatch.us-east-1a.amazonaws.com"
+            }
+        ]
+    },
+    {
+        "questionId": 287,
+        "questionText": "A user has configured ELB with Auto Scaling. The user suspended the Auto Scaling AddToLoadBalancer(which adds instances to the load balancer. process for a while). What will happen to the instances launched during the suspension period?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "The instances will not be registered with ELB and the user has to manually register when the process is resumed"
+        },
+            {
+                "optionId": "B",
+                "optionText": "The instances will be registered with ELB only once the process has resumed"
+            },
+            {
+                "optionId": "C",
+                "optionText": "Auto Scaling will not launch the instance during this period due to process suspension"
+            },
+            {
+                "optionId": "D",
+                "optionText": "It is not possible to suspend only the AddToLoadBalancer process"
+            }
+        ]
+    },
+    {
+        "questionId": 288,
+        "questionText": "A sys admin has enabled a log on ELB. Which of the below mentioned activities are not captured by the log?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Response processing time"
+        },
+            {
+                "optionId": "B",
+                "optionText": "Front end processing time"
+            },
+            {
+                "optionId": "C",
+                "optionText": "Backend processing time"
+            },
+            {
+                "optionId": "D",
+                "optionText": "Request processing time"
+            }
+        ]
+    },
+    {
+        "questionId": 289,
+        "questionText": "A user has moved an object to Glacier using the life cycle rules. The user requests to restore the archive after6 months. When the restore request is completed the user accesses that archive. Which of the below mentioned statements is not true in this condition?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "The archive will be available as an object for the duration specified by the user during the restoration request"
+        },
+            {
+                "optionId": "B",
+                "optionText": "The restored object’s storage class will be RRS"
+            },
+            {
+                "optionId": "C",
+                "optionText": "The user can modify the restoration period only by issuing a new restore request with the updated period"
+            },
+            {
+                "optionId": "D",
+                "optionText": "The user needs to pay storage for both RRS (restored) and Glacier (Archive. Rates)"
+            }
+        ]
+    },
+    {
+        "questionId": 290,
+        "questionText": "A user is running a batch process on EBS backed EC2 instances. The batch process starts a few instances to process hadoop Map reduce jobs which can run between 50  600 minutes or sometimes for more time. The user wants to configure that the instance gets terminated only when the process is completed. How can the user configure this with CloudWatch?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Setup the CloudWatch action to terminate the instance when the CPU utilization is less than 5%"
+        },
+            {
+                "optionId": "B",
+                "optionText": "Setup the CloudWatch with Auto Scaling to terminate all the instances"
+            },
+            {
+                "optionId": "C",
+                "optionText": "Setup a job which terminates all instances after 600 minutes"
+            },
+            {
+                "optionId": "D",
+                "optionText": "It is not possible to terminate instances automatically"
+            }
+        ]
+    },
+    {
+        "questionId": 291,
+        "questionText": "A user has enabled versioning on an S3 bucket. The user is using server side encryption for data at rest. If the user is supplying his own keys for encryption (SSE-C), what is recommended to the user for the purpose of security?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "The user should not use his own security key as it is not secure"
+        },
+            {
+                "optionId": "B",
+                "optionText": "Configure S3 to rotate the user’s encryption key at regular intervals"
+            },
+            {
+                "optionId": "C",
+                "optionText": "Configure S3 to store the user’s keys securely with SSL"
+            },
+            {
+                "optionId": "D",
+                "optionText": "Keep rotating the encryption key manually at the client side"
+            }
+        ]
+    },
+    {
+        "questionId": 292,
+        "questionText": "A user runs the command 'dd if=/dev/xvdf of=/dev/null bs=1M' on an EBS volume created from a snapshot and attached to a Linux instance. Which of the below mentioned activities is the user performing with the step given above?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Pre warming the EBS volume"
+        },
+            {
+                "optionId": "B",
+                "optionText": "Initiating the device to mount on the EBS volume"
+            },
+            {
+                "optionId": "C",
+                "optionText": "Formatting the volume"
+            },
+            {
+                "optionId": "D",
+                "optionText": "Copying the data from a snapshot to the device"
+            }
+        ]
+    },
+    {
+        "questionId": 293,
+        "questionText": "A user has launched an EC2 Windows instance from an instance store backed AMI. The user wants to convert the AMI to an EBS backed AMI. How can the user convert it?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Attach an EBS volume to the instance and unbundle all the AMI bundled data inside the EBS"
+        },
+            {
+                "optionId": "B",
+                "optionText": "A Windows based instance store backed AMI cannot be converted to an EBS backed AMI"
+            },
+            {
+                "optionId": "C",
+                "optionText": "It is not possible to convert an instance store backed AMI to an EBS backed AMI"
+            },
+            {
+                "optionId": "D",
+                "optionText": "Attach an EBS volume and use the copy command to copy all the ephermal content to the EBS Volume"
+            }
+        ]
+    },
+    {
+        "questionId": 294,
+        "questionText": "A user has created a VPC with public and private subnets using the VPC Wizard. The VPC has CIDR20.0.0.0/16. The private subnet uses CIDR 20.0.0.0/24. Which of the below mentioned entries are required in the main route table to allow the instances in VPC to communicate with each other?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Destination : 20.0.0.0/24 and Target : VPC"
+        },
+            {
+                "optionId": "B",
+                "optionText": "Destination : 20.0.0.0/16 and Target : ALL"
+            },
+            {
+                "optionId": "C",
+                "optionText": "Destination : 20.0.0.0/0 and Target : ALL"
+            },
+            {
+                "optionId": "D",
+                "optionText": "Destination : 20.0.0.0/24 and Target : Local"
+            }
+        ]
+    },
+    {
+        "questionId": 296,
+        "questionText": "A user has launched an EC2 instance and deployed a production application in it. The user wants to prohibit any mistakes from the production team to avoid accidental termination. How can the user achieve this?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "The user can the set DisableApiTermination attribute to avoid accidental termination"
+        },
+            {
+                "optionId": "B",
+                "optionText": "It is not possible to avoid accidental termination"
+            },
+            {
+                "optionId": "C",
+                "optionText": "The user can set the Deletion termination flag to avoid accidental termination"
+            },
+            {
+                "optionId": "D",
+                "optionText": "The user can set the InstanceInitiatedShutdownBehavior flag to avoid accidental termination"
+            }
+        ]
+    },
+    {
+        "questionId": 297,
+        "questionText": "A user has created a launch configuration for Auto Scaling where CloudWatch detailed monitoring is disabled.The user wants to now enable detailed monitoring. How can the user achieve this?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Update the Launch config with CLI to set InstanceMonitoringDisabled = false"
+        },
+            {
+                "optionId": "B",
+                "optionText": "The user should change the Auto Scaling group from the AWS console to enable detailed monitoring"
+            },
+            {
+                "optionId": "C",
+                "optionText": "Update the Launch config with CLI to set InstanceMonitoring.Enabled = true"
+            },
+            {
+                "optionId": "D",
+                "optionText": "Create a new Launch Config with detail monitoring enabled and update the Auto Scaling group"
+            }
+        ]
+    },
+    {
+        "questionId": 298,
+        "questionText": "A user is trying to pre-warm a blank EBS volume attached to a Linux instance. Which of the below mentioned steps should be performed by the user?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "There is no need to pre-warm an EBS volume"
+        },
+            {
+                "optionId": "B",
+                "optionText": "Contact AWS support to pre-warm"
+            },
+            {
+                "optionId": "C",
+                "optionText": "Unmount the volume before pre-warming"
+            },
+            {
+                "optionId": "D",
+                "optionText": "Format the device"
+            }
+        ]
+    },
+    {
+        "questionId": 299,
+        "questionText": "A user has launched an EC2 instance from an instance store backed AMI. The user has attached an additional instance store volume to the instance. The user wants to create an AMI from the running instance.Will the AMI have the additional instance store volume data?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Yes, the block device mapping will have information about the additional instance store volume"
+        },
+            {
+                "optionId": "B",
+                "optionText": "No, since the instance store backed AMI can have only the root volume bundled"
+            },
+            {
+                "optionId": "C",
+                "optionText": "It is not possible to attach an additional instance store volume to the existing instance store backed AMI instance"
+            },
+            {
+                "optionId": "D",
+                "optionText": "No, since this is ephermal storage it will not be a part of the AMI"
+            }
+        ]
+    },
+    {
+        "questionId": 300,
+        "questionText": "A user has created an EBS volume of 10 GB and attached it to a running instance. The user is trying to accessEBS for first time. Which of the below mentioned options is the correct statement with respect to a first timeEBS access?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "The volume will show a size of 8 GB"
+        },
+            {
+                "optionId": "B",
+                "optionText": "The volume will show a loss of the IOPS performance the first time"
+            },
+            {
+                "optionId": "C",
+                "optionText": "The volume will be blank"
+            },
+            {
+                "optionId": "D",
+                "optionText": "If the EBS is mounted it will ask the user to create a file system"
+            }
+        ]
+    },
+    {
+        "questionId": 203,
+        "questionText": "An enterprise is using federated Security Assertion Markup Language (SAML) to access the AWS Management Console.How should the SAML assertion mapping be configured?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Map the group attribute to an AWS group. The AWS group is assigned IAM policies that govern access to AWS resources."
+        },
+            {
+                "optionId": "B",
+                "optionText": "Map the policy attribute to IAM policies the federated user is assigned to. These policies govern access to AWS resources."
+            },
+            {
+                "optionId": "C",
+                "optionText": "Map the role attribute to an AWS role. The AWS role is assigned IAM policies that govern access to AWS resources."
+            },
+            {
+                "optionId": "D",
+                "optionText": "Map the user attribute to an AWS user. The AWS user is assigned specific IAM policies that govern access to AWS resources."
+            }
+        ]
+    },
+    {
+        "questionId": 205,
+        "questionText": "A company has deployed a NAT instance to allow web servers to obtain software updates from the internet. There is high latency on the NAT instance as the network grows. A SysOps Administrator needs to reduce latency on the instance in a manner that is efficient, cost-effective, and allows for scaling with future demand.Which action should be taken to accomplish this?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Add a second NAT instance and place both instances behind a load balancer"
+        },
+            {
+                "optionId": "B",
+                "optionText": "Convert the NAT instance to a larger instance size"
+            },
+            {
+                "optionId": "C",
+                "optionText": "Replace the NAT instance with a NAT gateway"
+            },
+            {
+                "optionId": "D",
+                "optionText": "Replace the NAT instance with a virtual private gateway"
+            }
+        ]
+    },
+    {
+        "questionId": 206,
+        "questionText": "A security researcher has published a new Common Vulnerabilities and Exposures (CVE) report that impacts a popular operating system. A SysOps Administrator is concerned with the new CVE report and wants to patch the company's systems immediately. The administrator contacts AWS Support and requests the patch be applied to all Amazon EC2 instances.How will AWS respond to this request?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "AWS will apply the patch during the next maintenance window, and will provide the Administrator with a report of all patched EC2 instances."
+        },
+            {
+                "optionId": "B",
+                "optionText": "AWS will relaunch the EC2 instances with the latest version of the Amazon Machine Image (AMI), and will provide the Administrator with a report of all patched EC2 instances."
+            },
+            {
+                "optionId": "C",
+                "optionText": "AWS will research the vulnerability to see if the Administrator's operating system is impacted, and will patch the EC2 instances that are affected."
+            },
+            {
+                "optionId": "D",
+                "optionText": "AWS will review the shared responsibility model with the Administrator and advise them regarding how to patch the EC2 instances."
+            }
+        ]
+    },
+    {
+        "questionId": 207,
+        "questionText": "A Development team recently deployed a new version of a web application to production. After the release, penetration testing revealed a cross-site scripting vulnerability that could expose user data.Which AWS service will mitigate this issue?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "AWS Shield Standard"
+        },
+            {
+                "optionId": "B",
+                "optionText": "AWS WAF"
+            },
+            {
+                "optionId": "C",
                 "optionText": "Elastic Load Balancing"
             },
             {
-                "optionId": "E",
-                "optionText": "CloudFormation"
-            },
-            {
-                "optionId": "F",
-                "optionText": "Simple Workflow Service"
+                "optionId": "D",
+                "optionText": "Amazon Cognito"
             }
-        ]},{
-        "questionId": 15,
-        "questionText": "Your application is trying to upload a 6 GB file to Simple Storage Service and receive a 'Your proposed upload exceeds the maximum allowed object size.' error message.<br>What is a possible solution for this?<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "None, Simple Storage Service objects are limited to 5 GB"
-            },
+        ]
+    },
+    {
+        "questionId": 208,
+        "questionText": "A Development team is designing an application that processes sensitive information within a hybrid deployment. The team needs to ensure the application data is protected both in transit and at rest.Which combination of actions should be taken to accomplish this? (Choose two.)",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Use a VPN to set up a tunnel between the on-premises data center and the AWS resources"
+        },
             {
                 "optionId": "B",
-                "optionText": "Use the multi-part upload API for this object"
+                "optionText": "Use AWS Certificate Manager to create TLS/SSL certificates"
             },
             {
                 "optionId": "C",
-                "optionText": "Use the large object upload API for this object"
+                "optionText": "Use AWS CloudHSM to encrypt the data"
             },
             {
                 "optionId": "D",
-                "optionText": "Contact support to increase your object size limit"
+                "optionText": "Use AWS KMS to create TLS/SSL certificates"
             },
             {
                 "optionId": "E",
-                "optionText": "Upload to a different region"
+                "optionText": "Use AWS KMS to manage the encryption keys used for data encryption"
             }
-        ]},
+        ]
+    },
     {
-        "questionId": 16,
-        "questionText": "What AWS products and features can be deployed by Elastic Beanstalk? (Choose three.)<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "Auto scaling groups"
-            },
+        "questionId": 209,
+        "questionText": "A company is using AWS Storage Gateway to create block storage volumes and mount them as Internet Small Computer Systems Interface (iSCSI) devices from on-premises servers. As the Storage Gateway has taken on several new projects, some of the Development teams report that the performance of the iSCSI drives has degraded. When checking the Amazon CloudWatch metrics, a SysOps Administrator notices that the CacheHitPercent metric is below 60% and theCachePercentUsed metric is above 90%.What steps should the Administrator take to increase Storage Gateway performance?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Change the default block size for the Storage Gateway from 64 KB to 128 KB, 256 KB, or 512 KB to improve I/O performance."
+        },
             {
                 "optionId": "B",
-                "optionText": "Route 53 hosted zones"
+                "optionText": "Create a larger disk for the cached volume. In the AWS Management Console, edit the local disks, then select the new disk as the cached volume."
             },
             {
                 "optionId": "C",
-                "optionText": "Elastic Load Balancers"
+                "optionText": "Ensure that the physical disks for the Storage Gateway are in a RAID 1 configuration to allow higher throughput."
             },
             {
                 "optionId": "D",
-                "optionText": "RDS Instances"
+                "optionText": "Take point-in-time snapshots of all the volumes in Storage Gateway, flush the cache completely, then restore the volumes from the clean snapshots."
+            }
+        ]
+    },
+    {
+        "questionId": 210,
+        "questionText": "A SysOps Administrator observes a large number of rogue HTTP requests on an Application Load Balancer (ALB). The requests originate from various IP addresses.Which action should be taken to block this traffic?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Use Amazon CloudFront to cache the traffic and block access to the web servers"
+        },
+            {
+                "optionId": "B",
+                "optionText": "Use Amazon GuardDuty to protect the web servers from bots and scrapers"
+            },
+            {
+                "optionId": "C",
+                "optionText": "Use AWS Lambda to analyze the web server logs, detect bot traffic, and block the IP address in the security groups"
+            },
+            {
+                "optionId": "D",
+                "optionText": "Use AWS WAF rate-based blacklisting to block this traffic when it exceeds a defined threshold"
+            }
+        ]
+    },
+    {
+        "questionId": 211,
+        "questionText": "A company issued SSL certificates to its users, and needs to ensure the private keys that are used to sign the certificates are encrypted. The company needs to be able to store the private keys and perform cryptographic signing operations in a secure environment.Which service should be used to meet these requirements?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "AWS CloudHSM"
+        },
+            {
+                "optionId": "B",
+                "optionText": "AWS KMS"
+            },
+            {
+                "optionId": "C",
+                "optionText": "AWS Certificate Manager"
+            },
+            {
+                "optionId": "D",
+                "optionText": "Amazon Connect"
+            }
+        ]
+    },
+    {
+        "questionId": 212,
+        "questionText": "A SysOps Administrator is trying to set up an Amazon Route 53 domain name to route traffic to a website hosted on Amazon S3. The domain name of the website is www.anycompany.com and the S3 bucket name is anycompany-static. After the record set is set up in Route 53, the domain name www.anycompany.com does not seem to work, and the static website is not displayed in the browser.Which of the following is a cause of this?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "The S3 bucket must be configured with Amazon CloudFront first"
+        },
+            {
+                "optionId": "B",
+                "optionText": "The Route 53 record set must have an IAM role that allows access to the S3 bucket"
+            },
+            {
+                "optionId": "C",
+                "optionText": "The Route 53 record set must be in the same region as the S3 bucket"
+            },
+            {
+                "optionId": "D",
+                "optionText": "The S3 bucket name must match the record set name in Route 53"
+            }
+        ]
+    },
+    {
+        "questionId": 213,
+        "questionText": "A SysOps Administrator at an ecommerce company discovers that several 404 errors are being sent to one IP address every minute. The Administrator suspects a bot is collecting information about products listed on the company's website.Which service should be used to block this suspected malicious activity?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "AWS CloudTrail"
+        },
+            {
+                "optionId": "B",
+                "optionText": "Amazon Inspector"
+            },
+            {
+                "optionId": "C",
+                "optionText": "AWS Shield Standard"
+            },
+            {
+                "optionId": "D",
+                "optionText": "AWS WAF"
+            }
+        ]
+    },
+    {
+        "questionId": 214,
+        "questionText": "A company wants to reduce costs across the entire company after discovering that several AWS accounts were using unauthorized services and incurring extremely high costs.Which AWS service enables the company to reduce costs by controlling access to AWS services for all AWS accounts?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "AWS Cost Explorer"
+        },
+            {
+                "optionId": "B",
+                "optionText": "AWS Config"
+            },
+            {
+                "optionId": "C",
+                "optionText": "AWS Organizations"
+            },
+            {
+                "optionId": "D",
+                "optionText": "AWS Budgets"
+            }
+        ]
+    },
+    {
+        "questionId": 215,
+        "questionText": "A company has an application database on Amazon RDS that runs a resource-intensive reporting job. This is causing other applications using the database to run slowly.What should the SysOps Administrator do to resolve this issue?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Create Amazon RDS backups"
+        },
+            {
+                "optionId": "B",
+                "optionText": "Create Amazon RDS read replicas to run the report"
+            },
+            {
+                "optionId": "C",
+                "optionText": "Enable Multi-AZ mode on Amazon RDS"
+            },
+            {
+                "optionId": "D",
+                "optionText": "Use Amazon RDS automatic host replacement"
+            }
+        ]
+    },
+    {
+        "questionId": 216,
+        "questionText": "A company wants to increase the availability and durability of a critical business application. The application currently uses a MySQL database running on anAmazon EC2 instance. The company wants to minimize application changes.How should the company meet these requirements?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Shut down the EC2 instance. Enable multi-AZ replication within the EC2 instance, then restart the instance."
+        },
+            {
+                "optionId": "B",
+                "optionText": "Launch a secondary EC2 instance running MySQL. Configure a cron job that backs up the database on the primary EC2 instance and copies it to the secondary instance every 30 minutes."
+            },
+            {
+                "optionId": "C",
+                "optionText": "Migrate the database to an Amazon RDS Aurora DB instance and create a Read Replica in another Availability Zone."
+            },
+            {
+                "optionId": "D",
+                "optionText": "Create an Amazon RDS Microsoft SQL DB instance and enable multi-AZ replication. Back up the existing data and import it into the new database."
+            }
+        ]
+    },
+    {
+        "questionId": 217,
+        "questionText": "A SysOps Administrator has an AWS CloudFormation template of the company's existing infrastructure in us-west-2. The Administrator attempts to use the template to launch a new stack in eu-west-1, but the stack only partially deploys, receives an error message, and then rolls back.Why would this template fail to deploy? (Choose two.)",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "The template referenced an IAM user that is not available in eu-west-1"
+        },
+            {
+                "optionId": "B",
+                "optionText": "The template referenced an Amazon Machine Image (AMI) that is not available in eu-west-1"
+            },
+            {
+                "optionId": "C",
+                "optionText": "The template did not have the proper level of permissions to deploy the resources"
+            },
+            {
+                "optionId": "D",
+                "optionText": "The template requested services that do not exist in eu-west-1"
             },
             {
                 "optionId": "E",
-                "optionText": "Elastic IP addresses"
-            },
-            {
-                "optionId": "F",
-                "optionText": "SQS Queues"
+                "optionText": "CloudFormation templates can be used only to update existing services"
             }
-        ]},{
-        "questionId": 17,
-        "questionText": "Games-R-Us is launching a new game app for mobile devices. Users will log into the game using their existing<br>Facebook account and the game will record player data and scoring information directly to a DynamoDB table.<br>What is the most secure approach for signing requests to the DynamoDB API?<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "Create an IAM user with access credentials that are distributed with the mobile app to sign the requests"
-            },
-            {
-                "optionId": "B",
-                "optionText": "Distribute the AWS root account access credentials with the mobile app to sign the requests"
-            },
-            {
-                "optionId": "C",
-                "optionText": "Request temporary security credentials using web identity federation to sign the requests"
-            },
-            {
-                "optionId": "D",
-                "optionText": "Establish cross account access between the mobile app and the DynamoDB table to sign the requests"
-            }
-        ]},
+        ]
+    },
     {
-        "questionId": 18,
-        "questionText": "Which of the following programming languages have an officially supported AWS SDK? (Choose two.)<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "Perl"
-            },
+        "questionId": 218,
+        "questionText": "A SysOps Administrator has been asked to configure user-defined cost allocation tags for a new AWS account. The company is using AWS Organizations for account management.What should the Administrator do to enable user-defined cost allocation tags?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Log in to the AWS Billing and Cost Management console of the new account, and use the Cost Allocation Tags manager to create the new user-defined cost allocation tags."
+        },
             {
                 "optionId": "B",
-                "optionText": "PHP"
+                "optionText": "Log in to the AWS Billing and Cost Management console of the payer account, and use Cost Allocation Tags manager to create the new user-defined cost allocation tags."
             },
             {
                 "optionId": "C",
-                "optionText": "Pascal"
+                "optionText": "Log in to the AWS Management Console of the new account, use the Tag Editor to create the new user-defined tags, then use the Cost Allocation Tags manager in the new account to mark the tags as cost allocation tags."
             },
             {
                 "optionId": "D",
-                "optionText": "Java"
+                "optionText": "Log in to the AWS Management Console of the new account, use the Tag Editor to create the new user-defined tags, then use the Cost Allocation Tags manager in the payer account to mark the tags as cost allocation tags."
+            }
+        ]
+    },
+    {
+        "questionId": 219,
+        "questionText": "A company developed and now runs a memory-intensive application on multiple Amazon EC2 Linux instances. The memory utilization metrics of the EC2 Linux instances must be monitored every minute.How should the SysOps Administrator publish the memory metrics? (Choose two.)",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Enable detailed monitoring on the instance within Amazon CloudWatch"
+        },
+            {
+                "optionId": "B",
+                "optionText": "Publish the memory metrics to Amazon CloudWatch Events"
+            },
+            {
+                "optionId": "C",
+                "optionText": "Publish the memory metrics using the Amazon CloudWatch agent"
+            },
+            {
+                "optionId": "D",
+                "optionText": "Publish the memory metrics using Amazon CloudWatch Logs"
             },
             {
                 "optionId": "E",
-                "optionText": "SQL"
+                "optionText": "Set metrics_collection_interval to 60 seconds"
             }
-        ]},{
-        "questionId": 19,
-        "questionText": "A meteorological system monitors 600 temperature gauges, obtaining temperature samples every minute and saving each sample to a DynamoDB table. Each sample involves writing 1K of data and the writes are evenly distributed over time.<br>How much write throughput is required for the target table?<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "1 write capacity unit"
-            },
+        ]
+    },
+    {
+        "questionId": 220,
+        "questionText": "A company is releasing a new static website hosted on Amazon S3. The static website hosting feature was enabled on the bucket and content was uploaded; however, upon navigating to the site, the following error message is received:403 Forbidden '' Access DeniedWhat change should be made to fix this error?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Add a bucket policy that grants everyone read access to the bucket"
+        },
             {
                 "optionId": "B",
-                "optionText": "10 write capacity units"
+                "optionText": "Add a bucket policy that grants everyone read access to the bucket objects"
             },
             {
                 "optionId": "C",
-                "optionText": "60 write capacity units"
+                "optionText": "Remove the default bucket policy that denies read access to the bucket"
             },
             {
                 "optionId": "D",
-                "optionText": "600 write capacity units"
+                "optionText": "Configure cross-origin resource sharing (CORS) on the bucket"
+            }
+        ]
+    },
+    {
+        "questionId": 221,
+        "questionText": "A company runs an Amazon RDS MySQL DB instance. Corporate policy requires that a daily backup of the database must be copied to a separate security account.What is the MOST cost-effective way to meet this requirement?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Copy an automated RDS snapshot to the security account using the copy-db-snapshot command with the AWS CLI."
+        },
+            {
+                "optionId": "B",
+                "optionText": "Create an RDS MySQL Read Replica for the critical database in the security account, then enable automatic backups for the Read Replica."
+            },
+            {
+                "optionId": "C",
+                "optionText": "Create an RDS snapshot with the AWS CLI create-db-snapshot command, share it with the security account, then create a copy of the shared snapshot in the security account."
+            },
+            {
+                "optionId": "D",
+                "optionText": "Use AWS DMS to replicate data from the critical database to another RDS MySQL instance in the security account, then use an automated backup for the RDS instance."
+            }
+        ]
+    },
+    {
+        "questionId": 222,
+        "questionText": "A SysOps Administrator must set up notifications for whenever combined billing exceeds a certain threshold for all AWS accounts within a company. TheAdministrator has set up AWS Organizations and enabled Consolidated Billing.Which additional steps must the Administrator perform to set up the billing alerts?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "In the payer account: Enable billing alerts in the Billing and Cost Management console; publish an Amazon SNS message when the billing alert triggers."
+        },
+            {
+                "optionId": "B",
+                "optionText": "In each account: Enable billing alerts in the Billing and Cost Management console; set up a billing alarm in Amazon CloudWatch; publish an SNS message when the alarm triggers."
+            },
+            {
+                "optionId": "C",
+                "optionText": "In the payer account: Enable billing alerts in the Billing and Cost Management console; set up a billing alarm in the Billing and Cost Management console to publish an SNS message when the alarm triggers."
+            },
+            {
+                "optionId": "D",
+                "optionText": "In the payer account: Enable billing alerts in the Billing and Cost Management console; set up a billing alarm in Amazon CloudWatch; publish an SNS message when the alarm triggers."
+            }
+        ]
+    },
+    {
+        "questionId": 223,
+        "questionText": "A web application runs on Amazon EC2 instances behind an ELB Application Load Balancer. The instances run in an EC2 Auto Scaling group across multipleAvailability Zones. Amazon Route 53 is used for DNS and points to the load balancer. A SysOps Administrator has launched a new Auto Scaling group with a new version of the application, and wants to gradually shift traffic to the new version.How can this be accomplished?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Create an Auto Scaling target tracking scaling policy to gradually move traffic from the old version to the new one"
+        },
+            {
+                "optionId": "B",
+                "optionText": "Change the Application Load Balancer to a Network Load Balancer, then add both Auto Scaling groups as targets"
+            },
+            {
+                "optionId": "C",
+                "optionText": "Use an Amazon Route 53 weighted routing policy to gradually move traffic from the old version to the new one"
+            },
+            {
+                "optionId": "D",
+                "optionText": "Deploy Amazon Redshift to gradually move traffic from the old version to the new one using a set of predefined values"
+            }
+        ]
+    },
+    {
+        "questionId": 224,
+        "questionText": "A company uses federation to authenticate users and grant AWS permissions. The SysOps Administrator has been asked to determine who made a request toAWS Organizations for a new AWS account.What should the Administrator review to determine who made the request?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "AWS CloudTrail for the federated identity user name"
+        },
+            {
+                "optionId": "B",
+                "optionText": "AWS IAM Access Advisor for the federated user name"
+            },
+            {
+                "optionId": "C",
+                "optionText": "AWS Organizations access log for the federated identity user name"
+            },
+            {
+                "optionId": "D",
+                "optionText": "Federated identity provider logs for the user name"
+            }
+        ]
+    },
+    {
+        "questionId": 225,
+        "questionText": "A serverless application running on AWS Lambda is expected to receive a significant increase in traffic. A SysOps Administrator needs to ensure that the Lambda function is configured to scale so the application can process the increased traffic.What should the Administrator do to accomplish this?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Attach additional elastic network interfaces to the Lambda function"
+        },
+            {
+                "optionId": "B",
+                "optionText": "Configure AWS Application Auto Scaling based on the Amazon CloudWatch Lambda metric for the number of invocations"
+            },
+            {
+                "optionId": "C",
+                "optionText": "Ensure the concurrency limit for the Lambda function is higher than the expected simultaneous function executions"
+            },
+            {
+                "optionId": "D",
+                "optionText": "Increase the memory available to the Lambda function"
+            }
+        ]
+    },
+    {
+        "questionId": 226,
+        "questionText": "A SysOps Administrator is notified that an Amazon EC2 instance has stopped responding. The AWS Management Console indicates that the system checks are failing.What should the SysOps Administrator do first to resolve this issue?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Reboot the EC2 instance so it can be launched on a new host."
+        },
+            {
+                "optionId": "B",
+                "optionText": "Stop and then start the EC2 instance so that it can be launched on a new host."
+            },
+            {
+                "optionId": "C",
+                "optionText": "Terminate the EC2 instance and relaunch it."
+            },
+            {
+                "optionId": "D",
+                "optionText": "View the AWS CloudTrail log to investigate what changed on the EC2 instance."
+            }
+        ]
+    },
+    {
+        "questionId": 227,
+        "questionText": "An ecommerce site is using Amazon ElastiCache with Memcached to store session state for a web application and to cache frequently used data. For the last month, users have been complaining about performance. The metric data for the Amazon EC2 instances and the Amazon RDS instance appear normal, but the eviction count metrics are high.What should be done to address this issue and improve performance?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Scale the cluster by adding additional nodes"
+        },
+            {
+                "optionId": "B",
+                "optionText": "Scale the cluster by adding read replicas"
+            },
+            {
+                "optionId": "C",
+                "optionText": "Scale the cluster by increasing CPU capacity"
+            },
+            {
+                "optionId": "D",
+                "optionText": "Scale the web layer by adding additional EC2 instances"
+            }
+        ]
+    },
+    {
+        "questionId": 228,
+        "questionText": "A company needs to migrate an on-premises asymmetric key management system into AWS.Which AWS service should be used to accomplish this?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "AWS Certificate Manager"
+        },
+            {
+                "optionId": "B",
+                "optionText": "AWS CloudHSM"
+            },
+            {
+                "optionId": "C",
+                "optionText": "AWS KMS"
+            },
+            {
+                "optionId": "D",
+                "optionText": "AWS Secrets Manager"
+            }
+        ]
+    },
+    {
+        "questionId": 229,
+        "questionText": "A SysOps Administrator is deploying a test site running on Amazon EC2 instances. The application requires both incoming and outgoing connectivity to theInternet.Which combination of steps are required to provide internet connectivity to the EC2 instances? (Choose two.)",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Add a NAT gateway to a public subnet"
+        },
+            {
+                "optionId": "B",
+                "optionText": "Attach a private address to the elastic network interface on the EC2 instance"
+            },
+            {
+                "optionId": "C",
+                "optionText": "Attach an Elastic IP address to the internet gateway"
+            },
+            {
+                "optionId": "D",
+                "optionText": "Add an entry to the route table for the subnet that points to an internet gateway"
             },
             {
                 "optionId": "E",
-                "optionText": "3600 write capacity units"
+                "optionText": "Create an internet gateway and attach it to a VPC"
             }
-        ]},
+        ]
+    },
     {
-        "questionId": 20,
-        "questionText": "In DynamoDB, what type of HTTP response codes indicate that a problem was found with the client request sent to the service?<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "5xx HTTP response code"
-            },
+        "questionId": 230,
+        "questionText": "A Security and Compliance team is reviewing Amazon EC2 workloads for unapproved AMI usage.Which action should a SysOps Administrator recommend?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Create a custom report using AWS Systems Manager Inventory to identify unapproved AMIs"
+        },
             {
                 "optionId": "B",
-                "optionText": "200 HTTP response code"
+                "optionText": "Run Amazon Inspector on all EC2 instances and flag instances using unapproved AMIs"
             },
             {
                 "optionId": "C",
-                "optionText": "306 HTTP response code"
+                "optionText": "Use an AWS Config rule to identify unapproved AMIs"
             },
             {
                 "optionId": "D",
-                "optionText": "4xx HTTP response code"
+                "optionText": "Use AWS Trusted Advisor to identify EC2 workloads using unapproved AMIs"
             }
-        ]},{
-        "questionId": 21,
-        "questionText": "Company C has recently launched an online commerce site for bicycles on AWS. They have a 'Product'<br>DynamoDB table that stores details for each bicycle, such as, manufacturer, color, price, quantity and size to display in the online store. Due to customer demand, they want to include an image for each bicycle along with the existing details.<br>Which approach below provides the least impact to provisioned throughput on the 'Product' table?<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "Serialize the image and store it in multiple DynamoDB tables"
-            },
-            {
-                "optionId": "B",
-                "optionText": "Create an 'Images' DynamoDB table to store the Image with a foreign key constraint to the 'Product' table"
-            },
-            {
-                "optionId": "C",
-                "optionText": "Add an image data type to the 'Product' table to store the images in binary format"
-            },
-            {
-                "optionId": "D",
-                "optionText": "Store the images in Amazon S3 and add an S3 URL pointer to the 'Product' table item for each image"
-            }
-        ]},
+        ]
+    },
     {
-        "questionId": 22,
-        "questionText": "Which DynamoDB limits can be raised by contacting AWS support? (Choose two.)<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "The number of hash keys per account"
-            },
+        "questionId": 231,
+        "questionText": "A company needs to have real-time access to image data while seamlessly maintaining a copy of the images in an offsite location.Which AWS solution would allow access to the image data locally while also providing for disaster recovery?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Create an AWS Storage Gateway volume gateway configured as a stored volume. Mount it from clients using Internet Small Computer System Interface (iSCSI)."
+        },
             {
                 "optionId": "B",
-                "optionText": "The maximum storage used per account"
+                "optionText": "Mount an Amazon EFS volume on a local server. Share this volume with employees who need access to the images."
             },
             {
                 "optionId": "C",
-                "optionText": "The number of tables per account"
+                "optionText": "Store the images in Amazon S3, and use AWS Data Pipeline to allow for caching of S3 data on local workstations."
             },
             {
                 "optionId": "D",
-                "optionText": "The number of local secondary indexes per account"
+                "optionText": "Use Amazon S3 for file storage, and enable S3 Transfer Acceleration to maintain a cache for frequently used files to increase local performance."
+            }
+        ]
+    },
+    {
+        "questionId": 232,
+        "questionText": "A SysOps Administrator needs to create a replica of a company's existing AWS infrastructure in a new AWS account. Currently, an AWS Service Catalog portfolio is used to create and manage resources.What is the MOST efficient way to accomplish this?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Create an AWS CloudFormation template to use the AWS Service Catalog portfolio in the new AWS account."
+        },
+            {
+                "optionId": "B",
+                "optionText": "Manually create an AWS Service Catalog portfolio in the new AWS account that duplicates the original portfolio."
+            },
+            {
+                "optionId": "C",
+                "optionText": "Run an AWS Lambda function to create a new AWS Service Catalog portfolio based on the output of the DescribePortfolio API operation."
+            },
+            {
+                "optionId": "D",
+                "optionText": "Share the AWS Service Catalog portfolio with the other AWS accounts and import the portfolio into the other AWS accounts."
+            }
+        ]
+    },
+    {
+        "questionId": 233,
+        "questionText": "A company is operating a multi-account environment under a single organization using AWS Organizations. The Security team discovers that some employees are using AWS services in ways that violate company policies. A SysOps Administrator needs to prevent all users of an account, including the root user, from performing certain restricted actions.What should be done to accomplish this?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Apply service control policies (SCPs) to allow approved actions only"
+        },
+            {
+                "optionId": "B",
+                "optionText": "Apply service control policies (SCPs) to prevent restricted actions"
+            },
+            {
+                "optionId": "C",
+                "optionText": "Define permissions boundaries to allow approved actions only"
+            },
+            {
+                "optionId": "D",
+                "optionText": "Define permissions boundaries to prevent restricted actions"
+            }
+        ]
+    },
+    {
+        "questionId": 234,
+        "questionText": "An application is running on Amazon EC2 instances behind an Application Load Balancer (ALB). The instances are configured in an Amazon EC2 Auto Scaling group. A SysOps Administrator must configure the application to scale based on the number of incoming requests.Which solution accomplishes this with the LEAST amount of effort?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Use a simple scaling policy based on a custom metric that measures the average active requests of all EC2 instances"
+        },
+            {
+                "optionId": "B",
+                "optionText": "Use a simple scaling policy based on the Auto Scaling group GroupDesiredCapacity metric"
+            },
+            {
+                "optionId": "C",
+                "optionText": "Use a target tracking scaling policy based on the ALB's ActiveConnectionCount metric"
+            },
+            {
+                "optionId": "D",
+                "optionText": "Use a target tracking scaling policy based on the ALB's RequestCountPerTarget metric"
+            }
+        ]
+    },
+    {
+        "questionId": 235,
+        "questionText": "A SysOps Administrator has created an Amazon EC2 instance using an AWS CloudFormation template in the us-east-1 Region. The Administrator finds that this template has failed to create an EC2 instance in the us-west-2 Region.What is one cause for this failure?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Resources tags defined in the CloudFormation template are specific to the us-east-1 Region."
+        },
+            {
+                "optionId": "B",
+                "optionText": "The Amazon Machine Image (AMI) ID referenced in the CloudFormation template could not be found in the us-west-2 Region."
+            },
+            {
+                "optionId": "C",
+                "optionText": "The cfn-init script did not execute during resource provisioning in the us-west-2 Region."
+            },
+            {
+                "optionId": "D",
+                "optionText": "The IAM user was not created in the specified Region."
+            }
+        ]
+    },
+    {
+        "questionId": 236,
+        "questionText": "Users are struggling to connect to a single public-facing development web server using its public IP address on a unique port number of 8181. The security group is correctly configured to allow access on that port, and the network ACLs are using the default configuration.Which log type will confirm whether users are trying to connect to the correct port?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "AWS CloudTrail logs"
+        },
+            {
+                "optionId": "B",
+                "optionText": "Elastic Load Balancer access logs"
+            },
+            {
+                "optionId": "C",
+                "optionText": "VPC Flow Logs"
+            },
+            {
+                "optionId": "D",
+                "optionText": "Amazon S3 access logs"
+            }
+        ]
+    },
+    {
+        "questionId": 237,
+        "questionText": "The Security team at AnyCompany discovers that some employees have been using individual AWS accounts that are not under the control of AnyCompany. The team has requested that those individual accounts be linked to the central organization using AWS Organizations.Which action should a SysOps Administrator take to accomplish this?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Add each existing account to the central organization using AWS IAM."
+        },
+            {
+                "optionId": "B",
+                "optionText": "Create a new organization in each account and join them to the central organization."
+            },
+            {
+                "optionId": "C",
+                "optionText": "Log in to each existing account an add them to the central organization."
+            },
+            {
+                "optionId": "D",
+                "optionText": "Send each existing account an invitation from the central organization."
+            }
+        ]
+    },
+    {
+        "questionId": 238,
+        "questionText": "A SysOps Administrator has received a request to enable access logging for a Network Load Balancer and is setting up an Amazon S3 bucket to store the logs.What are the MINIMUM requirements for the S3 bucket? (Choose two.)",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "The bucket must be in the same Region as the Network Load Balancer."
+        },
+            {
+                "optionId": "B",
+                "optionText": "The bucket must have a bucket policy that grants Elastic Load Balancing permissions to write the access logs to the bucket."
+            },
+            {
+                "optionId": "C",
+                "optionText": "The bucket must have encryption enabled."
+            },
+            {
+                "optionId": "D",
+                "optionText": "The bucket must have lifecycle policies set."
             },
             {
                 "optionId": "E",
-                "optionText": "The number of provisioned throughput units per accoun"
+                "optionText": "The bucket must have public access disabled."
             }
-        ]},{
-        "questionId": 23,
-        "questionText": "When a Simple Queue Service message triggers a task that takes 5 minutes to complete, which process below will result in successful processing of the message and remove it from the queue while minimizing the chances of duplicate processing?<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "Retrieve the message with an increased visibility timeout, process the message, delete the message from the queue"
-            },
-            {
-                "optionId": "B",
-                "optionText": "Retrieve the message with an increased visibility timeout, delete the message from the queue, process the message"
-            },
-            {
-                "optionId": "C",
-                "optionText": "Retrieve the message with increased DelaySeconds, process the message, delete the message from the queue"
-            },
-            {
-                "optionId": "D",
-                "optionText": "Retrieve the message with increased DelaySeconds, delete the message from the queue, process the"
-            }
-        ]},{
-        "questionId": 24,
-        "questionText": "Company A has an S3 bucket containing premier content that they intend to make available to only paid subscribers of their website. The S3 bucket currently has default permissions of all objects being private to prevent inadvertent exposure of the premier content to non-paying website visitors.<br>How can Company A provide only paid subscribers the ability to download a premier content file in the S3 bucket?<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "Apply a bucket policy that grants anonymous users to download the content from the S3 bucket"
-            },
-            {
-                "optionId": "B",
-                "optionText": "Generate a pre-signed object URL for the premier content file when a paid subscriber requests a download"
-            },
-            {
-                "optionId": "C",
-                "optionText": "Add a bucket policy that requires Multi-Factor Authentication for requests to access the S3 bucket objects"
-            },
-            {
-                "optionId": "D",
-                "optionText": "Enable server side encryption on the S3 bucket for data protection against the non-paying website visitors"
-            }
-        ]},
+        ]
+    },
     {
-        "questionId": 25,
-        "questionText": "Which of the following is an example of a good DynamoDB hash key schema for provisioned throughput efficiency?<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "User ID, where the application has many different users."
-            },
+        "questionId": 239,
+        "questionText": "An application is running on an Amazon EC2 instance. A SysOps Administrator is tasked with allowing the application access to an Amazon S3 bucket.What should be done to ensure optimal security?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Apply an S3 bucket policy to allow access from all EC2 instances."
+        },
             {
                 "optionId": "B",
-                "optionText": "Status Code where most status codes are the same"
+                "optionText": "Create an IAM user and create a script to inject the credentials on boot."
             },
             {
                 "optionId": "C",
-                "optionText": "Device ID, where one is by far more popular than all the others."
+                "optionText": "Create and assign an IAM role for Amazon S3 access to the EC2 instance."
             },
             {
                 "optionId": "D",
-                "optionText": "Game Type, where there are three possible game types"
+                "optionText": "Embed an AWS credentials file for an IAM user inside the Amazon Machine Image (AMI)."
             }
-        ]},
+        ]
+    },
     {
-        "questionId": 26,
-        "questionText": "An application stores payroll information nightly in DynamoDB for a large number of employees across hundreds of offices. Item attributes consist of individual name, office identifier, and cumulative daily hours.<br>Managers run reports for ranges of names working in their office. One query is. 'Return all Items in this office for names starting with A through E'.<br>Which table configuration will result in the lowest impact on provisioned throughput for this query?<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "Configure the table to have a hash index on the name attribute, and a range index on the office identifier"
-            },
+        "questionId": 240,
+        "questionText": "A company's Marketing department generates gigabytes of assets each day and stores them locally. They would like to protect the files by backing them up toAWS. All the assets should be stored on the cloud, but the most recent assets should be available locally for low latency access.Which AWS service meets the requirements?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Amazon EBS"
+        },
             {
                 "optionId": "B",
-                "optionText": "Configure the table to have a range index on the name attribute, and a hash index on the office identifier"
+                "optionText": "Amazon EFS"
             },
             {
                 "optionId": "C",
-                "optionText": "Configure a hash index on the name attribute and no range index"
+                "optionText": "Amazon S3"
             },
             {
                 "optionId": "D",
-                "optionText": "Configure a hash index on the office Identifier attribute and no range index"
+                "optionText": "AWS Storage Gateway"
             }
-        ]},
+        ]
+    },
     {
-        "questionId": 27,
-        "questionText": "What is one key difference between an Amazon EBS-backed and an instance-store backed instance?<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "Virtual Private Cloud requires EBS backed instances"
-            },
+        "questionId": 241,
+        "questionText": "A SysOps Administrator is attempting to use AWS Systems Manager Session Manager to initiate a SSH session with an Amazon EC2 instance running on a custom Linux Amazon Machine Image (AMI). The Administrator cannot find the target instance in the Session Manager console.Which combination of actions will solve this issue? (Choose two.)",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Add Systems Manager permissions to the instance profile."
+        },
             {
                 "optionId": "B",
-                "optionText": "Amazon EBS-backed instances can be stopped and restarted"
+                "optionText": "Configure the bucket used by Session Manager logs to allow write access."
             },
             {
                 "optionId": "C",
-                "optionText": "Auto scaling requires using Amazon EBS-backed instances."
+                "optionText": "Install Systems Manager Agent on the instance."
             },
             {
                 "optionId": "D",
-                "optionText": "Instance-store backed instances can be stopped and restarted."
-            }
-        ]},
-    {
-        "questionId": 28,
-        "questionText": "How can you secure data at rest on an EBS volume?<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "Attach the volume to an instance using EC2's SSL interface."
-            },
-            {
-                "optionId": "B",
-                "optionText": "Write the data randomly instead of sequentially."
-            },
-            {
-                "optionId": "C",
-                "optionText": "Use an encrypted file system on top of the BBS volume."
-            },
-            {
-                "optionId": "D",
-                "optionText": "Encrypt the volume using the S3 server-side encryption service."
+                "optionText": "Modify the instance security group to allow inbound traffic on SSH port 22."
             },
             {
                 "optionId": "E",
-                "optionText": "Create an IAM policy that restricts read and write access to the volume."
+                "optionText": "Reboot the instance with a new SSH key pair named ssm-user."
             }
-        ]},
+        ]
+    },
     {
-        "questionId": 29,
-        "questionText": "Which of the following is chosen as the default region when making an API call with an AWS SDK?<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "ap-northeast-1"
-            },
+        "questionId": 242,
+        "questionText": "A Storage team wants all data transfers to an Amazon S3 bucket to remain within the AWS network. The team makes all changes to the AWS network infrastructure manually. An S3 VPC endpoint is created, and an endpoint policy with the proper permissions is set up. However, the application running onAmazon EC2 instances in the VPC is still unable to access the S3 bucket endpoint.What is one cause of this issue?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Request metrics for the S3 bucket need to be enabled."
+        },
             {
                 "optionId": "B",
-                "optionText": "us-west-2"
+                "optionText": "S3 access logs need to be disabled for the VPC endpoints to function."
             },
             {
                 "optionId": "C",
-                "optionText": "us-east-1"
+                "optionText": "The subnet does not have the VPC endpoint as a target in the route table."
             },
             {
                 "optionId": "D",
-                "optionText": "eu-west-1"
+                "optionText": "The EC2 instances need to have an Elastic Network Adapter enabled."
+            }
+        ]
+    },
+    {
+        "questionId": 243,
+        "questionText": "As part of a federated identity configuration, an IAM policy is created and attached to an IAM role.Who is responsible for creating the IAM policy and attaching it to the IAM role, according to the shared responsibility model?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "AWS is responsible for creating and attaching the IAM policy to the role."
+        },
+            {
+                "optionId": "B",
+                "optionText": "AWS is responsible for creating the role, and a SysOps Administrator is responsible for attaching the policy to the role."
+            },
+            {
+                "optionId": "C",
+                "optionText": "A SysOps Administrator is responsible for creating and attaching the IAM policy to the role."
+            },
+            {
+                "optionId": "D",
+                "optionText": "A SysOps Administrator is responsible for creating the role, and AWS is responsible for attaching the policy to the role."
+            }
+        ]
+    },
+    {
+        "questionId": 244,
+        "questionText": "An application runs on Amazon EC2 instances behind an Application Load Balancer (ALB). The instances run in an Auto Scaling group across multiple AvailabilityZones. The Information Security team wants to track application requests by the originating IP and the EC2 instance that processes the request.Which of the following tools or services provides this information?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Amazon CloudWatch"
+        },
+            {
+                "optionId": "B",
+                "optionText": "AWS CloudTrail"
+            },
+            {
+                "optionId": "C",
+                "optionText": "Elastic Load Balancing access logs"
+            },
+            {
+                "optionId": "D",
+                "optionText": "VPC Flow Logs"
+            }
+        ]
+    },
+    {
+        "questionId": 245,
+        "questionText": "An Amazon EC2 instance in a private subnet needs to copy data to an Amazon S3 bucket. For security reasons, the connection from the EC2 instance to AmazonS3 must not traverse across the Internet.What action should the SysOps Administrator take to accomplish this?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Create a NAT instance and route traffic destined to Amazon S3 through it."
+        },
+            {
+                "optionId": "B",
+                "optionText": "Create a VPN connection between the EC2 instance and Amazon S3."
+            },
+            {
+                "optionId": "C",
+                "optionText": "Create an S3 VPC endpoint in the VPC where the EC2 instance resides."
+            },
+            {
+                "optionId": "D",
+                "optionText": "Use AWS Direct Connect to maximize throughput and keep the traffic private."
+            }
+        ]
+    },
+    {
+        "questionId": 246,
+        "questionText": "A SysOps Administrator is in the process of setting up a new AWS Storage Gateway. The Storage Gateway activation is failing when the Administrator attempts to activate the Storage Gateway from the Storage Gateway console.What are the potential causes of this error? (Choose two.)",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "The Storage Gateway does not have an upload buffer configured."
+        },
+            {
+                "optionId": "B",
+                "optionText": "The Storage Gateway does not have a backing Amazon S3 bucket configured."
+            },
+            {
+                "optionId": "C",
+                "optionText": "The Storage Gateway does not have a cache volume configured."
+            },
+            {
+                "optionId": "D",
+                "optionText": "The Storage Gateway does not have the correct time."
             },
             {
                 "optionId": "E",
-                "optionText": "us-central-1"
+                "optionText": "The Storage Gateway is not accessible from the Administrator's client over port 80."
             }
-        ]},{
-        "questionId": 30,
-        "questionText": "Which of the following statements about SWF are true? (Choose three.)<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "SWF tasks are assigned once and never duplicated"
-            },
+        ]
+    },
+    {
+        "questionId": 247,
+        "questionText": "A SysOps Administrator needs to monitor all the object upload and download activity of a single Amazon S3 bucket. Monitoring must include tracking the AWS account of the caller, the IAM user role of the caller, the time of the API call, and the IP address of the API.Where can the Administrator find this information?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "AWS CloudTrail data event logging"
+        },
             {
                 "optionId": "B",
-                "optionText": "SWF requires an S3 bucket for workflow storage"
+                "optionText": "AWS CloudTrail management event logging"
             },
             {
                 "optionId": "C",
-                "optionText": "SWF workflow executions can last up to a year"
+                "optionText": "Amazon Inspector bucket event logging"
             },
             {
                 "optionId": "D",
-                "optionText": "SWF triggers SNS notifications on task assignment"
+                "optionText": "Amazon Inspector user event logging"
+            }
+        ]
+    },
+    {
+        "questionId": 248,
+        "questionText": "A company's website went down for several hours. The root cause was a full disk on one of the company's Amazon EC2 instances.Which steps should the SysOps Administrator take to prevent this from happening in this future?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Configure Amazon CloudWatch Events to filter and forward AWS Health events for disk space utilization to an Amazon SNS topic to notify the Administrator."
+        },
+            {
+                "optionId": "B",
+                "optionText": "Create an AWS Lambda function to describe the volume status for each EC2 instance. Post a notification to an Amazon SNS topic when a volume status is impaired."
+            },
+            {
+                "optionId": "C",
+                "optionText": "Enable detailed monitoring for the EC2 instances. Create an Amazon CloudWatch alarm to notify the Administrator when disk space is running low."
+            },
+            {
+                "optionId": "D",
+                "optionText": "Use the Amazon CloudWatch agent on the EC2 instances to collect disk metrics. Create a CloudWatch alarm to notify the Administrator when disk space is running low."
+            }
+        ]
+    },
+    {
+        "questionId": 249,
+        "questionText": "A SysOps Administrator needs to retrieve a file from the GLACIER storage class of Amazon S3. The Administrator wants to receive an Amazon SNS notification when the file is available for access.What action should be taken to accomplish this?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Create an Amazon CloudWatch Events event for file restoration from Amazon S3 Glacier using the GlacierJobDescription API and send the event to an SNS topic the Administrator has subscribed to."
+        },
+            {
+                "optionId": "B",
+                "optionText": "Create an AWS Lambda function that performs a HEAD request on the object being restored and checks the storage class of the object. Then send a notification to an SNS topic the Administrator has subscribed to when the storage class changes to STANDARD."
+            },
+            {
+                "optionId": "C",
+                "optionText": "Enable an Amazon S3 event notification for the s3:ObjectCreated:Post event that sends a notification to an SNS topic the Administrator has subscribed to."
+            },
+            {
+                "optionId": "D",
+                "optionText": "Enable S3 event notification for the s3:ObjectCreated:Completed event that sends a notification to an SNS topic the Administrator has subscribed to."
+            }
+        ]
+    },
+    {
+        "questionId": 250,
+        "questionText": "A company has received a notification in its AWS Personal Health Dashboard that one of its Amazon EBS-backed Amazon EC2 instances is on hardware that is scheduled for maintenance. The instance runs a critical production workload that must be available during normal business hours.Which steps will ensure that the instance maintenance does not produce an outage?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Configure an Amazon Lambda function to automatically start the instance if it is stopped."
+        },
+            {
+                "optionId": "B",
+                "optionText": "Create an Amazon Machine Image (AMI) of the instance and use the AMI to launch a new instance once the existing instance is retired."
+            },
+            {
+                "optionId": "C",
+                "optionText": "Enable termination protection on the EC2 instance."
+            },
+            {
+                "optionId": "D",
+                "optionText": "Stop and start the EC2 instance during a maintenance window outside of normal business hours."
+            }
+        ]
+    },
+    {
+        "questionId": 251,
+        "questionText": "Security has identified an IP address that should be explicitly denied for both ingress and egress requests for all services in an Amazon VPC immediately.Which feature can be used to meet this requirement?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Host-based firewalls"
+        },
+            {
+                "optionId": "B",
+                "optionText": "NAT Gateway"
+            },
+            {
+                "optionId": "C",
+                "optionText": "Network access control lists"
+            },
+            {
+                "optionId": "D",
+                "optionText": "Security Groups"
+            }
+        ]
+    },
+    {
+        "questionId": 252,
+        "questionText": "An Application Load Balancer (ALB) is configured in front of Amazon EC2 instances. The current target group health check configuration is:✑ Interval: 30 seconds✑ Unhealthy threshold: 10✑ Healthy threshold: 5Which steps should a SysOps Administrator take to reduce the amount of time needed to remove unhealthy instances? (Choose two.)",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Change the healthy threshold configuration to 1."
+        },
+            {
+                "optionId": "B",
+                "optionText": "Change the interval configuration to 15."
+            },
+            {
+                "optionId": "C",
+                "optionText": "Change the interval configuration to 60."
+            },
+            {
+                "optionId": "D",
+                "optionText": "Change the unhealthy threshold configuration to 15."
             },
             {
                 "optionId": "E",
-                "optionText": "SWF uses deciders and workers to complete tasks"
-            },
-            {
-                "optionId": "F",
-                "optionText": "SWF requires at least 1 EC2 instance per domain"
+                "optionText": "Change the unhealthy threshold configuration to 5."
             }
-        ]},{
-        "questionId": 31,
-        "questionText": "Which of the following are valid SNS delivery transports? (Choose two.)<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "HTTP"
-            },
+        ]
+    },
+    {
+        "questionId": 253,
+        "questionText": "A company has a web application that is used across all company divisions. Each application request contains a header that includes the name of the division making the request. The SysOps Administrator wants to identify and count the requests from each division.Which condition should be added to the web ACL of the AWS WAF to accomplish this?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Cross-site scripting"
+        },
             {
                 "optionId": "B",
-                "optionText": "UDP"
+                "optionText": "Geo match"
             },
             {
                 "optionId": "C",
-                "optionText": "SMS"
+                "optionText": "IP match"
             },
             {
                 "optionId": "D",
-                "optionText": "DynamoDB"
+                "optionText": "String match"
+            }
+        ]
+    },
+    {
+        "questionId": 254,
+        "questionText": "A SysOps Administrator is deploying an Amazon EC2 instance and is using third-party VPN software to route traffic to an on-premises data center.Based on the shared responsibility model, AWS is responsible for managing which element of this deployment?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Configuring Ipsec tunnels for the VPN."
+        },
+            {
+                "optionId": "B",
+                "optionText": "Ensuring high availability of the EC2 instance."
+            },
+            {
+                "optionId": "C",
+                "optionText": "Ensuring high availability of the VPN connection."
+            },
+            {
+                "optionId": "D",
+                "optionText": "Managing the health of the underlying EC2 host."
+            }
+        ]
+    },
+    {
+        "questionId": 255,
+        "questionText": "A SysOps Administrator is notified that an automated failover of an Amazon RDS database has occurred.What are possible causes for this? (Choose two.)",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "A read contention on the database."
+        },
+            {
+                "optionId": "B",
+                "optionText": "A storage failure on the primary database."
+            },
+            {
+                "optionId": "C",
+                "optionText": "A write contention on the database."
+            },
+            {
+                "optionId": "D",
+                "optionText": "Database corruption errors."
             },
             {
                 "optionId": "E",
-                "optionText": "Named Pipes"
+                "optionText": "The database instance type was changed."
             }
-        ]},{
-        "questionId": 32,
-        "questionText": "How is provisioned throughput affected by the chosen consistency model when reading data from a<br>DynamoDB table?<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "Strongly consistent reads use the same amount of throughput as eventually consistent reads"
-            },
+        ]
+    },
+    {
+        "questionId": 256,
+        "questionText": "A recent AWS CloudFormation stack update has failed and returned the error UPDATE_ROLLBACK_FAILED. A SysOps Administrator is tasked with returning theCloudFormation stack to its previous working state.What must be done to accomplish this?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Fix the error that caused the rollback to fail, then select the Continue Update Rollback action in the console."
+        },
             {
                 "optionId": "B",
-                "optionText": "Strongly consistent reads use more throughput than eventually consistent reads."
+                "optionText": "Select the Update Stack action with a working template in the console."
             },
             {
                 "optionId": "C",
-                "optionText": "Strongly consistent reads use less throughput than eventually consistent reads"
+                "optionText": "Update the password of the IAM user, then select the Continue Update Rollback action in the console."
             },
             {
                 "optionId": "D",
-                "optionText": "Strongly consistent reads use variable throughput depending on read activit"
+                "optionText": "Use the AWS CLI to manually change the stack status to UPDATE_COMPLETE, then continue updating the stack with a working template."
             }
-        ]},{
-        "questionId": 33,
-        "questionText": "Which of the following are valid arguments for an SNS Publish request? (Choose three.)<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "TopicAm"
-            },
+        ]
+    },
+    {
+        "questionId": 257,
+        "questionText": "A company needs to run a distributed application that processes large amount of data across multiple Amazon EC2 instances. The application is designed to tolerate processing interruptions.What is the MOST cost-effective Amazon EC2 pricing model for these requirements?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Dedicated Hosts"
+        },
             {
                 "optionId": "B",
-                "optionText": "Subject"
+                "optionText": "On-Demand Instances"
             },
             {
                 "optionId": "C",
-                "optionText": "Destination"
+                "optionText": "Reserved Instances"
             },
             {
                 "optionId": "D",
-                "optionText": "Format"
+                "optionText": "Spot Instances"
+            }
+        ]
+    },
+    {
+        "questionId": 258,
+        "questionText": "A SysOps Administrator working on an Amazon EC2 instance has misconfigured the clock by one hour. The EC2 instance is sending data to Amazon CloudWatch through the CloudWatch agent. The timestamps on the logs are 45 minutes in the future.What will be the result of this configuration?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Amazon CloudWatch will not capture the data because it is in the future."
+        },
+            {
+                "optionId": "B",
+                "optionText": "Amazon CloudWatch will accept the custom metric data and record it."
+            },
+            {
+                "optionId": "C",
+                "optionText": "The Amazon CloudWatch agent will check the Network Time Protocol (NTP) server before sending the data, and the agent will correct the time."
+            },
+            {
+                "optionId": "D",
+                "optionText": "The Amazon CloudWatch agent will check the Network Time Protocol (NTP) server, and the agent will not send the data because it is more than 30 minutes in the future."
+            }
+        ]
+    },
+    {
+        "questionId": 259,
+        "questionText": "A company recently performed a security audit of all its internal applications developed in house. Certain business-critical applications that handle sensitive data were flagged because they use Amazon ES clusters that are open for read/write to a wider user group that intended.Who is responsible for correcting the issue?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "AWS Premium Support"
+        },
+            {
+                "optionId": "B",
+                "optionText": "the Amazon ES team"
+            },
+            {
+                "optionId": "C",
+                "optionText": "the AWS IAM team"
+            },
+            {
+                "optionId": "D",
+                "optionText": "a SysOps Administrator"
+            }
+        ]
+    },
+    {
+        "questionId": 260,
+        "questionText": "A company needs to restrict access to an Amazon S3 bucket to Amazon EC2 instances in a VPC only. All traffic must be over the AWS private network.What actions should the SysOps Administrator take to meet these requirements?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Create a VPC endpoint for the S3 bucket, and create an IAM policy that conditionally limits all S3 actions on the bucket to the VPC endpoint as the source."
+        },
+            {
+                "optionId": "B",
+                "optionText": "Create a VPC endpoint for the S3 bucket, and create a S3 bucket policy that conditionally limits all S3 actions on the bucket to the VPC endpoint as the source."
+            },
+            {
+                "optionId": "C",
+                "optionText": "Create a service-linked role for Amazon EC2 that allows the EC2 instances to interact directly with Amazon S3, and attach an IAM policy to the role that allows the EC2 instances full access to the S3 bucket."
+            },
+            {
+                "optionId": "D",
+                "optionText": "Create a NAT gateway in the VPC, and modify the VPC route table to route all traffic destined for Amazon S3 through the NAT gateway."
+            }
+        ]
+    },
+    {
+        "questionId": 261,
+        "questionText": "A Chief Financial Officer has asked for a breakdown of costs per project in a single AWS account using Cost Explorer.Which combination of options should be set to accomplish this? (Choose two.)",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Activate AWS Budgets."
+        },
+            {
+                "optionId": "B",
+                "optionText": "Activate cost allocation tags."
+            },
+            {
+                "optionId": "C",
+                "optionText": "Create an organization using AWS Organizations."
+            },
+            {
+                "optionId": "D",
+                "optionText": "Create and apply resources tags."
             },
             {
                 "optionId": "E",
-                "optionText": "Message"
-            },
-            {
-                "optionId": "F",
-                "optionText": "Language"
+                "optionText": "Enable AWS Trusted Advisor."
             }
-        ]},{
-        "questionId": 34,
-        "questionText": "How can software determine the public and private IP addresses of the Amazon EC2 instance that it is running on?<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "Query the appropriate Amazon CloudWatch metric."
-            },
-            {
-                "optionId": "B",
-                "optionText": "Use ipconfig or ifconfig command."
-            },
-            {
-                "optionId": "C",
-                "optionText": "Query the local instance userdata."
-            },
-            {
-                "optionId": "D",
-                "optionText": "Query the local instance metadata."
-            }
-        ]},
+        ]
+    },
     {
-        "questionId": 35,
-        "questionText": "EC2 instances are launched from Amazon Machine images (AMIs). A given public AMI can:<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "be used to launch EC2 Instances in any AWS region."
-            },
+        "questionId": 262,
+        "questionText": "A SysOps Administrator has implemented a VPC network design with the following requirements:✑ Two Availability Zones (AZs)✑ Two private subnets✑ Two public subnets✑ One internet gateway✑ One NAT gatewayWhat would potentially cause applications in the VPC to fail during an AZ outage?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "A single virtual private gateway, because it can be associated with a single AZ only."
+        },
             {
                 "optionId": "B",
-                "optionText": "only be used to launch EC2 instances in the same country as the AMI is stored."
+                "optionText": "A single internet gateway, because it is not redundant across both AZs."
             },
             {
                 "optionId": "C",
-                "optionText": "only be used to launch EC2 instances in the same AWS region as the AMI is stored."
+                "optionText": "A single NAT gateway, because it is not redundant across both AZs."
             },
             {
                 "optionId": "D",
-                "optionText": "only be used to launch EC2 instances in the same AWS availability zone as the AMI is stored"
+                "optionText": "The default VPC route table, because it can be associated with a single AZ only."
             }
-        ]},
+        ]
+    },
     {
-        "questionId": 36,
-        "questionText": "Which EC2 API call would you use to retrieve a list of Amazon Machine Images (AMIs)?<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "DescnbeInstances"
-            },
+        "questionId": 263,
+        "questionText": "A SysOps Administration team is supporting an application that stores a configuration file in an Amazon S3 bucket. Previous revisions of the configuration file must be maintained for change control and rollback.How should the S3 bucket be configured to meet these requirements?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Enable a lifecycle policy on the S3 bucket."
+        },
             {
                 "optionId": "B",
-                "optionText": "DescribeAMls"
+                "optionText": "Enable cross-origin resource sharing on the S3 bucket."
             },
             {
                 "optionId": "C",
-                "optionText": "DescribeImages"
+                "optionText": "Enable object tagging on the S3 bucket."
             },
             {
                 "optionId": "D",
-                "optionText": "GetAMls"
+                "optionText": "Enable versioning on the S3 bucket."
+            }
+        ]
+    },
+    {
+        "questionId": 264,
+        "questionText": "A company has an existing web application that runs on two Amazon EC2 instances behind an Application Load Balancer (ALB) across two Availability Zones.The application uses an Amazon RDS Multi-AZ DB Instance. Amazon Route 53 record sets route requests for dynamic content to the load balancer and requests for static content to an Amazon S3 bucket. Site visitors are reporting extremely long loading times.Which actions should be taken to improve the performance of the website? (Choose two.)",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Add Amazon CloudFront caching for static content."
+        },
+            {
+                "optionId": "B",
+                "optionText": "Change the load balancer listener from HTTPS to TCP."
+            },
+            {
+                "optionId": "C",
+                "optionText": "Enable Amazon Route 53 latency-based routing."
+            },
+            {
+                "optionId": "D",
+                "optionText": "Implement Amazon EC2 Auto Scaling for the web servers."
             },
             {
                 "optionId": "E",
-                "optionText": "You cannot retrieve a list of AMIs as there are over 10,000 AMIs"
+                "optionText": "Move the static content from Amazon S3 to the web servers."
             }
-        ]},
+        ]
+    },
     {
-        "questionId": 37,
-        "questionText": "In AWS, which security aspects are the customer’s responsibility? (Choose four.)<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "Life-cycle management of IAM credentials"
-            },
+        "questionId": 265,
+        "questionText": "An application is being migrated to AWS with the requirement that archived data be retained for at least 7 years.What Amazon Glacier configuration option should be used to meet this compliance requirement?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "A Glacier data retrieval policy"
+        },
             {
                 "optionId": "B",
-                "optionText": "Decommissioning storage devices"
+                "optionText": "A Glacier vault access policy"
             },
             {
                 "optionId": "C",
-                "optionText": "Security Group and ACL (Access Control List) settings"
+                "optionText": "A Glacier vault lock policy"
             },
             {
                 "optionId": "D",
-                "optionText": "Encryption of EBS (Elastic Block Storage) volumes"
+                "optionText": "A Glacier vault notification"
+            }
+        ]
+    },
+    {
+        "questionId": 266,
+        "questionText": "A company has several AWS accounts and has set up consolidated billing through AWS Organizations. The total monthly bill has been increasing over several months, and a SysOps Administrator has been asked to determine what is causing this increase.What is the MOST comprehensive tool that will accomplish this task?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "AWS Cost Explorer"
+        },
+            {
+                "optionId": "B",
+                "optionText": "AWS Trusted Advisor"
+            },
+            {
+                "optionId": "C",
+                "optionText": "Cost allocation tags"
+            },
+            {
+                "optionId": "D",
+                "optionText": "Resource groups"
+            }
+        ]
+    },
+    {
+        "questionId": 267,
+        "questionText": "A company has deployed its infrastructure using AWS CloudFormation. Recently, the company made manual changes to the infrastructure. A SysOpsAdministrator is tasked with determining what was changed and updating the CloudFormation template.Which solution will ensure all the changes are captured?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Create a new CloudFormation stack based on the changes that were made. Delete the old stack and deploy the new stack."
+        },
+            {
+                "optionId": "B",
+                "optionText": "Update the CloudFormation stack using a change set. Review the changes and update the stack."
+            },
+            {
+                "optionId": "C",
+                "optionText": "Update the CloudFormation stack by modifying the selected parameters in the template to match what was changed."
+            },
+            {
+                "optionId": "D",
+                "optionText": "Use drift detection on the CloudFormation stack. Use the output to update the CloudFormation template and redeploy the stack."
+            }
+        ]
+    },
+    {
+        "questionId": 268,
+        "questionText": "A user accidentally deleted a file from an Amazon EBS volume. The SysOps Administrator identified a recent snapshot for the volume.What should the Administrator do to restore the user's file from the snapshot?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Attach the snapshot to a new Amazon EC2 instance in the same Availability Zone, and copy the deleted file."
+        },
+            {
+                "optionId": "B",
+                "optionText": "Browse to the snapshot and copy the file to the EBS volume within an Amazon EC2 instance."
+            },
+            {
+                "optionId": "C",
+                "optionText": "Create a volume from the snapshot, attach the volume to an Amazon EC2 instance, and copy the deleted file."
+            },
+            {
+                "optionId": "D",
+                "optionText": "Restore the file from the snapshot onto an EC2 instance using the Amazon EC2 console."
+            }
+        ]
+    },
+    {
+        "questionId": 269,
+        "questionText": "Each SysOps Administrator at a company has a unique IAM user account. Each user is a member of the SysOps IAM group that has an IAM policy applied. A recent change to the IT security policy states that employees must now use their on-premises Active Directory user accounts to access the AWS ManagementConsole.Which solution should be used to satisfy these requirements?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Configure the on-premises Active Directory to use AWS Direct Connect."
+        },
+            {
+                "optionId": "B",
+                "optionText": "Enable an Active Directory federation in an Amazon Route 53 private zone."
+            },
+            {
+                "optionId": "C",
+                "optionText": "Implement a VPN tunnel and configure an Active Directory connector."
+            },
+            {
+                "optionId": "D",
+                "optionText": "Implement multi-factor authentication for IAM and Active Directory."
+            }
+        ]
+    },
+    {
+        "questionId": 270,
+        "questionText": "A company needs to deploy a web application on two Amazon EC2 instances behind an Application Load Balancer (ALB). Two EC2 instances will also be deployed to host the database. The infrastructure needs to be designed across Availability Zones for high availability and must limit public access to the instances as much as possible.How should this be achieved within a VPC?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Create one public subnet for the Application Load Balancer, one public subnet for the web servers, and one private subnet for the database servers."
+        },
+            {
+                "optionId": "B",
+                "optionText": "Create one public subnet for the Application Load Balancer, two public subnets for the web servers, and two private subnets for the database servers."
+            },
+            {
+                "optionId": "C",
+                "optionText": "Create two public subnets for the Application Load Balancer, two private subnets for the web servers, and two private subnets for the database servers."
+            },
+            {
+                "optionId": "D",
+                "optionText": "Create two public subnets for the Application Load Balancer, two public subnets for the web servers, and two public subnets for the database servers."
+            }
+        ]
+    },
+    {
+        "questionId": 271,
+        "questionText": "A SysOps Administrator receives an email from AWS about a production Amazon EC2 instance backed by Amazon EBS that is on a degraded host scheduled for retirement. The scheduled retirement occurs during business-critical hours.What should be done to MINIMIZE disruption to the business?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Reboot the instance as soon as possible to perform the system maintenance before the scheduled retirement."
+        },
+            {
+                "optionId": "B",
+                "optionText": "Reboot the instance outside business hours to perform the system maintenance before the scheduled retirement."
+            },
+            {
+                "optionId": "C",
+                "optionText": "Stop/start the instance outside business hours to move to a new host before the scheduled retirement."
+            },
+            {
+                "optionId": "D",
+                "optionText": "Write an AWS Lambda function to restore the system when the scheduled retirement occurs."
+            }
+        ]
+    },
+    {
+        "questionId": 272,
+        "questionText": "A company has a business application hosted on Amazon EC2 instances behind an Application Load Balancer. Amazon CloudWatch metrics show that the CPU utilization on the EC2 instances is very high. There are also reports from users that receive HTTP 503 and 504 errors when they try to connect to the application.Which action will resolve these issues?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Place the EC2 instances into an AWS Auto Scaling group."
+        },
+            {
+                "optionId": "B",
+                "optionText": "Configure the ALB's Target Group to use more frequent health checks."
+            },
+            {
+                "optionId": "C",
+                "optionText": "Enable sticky sessions on the Application Load Balancer."
+            },
+            {
+                "optionId": "D",
+                "optionText": "Increase the idle timeout setting of the Application Load Balancer."
+            }
+        ]
+    },
+    {
+        "questionId": 273,
+        "questionText": "A SysOps Administrator is maintaining an application that runs on Amazon EC2 instances behind an Application Load Balancer (ALB). Users are reporting errors when attempting to launch the application. The Administrator notices an increase in the HTTPCode_ELB_5xx_Count Amazon CloudWatch metric for the load balancer.What is a possible cause for this increase?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "The ALB is associated with private subnets within the VPC."
+        },
+            {
+                "optionId": "B",
+                "optionText": "The ALB received a request from a client, but the client closed the connection."
+            },
+            {
+                "optionId": "C",
+                "optionText": "The ALB security group is not configured to allow inbound traffic from the users."
+            },
+            {
+                "optionId": "D",
+                "optionText": "The ALB target group does not contain healthy EC2 instances."
+            }
+        ]
+    },
+    {
+        "questionId": 274,
+        "questionText": "A developer is deploying a web application on Amazon EC2 instances behind an Application Load Balancer (ALB) and notices that the application is not receiving all the expected elements from HTTP requests. The developer suspects users are not sending the correct query string.How should a sysops administrator verify this?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Monitor the ALB default Amazon CloudWatch metrics. Verify that the requests contain the expected query string."
+        },
+            {
+                "optionId": "B",
+                "optionText": "Ð¡onfigure the ALB to store access logs within Amazon S3. Verify that log entries contain the expected query string."
+            },
+            {
+                "optionId": "C",
+                "optionText": "Open the ALB logs in Amazon CloudWatch. Verify that requests contain the expected query string."
+            },
+            {
+                "optionId": "D",
+                "optionText": "Create a custom Amazon CloudWatch metric to store requests. Verify that the metric contains the expected query string."
+            }
+        ]
+    },
+    {
+        "questionId": 275,
+        "questionText": "An ecommerce company uses an Amazon ElastiCache for Memcached cluster for in-memory caching of popular product queries on the shopping site. When viewing recent Amazon CloudWatch metrics data for the ElastiCache cluster, the sysops administrator notices a large number of evictions.Which of the following actions will reduce these evictions? (Choose two.)",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Add an additional node to the ElastiCache cluster"
+        },
+            {
+                "optionId": "B",
+                "optionText": "Increase the ElastiCache time to live (TTL)"
+            },
+            {
+                "optionId": "C",
+                "optionText": "Increase the individual node size inside the ElastiCache cluster"
+            },
+            {
+                "optionId": "D",
+                "optionText": "Put an Elastic Load Balancer in front of the ElastiCache cluster"
             },
             {
                 "optionId": "E",
-                "optionText": "Controlling physical access to compute resources"
-            },
-            {
-                "optionId": "F",
-                "optionText": "Patch management on the EC2 instance’s operating system"
+                "optionText": "Use Amazon Simple Queue Service (Amazon SQS) to decouple the ElastiCache cluster"
             }
-        ]},{
-        "questionId": 38,
-        "questionText": "When using a large Scan operation in DynamoDB, what technique can be used to minimize the impact of a scan on a table's provisioned throughput?<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "Set a smaller page size for the scan"
-            },
-            {
-                "optionId": "B",
-                "optionText": "Use parallel scans"
-            },
-            {
-                "optionId": "C",
-                "optionText": "Define a range index on the table"
-            },
-            {
-                "optionId": "D",
-                "optionText": "Prewarm the table by updating all items"
-            }
-        ]},{
-        "questionId": 39,
-        "questionText": "Company D is running their corporate website on Amazon S3 accessed from http//www.companyd.com. Their marketing team has published new web fonts to a separate S3 bucket accessed by the S3 endpoint https://s3- us-west-1.amazonaws.com/cdfonts. While testing the new web fonts, Company D recognized the web fonts are being blocked by the browser.<br>What should Company D do to prevent the web fonts from being blocked by the browser?<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "Enable versioning on the cdfonts bucket for each web font"
-            },
-            {
-                "optionId": "B",
-                "optionText": "Create a policy on the cdfonts bucket to enable access to everyone"
-            },
-            {
-                "optionId": "C",
-                "optionText": "Add the Content-MD5 header to the request for webfonts in the cdfonts bucket from the website"
-            },
-            {
-                "optionId": "D",
-                "optionText": "Configure the cdfonts bucket to allow cross-origin requests by creating a CORS configuration"
-            }
-        ]},
+        ]
+    },
     {
-        "questionId": 40,
-        "questionText": "Which of the following platforms are supported by Elastic Beanstalk? (Choose two.)<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "Apache Tomcat"
-            },
+        "questionId": 276,
+        "questionText": "A company designed a specialized Amazon EC2 instance configuration for its Data Scientists. The Data Scientists want to create and delete EC2 instances on their own, but are not comfortable with configuring all the settings for EC2 instances without assistance. The configuration runs proprietary software that must be kept private within the company's AWS accounts, and should be available to the Data Scientists, but no other users within the accounts.Which solution should a SysOps Administrator use to allow the Data Scientists to deploy their workloads with MINIMAL effort?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Create an Amazon Machine Image (AMI) of the EC2 instance. Share the AMI with authorized accounts owned by the company. Allow the Data Scientists to create EC2 instances with this AMI."
+        },
             {
                 "optionId": "B",
-                "optionText": ".NET"
+                "optionText": "Distribute an AWS CloudFormation template containing the EC2 instance configuration to the Data Scientists from an Amazon S3 bucket. Set the S3 template object to be readable from the AWS Organizations orgId."
             },
             {
                 "optionId": "C",
-                "optionText": "IBM Websphere"
+                "optionText": "Publish the instance configuration to the Private Marketplace. Share the Private Marketplace with the company's AWS accounts. Allow the Data Scientists to subscribe and launch the product from the Private Marketplace."
             },
             {
                 "optionId": "D",
-                "optionText": "Oracle JBoss"
+                "optionText": "Upload an AWS CloudFormation template to AWS Service Catalog. Allow the Data Scientists to provision and deprovision products from the company's AWS Service Catalog portfolio."
+            }
+        ]
+    },
+    {
+        "questionId": 277,
+        "questionText": "An Application team has asked a SysOps Administrator to provision an additional environment for an application in four additional regions. The application is running on more than 100 instances in us-east-1, using fully baked AMIs. An AWS CloudFormation template has been created to deploy resources in us-east-1.What must the SysOps Administrator do to provision the application quickly?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Copy the AMI to each region using aws ec2 copy-image. Update the CloudFormation mapping to include mappings for the copied AMIs."
+        },
+            {
+                "optionId": "B",
+                "optionText": "Create a snapshot of the running instance and copy the snapshot to the other regions. Create an AMI from the snapshots. Update the CloudFormation template for each region to use the new AMI."
+            },
+            {
+                "optionId": "C",
+                "optionText": "Run the existing CloudFormation template in each additional region based on the success of the template used currently in us-east-1."
+            },
+            {
+                "optionId": "D",
+                "optionText": "Update the CloudFormation template to include the additional regions in the Auto Scaling group. Update the existing stack in us-east-1."
+            }
+        ]
+    },
+    {
+        "questionId": 278,
+        "questionText": "A SysOps Administrator needs to control access to groups of Amazon EC2 instances. Specific tags on the EC2 instances have already been added.Which additional actions should the Administrator take to control access? (Choose two.)",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Attach an IAM policy to the users or groups that require access to the EC2 instances."
+        },
+            {
+                "optionId": "B",
+                "optionText": "Attach an IAM role to control access to the EC2 instances."
+            },
+            {
+                "optionId": "C",
+                "optionText": "Create a placement group for the EC2 instances and add a specific tag."
+            },
+            {
+                "optionId": "D",
+                "optionText": "Create a service account and attach it to the EC2 instances that need to be controlled."
             },
             {
                 "optionId": "E",
-                "optionText": "Jetty"
+                "optionText": "Create an IAM policy that grants access to any EC2 instances with a tag specified in the Condition element."
             }
-        ]},{
-        "questionId": 41,
-        "questionText": "Which code snippet below returns the URL of a load balanced web site created in CloudFormation with an<br>AWS::ElasticLoadBalancing::LoadBalancer resource name 'ElasticLoad Balancer'?<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "'Fn::Join' : [''. [ 'http://', {'Fn::GetAtr' : [ 'ElasticLoadBalancer','DNSName']}]]"
-            },
-            {
-                "optionId": "B",
-                "optionText": "'Fn::Join' : [''. [ 'http://', {'Fn::GetAtr' : [ 'ElasticLoadBalancer','Url']}]]"
-            },
-            {
-                "optionId": "C",
-                "optionText": "'Fn::Join' : [''. [ 'http://', {'Ref' : 'ElasticLoadBalancerUrl'}]]"
-            },
-            {
-                "optionId": "D",
-                "optionText": "'Fn::Join' : ['.', [ 'http://', {'Ref' : 'ElasticLoadBalancerDNSName'}]]"
-            }
-        ]},
+        ]
+    },
     {
-        "questionId": 42,
-        "questionText": "Which features can be used to restrict access to data in S3? (Choose two.)<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "Use S3 Virtual Hosting"
-            },
+        "questionId": 279,
+        "questionText": "A company manages multiple AWS accounts and wants to provide access to AWS from a single management account using an existing on-premises MicrosoftActive Directory domain.Which solution will meet these requirements with the LEAST amount of effort?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Create an Active Directory connector using AWS Directory Service. Create IAM users in the target accounts with the appropriate trust policy."
+        },
             {
                 "optionId": "B",
-                "optionText": "Set an S3 Bucket policy."
+                "optionText": "Create an Active Directory connector using AWS Directory Service. Associate the directory with AWS Single Sign-On (AWS SSO). Configure user access to target accounts through AWS SSO."
             },
             {
                 "optionId": "C",
-                "optionText": "Enable IAM Identity Federation."
+                "optionText": "Create an Amazon Cognito federated identity pool. Associate the pool identity with the on-premises directory. Configure the IAM roles with the appropriate trust policy."
             },
             {
                 "optionId": "D",
-                "optionText": "Set an S3 ACL on the bucket or the object."
+                "optionText": "Create an identity provider in AWS IAM associated with the on-premises directory. Create IAM roles in the target accounts with the appropriate trust policy."
+            }
+        ]
+    },
+    {
+        "questionId": 280,
+        "questionText": "A company runs an image-processing application on a serverless infrastructure. Each processing job runs in a single AWS Lambda execution. A sysops administrator is tasked with ensuring there is enough capacity to run 500 simultaneous jobs even if other Lambda functions are being run for other applications.The administrator has already increased service limits within the Region.Which action should be taken?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Configure a dead-letter queue to retry any throttled executions"
+        },
+            {
+                "optionId": "B",
+                "optionText": "Modify the memory settings on the Lambda function to allow for 500 parallel executions"
+            },
+            {
+                "optionId": "C",
+                "optionText": "Move the image-processing logic to AWS Step Functions"
+            },
+            {
+                "optionId": "D",
+                "optionText": "Set the reserved concurrency for the image-processing Lambda function to 500"
+            }
+        ]
+    },
+    {
+        "questionId": 281,
+        "questionText": "A sysops administrator has an AWS Lambda function that performs maintenance on various AWS resources. This function must be run nightly.Which is the MOST cost-effective solution?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Launch a single t2.nano Amazon EC2 instance and create a Linux cron job to invoke the Lambda function at the same time every night."
+        },
+            {
+                "optionId": "B",
+                "optionText": "Set up an Amazon CloudWatch metrics alarm to invoke the Lambda function at the same time every night."
+            },
+            {
+                "optionId": "C",
+                "optionText": "Schedule a CloudWatch event to invoke the Lambda function at the same time every night. "
+            },
+            {
+                "optionId": "D",
+                "optionText": "Implement a Chef recipe in AWS OpsWorks stack to invoke the Lambda function at the same time every night."
+            }
+        ]
+    },
+    {
+        "questionId": 282,
+        "questionText": "A company has a multi-tier web application. In the web tier, all the servers are in private subnets inside a VPC. The development team wants to make changes to the application that requires access to Amazon S3.What should be done to accomplish this?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Create a customer gateway to connect to Amazon S3. Modify the route table of the private subnets to use the customer gateway."
+        },
+            {
+                "optionId": "B",
+                "optionText": "Create a gateway VPC endpoint for Amazon S3. Modify the route table of the private subnets to use the gateway VPC endpoint. "
+            },
+            {
+                "optionId": "C",
+                "optionText": "Create a NAT gateway in the private subnets. Modify the route table of the subnets to use the NAT gateway."
+            },
+            {
+                "optionId": "D",
+                "optionText": "Create an S3 bucket policy to allow connections from the private subnets. Modify the route table."
+            }
+        ]
+    },
+    {
+        "questionId": 283,
+        "questionText": "A SysOps Administrator is analyzing how Reserved Instance discounts are allocated to Amazon EC2 instances across accounts in the company's consolidated bill.Which AWS tool will provide the details necessary to understand the billing charges?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "AWS Budgets"
+        },
+            {
+                "optionId": "B",
+                "optionText": "AWS Cost and Usage report"
+            },
+            {
+                "optionId": "C",
+                "optionText": "AWS Trusted Advisor"
+            },
+            {
+                "optionId": "D",
+                "optionText": "AWS Organizations"
+            }
+        ]
+    },
+    {
+        "questionId": 284,
+        "questionText": "An application is currently deployed on several Amazon EC2 instances that reside within a VPC. Due to compliance requirements, the EC2 instances cannot have access to the public internet. SysOps Administrators require SSH access to EC2 instances from their corporate office to perform maintenance and other administrative tasks.Which combination of actions should be taken to permit SSH access to the EC2 instances while meeting the compliance requirements? (Choose two.)",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Attach a NAT gateway to the VPC and configure routing"
+        },
+            {
+                "optionId": "B",
+                "optionText": "Attach a virtual private gateway to the VPC and configure routing"
+            },
+            {
+                "optionId": "C",
+                "optionText": "Attach an internet gateway to the VPC and configure routing"
+            },
+            {
+                "optionId": "D",
+                "optionText": "Configure a VPN connection back to the corporate office"
             },
             {
                 "optionId": "E",
-                "optionText": "Create a CloudFront distribution for the bucke"
+                "optionText": "Configure an Application Load Balancer in front of the EC2 instances"
             }
-        ]},{
-        "questionId": 43,
-        "questionText": "What happens, by default, when one of the resources in a CloudFormation stack cannot be created?<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "Previously-created resources are kept but the stack creation terminates."
-            },
-            {
-                "optionId": "B",
-                "optionText": "Previously-created resources are deleted and the stack creation terminates."
-            },
-            {
-                "optionId": "C",
-                "optionText": "The stack creation continues, and the final results indicate which steps failed."
-            },
-            {
-                "optionId": "D",
-                "optionText": "CloudFormation templates are parsed in advance so stack creation is guaranteed to succeed."
-            }
-        ]},
+        ]
+    },
     {
-        "questionId": 44,
-        "questionText": "Which of the following are correct statements with policy evaluation logic in AWS Identity and Access<br>Management? (Choose two.)<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "By default, all requests are denied"
-            },
+        "questionId": 285,
+        "questionText": "A company's IT department noticed an increase in the spend of their Developer AWS account. There are over 50 Developers using the account, and the Finance team wants to determine the service costs incurred by each Developer.What should a SysOps Administrator do to collect this information? (Choose two.)",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Activate the createdBy tag in the account"
+        },
             {
                 "optionId": "B",
-                "optionText": "An explicit allow overrides an explicit deny"
+                "optionText": "Analyze the usage with Amazon CloudWatch dashboards"
             },
             {
                 "optionId": "C",
-                "optionText": "An explicit allow overrides default deny."
+                "optionText": "Analyze the usage with Cost Explorer"
             },
             {
                 "optionId": "D",
-                "optionText": "An explicit deny does not override an explicit allow"
+                "optionText": "Configure AWS Trusted Advisor to track resource usage"
             },
             {
                 "optionId": "E",
-                "optionText": "By default, all request are allowed"
+                "optionText": "Create a billing alarm in AWS Budgets"
             }
-        ]},{
-        "questionId": 45,
-        "questionText": "You have an environment that consists of a public subnet using Amazon VPC and 3 instances that are running in this subnet. These three instances can successfully communicate with other hosts on the Internet. You launch a fourth instance in the same subnet, using the same AMI and security group configuration you used for the others, but find that this instance cannot be accessed from the Internet.<br>What should you do to enable internet access?<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "Deploy a NAT instance into the public subnet."
-            },
+        ]
+    },
+    {
+        "questionId": 286,
+        "questionText": "A sysops administrator created an AWS Lambda function within a VPC with no access to the Internet. The Lambda function pulls messages from an Amazon SQS queue and stores them in an Amazon RDS instance in the same VPC. After executing the Lambda function, the data is not showing up on the RDS instance.Which of the following are possible causes for this? (Choose two.)",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "A VPC endpoint has not been created for Amazon RDS"
+        },
             {
                 "optionId": "B",
-                "optionText": "Modify the routing table for the public subnet"
+                "optionText": "A VPC endpoint has not been created for Amazon SQS"
             },
             {
                 "optionId": "C",
-                "optionText": "Configure a publically routable IP Address In the host OS of the fourth instance."
+                "optionText": "The RDS security group is not allowing connections from the Lambda function"
             },
             {
                 "optionId": "D",
-                "optionText": "Assign an Elastic IP address to the fourth instance."
-            }
-        ]},{
-        "questionId": 46,
-        "questionText": "If a message is retrieved from a queue in Amazon SQS, how long is the message inaccessible to other users by default?<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "0 seconds"
-            },
-            {
-                "optionId": "B",
-                "optionText": "1 hour"
-            },
-            {
-                "optionId": "C",
-                "optionText": "1 day"
-            },
-            {
-                "optionId": "D",
-                "optionText": "forever"
+                "optionText": "The subnet associated with the Lambda function does not have an internet gateway attached"
             },
             {
                 "optionId": "E",
-                "optionText": "30 seconds"
+                "optionText": "The subnet associated with the Lambda function has a NAT gateway"
             }
-        ]},
+        ]
+    },
     {
-        "questionId": 47,
-        "questionText": "What is the format of structured notification messages sent by Amazon SNS?<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "An XML object containing MessageId, UnsubscribeURL, Subject, Message and other values"
-            },
+        "questionId": 287,
+        "questionText": "A company wants to identify specific Amazon EC2 instances that are underutilized and the estimated cost savings for each instance.How can this be done with MINIMAL effort?",
+        "questionOptions": [{
+            "optionId": "A",
+            "optionText": "Use AWS Budgets to report on low utilization of EC2 instances."
+        },
             {
                 "optionId": "B",
-                "optionText": "An JSON object containing MessageId, DuplicateFlag, Message and other values"
+                "optionText": "Run an AWS Systems Manager script to check for low memory utilization of EC2 instances."
             },
             {
                 "optionId": "C",
-                "optionText": "An XML object containing MessageId, DuplicateFlag, Message and other values"
+                "optionText": "Run Cost Explorer to look for low utilization of EC2 instances."
             },
             {
                 "optionId": "D",
-                "optionText": "An JSON object containing MessageId, unsubscribeURL, Subject, Message and other values"
+                "optionText": "Use Amazon CloudWatch metrics to identify EC2 instances with low utilization."
             }
-        ]},
-    {
-        "questionId": 48,
-        "questionText": "Which of the following services are key/value stores? (Choose three.)<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "Amazon ElastiCache"
-            },
-            {
-                "optionId": "B",
-                "optionText": "Simple Notification Service"
-            },
-            {
-                "optionId": "C",
-                "optionText": "DynamoDB"
-            },
-            {
-                "optionId": "D",
-                "optionText": "Simple Workflow Service"
-            },
-            {
-                "optionId": "E",
-                "optionText": "Simple Storage Service"
-            }
-        ]},{
-        "questionId": 49,
-        "questionText": "When uploading an object, what request header can be explicitly specified in a request to Amazon S3 to encrypt object data when saved on the server side?<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "x-amz-storage-class"
-            },
-            {
-                "optionId": "B",
-                "optionText": "Content-MD5"
-            },
-            {
-                "optionId": "C",
-                "optionText": "x-amz-security-token"
-            },
-            {
-                "optionId": "D",
-                "optionText": "x-amz-server-side-encryption"
-            }
-        ]},
-    {
-        "questionId": 50,
-        "questionText": "What item operation allows the retrieval of multiple items from a DynamoDB table in a single API call?<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "GetItem"
-            },
-            {
-                "optionId": "B",
-                "optionText": "BatchGetItem"
-            },
-            {
-                "optionId": "C",
-                "optionText": "GetMultipleItems"
-            },
-            {
-                "optionId": "D",
-                "optionText": "GetItemRange"
-            }
-        ]},
-    {
-        "questionId": 51,
-        "questionText": "After launching an instance that you intend to serve as a NAT (Network Address Translation) device in a public subnet you modify your route tables to have the NAT device be the target of internet bound traffic of your private subnet. When you try and make an outbound connection to the Internet from an instance in the private subnet, you are not successful.<br>Which of the following steps could resolve the issue?<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "Attaching a second Elastic Network interface (ENI) to the NAT instance, and placing it in the private subnet"
-            },
-            {
-                "optionId": "B",
-                "optionText": "Attaching a second Elastic Network Interface (ENI) to the instance in the private subnet, and placing it in the public subnet"
-            },
-            {
-                "optionId": "C",
-                "optionText": "Disabling the Source/Destination Check attribute on the NAT instance"
-            },
-            {
-                "optionId": "D",
-                "optionText": "Attaching an Elastic IP address to the instance in the private subnet"
-            }
-        ]},
-    {
-        "questionId": 52,
-        "questionText": "You attempt to store an object in the US-STANDARD region in Amazon S3, and receive a confirmation that it has been successfully stored. You then immediately make another API call and attempt to read this object. S3 tells you that the object does not exist.<br>What could explain this behavior?<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "US-STANDARD uses eventual consistency and it can take time for an object to be readable in a bucket"
-            },
-            {
-                "optionId": "B",
-                "optionText": "Objects in Amazon S3 do not become visible until they are replicated to a second region."
-            },
-            {
-                "optionId": "C",
-                "optionText": "US-STANDARD imposes a 1 second delay before new objects are readable."
-            },
-            {
-                "optionId": "D",
-                "optionText": "You exceeded the bucket object limit, and once this limit is raised the object will be visible"
-            }
-        ]},{
-        "questionId": 54,
-        "questionText": "Which of the following items are required to allow an application deployed on an EC2 instance to write data to a DynamoDB table?<br>Assume that no security Keys are allowed to be stored on the EC2 instance. (Choose two.)<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "Create an IAM User that allows write access to the DynamoDB table."
-            },
-            {
-                "optionId": "B",
-                "optionText": "Add an IAM Role to a running EC2 instance."
-            },
-            {
-                "optionId": "C",
-                "optionText": "Add an IAM User to a running EC2 Instance."
-            },
-            {
-                "optionId": "D",
-                "optionText": "Launch an EC2 Instance with the IAM Role included in the launch configuration."
-            },
-            {
-                "optionId": "E",
-                "optionText": "Create an IAM Role that allows write access to the DynamoDB table."
-            },
-            {
-                "optionId": "F",
-                "optionText": "Launch an EC2 Instance with the IAM User included in the launch configuration."
-            }
-        ]},{
-        "questionId": 55,
-        "questionText": "Company C is currently hosting their corporate site in an Amazon S3 bucket with Static Website Hosting enabled. Currently, when visitors go to http:// www.companyc.com the index.html page is returned. Company C now would like a new page welcome.html to be returned when a visitor enters http:// www.companyc.com in the browser.<br>Which of the following steps will allow Company C to meet this requirement? (Choose two.)<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "Upload an html page named welcome.html to their S3 bucket"
-            },
-            {
-                "optionId": "B",
-                "optionText": "Create a welcome subfolder in their S3 bucket"
-            },
-            {
-                "optionId": "C",
-                "optionText": "Set the Index Document property to welcome.html"
-            },
-            {
-                "optionId": "D",
-                "optionText": "Move the index.html page to a welcome subfolder"
-            },
-            {
-                "optionId": "E",
-                "optionText": "Set the Error Document property to welcome.html"
-            }
-        ]},{
-        "questionId": 56,
-        "questionText": "What type of block cipher does Amazon S3 offer for server side encryption?<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "Triple DES"
-            },
-            {
-                "optionId": "B",
-                "optionText": "Advanced Encryption Standard"
-            },
-            {
-                "optionId": "C",
-                "optionText": "Blowfish"
-            },
-            {
-                "optionId": "D",
-                "optionText": "RC5"
-            }
-        ]},
-    {
-        "questionId": 57,
-        "questionText": "If an application is storing hourly log files from thousands of instances from a high traffic web site, which naming scheme would give optimal performance on S3?<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "Sequential"
-            },
-            {
-                "optionId": "B",
-                "optionText": "instanceID_log-HH-DD-MM-YYYY"
-            },
-            {
-                "optionId": "C",
-                "optionText": "instanceID_log-YYYY-MM-DD-HH"
-            },
-            {
-                "optionId": "D",
-                "optionText": "HH-DD-MM-YYYY-log_instanceID"
-            },
-            {
-                "optionId": "E",
-                "optionText": "YYYY-MM-DD-HH-log_instanceID"
-            }
-        ]},{
-        "questionId": 58,
-        "questionText": "Which of the following statements about SQS is true?<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "Messages will be delivered exactly once and messages will be delivered in First in, First out order"
-            },
-            {
-                "optionId": "B",
-                "optionText": "Messages will be delivered exactly once and message delivery order is indeterminate"
-            },
-            {
-                "optionId": "C",
-                "optionText": "Messages will be delivered one or more times and messages will be delivered in First in, First out order"
-            },
-            {
-                "optionId": "D",
-                "optionText": "Messages will be delivered one or more times and message delivery order is indeterminate"
-            }
-        ]},
-    {
-        "questionId": 59,
-        "questionText": "A corporate web application is deployed within an Amazon VPC, and is connected to the corporate data center via IPSec VPN. The application must authenticate against the on-premise LDAP server. Once authenticated, logged-in users can only access an S3 keyspace specific to the user.<br>Which two approaches can satisfy the objectives? (Choose two.)<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "The application authenticates against LDAP. The application then calls the IAM Security Service to login to IAM using the LDAP credentials. The application can use the IAM temporary credentials to access the appropriate S3 bucket."
-            },
-            {
-                "optionId": "B",
-                "optionText": "The application authenticates against LDAP, and retrieves the name of an IAM role associated with the user. The application then calls the IAM Security Token Service to assume that IAM Role. The application can use the temporary credentials to access the appropriate S3 bucket."
-            },
-            {
-                "optionId": "C",
-                "optionText": "The application authenticates against IAM Security Token Service using the LDAP credentials. The application uses those temporary AWS security credentials to access the appropriate S3 bucket."
-            },
-            {
-                "optionId": "D",
-                "optionText": "Develop an identity broker which authenticates against LDAP, and then calls IAM Security Token Service to get IAM federated user credentials. The application calls the identity broker to get IAM federated user credentials with access to the appropriate S3 bucket."
-            },
-            {
-                "optionId": "E",
-                "optionText": "Develop an identity broker which authenticates against IAM Security Token Service to assume an IAM Role to get temporary AWS security credentials. The application calls the identity broker to get AWS temporary security credentials with access to the appropriate S3 bucket."
-            }
-        ]},{
-        "questionId": 60,
-        "questionText": "Company B provides an online image recognition service and utilizes SQS to decouple system components for scalability The SQS consumers poll the imaging queue as often as possible to keep end-to-end throughput as high as possible. However, Company B is realizing that polling in tight loops is burning CPU cycles and increasing costs with empty responses.<br>How can Company B reduce the number of empty responses?<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "Set the imaging queue visibility Timeout attribute to 20 seconds"
-            },
-            {
-                "optionId": "B",
-                "optionText": "Set the Imaging queue ReceiveMessageWaitTimeSeconds attribute to 20 seconds"
-            },
-            {
-                "optionId": "C",
-                "optionText": "Set the imaging queue MessageRetentionPeriod attribute to 20 seconds"
-            },
-            {
-                "optionId": "D",
-                "optionText": "Set the DelaySeconds parameter of a message to 20 seconds"
-            }
-        ]},
-    {
-        "questionId": 61,
-        "questionText": "An Amazon S3 bucket, 'myawsbucket' is configured with website hosting in Tokyo region, what is the region-specific website endpoint?<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "www.myawsbucket.ap-northeast-1.amazonaws.com"
-            },
-            {
-                "optionId": "B",
-                "optionText": "myawsbucket.s3-website-ap-northeast-1.amazonawscom"
-            },
-            {
-                "optionId": "C",
-                "optionText": "myawsbucket.amazonaws.com"
-            },
-            {
-                "optionId": "D",
-                "optionText": "myawsbucket.tokyo.amazonaws.com"
-            }
-        ]},
-    {
-        "questionId": 62,
-        "questionText": "You are inserting 1000 new items every second in a DynamoDB table. Once an hour these items are analyzed and then are no longer needed. You need to minimize provisioned throughput, storage, and API calls.<br>Given these requirements, what is the most efficient way to manage these Items after the analysis?<br>",
-        "questionOptions": [
-            {
-                "optionId": "A",
-                "optionText": "Retain the items in a single table"
-            },
-            {
-                "optionId": "B",
-                "optionText": "Delete items individually over a 24 hour period"
-            },
-            {
-                "optionId": "C",
-                "optionText": "Delete the table and create a new table per hour"
-            },
-            {
-                "optionId": "D",
-                "optionText": "Create a new table per hour"
-            }
-        ]}
+        ]
+    }
 ];
-const answers =    [
-    {
-        "questionSkId": 208,
-        "questionAnswer": "AC",
-        "questionAnswerExplanation": "",
-        "questionId": 1,
-        "examId": "DVA-C01"
+const answers =   [{
+        "questionSkId": 165,
+        "questionId": 281,
+        "questionAnswer": "D",
+        "questionAnswerExplanation": "After an instance has been marked unhealthy by Auto Scaling, as a result of an Amazon EC2 or ELB health check, it is almost immediately scheduled for replacement as it will never automatically recover its health. If the user knows that the instance is healthy then he can manually call the SetInstanceHealth action (or the as-set instance- health command from CLI. to set the instance's health status back to healthy. Auto Scaling will throw an error if the instance is already terminating or else it will mark it healthy.",
+        "examId": "SOA-C01"
     },
         {
-            "questionSkId": 209,
+            "questionSkId": 166,
+            "questionId": 282,
+            "questionAnswer": "A",
+            "questionAnswerExplanation": "The user has created an Elastic Load Balancer with the availability zone and wants to add more zones to the existing ELB. The user can do so in two ways:1. From the console or CLI2. add new zones to ELB",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 167,
+            "questionId": 283,
+            "questionAnswer": "A",
+            "questionAnswerExplanation": "AWS Identity and Access Management is a web service which allows organizations to manage users and user permissions for various AWS services. The default maximums for each of the IAM entities is given below: Groups per AWS account: 100 - Users per AWS account: 5000 - Roles per AWS account: 250 - Number of groups per user: 10 (that is, one user can be part of these many groups).",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 168,
+            "questionId": 284,
+            "questionAnswer": "D",
+            "questionAnswerExplanation": "Scale based on a schedule - Sometimes you know exactly when you will need to increase or decrease the number of instances in your group, simply because that need arises on a predictable schedule. Scaling by schedule means that scaling actions are performed automatically as a function of time and date.For more information, see Scheduled Scaling. http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/schedule_time.html",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 169,
+            "questionId": 285,
+            "questionAnswer": "D",
+            "questionAnswerExplanation": "A Virtual Private Cloud (VPC) is a virtual network dedicated to the users AWS account. A user can create a subnet with VPC and launch instances inside that subnet. If the user has created two subnets (one private and one public., he would need a Network Address Translation (NAT) instance with the elastic IP address. This enables the instances in the private subnet to send requests to the Internet (for example, to perform software updates).",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 170,
+            "questionId": 286,
+            "questionAnswer": "A",
+            "questionAnswerExplanation": "The CloudWatch resources are always region specific and they will have the end point as region specific. If the user is trying to access the metric in the US-East-1 region, the endpoint URL will be: monitoring.us-east-1.amazonaws.com",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 171,
+            "questionId": 287,
+            "questionAnswer": "A",
+            "questionAnswerExplanation": "Auto Scaling performs various processes, such as Launch, Terminate, add to Load Balancer etc. The user can also suspend the individual process. The AddToLoadBalancer process type adds instances to the load balancer when the instances are launched. If this process is suspended, Auto Scaling will launch the instances but will not add them to the load balancer. When the user resumes this process, Auto Scaling will resume adding new instances launched after resumption to the load balancer. However, it will not add running instances that were launched while the process was suspended; those instances must be added manually.",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 172,
+            "questionId": 288,
             "questionAnswer": "B",
-            "questionAnswerExplanation": "AES 256",
-            "questionId": 2,
-            "examId": "DVA-C01"
+            "questionAnswerExplanation": "Elastic Load Balancing access logs capture detailed information for all the requests made to the load balancer.Each request will have details, such as client IP, request path, ELB IP, time, and latencies. The time will have information, such as Request Processing time, Backend Processing time and Response Processing time.",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 173,
+            "questionId": 289,
+            "questionAnswer": "B",
+            "questionAnswerExplanation": "Outdated applies to reg s3 instead of RRSAWS Glacier is an archival service offered by AWS. AWS S3 provides lifecycle rules to archive and restore objects from S3 to Glacier. Once the object is archived their storage class will change to Glacier. If the user sends a request for restore, the storage class will still be Glacier for the restored object. The user will be paying for both the archived copy as well as for the restored object. The object is available only for the duration specified in the restore request and if the user wants to modify that period, he has to raise another restore request with the updated duration.",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 174,
+            "questionId": 290,
+            "questionAnswer": "A",
+            "questionAnswerExplanation": "Amazon CloudWatch alarm watches a single metric over a time period that the user specifies and performs one or more actions based on the value of the metric relative to a given threshold over a number of time periods. The user can setup an action which terminates the instances when their CPU utilization is below a certain threshold for a certain period of time. The EC2 action can either terminate or stop the instance as part of the EC2 action.",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 175,
+            "questionId": 291,
+            "questionAnswer": "D",
+            "questionAnswerExplanation": "AWS S3 supports client side or server side encryption to encrypt all data at Rest. The server side encryption can either have the S3 supplied AES-256 encryption key or the user can send the key along with each API call to supply his own encryption key (SSE-C). Since S3 does not store the encryption keys in SSE-C, it is recommended that the user should manage keys securely and keep rotating them regularly at the client side version.",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 176,
+            "questionId": 292,
+            "questionAnswer": "A",
+            "questionAnswerExplanation": "When the user creates an EBS volume and is trying to access it for the first time it will encounter reducedIOPS due to wiping or initiating of the block storage. To avoid this as well as achieve the best performance it is required to pre warm the EBS volume. For a volume created from a snapshot and attached with a Linux OS, the 'dd' command pre warms the existing data on EBS and any restored snapshots of volumes that have been previously fully pre warmed. This command maintains incremental snapshots; however, because this operation is read-only, it does not pre warm unused space that has never been written to on the original volume. In the command 'dd if=/dev/xvdf of=/dev/null bs=1M' , the parameter 'if=input file' should be set to the drive that the user wishes to warm. The 'of=output file' parameter should be set to the Linux null virtual device,/dev/null. The 'bs' parameter sets the block size of the read operation; for optimal performance, this should be set to 1 MB.",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 177,
+            "questionId": 293,
+            "questionAnswer": "B",
+            "questionAnswerExplanation": "Generally, when a user has launched an EC2 instance from an instance store backed AMI, it can be converted to an EBS backed AMI provided the user has attached the EBS volume to the instance and unbundles the AMI data to it. However, if the instance is a Windows instance, AWS does not allow this. In this case, since the instance is a Windows instance, the user cannot convert it to an EBS backed AMI.",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 178,
+            "questionId": 294,
+            "questionAnswer": "D",
+            "questionAnswerExplanation": "Option A doesn't use standard AWS terminology (you don't route to 'VPC'), and because the mask is /24, it would only allow the instances in the private subnet to communicate with each other, not all the instances in the VPC as the question asked. Here's an example VPC route table for a public subnet (i.e. it routes to theIGW). Option D is the correct one.",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 179,
+            "questionId": 296,
+            "questionAnswer": "A",
+            "questionAnswerExplanation": "It is always possible that someone can terminate an EC2 instance using the Amazon EC2 console, command line interface or API by mistake. If the admin wants to prevent the instance from being accidentally terminated, he can enable termination protection for that instance. The DisableApiTermination attribute controls whether the instance can be terminated using the console, CLI or API. By default, termination protection is disabled for an EC2 instance. When it is set it will not allow the user to terminate the instance from CLI, API or the console.",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 180,
+            "questionId": 297,
+            "questionAnswer": "D",
+            "questionAnswerExplanation": "CloudWatch is used to monitor AWS as well as the custom services. To enable detailed instance monitoring for a new Auto Scaling group, the user does not need to take any extra steps. When the user creates theAutoScaling launch config as the first step for creating an Auto Scaling group, each launch configuration contains a flag named InstanceMonitoring.Enabled. The default value of this flag is true. When the user has created a launch configuration with InstanceMonitoring.Enabled = false it will involve multiple steps to enable detail monitoring. The steps are:Create a new Launch config with detailed monitoring enabledUpdate the Auto Scaling group with a new launch configEnable detail monitoring on each EC2 instance",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 181,
+            "questionId": 298,
+            "questionAnswer": "C",
+            "questionAnswerExplanation": "When the user creates a new EBS volume or restores a volume from the snapshot, the back-end storage blocks are immediately allocated to the user EBS. However, the first time when the user is trying to access a block of the storage, it is recommended to either be wiped from the new volumes or instantiated from the snapshot (for restored volumes. before the user can access the block. This preliminary action takes time and can cause a 5 to 50 percent loss of IOPS for the volume when the block is accessed for the first time. To avoid this, it is required to pre warm the volume. Pre-warming an EBS volume on a Linux instance requires that the user should unmount the blank device first and then write all the blocks on the device using a command, such as 'dd'.",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 182,
+            "questionId": 299,
+            "questionAnswer": "A",
+            "questionAnswerExplanation": "When the user has launched an EC2 instance from an instance store backed AMI and added an instance store volume to the instance in addition to the root device volume, the block device mapping for the new AMI contains the information for these volumes as well. In addition, the block device mappings for the instances those are launched from the new AMI will automatically contain information for these volumes.",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 183,
+            "questionId": 300,
+            "questionAnswer": "B",
+            "questionAnswerExplanation": "A user can create an EBS volume either from a snapshot or as a blank volume. If the volume is from a snapshot it will not be blank. The volume shows the right size only as long as it is mounted. This shows that the file system is created. When the user is accessing the volume the AWS EBS will wipe out the block storage or instantiate from the snapshot. Thus, the volume will show a loss of IOPS. It is recommended that the user should pre warm the EBS before use to achieve better IO",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 184,
+            "questionId": 203,
+            "questionAnswer": "C",
+            "questionAnswerExplanation": "C. Map the role attribute to an AWS role. The AWS role is assigned IAM policies that govern access to AWS resources.https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_saml_assertions.html",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 185,
+            "questionId": 205,
+            "questionAnswer": "C",
+            "questionAnswerExplanation": "Here is a comparison between the old NAT instance and new NAT Gateway: https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-comparison.htmlSpecific to this question regarding performance:NAT GW: Performance Software is optimized for handling NAT traffic.NAT Instance: A generic Amazon Linux AMI that's configured to perform NAT.Bandwidth:NAT GW: Can scale up to 45 Gbps.NAT Instance: Depends on the bandwidth of the instance type.",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 186,
+            "questionId": 206,
+            "questionAnswer": "D",
+            "questionAnswerExplanation": "Patching EC2 is customers responsibility",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 187,
+            "questionId": 207,
+            "questionAnswer": "B",
+            "questionAnswerExplanation": "A web application firewall (WAF) is the most commonly used solution for protection from XSS and web application attacks.https://www.imperva.com/learn/application-security/cross-site-scripting-xss-attacks/",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 188,
+            "questionId": 208,
+            "questionAnswer": "BE",
+            "questionAnswerExplanation": "B - Create the Cert using ACM which will encrypt data in transitE - keep data at rest encrypted using keys",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 189,
+            "questionId": 209,
+            "questionAnswer": "B",
+            "questionAnswerExplanation": "Create a larger disk for the cached volume. In the AWS Management Console, edit the local disks, then select the new disk as the cached volume.https://docs.aws.amazon.com/storagegateway/latest/userguide/Main_monitoring-gateways-common.html",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 190,
+            "questionId": 210,
+            "questionAnswer": "D",
+            "questionAnswerExplanation": "AWS WAF has rules that can protect web applications from HTTP flood attacks.",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 191,
+            "questionId": 211,
+            "questionAnswer": "A",
+            "questionAnswerExplanation": "In a public key infrastructure (PKI), a certificate authority (CA) is a trusted entity that issues digital certificates. These digital certificates bind a public key to an identity (a person or organization) by means of public key cryptography and digital signatures. To operate a CA, you must maintain trust by protecting the private key that signs the certificates issued by your CA. You can store the private key in the HSM in your AWS CloudHSM cluster, and use the HSM to perform the cryptographic signing operations.",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 192,
+            "questionId": 212,
+            "questionAnswer": "D",
+            "questionAnswerExplanation": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/RoutingToS3Bucket.html'The bucket must have the same name as your domain or subdomain. For example, if you want to use the subdomain acme.example.com, the name of the bucket must be acme.example.com.'",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 193,
+            "questionId": 213,
+            "questionAnswer": "D",
+            "questionAnswerExplanation": "https://docs.aws.amazon.com/waf/latest/developerguide/classic-tutorials-ddos-cross-service-WAF.html",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 194,
+            "questionId": 214,
+            "questionAnswer": "C",
+            "questionAnswerExplanation": "https://aws.amazon.com/blogs/security/how-to-use-service-control-policies-to-set-permission-guardrails-across-accounts-in-your-aws-organization/",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 195,
+            "questionId": 215,
+            "questionAnswer": "B",
+            "questionAnswerExplanation": "https://aws.amazon.com/rds/features/read-replicas/",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 196,
+            "questionId": 216,
+            "questionAnswer": "C",
+            "questionAnswerExplanation": "Even though the want to minimization application changes. They need durability and availability. And have not said anything about NOT changing the platform, C is correct too. Also it is a business critical application which Aurora is good for. Also Aurora automatically has multi az feature built in and will replicate across 3 AZs",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 197,
+            "questionId": 217,
+            "questionAnswer": "BD",
+            "questionAnswerExplanation": "For example, if the template is deploying resources in a specific VPC in one region based on the VPC id, that VPC won't exist in the other region, so it will throw an error",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 198,
+            "questionId": 218,
+            "questionAnswer": "B",
+            "questionAnswerExplanation": "Only master accounts in an organization and single accounts that aren't members of an organization have access to the Cost Allocation Tags manager in the Billing and Cost Management console.'Reference: https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/custom-tags.html",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 199,
+            "questionId": 219,
+            "questionAnswer": "AC",
+            "questionAnswerExplanation": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/metrics-collected-by-CloudWatch-agent.html",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 200,
+            "questionId": 220,
+            "questionAnswer": "B",
+            "questionAnswerExplanation": "https://docs.aws.amazon.com/AmazonS3/latest/user-guide/static-website-hosting.html",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 201,
+            "questionId": 221,
+            "questionAnswer": "A",
+            "questionAnswerExplanation": " https://aws.amazon.com/rds/details/backup/ 'With Amazon RDS, you can copy DB snapshots and DB cluster snapshots. You can copy automated or manual snapshots. After you copy a snapshot, the copy is a  manual snapshot. You can copy a snapshot within the same AWS Region, you can copy a snapshot across AWS Regions, and you can copy a snapshot across AWS accounts'",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 202,
+            "questionId": 222,
+            "questionAnswer": "D",
+            "questionAnswerExplanation": "In the payer account: Enable billing alerts in the Billing and Cost Management console; set up a billing alarm in Amazon CloudWatch; publish an SNS message when the alarm triggers.",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 203,
+            "questionId": 223,
+            "questionAnswer": "A",
+            "questionAnswerExplanation": " because Route53 point to ALB and the old scaling group is in the ALB, you can change your auto scaling group there and gradually when new instances are created use the new launch configuration",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 204,
+            "questionId": 224,
+            "questionAnswer": "A",
+            "questionAnswerExplanation": "All AWS Organizations actions are logged by CloudTrail and are documented in the AWS Organizations API Reference. For example, calls to CreateAccount (including the CreateAccountResult event), ListHandshakesForAccount, CreatePolicy, and InviteAccountToOrganization generate entries in the CloudTrail log files.",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 205,
+            "questionId": 225,
+            "questionAnswer": "C",
+            "questionAnswerExplanation": "https://docs.aws.amazon.com/lambda/latest/dg/configuration-concurrency.html",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 206,
+            "questionId": 10226,
+            "questionAnswer": "B",
+            "questionAnswerExplanation": "Restart changes the physical host of an EC2",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 207,
+            "questionId": 10227,
+            "questionAnswer": "A",
+            "questionAnswerExplanation": "Also, if you are experiencing evictions with your cluster, it is usually a sign that you need to scale up (use a node that has a larger memory footprint) or scale out (add additional nodes to the cluster) in order to accommodate the additional data. An exception to this rule is if you are purposefully relying on the cache engine to manage your keys by means of eviction, also referred to an LRU cache.",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 208,
+            "questionId": 10228,
+            "questionAnswer": "C",
+            "questionAnswerExplanation": "C. AWS KMS https://aws.amazon.com/about-aws/whats-new/2019/11/aws-key-management-service-supports-asymmetric-keys/",
+            "examId": "SOA-C01"
+        },
+        {
+            "questionSkId": 209,
+            "questionId": 10229,
+            "questionAnswer": "DE",
+            "questionAnswerExplanation": "D. Add an entry to the route table for the subnet that points to an internet gatewayE. Create an internet gateway and attach it to a VPC",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 210,
-            "questionAnswer": "D",
-            "questionAnswerExplanation": "The correct answer may be (D). This question is a little bit outdated, because Amazon has improved the performance of S3 and we are not required to save files with 'maximum variability for names from left to right'. But considering the certification tests takes a long time to be updated, the explanation for this question is as follows: (A) is wrong because sequential files would start with the same prefix like 'file1', 'file2', 'file3' (file). Or, if the sequence is only a number '1000', '1001', '1002' (100).  (B) and (C) are incorrect because instanceId always starts with the same prefix 'i-' as with 'i-12345...' or 'i-1dae31...'. Letter (E) is incorrect because you would have the same prefix year. So, letter (D) is the best option here. D. HH-DD-MM-YYYY-log_instanceID",
-            "questionId": 3,
-            "examId": "DVA-C01"
+            "questionId": 10230,
+            "questionAnswer": "C",
+            "questionAnswerExplanation": "https://aws.amazon.com/blogs/devops/aws-config-checking-for-compliance-with-new-managed-rule-options/",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 211,
-            "questionAnswer": "D",
-            "questionAnswerExplanation": "",
-            "questionId": 4,
-            "examId": "DVA-C01"
+            "questionId": 10231,
+            "questionAnswer": "A",
+            "questionAnswerExplanation": "If you need low-latency access to your entire dataset, first configure your on-premises gateway to store all your data locally. Then asynchronously back up point-in-time snapshots of this data to Amazon S3.Refer to https://docs.aws.amazon.com/storagegateway/latest/userguide/WhatIsStorageGateway.html",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 212,
-            "questionAnswer": "BD",
-            "questionAnswerExplanation": "B. The application authenticates against LDAP, and retrieves the name of an IAM role associated with the user. The application then calls the IAM Security Token Service to assume that IAM Role. The application can use the temporary credentials to access the appropriate S3 bucket. https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.htmlD. Develop an identity broker which authenticates against LDAP, and then calls IAM Security Token Service to get IAM federated user credentials. The application calls the identity broker to get IAM federated user credentials with access to the appropriate S3 bucket. https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_federated-users.html",
-            "questionId": 5,
-            "examId": "DVA-C01"
+            "questionId": 10232,
+            "questionAnswer": "D",
+            "questionAnswerExplanation": "Share the AWS Service Catalog portfolio with the other AWS accounts and import the portfolio into the other AWS accounts.https://docs.aws.amazon.com/servicecatalog/latest/adminguide/catalogs_portfolios_sharing.html",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 213,
-            "questionAnswer": "B",
-            "questionAnswerExplanation": "B. Set the Imaging queue ReceiveMessageWaitTimeSeconds attribute to 20 secondshttps://acloud.guru/forums/aws-certified-developer-associate/discussion/-KVl2bxZyNfVHVzjwGlh/i-dont-get-this-version-of-the-sqs-question",
-            "questionId": 6,
-            "examId": "DVA-C01"
+            "questionId": 10233,
+            "questionAnswer": "A",
+            "questionAnswerExplanation": "AWS offers about 220 services. It would be easier to Allow a few than to Deny many in a policy. Imagine how many 'Deny' you will be required to list if all you want to do is allow access to just one or two services. I will pick A as the best answer.",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 214,
-            "questionAnswer": "B",
-            "questionAnswerExplanation": "<bucket>.s3-website.<region>.amazonaws.com",
-            "questionId": 7,
-            "examId": "DVA-C01"
+            "questionId": 10234,
+            "questionAnswer": "A",
+            "questionAnswerExplanation": "Anyway targettracking on ALB's RequestCountPerTarget metric is advised by AWS:'We strongly recommend that you use a target tracking scaling policy to scale on a metric like average CPU utilization or the RequestCountPerTarget metric from the Application Load Balancer. 'Refer to https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-simple-step.html",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 215,
-            "questionAnswer": "C",
-            "questionAnswerExplanation": "",
-            "questionId": 8,
-            "examId": "DVA-C01"
+            "questionId": 10235,
+            "questionAnswer": "B",
+            "questionAnswerExplanation": "AMI is region specific. So it might not be available in another region",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 216,
-            "questionAnswer": "D",
-            "questionAnswerExplanation": "",
-            "questionId": 9,
-            "examId": "DVA-C01"
+            "questionId": 10236,
+            "questionAnswer": "C",
+            "questionAnswerExplanation": " VPC Flow Logs",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 217,
-            "questionAnswer": "B",
-            "questionAnswerExplanation": "http://jayendrapatil.com/aws-simple-storage-service-s3-overview/",
-            "questionId": 10,
-            "examId": "DVA-C01"
+            "questionId": 10237,
+            "questionAnswer": "D",
+            "questionAnswerExplanation": "Existing accounts need to be invited Refer to https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_invites.html",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 218,
-            "questionAnswer": "BC",
-            "questionAnswerExplanation": "B. DynamoDB uses optimistic concurrency control C. DynamoDB uses conditional writes for consistencyhttps://acloud.guru/forums/aws-certified-developer-associate/discussion/-KU1QiDQbyXA0qgvK6Q0/which-statements-about-dynamodb-are-true-pick-2-correct-answers",
-            "questionId": 11,
-            "examId": "DVA-C01"
+            "questionId": 10238,
+            "questionAnswer": "AB",
+            "questionAnswerExplanation": "RequirementsThe bucket must be located in the same region as the load balancer.Amazon S3-Managed Encryption Keys (SSE-S3) is required. No other encryption options are supported.The bucket must have a bucket policy that grants permission to write the access logs to your bucket. Bucket policies are a collection of JSON statements written in the access policy language to define access permissions for your bucket. The following is an example policy.https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-access-logs.html",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 219,
-            "questionAnswer": "D",
-            "questionAnswerExplanation": "http://jayendrapatil.com/aws-sns-simple-notification-service/",
-            "questionId": 12,
-            "examId": "DVA-C01"
+            "questionId": 10239,
+            "questionAnswer": "C",
+            "questionAnswerExplanation": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 220,
-            "questionAnswer": "C",
-            "questionAnswerExplanation": "C. You're exceeding your capacity on a particular Hash KeyIf your application performs reads or writes at a higher rate than your table can support, DynamoDB begins to throttle those requests. When DynamoDB throttles a read or write, it returns a ProvisionedThroughputExceededException to the caller. Then, let's go further.https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.Partitions.html It's not always possible to distribute read and write activity evenly. When data access is imbalanced, a 'hot' partition can receive a higher volume of read and write traffic compared to other partitions. In extreme cases, throttling can occur if a single partition receives more than 3,000 RCUs or 1,000 WCUs.",
-            "questionId": 13,
-            "examId": "DVA-C01"
+            "questionId": 10240,
+            "questionAnswer": "D",
+            "questionAnswerExplanation": "https://aws.amazon.com/storagegateway/faqs/",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 221,
-            "questionAnswer": "CE",
-            "questionAnswerExplanation": "C. Auto Scaling E. CloudFormation",
-            "questionId": 14,
-            "examId": "DVA-C01"
+            "questionId": 10241,
+            "questionAnswer": "AC",
+            "questionAnswerExplanation": "SSM Agent must be installed on each instance you want to use with Systems Manager. SSM Agent is preinstalled, by default, on instances created from the following Amazon Machine Images (AMIs):Windows Server 2008-2012 R2 AMIs published in November 2016 or laterWindows Server 2016 and 2019Amazon LinuxAmazon Linux 2Ubuntu Server 16.04Ubuntu Server 18.04Amazon ECS-Optimized",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 222,
-            "questionAnswer": "B",
-            "questionAnswerExplanation": "B. Use the multi-part upload API for this object",
-            "questionId": 15,
-            "examId": "DVA-C01"
+            "questionId": 10242,
+            "questionAnswer": "C",
+            "questionAnswerExplanation": "Specify one or more route tables in which to create routes to the service. Route tables control the routing of traffic between your VPC and the other service. Each subnet that's associated with one of these route tables has access to the endpoint, and traffic from instances in these subnets to the service is then routed through the endpoint.Refer to https://docs.aws.amazon.com/vpc/latest/userguide/vpce-gateway.html",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 223,
-            "questionAnswer": "ACD",
-            "questionAnswerExplanation": "Beanstalk is an orchestration service offered by Amazon Web Services for deploying applications which orchestrates various AWS services, including EC2, S3, Simple Notification Service (SNS), CloudWatch, autoscaling, and Elastic Load Balancers.",
-            "questionId": 16,
-            "examId": "DVA-C01"
+            "questionId": 10243,
+            "questionAnswer": "C",
+            "questionAnswerExplanation": "https://aws.amazon.com/iam/faqs/",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 224,
+            "questionId": 10244,
             "questionAnswer": "C",
-            "questionAnswerExplanation": "Request temporary security credentials using web identity federation to sign the requests http://jayendrapatil.com/iam-role-identity-providers-federation/",
-            "questionId": 17,
-            "examId": "DVA-C01"
+            "questionAnswerExplanation": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 225,
-            "questionAnswer": "BD",
-            "questionAnswerExplanation": "http://jayendrapatil.com/tag/sdk/",
-            "questionId": 18,
-            "examId": "DVA-C01"
+            "questionId": 10245,
+            "questionAnswer": "C",
+            "questionAnswerExplanation": " endpoints are for internal VPC comms, which do not transverse the internet",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 226,
-            "questionAnswer": "B",
-            "questionAnswerExplanation": "600 write per minute, thus 10 writes per second. 1x Write Capacity Unit = 1x 1KB Write Per second. Answer is B, 10 write capacity units.",
-            "questionId": 19,
-            "examId": "DVA-C01"
+            "questionId": 10246,
+            "questionAnswer": "DE",
+            "questionAnswerExplanation": "https://docs.aws.amazon.com/storagegateway/latest/userguide/GatewayTroubleshooting.html andCheck that the host has the correct time, that the host is configured to synchronize its time automatically to a Network Time Protocol (NTP) server, and that the gateway VM has the correct time. For information about synchronizing the time of hypervisor hosts and VMs, see Synchronizing Your Gateway VM Time.https://docs.aws.amazon.com/storagegateway/latest/userguide/Requirements.html#networksBy local systems to obtain the storage gateway activation key. Port 80 is only used during activation of the Storage Gateway appliance.AWS Storage Gateway does not require port 80 to be publicly accessible. The required level of access to port 80 depends on your network configuration. If you activate your gateway from the AWS Storage Gateway Management Console, the host from which you connect to the console must have access to your gateway’s port 80.",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 227,
-            "questionAnswer": "D",
-            "questionAnswerExplanation": "",
-            "questionId": 20,
-            "examId": "DVA-C01"
+            "questionId": 10247,
+            "questionAnswer": "A",
+            "questionAnswerExplanation": " AWS CloudTrail data event loggingManagement events provide visibility into management operations that are performed on resources in your AWS account.Data events provide visibility into the resource operations performed on or within a resource. These are also known as data plane operations. Data events are often high-volume activities.Example data events include:Amazon S3 object-level API activity (for example, GetObject, DeleteObject, and PutObject API operations)",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 228,
+            "questionId": 10248,
             "questionAnswer": "D",
-            "questionAnswerExplanation": "",
-            "questionId": 21,
-            "examId": "DVA-C01"
+            "questionAnswerExplanation": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/metrics-collected-by-CloudWatch-agent.htmlMetric Description disk_free Free space on the disks. Unit: Bytes",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 229,
-            "questionAnswer": "CE",
-            "questionAnswerExplanation": "C. The number of tables per account E. The number of provisioned throughput units per accountFor any AWS account, there is an initial limit of 256 tables per AWS Region. To request a service limit increase, see https://aws.amazon.com/support.There is an initial limit of 20 global secondary indexes per table. To request a service limit increase, see https://aws.amazon.com/support. ==> It's global secondary indexes, not local. Answer D is wrong. AWS places some default limits on the write capacity for DynamoDB tables with DynamoDB Streams enabled. These are the limits unless you request a higher amount. To request a service limit increase, see https://aws.amazon.com/support ==> Answer E is right.These are the limits unless you request a higher amount. To request a service limit increase, see https://aws.amazon.com/support. ==> Not included in the answers.",
-            "questionId": 22,
-            "examId": "DVA-C01"
+            "questionId": 10249,
+            "questionAnswer": "D",
+            "questionAnswerExplanation": "Restore object events — Amazon S3 supports the restoration of objects archived to the S3 Glacier storage class. You request to be notified of object restoration completion by using s3:ObjectRestore:Completed. You use s3:ObjectRestore:Post to request notification of the initiation of a restore.https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 230,
-            "questionAnswer": "A",
-            "questionAnswerExplanation": "A. Retrieve the message with an increased visibility timeout, process the message, delete the message from the queue The visibility timeout begins when Amazon SQS returns a message. During this time, the consumer processes and deletes the message. However, if the consumer fails before deleting the message and your system doesn't call the DeleteMessage action for that message before the visibility timeout expires, the message becomes visible to other consumers and the message is received again. If a message must be received only once, your consumer should delete it within the duration of the visibility timeout.",
-            "questionId": 23,
-            "examId": "DVA-C01"
+            "questionId": 10250,
+            "questionAnswer": "D",
+            "questionAnswerExplanation": "Starting the stopped instance migrates it to new hardwarerefer to https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-retirement.html",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 231,
-            "questionAnswer": "B",
-            "questionAnswerExplanation": "",
-            "questionId": 24,
-            "examId": "DVA-C01"
+            "questionId": 10251,
+            "questionAnswer": "C",
+            "questionAnswerExplanation": "NACL's can be attached to the VPC and can block ingress and egress",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 232,
-            "questionAnswer": "A",
-            "questionAnswerExplanation": "",
-            "questionId": 25,
-            "examId": "DVA-C01"
+            "questionId": 10252,
+            "questionAnswer": "BE",
+            "questionAnswerExplanation": "sends a health check request to each registered target every HealthCheckIntervalSeconds seconds, - By reducing this ALB will send the request More Frequently.he number of consecutive failed health checks required before considering a target unhealthy. The range is 2–10. The default is 2 - Hence Need to reduce the Unhealthy TH to given range.",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 233,
-            "questionAnswer": "B",
-            "questionAnswerExplanation": "",
-            "questionId": 26,
-            "examId": "DVA-C01"
+            "questionId": 10253,
+            "questionAnswer": "D",
+            "questionAnswerExplanation": "D seems to make more sense, as the IP addresses are unknown Refer to https://docs.aws.amazon.com/waf/latest/developerguide/web-acl.html",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 234,
-            "questionAnswer": "B",
-            "questionAnswerExplanation": "B. Amazon EBS-backed instances can be stopped and restarted",
-            "questionId": 27,
-            "examId": "DVA-C01"
+            "questionId": 10254,
+            "questionAnswer": "D",
+            "questionAnswerExplanation": "D since is third party VPN like cisco/fortigate so is just a VM that you want to use instead of native AWS VPN",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 235,
-            "questionAnswer": "C",
-            "questionAnswerExplanation": "C. Use an encrypted file system on top of the EBS volume.",
-            "questionId": 28,
-            "examId": "DVA-C01"
+            "questionId": 10255,
+            "questionAnswer": "BE",
+            "questionAnswerExplanation": "B, Note that Amazon RDS Multi-AZ deployments do not fail over automatically in response to database operations such as long running queries, deadlocks or database corruption errors.https://aws.amazon.com/rds/faqs/E, The DB instance's server type is changedhttps://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 236,
-            "questionAnswer": "C",
-            "questionAnswerExplanation": "C. us-east-1",
-            "questionId": 29,
-            "examId": "DVA-C01"
+            "questionId": 10256,
+            "questionAnswer": "A",
+            "questionAnswerExplanation": "Fix the error that caused the rollback to fail, then select the Continue Update Rollback action in the console. When a stack is in the UPDATE_ROLLBACK_FAILED state, you can continue to roll it back to a working state (UPDATE_ROLLBACK_COMPLETE)",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 237,
-            "questionAnswer": "ACE",
-            "questionAnswerExplanation": "Read the question 3 options required !!!! A. SWF tasks are assigned once and never duplicated C. SWF workflow executions can last up to a yearE. SWF uses deciders and workers to complete tasks",
-            "questionId": 30,
-            "examId": "DVA-C01"
+            "questionId": 10257,
+            "questionAnswer": "D",
+            "questionAnswerExplanation": "Spot Instances, keyword = interruptions is allowed so.",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 238,
-            "questionAnswer": "AC",
-            "questionAnswerExplanation": "",
-            "questionId": 31,
-            "examId": "DVA-C01"
+            "questionId": 10258,
+            "questionAnswer": "B",
+            "questionAnswerExplanation": "B. Amazon CloudWatch will accept the custom metric data and record it.The time stamp sent by the user can be up to two weeks in the past and up to two hours into the future.",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 239,
-            "questionAnswer": "B",
-            "questionAnswerExplanation": "",
-            "questionId": 32,
-            "examId": "DVA-C01"
+            "questionId": 10259,
+            "questionAnswer": "D",
+            "questionAnswerExplanation": "SysOps Administrator, this is what we've been studying all along.",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 240,
-            "questionAnswer": "ABE",
-            "questionAnswerExplanation": "A. TopicAm B. Subject E. Message https://docs.aws.amazon.com/sns/latest/api/API_Publish.htmlActually, you only need topicArn and Message, PublishRequest publishRequest = new PublishRequest(topicArn, msg); So this question is wrong. You just need A and E.",
-            "questionId": 33,
-            "examId": "DVA-C01"
+            "questionId": 10260,
+            "questionAnswer": "B",
+            "questionAnswerExplanation": "https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies-vpc-endpoint.html#example-bucket-policies-restrict-accesss-vpc-endpoint",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 241,
-            "questionAnswer": "D",
-            "questionAnswerExplanation": "",
-            "questionId": 34,
-            "examId": "DVA-C01"
+            "questionId": 10261,
+            "questionAnswer": "BD",
+            "questionAnswerExplanation": "https://aws.amazon.com/premiumsupport/knowledge-center/tags-billing-cost-center-project/",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 242,
+            "questionId": 10262,
             "questionAnswer": "C",
-            "questionAnswerExplanation": "",
-            "questionId": 35,
-            "examId": "DVA-C01"
+            "questionAnswerExplanation": "NAT gateway is created in a specific Availability Zone and implemented with redundancy in that zone only. To create an Availability Zone-independent architecture, create a NAT gateway in each Availability Zone and configure your routing to ensure that resources use the NAT gateway in the same Availability Zone.Refer to https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 243,
-            "questionAnswer": "C",
-            "questionAnswerExplanation": "C. DescribeImages Describes the specified images (AMIs, AKIs, and ARIs) available to you or all of the images available to you.",
-            "questionId": 36,
-            "examId": "DVA-C01"
+            "questionId": 10263,
+            "questionAnswer": "D",
+            "questionAnswerExplanation": "https://docs.aws.amazon.com/AmazonS3/latest/dev/RestoringPreviousVersions.html",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 244,
-            "questionAnswer": "ACDF",
-            "questionAnswerExplanation": "When a storage device has reached the end of its useful life, AWS decommissions media using techniques detailed in NIST 800-88. AWS will initiate a decommissioning process when a storage device has reached the end of its useful life. This process ensures that customer data is not exposed to unauthorized individuals. This hardware device will be physically destroyed or degaussed if it fails decommissioning using the standard process https://aws.amazon.com/compliance/data-center/controls/",
-            "questionId": 37,
-            "examId": "DVA-C01"
+            "questionId": 10264,
+            "questionAnswer": "AD",
+            "questionAnswerExplanation": "True A. Add Amazon CloudFront caching for static content. (For S3)Wrong B. Change the load balancer listener from HTTPS to TCP. (ALB not supported TCP. NLB supported TCP and has extreme perfermance)Wrong C. Enable Amazon Route 53 latency-based routing. (Application is in one region. Dont need latency)True D. Implement Amazon EC2 Auto Scaling for the web servers. (Auto Scailing can control app perfermance by scale out and scale in)Wrong E. Move the static content from Amazon S3 to the web servers.",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 245,
-            "questionAnswer": "A",
-            "questionAnswerExplanation": "A. Set a smaller page size for the scan Instead of using a large Scan operation, you can use the following techniques to minimize the impact of a scan on a table's provisioned throughput. * Reduce page size * Isolate scan operations",
-            "questionId": 38,
-            "examId": "DVA-C01"
+            "questionId": 10265,
+            "questionAnswer": "C",
+            "questionAnswerExplanation": "s3 Glacier Vault Lock allows you to easily deploy and enforce compliance controls for individual S3 Glacier vaults with a vault lock policy. You can specify controls such as “write once read many” (WORM) in a vault lock policy and lock the policy from future edits. Once locked, the policy can no longer be changed.",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 246,
-            "questionAnswer": "D",
-            "questionAnswerExplanation": "",
-            "questionId": 39,
-            "examId": "DVA-C01"
+            "questionId": 10266,
+            "questionAnswer": "A",
+            "questionAnswerExplanation": "A. Cost Explorer. 'consolidated billing' 'determine what's causing the increase.' Cost Explorer shows what service is causing the increase. Cost Allocation Tags show which account is causing the increase.",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 247,
-            "questionAnswer": "AB",
-            "questionAnswerExplanation": "https://docs.aws.amazon.com/elasticbeanstalk/latest/platforms/platforms-supported.html",
-            "questionId": 40,
-            "examId": "DVA-C01"
+            "questionId": 10267,
+            "questionAnswer": "D",
+            "questionAnswerExplanation": " You can use drift detection to identify stack resources to which configuration changes have been made outside of CloudFormation management. You can then take corrective action so that your stack resources are again in sync with their definitions in the stack template, such as updating the drifted resources directly so that they agree with their template definition. Resolving drift helps to ensure configuration consistency and successful stack operations.",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 248,
-            "questionAnswer": "A",
-            "questionAnswerExplanation": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-elb.html Fn::GetAtt The Fn::GetAtt intrinsic function returns a value for a specified attribute of this type. The following are the available attributes and sample return values. * DNSName The DNS name for the load balancer.",
-            "questionId": 41,
-            "examId": "DVA-C01"
+            "questionId": 10268,
+            "questionAnswer": "C",
+            "questionAnswerExplanation": "https://aws.amazon.com/blogs/compute/recovering-files-from-an-amazon-ebs-volume-backup/",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 249,
-            "questionAnswer": "BD",
-            "questionAnswerExplanation": "B. Set an S3 Bucket policy. D. Set an S3 ACL on the bucket or the object. https://aws.amazon.com/premiumsupport/knowledge-center/secure-s3-resources/",
-            "questionId": 42,
-            "examId": "DVA-C01"
+            "questionId": 10269,
+            "questionAnswer": "C",
+            "questionAnswerExplanation": "C. Implement a VPN tunnel and configure an Active Directory connector. Refer to https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_ad_connector.htmlThe provided reference https://docs.aws.amazon.com/directoryservice/latest/admin-guide/usecase5.html points to AWS Managed Microsoft AD, which indeed can help also, but it is not mentioned in Option A. Indeed you need a connection to on-premises, either via Direct Connect or VPN (or both), but that alone will not be a solution.",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 250,
-            "questionAnswer": "B",
-            "questionAnswerExplanation": "",
-            "questionId": 43,
-            "examId": "DVA-C01"
+            "questionId": 10270,
+            "questionAnswer": "C",
+            "questionAnswerExplanation": "as the ALB is public facing, your webservers (as your database servers) should be in the private subnets to limit exposurerefer to https://aws.amazon.com/premiumsupport/knowledge-center/public-load-balancer-private-ec2/",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 251,
-            "questionAnswer": "AC",
-            "questionAnswerExplanation": "",
-            "questionId": 44,
-            "examId": "DVA-C01"
+            "questionId": 10271,
+            "questionAnswer": "C",
+            "questionAnswerExplanation": "Ans C: If you reboot it will be on the same host. So, start and stop outside business hours",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 252,
-            "questionAnswer": "D",
-            "questionAnswerExplanation": "D. Assign an Elastic IP address to the fourth instance.",
-            "questionId": 45,
-            "examId": "DVA-C01"
+            "questionId": 10272,
+            "questionAnswer": "A",
+            "questionAnswerExplanation": "https://aws.amazon.com/premiumsupport/knowledge-center/elb-capacity-troubleshooting/",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 253,
-            "questionAnswer": "E",
-            "questionAnswerExplanation": "E. 30 seconds (default Visibility timeout for each Queue is 30 seconds and can be changed at the Queue level)",
-            "questionId": 46,
-            "examId": "DVA-C01"
+            "questionId": 10273,
+            "questionAnswer": "D",
+            "questionAnswerExplanation": " 5XX code correspond to server side issue... So the ALB target group does not contain healthy EC2 instances..",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 254,
-            "questionAnswer": "D",
-            "questionAnswerExplanation": "",
-            "questionId": 47,
-            "examId": "DVA-C01"
+            "questionId": 10274,
+            "questionAnswer": "B",
+            "questionAnswerExplanation": " - Access logging is an optional feature of Elastic Load Balancing that is disabled by default. After you enable access logging for your load balancer, Elastic Load Balancing captures the logs and stores them in the Amazon S3 bucket - Each log contains information such as the time the request was received, the client's IP address, latencies, request paths, and server responses. You can use these access logs to analyze traffic patterns and troubleshoot issues.https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 255,
-            "questionAnswer": "ACE",
-            "questionAnswerExplanation": "",
-            "questionId": 48,
-            "examId": "DVA-C01"
+            "questionId": 10275,
+            "questionAnswer": "AC",
+            "questionAnswerExplanation": "A and C are correct , There is no TTL for memcatch D and rest other 2 choice are also not valid",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 256,
+            "questionId": 10276,
             "questionAnswer": "D",
-            "questionAnswerExplanation": "",
-            "questionId": 49,
-            "examId": "DVA-C01"
+            "questionAnswerExplanation": "Service catalog is used for that purpose. However Service catalog works on templates",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 257,
+            "questionId": 10277,
             "questionAnswer": "B",
-            "questionAnswerExplanation": "B. BatchGetItem https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_BatchGetItem.html",
-            "questionId": 50,
-            "examId": "DVA-C01"
+            "questionAnswerExplanation": "Create a snapshot of the running instance and copy the snapshot to the other regions. Create an AMI from the snapshots. Update the CloudFormation template for each region to use the new AMI.",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 258,
-            "questionAnswer": "C",
-            "questionAnswerExplanation": "Disabling the Source/Destination Check attribute on the NAT instance https://docs.aws.amazon.com/vpc/latest/userguide/VPC_NAT_Instance.html#NATInstance Step 5",
-            "questionId": 51,
-            "examId": "DVA-C01"
+            "questionId": 10278,
+            "questionAnswer": "AE",
+            "questionAnswerExplanation": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 259,
-            "questionAnswer": "A",
-            "questionAnswerExplanation": "US-STANDARD uses eventual consistency and it can take time for an object to be readable in a buckethttps://acloud.guru/forums/aws-certified-developer-associate/discussion/-KGngHzVQ03OpeAA9jSP/i-cant-answer-a-sample-question-pretty-worried-about-the-real-thing",
-            "questionId": 52,
-            "examId": "DVA-C01"
+            "questionId": 10279,
+            "questionAnswer": "B",
+            "questionAnswerExplanation": "Create an Active Directory connector using AWS Directory Service",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 260,
-            "questionAnswer": "BE",
-            "questionAnswerExplanation": "B. Add an IAM Role to a running EC2 instance. E. Create an IAM Role that allows write access to the DynamoDB table.",
-            "questionId": 53,
-            "examId": "DVA-C01"
+            "questionId": 10280,
+            "questionAnswer": "D",
+            "questionAnswerExplanation": "The regional concurrency limit starts at 1,000. You can increase the limit by submitting a request in the Support Center console. To allocate capacity on a per-function basis, you can configure functions with reserved concurrency. Reserved concurrency creates a pool that can only be used by its function, and also prevents its function from using unreserved concurrency.",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 261,
-            "questionAnswer": "AC",
-            "questionAnswerExplanation": "",
-            "questionId": 54,
-            "examId": "DVA-C01"
+            "questionId": 10281,
+            "questionAnswer": "C",
+            "questionAnswerExplanation": "CloudWatch event to invoke the Lambda function",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 262,
+            "questionId": 10282,
             "questionAnswer": "B",
-            "questionAnswerExplanation": "",
-            "questionId": 55,
-            "examId": "DVA-C01"
+            "questionAnswerExplanation": "VPC gateway endpoint, in fact this was the way to connect to S3 without using internet but I'm not sure",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 263,
+            "questionId": 10283,
             "questionAnswer": "D",
-            "questionAnswerExplanation": "",
-            "questionId": 56,
-            "examId": "DVA-C01"
+            "questionAnswerExplanation": "AWS organizations, budgets is more for setting a limit and will only notify you when you reach it",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 264,
-            "questionAnswer": "D",
-            "questionAnswerExplanation": "",
-            "questionId": 57,
-            "examId": "DVA-C01"
+            "questionId": 10284,
+            "questionAnswer": "BD",
+            "questionAnswerExplanation": "the EC2 instances cannot have access to the public internet' -> A is incorrect, we don't need create NAT gateway to EC2 access internet.",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 265,
-            "questionAnswer": "BD",
-            "questionAnswerExplanation": "",
-            "questionId": 58,
-            "examId": "DVA-C01"
+            "questionId": 10285,
+            "questionAnswer": "AC",
+            "questionAnswerExplanation": "tag usage is displayed on cost explorer",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 266,
-            "questionAnswer": "B",
-            "questionAnswerExplanation": "",
-            "questionId": 59,
-            "examId": "DVA-C01"
+            "questionId": 10286,
+            "questionAnswer": "BE",
+            "questionAnswerExplanation": "Vpc end points need here. no need of internet ,i.g ,nat gateways ,etc.",
+            "examId": "SOA-C01"
         },
         {
             "questionSkId": 267,
-            "questionAnswer": "B",
-            "questionAnswerExplanation": "",
-            "questionId": 60,
-            "examId": "DVA-C01"
-        },
-        {
-            "questionSkId": 268,
+            "questionId": 10287,
             "questionAnswer": "C",
-            "questionAnswerExplanation": "",
-            "questionId": 61,
-            "examId": "DVA-C01"
-        },
-        {
-            "questionSkId": 269,
-            "questionAnswer": "D",
-            "questionAnswerExplanation": "",
-            "questionId": 62,
-            "examId": "DVA-C01"
+            "questionAnswerExplanation": "Cost explorer with rightsizing recommendations",
+            "examId": "SOA-C01"
         }
-    ];
+    ]
+;
 function mergeQaA() {
     alert ('merging');
     let arr3 = questionBank.map((item, i) => Object.assign({}, item, answers[i]));
