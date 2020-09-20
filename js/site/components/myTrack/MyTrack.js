@@ -96,7 +96,7 @@ class MyTrack extends DevspotBase {
                     answerColor = 'darkBlue';
                     break;
             }
-            mytrack += `<div class="col-md-1 col-sm-2 userAnswer basicTooltip padding-sides-0 ${answerColor}">${userAnswer.questionSkId} ${tooltipText}</div>`
+            mytrack += `<div class="col-md-1 col-xs-2 userAnswer basicTooltip padding-sides-0 ${answerColor}">${userAnswer.questionSkId} ${tooltipText}</div>`
             if (this.userRole === Role.CONTRIBUTOR) {
                 htmlToExportToPDF += `<p><strong>Question ${userAnswer.questionSkId}: </strong>${userAnswer.questionText}<br>`;
                 userAnswer.questionOptions?.forEach(x => htmlToExportToPDF += `<strong>Option ${x.optionId}: </strong>${x.optionText}<br>`);
@@ -143,7 +143,7 @@ class MyTrack extends DevspotBase {
                 <div id="userAnswersContainer" style="min-height: 400px;">
                         ${mytrack}
                 </div>
-             </template>`
+             </template>`;
         this.componentRoot.append(div);
         const template = this.componentRoot.querySelector(`#practiceTest-styles`);
         const node = document.importNode(template.content, true);

@@ -1,5 +1,10 @@
 import { fetchFromPost } from "/js/site/commons/HttpUtils.js";
 import { constants } from "/js/site/siteConstants.js";
+export const SimulatorMode = {
+    STUDY: 'study',
+    EXAM: 'exam'
+};
+
 export const Role = {
     VISITOR: 'visitor',
     USER: 'user',

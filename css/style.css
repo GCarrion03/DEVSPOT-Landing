@@ -28,12 +28,20 @@ body {
     margin: 0;
 }
 
+.padding-bottom-0{
+    padding-bottom: 0px;
+}
+
 .padding-bottom-sm{
     padding-bottom: 2px;
 }
 .padding-bottom-md{
     padding-bottom: 5px;
 }
+.padding-bottom-lg{
+    padding-bottom: 10px;
+}
+
 
 .padding-top-sm{
     padding-top: 2px;
@@ -43,6 +51,16 @@ body {
 }
 .padding-top-lg{
     padding-top: 10px;
+}
+
+.padding-tb-lg {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.padding-tb-0 {
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 
 .padding-sides-0{
@@ -57,9 +75,17 @@ body {
     padding-left: 5px;
     padding-right: 5px;
 }
+.padding-sides-lg{
+    padding-left: 10px;
+    padding-right: 10px;
+}
 .display-none {
     display: none;
 }
+.cursor-pointer {
+    cursor: pointer;
+}
+
 .display-inline-block {
     display: inline-block;
 }
@@ -531,11 +557,11 @@ button.navbar-toggle {
 }
 
 .stdButton{
-    font-family: 'robotolight', sans-serif;
     background: radial-gradient(circle, rgba(66,87,116,0.8127626050420168) 0%, rgba(0,0,0,1) 0%, rgba(0,142,255,1) 100%);
+    color: white; /* White text */
+    font-family: 'robotolight', sans-serif;
     border-radius: 5px;
     border: none; /* Remove borders */
-    color: white; /* White text */
     padding: 10px 14px; /* Some padding */
     font-size: 14px; /* Set a font size */
     cursor: pointer; /* Mouse pointer on hover */
@@ -557,6 +583,23 @@ button.navbar-toggle {
     color: gray;
 }
 
+.unlockButton {
+    background: radial-gradient(circle, rgba(66,87,116,0.8127626050420168) 0%, rgb(255, 255, 255) 0%, rgba(0,142,255,1) 100%);
+    color: black;
+    font-family: 'robotolight', sans-serif;
+    border-radius: 5px;
+    border: none; /* Remove borders */
+    padding: 10px 14px; /* Some padding */
+    font-size: 14px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+    margin: 1px;
+}
+
+.unlockButton:hover {
+    background: radial-gradient(circle, rgba(66,87,116,0.8127626050420168) 0%, rgba(0,0,0,1) 0%, rgba(0,142,255,1) 100%);
+    color: white;
+}
+
 .userAnswer {
     text-align: center;
     border: 3px double white;
@@ -574,8 +617,8 @@ button.navbar-toggle {
     background-color: #ffd3cf;
 }
 
-.lightGreen{
-    background-color: #b8eeb9;
+.darkLimeGreen{
+    background-color: #4A6400;
 }
 
 .darkGreen{
@@ -588,6 +631,18 @@ button.navbar-toggle {
 
 .darkBlue{
     background-color: darkblue;
+}
+
+.darkGray{
+    background-color: darkgray;
+}
+
+.none {
+    display: none;
+}
+
+.inline-block {
+    display: inline-block;
 }
 
 
@@ -615,6 +670,12 @@ button.navbar-toggle {
     left: -135px;
     margin-left: 10px;
     white-space: normal;
+}
+
+.basicTooltip .displayTooltipAlignTextLeft {
+    left: -10px;
+    text-align: left;
+    padding-left: 20px
 }
 
 .basicTooltip .displayTooltipCenter {
