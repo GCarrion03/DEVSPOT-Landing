@@ -45,8 +45,8 @@ class practiceTest extends DevspotBase {
                     <p class="selectModeClass">The simulator will pick questions from our curated database of ${this.exam.totalNumberOfQuestions} questions, pass the Exam Mode or get an "Overall Score" of 80% in "My Track" and you will be ready to pass your certification exam.</p>
                     <p class="selectModeClass">Please select your test mode:</p>
                     <ul class="padding-margin-0">
-                        <li class="selectModeClass"><strong class="examModeDetails">Exam Mode</strong>  generates a full 65-question exam (130 minutes - Certificate eligible).</li>
-                        <li class="selectModeClass"><strong class="studyModeDetails">Study mode</strong> generates 5, 10, 30 or 65-question tests with answers (10 minutes and up).</li>
+                        <li class="selectModeClass"><strong>Exam Mode</strong>  generates a full 65-question exam (130 minutes - Certificate eligible).</li>
+                        <li class="selectModeClass"><strong>Study mode</strong> generates 5, 10, 30 or 65-question tests with answers (10 minutes and up).</li>
                     </ul>      
                     <div class="col-lg-12 padding-sides-0 padding-top-lg padding-bottom-md examModeDetails" style="display: none;">  
                         <div class="text-align-center"><strong>Exam Mode</strong></div>
@@ -162,6 +162,7 @@ class practiceTest extends DevspotBase {
             this.componentRoot.querySelectorAll(`.studyModeDetails`).forEach(x => x.style.display = 'none');
             this.componentRoot.querySelector(`#examLength`).disabled = true;
             this.componentRoot.querySelector(`#examLength`).value = 65;
+            this.simulatorMode = SimulatorMode.EXAM;
         };
         this.componentRoot.querySelector(`#start`).onclick = async () => {
             //We import paypal AFTER inserting in the dom the paypal form
