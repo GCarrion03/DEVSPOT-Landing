@@ -358,6 +358,9 @@ class practiceTest extends DevspotBase {
                     <div class="col-sm-12 col-md-6 padding-tb-lg padding-sides-0 text-align-center">
                         <button class="btn stdButton mdMinWidth" type="button" id="btnFinishExam"><i class="fa fa-check-square-o"> Finish Exam</i></button>
                     </div>
+                     <div class="col-sm-12 col-md-12 padding-tb-lg padding-sides-0 text-align-center">
+                        <p>Click a question number to navigate to it.</p>
+                    </div>
                     <div class="col-md-2 col-sm-3 legendText padding-sides-0">Total Questions:</div>
                     <div class="col-md-2 col-sm-3 padding-sides-0 text-align-center bold" id="totalQuestions">${this.numberOfQuestions}</div>
                     <div class="col-md-2 col-sm-3 legendText padding-sides-0"><span class="studyModeElement">Checked:</span><span class="examModeElement">Answered:</span>  </div>
@@ -412,7 +415,7 @@ class practiceTest extends DevspotBase {
         let modeResultStr = '';
         if (score >= (this.numberOfQuestions * 0.7)) {
             if (this.simulatorMode === SimulatorMode.EXAM) {
-                modeResultStr = `<p>Congratulations! ${this.componentRoot.querySelector('#nameInput').value} you did it!, 79% of candidates fail this exam, display it proudly as attaining this certificate is a demonstration of your knowledge in the "${this.exam.examName}" official exam topics and celebrate this milestone with your peers by downloading your PDF certificate below, sharing and adding it to your LinkedIn profile.
+                modeResultStr = `<p>Congratulations! ${this.componentRoot.querySelector('#nameInput').value} you did it!, 79% of candidates fail this exam, display it proudly as attaining this certificate is a demonstration of your knowledge in the "${this.exam.examName}" official exam topics and celebrate this milestone with your peers by downloading your PDF certificate below, sharing and adding it to your LinkedIn profile include the #aws #devspotorg Hashtags.
                     <a onclick="window.open(\`https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name=${this.exam.examProvider} - ${this.exam.examName}(DEVSPOT)&organizationId=70063851&issueYear=${new Date().getFullYear()}
                     &issueMonth=${new Date().getMonth()}&expirationYear=${new Date().getFullYear() + 3}&expirationMonth=${new Date().getMonth()}&certId=${this.examGUID}&certUrl=https://devspot.org/${this.exam.examId}.html?credId%3D${this.examGUID}\`)"
                     href="#"><img src="https://download.linkedin.com/desktop/add2profile/buttons/en_US.png " alt="LinkedIn Add to Profile button"></a></p>
