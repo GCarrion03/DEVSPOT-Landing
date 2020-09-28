@@ -354,8 +354,8 @@ class practiceTest extends DevspotBase {
         div.innerHTML =
             `<template id="simulator-summary">
                 <div id="userAnswersContainer" style="min-height: 400px; display: none;" class="col-lg-12 padding-sides-0">
-                    <div class="col-sm-6 padding-tb-lg padding-sides-0 text-align-center"><h4 class="bold">Exam Review</h4></div>
-                    <div class="col-sm-6 padding-tb-lg padding-sides-0 text-align-center">
+                    <div class="col-sm-12 col-md-6 padding-tb-lg padding-sides-0 text-align-center"><h4 class="bold">Exam Review</h4></div>
+                    <div class="col-sm-12 col-md-6 padding-tb-lg padding-sides-0 text-align-center">
                         <button class="btn stdButton mdMinWidth" type="button" id="btnFinishExam"><i class="fa fa-check-square-o"> Finish Exam</i></button>
                     </div>
                     <div class="col-md-2 col-sm-3 legendText padding-sides-0">Total Questions:</div>
