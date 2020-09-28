@@ -24,17 +24,68 @@
     <link href="/css/style.css" rel="stylesheet" type="text/css">
 <!--    <script type="module" src="js/importsHeader.js"></script>-->
     <script src="js/site/fallback/AWS/mergeQ&A.js"></script>
+
 </head>
 <body>
 
+<script type="module">
+    import { generateCertificate } from "/js/site/components/certificateGenerator/certificateGenerator.js";
+    generateCertificate ({ path: '/images/certificate/AWSBaseCert.png', name: 'exam' },"Johana Cordova Yepez", "SOA-C01","Certified Developer - Associate", "Sep 24, 2020", "Sep 24, 2023", "AWS", "613433a0-7501-48f7-a90f-589557742a25", "https://devspot.org/SOA-C01.html?certId=613433a0-7501-48f7-a90f-589557742a25");
+</script>
+
+<a onclick="window.open(`https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name=Test%20Certificate&organizationId=1337&issueYear=2018
+&issueMonth=2&expirationYear=2020&expirationMonth=5&certUrl=https://devspot.org/SAA-C02.html?id%3Dcdce085f-46ce-475e-a4aa-d06c817c0b14`)" href="#"><img src="https://download.linkedin.com/desktop/add2profile/buttons/en_US.png " alt="LinkedIn Add to Profile button"></a>
 <script>
 
-    mergeQaA();
-    // Default export is a4 paper, portrait, using millimeters for units
-    // const doc = new jsPDF();
-    //
-    // doc.text("Hello world!", 10, 10);
-    // doc.save("a4.pdf");
+    // mergeQaA();
+
+    /*const toDataURL = url => fetch(url)
+        .then(response => response.blob())
+        .then(blob => new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onloadend = () => resolve(reader.result);
+            reader.onerror = reject;
+            reader.readAsDataURL(blob)
+        }));
+
+
+    toDataURL('images/certificate/AWSBaseCert.png')
+        .then(dataUrl => {
+            console.log('RESULT:', dataUrl)
+            var doc = new jsPDF("landscape");
+            doc.addImage(dataUrl, "JPEG", 0, 0, 300, 215);
+            doc.setFontSize(40);
+            doc.text("Candidate First Last", 80 , 80);
+            doc.setFontSize(20);
+            doc.text("has successfully completed the AWS Certification", 70 , 100);
+            doc.text("preparation exam to achieve their:", 88 , 107);
+            doc.text("DEVSPOT Tech Training", 175 , 180);
+            doc.text("Jun 01, 2020", 40 , 175);
+            doc.text("Jun 01, 2023", 40 , 195);
+            doc.setFontSize(10);
+            doc.text("Validation Number", 175 , 195);
+            doc.text("QWERTYUIOPASDFGH", 205 , 195);
+            doc.text("Get your certification here ", 175 , 200);
+            doc.setTextColor(0,0, 255);
+            doc.text("https://devspot.org/SAA-C02.html", 216 , 200);
+            doc.setTextColor(255,255, 255);
+            doc.setFontSize(40);
+            doc.text("AWS Certified Solutions Architect - Associate", 8, 143);
+            doc.setTextColor(0,0, 0);
+            doc.setFontSize(20);
+            doc.setFontStyle('bold');
+            doc.text("Issue Date", 40, 165);
+            doc.text("Expiration Date", 40, 185);
+            doc.save("a4.pdf");
+
+        })*/
+
+
+    // Don't forget, that there are CORS-Restrictions. So if you want to run it without a Server in your Browser you need to transform the image to a dataURL
+    // Use http://dataurl.net/#dataurlmaker
+
+
+
 </script>
 <!--<script>enumerateQs();</script>-->
 <section class="container section" id="testBody" style="padding-top: 5%;">

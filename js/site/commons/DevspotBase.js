@@ -1,5 +1,7 @@
 import { fetchFromPost } from "/js/site/commons/HttpUtils.js";
 import { constants } from "/js/site/siteConstants.js";
+import { GUIDUtils } from "/js/site/commons/GUIDUtils.js";
+
 export const SimulatorMode = {
     STUDY: 'study',
     EXAM: 'exam'
@@ -14,6 +16,8 @@ export const Role = {
 export class DevspotBase extends HTMLElement {
     userData = {};
     userRole;
+    examGUID = GUIDUtils.newGuid();
+
     constructor(){
         super();
         const userData = localStorage.getItem('userData');

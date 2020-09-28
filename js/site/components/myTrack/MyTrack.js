@@ -1,7 +1,9 @@
 import { DevspotBase, Role } from '/js/site/commons/DevspotBase.js';
-import { fetchFromPost, fetchFromDelete } from "/js/site/commons/HttpUtils.js";
+import { fetchFromPost, fetchFromDelete, fetchFromPut } from "/js/site/commons/HttpUtils.js";
 import { constants } from "/js/site/siteConstants.js";
 import { paymentModal, renderPaypalButtons } from "/js/site/components/paymentModal/PaymentModal.js";
+import { DateUtils } from "/js/site/commons/DateUtils.js";
+import { generateCertificate, CredentialType } from "/js/site/components/certificateGenerator/certificateGenerator.js";
 class MyTrack extends DevspotBase {
     constants;
     exam;
@@ -30,7 +32,7 @@ class MyTrack extends DevspotBase {
                 <div class="col-md-2 col-sm-3 legendText padding-sides-0 text-align-center bold">Overall Score:</div>
                 <div class="col-md-2 col-sm-3 padding-sides-0 text-align-center basicTooltip bold" >
                     ${(numberCorrect * 100 / this.exam.totalNumberOfQuestions).toFixed(2)}%
-                    <span class="basicTooltipText">Get your this score above 80% to pass your exam, guaranteed!<br></span>
+                    <span class="basicTooltipText">Get your this score above 80% to pass your exam and get your certificate, guaranteed!<br></span>
                 </div>
                 <div class="col-md-2 col-sm-3 legendText padding-sides-0 text-align-center bold" >Completed:</div>
                 <div class="col-md-2 col-sm-3 padding-sides-0 text-align-center basicTooltip bold" >
@@ -47,6 +49,8 @@ class MyTrack extends DevspotBase {
                     ${numberCorrect === 0 ? '---' : ( numberIncorrect / numberCorrect).toFixed(2)}
                     <span class="basicTooltipText">The sum of incorrect answers divided by the sum of correct answers. A good error ratio is around 0.3<br></span>
                 </div>
+                <div class="col-md-2 col-sm-3 legendText padding-sides-0">Questions:</div>
+                <div class="col-md-2 col-sm-3 padding-sides-0 text-align-center bold">${this.exam.totalNumberOfQuestions}</div>
                 <div class="col-md-2 col-sm-3 legendText padding-sides-0">Answered:</div>
                 <div class="col-md-2 col-sm-3 padding-sides-0 text-align-center bold">${(this.myTrackData.filter(e => e.status !== 'notRequested').length)}</div>
                 <div class="col-md-2 col-sm-3 legendText padding-sides-0">Correct:</div>
@@ -131,10 +135,18 @@ class MyTrack extends DevspotBase {
                                     Warning! this will remove all your saved questions on the ${this.exam.examId} track.<br>
                                 </span>
                             </button>
-                            <button type="button" class="btn stdButton basicTooltip mdMinWidth" id="downloadBtn" ${this.userRole === Role.CONTRIBUTOR ? '' : 'disabled'}>
+                            <button type="button" class="btn stdButton basicTooltip mdMinWidth" id="downloadBtn" 
+                                ${this.userRole === Role.CONTRIBUTOR ? '' : 'disabled'}>
                                 <i class="fa fa-download"> Download Question Database</i>
                                 <span class="col-sm-1 basicTooltipText" style="left: -15px;">
                                     Download all ${this.exam.examId} exam questions as PDF.<br>
+                                </span>
+                            </button>
+                            <button type="button" class="btn stdButton basicTooltip mdMinWidth" id="pdfMyTrackBtn"
+                                ${(numberCorrect * 100 / this.exam.totalNumberOfQuestions).toFixed(2) > 80 ? '' : 'disabled'}>
+                                <i class="fa fa-file-pdf-o"> Track completion certificate</i>
+                                <span class="col-sm-1 basicTooltipText" style="left: -15px;">
+                                    Complete your track to download and share on LinkedIn your achievement!<br>
                                 </span>
                             </button>
                         </div>
@@ -181,6 +193,11 @@ class MyTrack extends DevspotBase {
                 }
             }
         }
+        if ((numberCorrect * 100 / this.exam.totalNumberOfQuestions).toFixed(2) >= 80) {
+            this.componentRoot.querySelector(`#pdfMyTrackBtn`).onclick = () => {
+                this.downloadCertificate();
+            }
+        }
     };
 
     async renderPaypal(){
@@ -193,5 +210,22 @@ class MyTrack extends DevspotBase {
             renderPaypalButtons(onApproveRerenderCallback, this.userData.username, this.exam.examId);
         }
     };
+
+    downloadCertificate() {
+            let date = new Date();
+            const issueDate = DateUtils.getDateMMMDDYYYY(date);
+            date = date.setFullYear(new Date().getFullYear() + 3);
+            const expiryDate = DateUtils.getDateMMMDDYYYY(date);
+            generateCertificate(CredentialType.MYTRACK, this.userData?.username, this.exam.examId, this.exam.examName, issueDate,
+                expiryDate, this.exam.providerAcronym, this.examGUID, `https://devspot.org/${this.exam.examId}.html?credId=${this.examGUID}`);
+            const body = [
+                {
+                    userId: this.userData.username,
+                    credId: this.examGUID,
+                    examId: this.exam.examId,
+                    credType: CredentialType.EXAM.name}];
+            fetchFromPut(constants.credentialEndpoint, body).then();
+
+    }
 }
 customElements.define('my-track', MyTrack);

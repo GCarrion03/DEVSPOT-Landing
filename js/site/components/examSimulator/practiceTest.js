@@ -2,6 +2,9 @@ import { fetchFromPost, fetchFromPut } from "/js/site/commons/HttpUtils.js";
 import { paymentModal, renderPaypalButtons } from "/js/site/components/paymentModal/PaymentModal.js";
 import { DevspotBase, Role, SimulatorMode } from "/js/site/commons/DevspotBase.js";
 import { constants } from "/js/site/siteConstants.js";
+import { generateCertificate, CredentialType } from "/js/site/components/certificateGenerator/certificateGenerator.js";
+import { DateUtils } from "/js/site/commons/DateUtils.js";
+
 class practiceTest extends DevspotBase {
     constants;
     exam;
@@ -53,11 +56,11 @@ class practiceTest extends DevspotBase {
                         <ul>
                             <li>130 Minutes.</li>
                             <li>65 Questions.</li>
-                            <li>Flag your questions for review.</li>
-                            <li>Review your answers before submission.</li>
-                            <li>PDF certificate eligible.</li>
+                            <li>If you are not sure of an answer, don't select any option & answer it later.</li>
+                            <li>Review not answered questions before submission.</li>
+                            <li>Score more than 70% to get your PDF certificate.</li>
                         </ul>
-                        <p class="padding-sides-lg padding-top-lg"><strong>Note:</strong> Please make sure you have enough time to complete your exam (at least 90 minutes) before proceeding.</p>
+                        <p class="padding-sides-0 padding-top-lg"><strong>Note:</strong> Please provide a valid name as it will be displayed on your certificate and make sure you have enough time to complete your exam (at least 90 minutes) before proceeding.</p>
                     </div>
                     <div class="col-lg-12 padding-sides-0 padding-top-lg padding-bottom-md studyModeDetails" style="display: none;">
                     <div class="text-align-center"><strong>Study mode</strong></div>
@@ -68,24 +71,24 @@ class practiceTest extends DevspotBase {
                         <li>Study explanations and investigate further.</li>
                         <li>Save answers to "My Track".</li>
                     </ul> 
-                    ${this.userRole === Role.VISITOR ? '<p class="padding-top-lg padding-sides-lg"><strong>Note:</strong> Please register to keep track of your completion progress in the "My Tracks" option.</p>' : ''}
-                    ${this.userRole === Role.USER ? '<p class="padding-top-lg padding-sides-lg"><strong>Note:</strong> Visit us everyday to get 5 more free question saves to this exam Track.</p>' : ''}
+                    ${this.userRole === Role.VISITOR ? '<p class="padding-top-lg padding-sides-0"><strong>Note:</strong> Please register to keep track of your completion progress in the "My Tracks" option.</p>' : ''}
+                    ${this.userRole === Role.USER ? '<p class="padding-top-lg padding-sides-0"><strong>Note:</strong> Visit us everyday to get 5 more free question saves to this exam Track.</p>' : ''}
                     </div>
                     <br>
                     <div class="col-md-12 padding-sides-0 selectModeClass">
-                        <div class="col-md-6 text-align-center padding-top-md">
+                        <div class="col-md-6 text-align-center padding-top-md padding-sides-0">
                             <button type="button" class="btn stdButton basicTooltip mdMinWidth" id="examModeBtn">
                                 <i class="fa fa-dot-circle-o"> Exam Mode</i>
                                 <span class="basicTooltipText displayTooltipAlignTextLeft">
                                     <li>130 Minutes.</li>
                                     <li>65 Questions.</li>
-                                    <li>Flag your questions for review.</li>
-                                    <li>Review your answers before submission.</li>
-                                    <li>PDF certificate eligible.</li>
+                                    <li>If you are not sure of an answer, don't select any option & answer it later.</li>
+                                    <li>Review not answered questions before submission.</li>
+                                    <li>Score more than 70% to get your PDF certificate.</li>
                                 </span>
                             </button>
                         </div>
-                        <div class="col-md-6 text-align-center padding-top-md padding-bottom-md">
+                        <div class="col-md-6 text-align-center padding-top-md padding-bottom-md padding-sides-0">
                             <button type="button" class="btn stdButton basicTooltip mdMinWidth" id="studyModeBtn">
                             <i class="fa fa-book"> Study Mode</i>
                             <span class="basicTooltipText displayTooltipAlignTextLeft">
@@ -103,7 +106,7 @@ class practiceTest extends DevspotBase {
                             <label for="nameInput">Your name: &nbsp;</label>
                         </div>
                         <div class="col-lg-3 text-align-center">
-                            <input type="text" id="nameInput" value="${this.userData?.username ? this.userData?.username : 'Unidentified Candidate'}" class="display-inline-block">
+                            <input type="text" id="nameInput" class="display-inline-block">
                         </div>
                         <div class="col-lg-2 text-align-center">
                             <label for="examLength">&nbsp; Exam Length: &nbsp;</label>
@@ -139,7 +142,7 @@ class practiceTest extends DevspotBase {
     setExamSetupActions () {
         this.componentRoot.querySelector(`#goBackBtn`).onclick = () => {
             this.componentRoot.querySelector(`#examOptionsDiv`).style.display = "none";
-            this.componentRoot.querySelectorAll(`.selectModeClass`).forEach(x => x.style.display = 'inline-block');
+            this.componentRoot.querySelectorAll(`.selectModeClass`).forEach(x => x.style.display = 'block');
             this.componentRoot.querySelectorAll(`.examModeDetails`).forEach(x => x.style.display = 'none');
             this.componentRoot.querySelectorAll(`.studyModeDetails`).forEach(x => x.style.display = 'none');
             this.componentRoot.querySelector(`#examLength`).disabled = false;
@@ -148,18 +151,24 @@ class practiceTest extends DevspotBase {
         };
         this.componentRoot.querySelector(`#studyModeBtn`).onclick = () =>
         {
-            this.componentRoot.querySelector(`#examOptionsDiv`).style.display = "inline-block";
+            this.componentRoot.querySelector(`#examOptionsDiv`).style.display = "block";
             this.componentRoot.querySelectorAll(`.selectModeClass`).forEach(x => x.style.display = 'none');
-            this.componentRoot.querySelectorAll(`.studyModeDetails`).forEach(x => x.style.display = 'inline-block');
+            this.componentRoot.querySelectorAll(`.studyModeDetails`).forEach(x => x.style.display = 'block');
             this.componentRoot.querySelectorAll(`.examModeDetails`).forEach(x => x.style.display = 'none');
+            this.componentRoot.querySelector(`#nameInput`).value = (this?.userData?.username || 'Unidentified Candidate');
+            this.componentRoot.querySelector(`#nameInput`).onkeyup = () => { };
+            this.componentRoot.querySelector(`#start`).disabled = false;
             this.simulatorMode = SimulatorMode.STUDY;
         };
         this.componentRoot.querySelector(`#examModeBtn`).onclick = () =>
         {
-            this.componentRoot.querySelector(`#examOptionsDiv`).style.display = "inline-block";
+            this.componentRoot.querySelector(`#examOptionsDiv`).style.display = "block";
             this.componentRoot.querySelectorAll(`.selectModeClass`).forEach(x => x.style.display = 'none');
-            this.componentRoot.querySelectorAll(`.examModeDetails`).forEach(x => x.style.display = 'inline-block');
+            this.componentRoot.querySelectorAll(`.examModeDetails`).forEach(x => x.style.display = 'block');
             this.componentRoot.querySelectorAll(`.studyModeDetails`).forEach(x => x.style.display = 'none');
+            this.componentRoot.querySelector(`#nameInput`).value = '';
+            this.componentRoot.querySelector(`#nameInput`).onkeyup = () => { if (this.componentRoot.querySelector(`#nameInput`).value!==''){ document.querySelector(`#start`).disabled = false } else {document.querySelector(`#start`).disabled = true }};
+            this.componentRoot.querySelector(`#start`).disabled = true;
             this.componentRoot.querySelector(`#examLength`).disabled = true;
             this.componentRoot.querySelector(`#examLength`).value = 65;
             this.simulatorMode = SimulatorMode.EXAM;
@@ -215,7 +224,8 @@ class practiceTest extends DevspotBase {
                     <div class="col-lg-4 text-align-center padding-sides-md">
                         ${this.getSaveToMyTrackMenu(examQuestionInfo.myTrackQuestionCount, examQuestionInfo.examQuestionCount)}
                     </div>
-                    <div class="col-lg-4 text-align-center">
+                    <div class="col-lg-4 text-align-center padding-sides-md">
+                        <button class="btn stdButton mdMinWidth examModeElement" type="button" id="btnGetCertificate" disabled><i class="fa fa-file-pdf-o"> Download Certificate!</i> </button>
                     </div>
                 </div>
                 <div id="scoreSection" style="display:none;" class="col-lg-12">
@@ -331,6 +341,7 @@ class practiceTest extends DevspotBase {
         if (this.simulatorMode === SimulatorMode.STUDY) {
             this.componentRoot.querySelectorAll(`.examModeElement`).forEach(x => x.style.display = 'none');
         } else {
+            this.componentRoot.querySelector(`#btnGetCertificate`).onclick = () => { this.downloadCertificate(); };
             this.componentRoot.querySelectorAll(`.studyModeElement`).forEach(x => x.style.display = 'none');
         }
 
@@ -376,29 +387,69 @@ class practiceTest extends DevspotBase {
         const nodeSummary = document.importNode(templateSummary.content, true);
         this.componentRoot.removeChild(div);
         this.componentRoot.appendChild(nodeSummary);
-
         this.componentRoot.querySelector(`#btnFinishExam`).onclick = () => {
-            document.querySelector('#userAnswersContainer').style.display = "none";
-            const currentScore = this.componentRoot.querySelector(`label[id=currentScore]`);
-            this.componentRoot.querySelector(`#questionContainer${this.numberOfQuestions}`).style.display = "none";
-            this.componentRoot.querySelector(`#scoreSection`).style.display = "none";
-            const score = parseInt(currentScore.innerHTML);
-            this.componentRoot.querySelector(`#passMessage`).style.display = "inline-block";
-            this.componentRoot.querySelector(`#welcomeMessage`).style.display = "none";
-            let resultStr = `<div class="col-xs-12 padding-sides-0 padding-bottom-lg">
+            this.finishExamAndGenerateSummary();
+        }
+    }
+
+    finishExamAndGenerateSummary () {
+        document.querySelector('#userAnswersContainer').style.display = "none";
+        const currentScore = this.componentRoot.querySelector(`label[id=currentScore]`);
+        this.componentRoot.querySelector(`#questionContainer${this.numberOfQuestions}`).style.display = "none";
+        this.componentRoot.querySelector(`#scoreSection`).style.display = "none";
+        const score = parseInt(currentScore.innerHTML);
+        this.componentRoot.querySelector(`#passMessage`).style.display = "inline-block";
+        this.componentRoot.querySelector(`#welcomeMessage`).style.display = "none";
+        let resultStr = `<div class="col-xs-12 padding-sides-0 padding-bottom-lg">
                                         <div class="col-xs-6 padding-sides-0 bold">Candidate:</div><div class="col-xs-6 padding-sides-0">${this.componentRoot.querySelector('#nameInput').value ? this.componentRoot.querySelector('#nameInput').value : 'Unidentified Candidate'}</div>
                                         <div class="col-xs-6 padding-sides-0 bold">Exam Id:</div><div class="col-xs-6 padding-sides-0">${this.exam.examId}</div>
                                         <div class="col-xs-6 padding-sides-0 bold">Exam Name:</div><div class="col-xs-6 padding-sides-0">${this.exam.examProvider} - ${this.exam.examName}</div>
-                                        <div class="col-xs-6 padding-sides-0 bold">Score:</div><div class="col-xs-6 padding-sides-0">${(100 * score / this.numberOfQuestions).toFixed(2)}%</div>
+                                        <div class="col-xs-6 padding-sides-0 bold">Score:</div><div class="col-xs-6 padding-sides-0">${(100 * score / this.numberOfQuestions).toFixed(2)}%</div>  
                                         <div class="col-xs-6 padding-sides-0 bold">Correct:</div><div class="col-xs-6 padding-sides-0">${score}</div>
                                         <div class="col-xs-6 padding-sides-0 bold">Incorrect:</div><div class="col-xs-6 padding-sides-0">${this.numberOfQuestions - score}</div>  
+                                        <div class="col-xs-6 padding-sides-0 bold">Total:</div><div class="col-xs-6 padding-sides-0">${this.numberOfQuestions}</div>
                             </div>`;
-            if (score >= (this.numberOfQuestions * 0.7)) {
-                this.componentRoot.querySelector(`#passHeader`).innerHTML = resultStr + `Congratulations ${this.componentRoot.querySelector('#nameInput').value} you passed, Good luck on your exam! Score: ${score}/${this.numberOfQuestions}`;
+        let modeResultStr = '';
+        if (score >= (this.numberOfQuestions * 0.7)) {
+            if (this.simulatorMode === SimulatorMode.EXAM) {
+                modeResultStr = `<p>Congratulations! ${this.componentRoot.querySelector('#nameInput').value} you did it!, 79% of candidates fail this exam, display it proudly as attaining this certificate is a demonstration of your knowledge in the "${this.exam.examName}" official exam topics and celebrate this milestone with your peers by downloading your PDF certificate below, sharing and adding it to your LinkedIn profile.
+                    <a onclick="window.open(\`https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name=${this.exam.examProvider} - ${this.exam.examName}(DEVSPOT)&organizationId=70063851&issueYear=${new Date().getFullYear()}
+                    &issueMonth=${new Date().getMonth()}&expirationYear=${new Date().getFullYear() + 3}&expirationMonth=${new Date().getMonth()}&certId=${this.examGUID}&certUrl=https://devspot.org/${this.exam.examId}.html?credId%3D${this.examGUID}\`)"
+                    href="#"><img src="https://download.linkedin.com/desktop/add2profile/buttons/en_US.png " alt="LinkedIn Add to Profile button"></a></p>
+                    <br><p style="text-align: center; font-weight: bold;">“You are now ready to ace your certification exam, go and crush it, Good Luck!” - @gusmcarrion</p>`;
+                this.componentRoot.querySelector(`#btnGetCertificate`).disabled = false;
             } else {
-                this.componentRoot.querySelector(`#passHeader`).innerHTML = resultStr +`Oh no! ${this.componentRoot.querySelector('#nameInput').value} you failed, click Retake test or reload this page to try again. Score: ${score}/${this.numberOfQuestions}`;
+                modeResultStr = `<p>Nice job! you are on the right path!, save your results to "My Track" to continue your preparation or you can give a try to "Exam Mode" if you feel ready and want to get a PDF certificate.</p>
+                                 <br><p style="text-align: center;font-weight: bold;">“Successful people are not gifted; they just work hard, then succeed on purpose.” – G.K. Nielson</p>`;
             }
-        };
+        } else {
+            if (this.simulatorMode === SimulatorMode.EXAM) {
+                modeResultStr = `<p>Oh no! ${this.componentRoot.querySelector('#nameInput').value} you failed, to get your PDF certificate you must score at least 70%, use the "Study Mode" to practice and research the questions before trying this exam again or the "${this.exam.examName}" official exam. Click Retake test to go back to the exam selection mode to try again.</p>
+                                <br><p style="text-align: center;font-weight: bold;">“It’s fine to celebrate success but it is more important to heed the lessons of failure.” – Bill Gates</p>`;
+            } else {
+                modeResultStr = `<p>Nice effort! but this will not be enough to get your certification, click save results to "My Track" and try again, periodically review you incorrect answers in "My Track" and research these topics.</p>
+                                <br><p style="text-align: center;font-weight: bold;">“It’s not what you do once in a while it’s what you do day in and day out that makes the difference.” – Jenny Craig</p>`
+            }
+        }
+        this.componentRoot.querySelector(`#passHeader`).innerHTML = resultStr + modeResultStr;
+    }
+
+    downloadCertificate() {
+        if (parseInt(currentScore.innerHTML) >= (this.numberOfQuestions * 0.7)) {
+            let date = new Date();
+            const issueDate = DateUtils.getDateMMMDDYYYY(date);
+            date = date.setFullYear(new Date().getFullYear() + 3);
+            const expiryDate = DateUtils.getDateMMMDDYYYY(date);
+            generateCertificate (CredentialType.EXAM, this.componentRoot.querySelector('#nameInput').value, this.exam.examId, this.exam.examName, issueDate,
+                expiryDate, this.exam.providerAcronym, this.examGUID, `https://devspot.org/${this.exam.examId}.html?credId=${this.examGUID}`);
+            const body = [
+                {
+                    userId: this.userData?.username || this.componentRoot.querySelector('#nameInput').value,
+                    credId: this.examGUID,
+                    examId: this.exam.examId,
+                    credType: CredentialType.EXAM.name}];
+            fetchFromPut(constants.credentialEndpoint, body).then();
+        }
     }
 
     enableStart() {
