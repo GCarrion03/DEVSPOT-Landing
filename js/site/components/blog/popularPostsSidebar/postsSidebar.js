@@ -13,29 +13,29 @@ class postsSidebar extends HTMLElement {
                     <h3 class="section-title">Popular Posts</h3>
                 </div>
     
-                <div class="trend-entry d-flex">
+                <div class="col-lg-12 padding-sides-0 trend-entry d-flex">
                     <div class="trend-contents">
                         <h4><a href="/blog-01.html" rel="author">How to pass the AWS Certified Solutions Architect Associate Exam - SAA-C02 </a></h4>
-                        <div class="post-meta">
-                            <span class="d-block"><a href="#">Gustavo Carrion</a></span>
+                        <div class="post-meta" style="float: right;">
+                        <span class="d-block"><a href="./">Gustavo Carrion</a></span>
                             <span class="date-read">Jun 02 <span class="mx-1">•</span> 3 min read <span class="icon-star2"></span></span>
                         </div>
                     </div>
                 </div>
-                <div class="trend-entry d-flex">
+                <div class="col-lg-12 padding-sides-0 trend-entry d-flex">
                     <div class="trend-contents">
                         <h4><a href="/blog-02.html" rel="author">My thoughts on the AWS Certified Developer Associate exam</a></h4>
-                        <div class="post-meta">
-                            <span class="d-block"><a href="#">Gustavo Carrion</a></span>
+                        <div class="post-meta" style="float: right;">
+                        <span class="d-block"><a href="./">Gustavo Carrion</a></span>
                             <span class="date-read">Jun 23 <span class="mx-1">•</span> 3 min read <span class="icon-star2"></span></span>
                         </div>
                     </div>
                 </div>
-                <div class="trend-entry d-flex">
+                <div class="col-lg-12 padding-sides-0 trend-entry d-flex">
                     <div class="trend-contents">
                         <h4><a href="/blog-03.html" rel="author">Passed the Certified SysOps Administrator Associate Exam, AWS Associate Trifecta complete now!</a></h4>
-                        <div class="post-meta">
-                            <span class="d-block"><a href="#">Gustavo Carrion</a></span>
+                        <div class="post-meta" style="float: right;">
+                        <span class="d-block"><a href="./">Gustavo Carrion</a></span>
                             <span class="date-read">Jul 29 <span class="mx-1">•</span> 3 min read <span class="icon-star2"></span></span>
                         </div>
                     </div>
