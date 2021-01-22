@@ -115,6 +115,7 @@ class practiceTest extends DevspotBase {
                             <select name="examLength" id="examLength" class="display-inline-block">
                               <option value="5">5 Questions${this.hasFreeDailyQuota ? ' (Free Daily Save)' : ''}</option>
                               <option value="10">10 Questions</option>
+                              <option value="20">20 Questions</option>
                               ${this.userData ? '<option value="30">30 Questions</option>' : '<option value="30" disabled>(Sign In) 30 Questions</option>'} 
                               ${this.userData ? '<option value="65">65 Questions</option>' : '<option value="65" disabled>(Sign In) 65 Questions</option>'} 
                               ${this.userRole === Role.CONTRIBUTOR && (this.exam.myTrackQuestionCount > 0) ? '<option value="-1">All My Incorrect Questions</option>' : '<option value="1" disabled>(Contributor)All My Incorrect Questions</option>'} 
